@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://cpohcskt0dsd3"]
+
+[ext_resource type="Script" uid="uid://bvoi1dfewc2v3" path="res://Character/character.gd" id="1_vx5l7"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3uuap"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_qrqgy"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ydtjq"]
+
+[node name="Character" type="CharacterBody3D"]
+script = ExtResource("1_vx5l7")
+sensitivity = 100
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_3uuap")
+
+[node name="Visor" type="MeshInstance3D" parent="CollisionShape3D"]
+transform = Transform3D(0.732487, 0, 0, 0, 0.264052, 0, 0, 0, 0.709479, 0, 0.555519, -0.25558)
+mesh = SubResource("BoxMesh_qrqgy")
+skeleton = NodePath("../..")
+
+[node name="Capsule" type="MeshInstance3D" parent="CollisionShape3D"]
+mesh = SubResource("CapsuleMesh_ydtjq")
+skeleton = NodePath("../..")
+
+[node name="CamPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.488375, 0.414716)
+
+[node name="Camera3D" type="Camera3D" parent="CamPivot"]
+transform = Transform3D(1, 0, 0, 0, 0.944531, 0.328422, 0, -0.328422, 0.944531, 4.76837e-07, 3.5953, 4.34464)
