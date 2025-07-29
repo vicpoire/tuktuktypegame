@@ -1,0 +1,5 @@
+res://shapes/capsulephysmat.tres
+res://shapes/capsule.tres
+res://prefab/car.tscn
+res://prefab/addbox.tscn
+res://prefab/removeboxtrigger.tscn
