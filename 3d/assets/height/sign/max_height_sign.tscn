@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=4 uid="uid://bu476egqq5cyk"]
+
+[ext_resource type="Texture2D" uid="uid://rjsh26sc4tl6" path="res://3d/assets/height/sign/heightsign.png" id="1_7owb8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6stqw"]
+size = Vector3(6.5, 0.405, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y0dy0"]
+resource_name = "Material.001"
+cull_mode = 2
+albedo_texture = ExtResource("1_7owb8")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_8eha2"]
+_surfaces = [{
+"aabb": AABB(-0.323082, -0.5, -0.5, 0.646164, 1, 1),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEAAwAEAAEABQAAAAIAAwAAAAUABAAGAAIABQACAAYAAwAHAAQAAwAFAAcABwAGAAQABwAFAAYA"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAP//AAAAAP//AAAAAAAA/////wAAAAAAAAAAAAD/////AAAAAP//AAD//wAA////////AAD//wAAAAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_6stqw"]
+resource_name = "heightsign_Cube_001"
+_surfaces = [{
+"aabb": AABB(-0.323082, -0.5, -0.5, 0.646164, 1, 1),
+"attribute_data": PackedByteArray("aQb3gH0IrXVpBq11fQj3gKT6GE0EBSEf1frCHX8Fm019CPeAaQatdX0IrXVpBveAWvqbTQQFwh3V+iEfNQUYTbyRtIcScW+HEnG0h7yRb4cScbSHvJFvh7yRtIcScW+H"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_y0dy0"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAAAP//AAAAAP//AAAAAAAA/////wAAAAAAAAAAAAAAAAAAAAD///////8AAP//AAD//wAA/////wAAAAD/////AAAAAP+//////////7//////AAD/v///AAD///+///8AAP//G4EAAP////9tgf///////9uBAAAAAP//rYAAAAAAAAAAAP//AAD//wAA//8AAAAAAAAAAAAA//8AAP////8AAP//AAD///////8AAP//AAD//////////////z//f/8//3//P/9//z//f0h+SP7RfdH9MX0w/et+6/7/fwAA/38AAP9/AAD/fwAA//////////////////////9//z//f/8//3//P/9//z//f/+//3//v/9//7//f/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_8eha2")
+
+[node name="MaxHeightSign" type="RigidBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_6stqw")
+
+[node name="Cube" type="MeshInstance3D" parent="."]
+transform = Transform3D(10.1585, 0, 0, 0, 0.456341, 0, 0, 0, 0.0839625, 0, 0, 0)
+mesh = SubResource("ArrayMesh_6stqw")
+skeleton = NodePath("")

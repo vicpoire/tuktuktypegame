@@ -1,0 +1,135 @@
+[gd_scene load_steps=14 format=3 uid="uid://mopohmy2nhp0"]
+
+[ext_resource type="Script" uid="uid://ceful4nep4yyd" path="res://scripts/boxarea.gd" id="1_sle5f"]
+[ext_resource type="Texture2D" uid="uid://dwuo6ug3cjbse" path="res://sprites/boxzones/border.png" id="2_mie8f"]
+[ext_resource type="Script" uid="uid://dv14s12anuss" path="res://sprites/boxzones/animationplay.gd" id="3_a6tgn"]
+[ext_resource type="Texture2D" uid="uid://ikxef62plcj2" path="res://sprites/boxzones/dropsprite.png" id="4_usf8n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3360s"]
+atlas = ExtResource("2_mie8f")
+region = Rect2(0, 0, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lqrax"]
+atlas = ExtResource("2_mie8f")
+region = Rect2(384, 0, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_748tb"]
+atlas = ExtResource("2_mie8f")
+region = Rect2(768, 0, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbbvt"]
+atlas = ExtResource("2_mie8f")
+region = Rect2(1152, 0, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rcfhs"]
+atlas = ExtResource("2_mie8f")
+region = Rect2(1536, 0, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_not10"]
+atlas = ExtResource("2_mie8f")
+region = Rect2(1920, 0, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7c2bx"]
+atlas = ExtResource("2_mie8f")
+region = Rect2(2304, 0, 384, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qnw61"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3360s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lqrax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_748tb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbbvt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rcfhs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_not10")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7c2bx")
+}],
+"loop": true,
+"name": &"scrolling",
+"speed": 14.0
+}]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qoucm"]
+size = Vector3(5, 5, 5)
+
+[node name="DROPZONE" type="Area3D" node_paths=PackedStringArray("light_to_disable")]
+transform = Transform3D(1.77, 0, 0, 0, 1.77, 0, 0, 0, 1.77, 0, 0, 0)
+script = ExtResource("1_sle5f")
+action_type = 1
+amount = 3
+cooldown_time = 0.0
+light_to_disable = NodePath("SpotLight3D")
+
+[node name="Visuals" type="Node3D" parent="."]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Visuals"]
+transform = Transform3D(-1.042, 0, -9.10945e-08, 0, 1.042, 0, 9.10945e-08, 0, -1.042, 0, -0.699546, -2)
+modulate = Color(1, 0, 0, 0.392157)
+shaded = true
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_qnw61")
+animation = &"scrolling"
+frame = 1
+frame_progress = 0.855157
+script = ExtResource("3_a6tgn")
+
+[node name="AnimatedSprite3D2" type="AnimatedSprite3D" parent="Visuals"]
+transform = Transform3D(1.24257e-08, 0, -1.042, 0, 1.042, 0, 1.042, 0, 1.24257e-08, -2, -0.699546, 0)
+modulate = Color(1, 0, 0, 0.392157)
+shaded = true
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_qnw61")
+animation = &"scrolling"
+script = ExtResource("3_a6tgn")
+
+[node name="AnimatedSprite3D3" type="AnimatedSprite3D" parent="Visuals"]
+transform = Transform3D(1.042, 0, 0, 0, 1.042, 0, 0, 0, 1.042, 0, -0.699546, 2)
+modulate = Color(1, 0, 0, 0.392157)
+shaded = true
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_qnw61")
+animation = &"scrolling"
+script = ExtResource("3_a6tgn")
+
+[node name="AnimatedSprite3D4" type="AnimatedSprite3D" parent="Visuals"]
+transform = Transform3D(-4.55473e-08, 0, 1.042, 0, 1.042, 0, -1.042, 0, -4.55473e-08, 2, -0.699546, 0)
+modulate = Color(1, 0, 0, 0.392157)
+shaded = true
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_qnw61")
+animation = &"scrolling"
+script = ExtResource("3_a6tgn")
+
+[node name="Sprite3D" type="Sprite3D" parent="Visuals"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2, 0)
+modulate = Color(1, 0, 0, 1)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("4_usf8n")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 0.999998, 0, 0, 0)
+shape = SubResource("BoxShape3D_qoucm")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(0.999897, -0.006196, 0.0129619, 0.0129643, 0.000352189, -0.999916, 0.00619091, 0.999981, 0.00043248, 0, -11.8926, 0)
+light_color = Color(1, 0, 0, 1)
+light_energy = 8.0
+light_volumetric_fog_energy = 10.0
+spot_range = 27.407
+spot_attenuation = 0.25
+spot_angle = 15.0

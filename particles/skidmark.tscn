@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://3vd3vjqrn1gt"]
+
+[ext_resource type="Texture2D" uid="uid://dptb8m22x8o74" path="res://particles/skid.png" id="1_rvxx8"]
+
+[sub_resource type="Gradient" id="Gradient_hjkst"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0.027451)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xfrxd"]
+gradient = SubResource("Gradient_hjkst")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tsgyt"]
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_xfrxd")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8gt6o"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_rvxx8")
+billboard_mode = 2
+
+[sub_resource type="QuadMesh" id="QuadMesh_02ht7"]
+material = SubResource("StandardMaterial3D_8gt6o")
+size = Vector2(0.5, 0.5)
+orientation = 1
+
+[node name="GPUParticles3D" type="GPUParticles3D"]
+emitting = false
+amount = 150
+lifetime = 1.5
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_tsgyt")
+draw_pass_1 = SubResource("QuadMesh_02ht7")

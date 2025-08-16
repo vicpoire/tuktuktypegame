@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://cdvu7bc1jt402"]
+
+[ext_resource type="FontFile" uid="uid://s8nlf3ebdayr" path="res://font/smash_hit/Smash Hit.ttf" id="1_866d0"]
+[ext_resource type="Script" uid="uid://dpuuhojr6jva8" path="res://scripts/deliverylog.gd" id="2_b6j2h"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ku77g"]
+font = ExtResource("1_866d0")
+font_size = 12
+font_color = Color(0.702347, 0.989174, 0.715778, 1)
+shadow_size = 8
+shadow_color = Color(0, 0, 0, 0.596078)
+
+[sub_resource type="Curve" id="Curve_b6j2h"]
+_limits = [0.0, 80.0, 0.0, 1.0]
+_data = [Vector2(0, 80), 0.0, 0.0, 0, 0, Vector2(0.36, 50), 0.0, 0.0, 0, 0, Vector2(0.66, 50), 0.0, 0.0, 0, 0, Vector2(1, 27.2), 0.0, 0.0, 0, 0]
+point_count = 4
+metadata/_snap_enabled = true
+metadata/_snap_count = 100
+
+[sub_resource type="Curve" id="Curve_tp1yl"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.306122, 1), 0.0, 0.0, 0, 0, Vector2(0.734694, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[node name="Label" type="Label"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "point"
+label_settings = SubResource("LabelSettings_ku77g")
+script = ExtResource("2_b6j2h")
+lifetime = 1.0
+position_curve = SubResource("Curve_b6j2h")
+opacity_curve = SubResource("Curve_tp1yl")
+point_marker = true

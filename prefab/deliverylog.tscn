@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://byqekj61i5nbr"]
+
+[ext_resource type="Script" uid="uid://dpuuhojr6jva8" path="res://scripts/deliverylog.gd" id="1_f4aqw"]
+[ext_resource type="FontFile" uid="uid://s8nlf3ebdayr" path="res://font/smash_hit/Smash Hit.ttf" id="1_l5ykw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wouro"]
+font = ExtResource("1_l5ykw")
+font_size = 28
+shadow_size = 8
+shadow_color = Color(0, 0, 0, 0.596078)
+
+[sub_resource type="Curve" id="Curve_f4aqw"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+bake_resolution = 135
+_data = [Vector2(0, 100), 0.0, 0.0, 0, 0, Vector2(0.303207, 45.3341), 0.0, 0.0, 0, 0, Vector2(0.763848, 46.0829), 0.0, 0.0, 0, 0, Vector2(1, 100), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Curve" id="Curve_l5ykw"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.22449, 1), 0.0, 0.0, 0, 0, Vector2(0.784257, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[node name="deliverylog" type="Label"]
+offset_right = 29.0
+offset_bottom = 28.0
+text = "log"
+label_settings = SubResource("LabelSettings_wouro")
+horizontal_alignment = 1
+uppercase = true
+script = ExtResource("1_f4aqw")
+lifetime = 1.5
+position_curve = SubResource("Curve_f4aqw")
+opacity_curve = SubResource("Curve_l5ykw")
