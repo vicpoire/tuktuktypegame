@@ -101,7 +101,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_7qcan")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_02ht7"]
-size = Vector3(1.6, 3.574, 0.16366)
+size = Vector3(1.6, 3.574, 0.256185)
 
 [sub_resource type="Gradient" id="Gradient_hjkst"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0.027451)
@@ -229,7 +229,7 @@ transform = Transform3D(1, 0, 0, 0, 0.554249, -0.832351, 0, 0.832351, 0.554249, 
 shape = ExtResource("4_vtxnp")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.0153446, -0.658765)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.0309186, -0.658765)
 shape = SubResource("BoxShape3D_02ht7")
 
 [node name="Particles" type="Node3D" parent="." node_paths=PackedStringArray("skid_marks", "dust_emitters", "skid_smoke_emitters", "wheels")]

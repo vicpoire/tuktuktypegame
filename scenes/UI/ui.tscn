@@ -1,0 +1,160 @@
+[gd_scene load_steps=12 format=3 uid="uid://ced4fch0x0j1l"]
+
+[ext_resource type="Script" uid="uid://dvi0feabxnjbi" path="res://scripts/uitextcontroller.gd" id="1_f54a5"]
+[ext_resource type="FontFile" uid="uid://c6q055wpmolo4" path="res://font/metro_df/METRO-DF.TTF" id="2_7e3k0"]
+[ext_resource type="FontFile" uid="uid://s8nlf3ebdayr" path="res://font/smash_hit/Smash Hit.ttf" id="3_m41qk"]
+[ext_resource type="PackedScene" uid="uid://dbscfkvbaeyce" path="res://scenes/UI/sub_viewport1.tscn" id="4_35jxk"]
+
+[sub_resource type="Theme" id="Theme_tpnoy"]
+
+[sub_resource type="Theme" id="Theme_vb61p"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_owlbh"]
+font = ExtResource("2_7e3k0")
+font_size = 24
+font_color = Color(0.828396, 0.895207, 0.927241, 1)
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 11
+shadow_color = Color(0, 0, 0, 0.596078)
+
+[sub_resource type="LabelSettings" id="LabelSettings_c5elv"]
+font = ExtResource("3_m41qk")
+font_size = 15
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.596078)
+
+[sub_resource type="LabelSettings" id="LabelSettings_cketn"]
+font = ExtResource("3_m41qk")
+font_size = 15
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.596078)
+
+[sub_resource type="LabelSettings" id="LabelSettings_64obo"]
+font = ExtResource("3_m41qk")
+font_size = 15
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.596078)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_7a1qy"]
+viewport_path = NodePath(".")
+
+[node name="UI" type="Control" node_paths=PackedStringArray("speed_text")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_tpnoy")
+script = ExtResource("1_f54a5")
+speed_text = NodePath("DEBUG/MarginContainer/speedtext")
+
+[node name="TimerContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -84.5
+offset_right = 84.5
+offset_bottom = 62.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="timer" type="Label" parent="TimerContainer"]
+layout_mode = 2
+theme = SubResource("Theme_vb61p")
+text = "00:00,000"
+label_settings = SubResource("LabelSettings_owlbh")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 120.0
+offset_right = -466.0
+offset_bottom = -305.0
+
+[node name="DEBUG" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -320.0
+offset_top = 129.54
+offset_right = 20.0
+offset_bottom = 229.54
+grow_horizontal = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="DEBUG"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+
+[node name="speedtext" type="Label" parent="DEBUG/MarginContainer"]
+layout_mode = 2
+text = "speedtext"
+label_settings = SubResource("LabelSettings_c5elv")
+
+[node name="MarginContainer3" type="MarginContainer" parent="DEBUG"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+
+[node name="deliverycount" type="Label" parent="DEBUG/MarginContainer3"]
+layout_mode = 2
+text = "deliverycount"
+label_settings = SubResource("LabelSettings_cketn")
+
+[node name="MarginContainer5" type="MarginContainer" parent="DEBUG"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+
+[node name="points" type="Label" parent="DEBUG/MarginContainer5"]
+layout_mode = 2
+text = "points"
+label_settings = SubResource("LabelSettings_64obo")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -84.5
+offset_top = -142.0
+offset_right = 84.5
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 224.0
+offset_top = 170.0
+offset_right = -196.0
+offset_bottom = -279.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -320.0
+offset_top = 380.0
+offset_right = -45.0
+offset_bottom = 480.0
+grow_horizontal = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("ViewportTexture_7a1qy")
+stretch_mode = 5
+
+[node name="SubViewport" parent="Control" instance=ExtResource("4_35jxk")]
