@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://b5o2u62gu3smo" path="res://3d/assets/cone/conetexture.jpg" id="1_cicf7"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cicf7"]
-friction = 0.6
 bounce = 0.5
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_rcfhs"]
@@ -32,7 +31,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_s1pmp"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_rcfhs"]
 resource_name = "cone_Cube_001"
 _surfaces = [{
 "aabb": AABB(-1, -1, -1, 2, 2, 2),
@@ -64,7 +63,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_hl7v5"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_7c2bx"]
 resource_name = "cone_Cylinder"
 _surfaces = [{
 "aabb": AABB(-1.06324, -0.990034, -1.06324, 2.12647, 2.88294, 2.12647),
@@ -83,7 +82,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_uqkpl")
 
 [node name="Cone" type="RigidBody3D"]
-mass = 0.9
+mass = 0.25
 physics_material_override = SubResource("PhysicsMaterial_cicf7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -96,10 +95,10 @@ shape = SubResource("BoxShape3D_not10")
 
 [node name="Cube" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.598758, 0, 0, 0, 0.0504868, 0, 0, 0, 0.598758, 0, 0.0120355, 0)
-mesh = SubResource("ArrayMesh_s1pmp")
+mesh = SubResource("ArrayMesh_rcfhs")
 skeleton = NodePath("")
 
 [node name="Cylinder" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.47305, 0, 0, 0, 0.47305, 0, 0, 0, 0.47305, 0, 0.521316, 0)
-mesh = SubResource("ArrayMesh_hl7v5")
+mesh = SubResource("ArrayMesh_7c2bx")
 skeleton = NodePath("")

@@ -72,8 +72,6 @@ action_type = 1
 amount = 3
 cooldown_time = 0.0
 light_to_disable = NodePath("SpotLight3D")
-light_flare_time = 0.25
-light_flare_down_time = 0.1
 
 [node name="Visuals" type="Node3D" parent="."]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
