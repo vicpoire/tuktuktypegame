@@ -14,8 +14,8 @@
 [ext_resource type="Script" uid="uid://82igdbfokds1" path="res://scripts/lights.gd" id="14_br1ke"]
 
 [sub_resource type="Curve" id="Curve_tsgyt"]
-_data = [Vector2(0, 0.276231), 0.0, 0.0, 0, 0, Vector2(0.254795, 1), 0.0, 0.0, 0, 0, Vector2(0.8, 0.90257), 0.0, 0.0, 0, 0, Vector2(0.99726, 0.297109), 0.0, 0.0, 0, 0]
-point_count = 4
+_data = [Vector2(0, 0.276231), 0.0, 0.0, 0, 0, Vector2(0.185615, 0.724382), 0.0, 0.0, 0, 0, Vector2(0.320186, 1), 0.0, 0.0, 0, 0, Vector2(0.8, 0.90257), 0.0, 0.0, 0, 0, Vector2(0.99726, 0.297109), 0.0, 0.0, 0, 0]
+point_count = 5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_23hxl"]
 resource_name = "Material.002"
@@ -196,7 +196,7 @@ transform = Transform3D(1, 0, -1.19209e-07, 0, 1, 0, 1.19209e-07, 0, 1, 0, 0, 0)
 mass = 50.0
 physics_material_override = ExtResource("1_x7f1w")
 script = ExtResource("2_2te80")
-acceleration = 700.0
+acceleration = 1400.0
 max_speed = 30.0
 accel_curve = SubResource("Curve_tsgyt")
 tire_turn_speed = 1.0
@@ -208,8 +208,7 @@ drift_side_grip = 0.8
 side_grip = 1.5
 min_grip_angle = 32.0
 ledge_check_distance = 1.0
-air_turn_torque = 100.0
-air_flip_torque = 150.0
+air_flip_torque = 75.0
 side_pushback_force = 2000.0
 tilt_torque = 10000.0
 tilt_rest_offset = 0.4
@@ -323,8 +322,8 @@ script = SubResource("GDScript_w5vgm")
 [node name="WHEELFRONT" type="RayCast3D" parent="WHEELS"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, -2.51)
 script = ExtResource("6_utrr5")
-spring_strength = 6000.0
-spring_damping = 100.0
+spring_strength = 12000.0
+spring_damping = 200.0
 over_extend = 1.0
 is_motor = true
 grip_curve = SubResource("Curve_xfrxd")
@@ -337,8 +336,8 @@ skeleton = NodePath("")
 [node name="WHEELRL" type="RayCast3D" parent="WHEELS"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.875211, 0.0522813, 0.49137)
 script = ExtResource("6_utrr5")
-spring_strength = 6000.0
-spring_damping = 100.0
+spring_strength = 12000.0
+spring_damping = 200.0
 over_extend = 1.0
 is_motor = true
 grip_curve = SubResource("Curve_xfrxd")
@@ -351,8 +350,8 @@ skeleton = NodePath("")
 [node name="WHEELRR" type="RayCast3D" parent="WHEELS"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.898543, 0.0522813, 0.49137)
 script = ExtResource("6_utrr5")
-spring_strength = 6000.0
-spring_damping = 100.0
+spring_strength = 12000.0
+spring_damping = 200.0
 over_extend = 1.0
 is_motor = true
 grip_curve = SubResource("Curve_xfrxd")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=4 uid="uid://dirvejfpwfuva"]
 
-[ext_resource type="Script" uid="uid://ba32styl0pi40" path="res://scripts/mesh_parent.gd" id="2_ylcd6"]
+[ext_resource type="Script" path="res://scripts/mesh_parent.gd" id="2_ylcd6"]
 [ext_resource type="Texture2D" uid="uid://cjm5sbyb44tfy" path="res://3d/boxes/cardboard.png" id="3_wgq3t"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rj6ax"]
@@ -46,7 +46,7 @@ shadow_mesh = SubResource("ArrayMesh_mwto2")
 
 [node name="SubViewport2" type="SubViewport"]
 transparent_bg = true
-size = Vector2i(256, 256)
+size = Vector2i(64, 64)
 
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10000, 0.859, 10000)

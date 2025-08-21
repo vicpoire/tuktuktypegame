@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://dbscfkvbaeyce"]
 
-[ext_resource type="Script" uid="uid://ba32styl0pi40" path="res://scripts/mesh_parent.gd" id="2_s0idl"]
+[ext_resource type="Script" path="res://scripts/mesh_parent.gd" id="2_s0idl"]
 [ext_resource type="ArrayMesh" uid="uid://335wj0e75ttm" path="res://3d/meshes/box1mesh.tres" id="3_spc3q"]
 
 [node name="SubViewport1" type="SubViewport"]
 transparent_bg = true
-size = Vector2i(256, 256)
+size = Vector2i(64, 64)
 
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10000, 0, 0)

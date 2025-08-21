@@ -1,10 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cdvu7bc1jt402"]
+[gd_scene load_steps=6 format=3 uid="uid://cnefpab3orqh3"]
 
-[ext_resource type="FontFile" uid="uid://s8nlf3ebdayr" path="res://font/smash_hit/Smash Hit.ttf" id="1_866d0"]
-[ext_resource type="Script" uid="uid://dpuuhojr6jva8" path="res://scripts/deliverylog.gd" id="2_b6j2h"]
+[ext_resource type="FontFile" uid="uid://s8nlf3ebdayr" path="res://font/smash_hit/Smash Hit.ttf" id="1_t5dvu"]
+[ext_resource type="Script" uid="uid://dpuuhojr6jva8" path="res://scripts/deliverylog.gd" id="2_4d4hk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ku77g"]
-font = ExtResource("1_866d0")
+font = ExtResource("1_t5dvu")
 font_size = 12
 font_color = Color(0.61283, 0.921719, 0.87623, 1)
 shadow_size = 8
@@ -26,8 +26,9 @@ offset_right = 40.0
 offset_bottom = 23.0
 text = "point"
 label_settings = SubResource("LabelSettings_ku77g")
-script = ExtResource("2_b6j2h")
+script = ExtResource("2_4d4hk")
 lifetime = 1.0
 position_curve = SubResource("Curve_b6j2h")
 opacity_curve = SubResource("Curve_tp1yl")
 point_marker = true
+random_offset_range = 0.0
