@@ -6,13 +6,11 @@ extends Area3D
 @export var excluded_objects: Array[String] = ["Floor", "Ground", "Terrain"]
 @export var detect_area3d: bool = false
 @export var detection_mode: String = "on_exit"  # "on_exit" or "on_enter"
-@export var exit_delay: float = 0.3  # Delay after exiting objects
-
-# NEW: Allow same object to trigger near miss again after this delay
-@export var same_object_cooldown: float = 2.0  # Time before same object can trigger again
+@export var exit_delay: float = 0.3  
+@export var same_object_cooldown: float = 2.0  
 
 var recently_missed_objects: Dictionary = {}
-var objects_inside: Dictionary = {}  # Track objects currently inside detector
+var objects_inside: Dictionary = {} 
 
 func _ready():
 	body_entered.connect(_on_body_entered)
@@ -116,18 +114,15 @@ func _handle_near_miss(object: Node3D):
 	
 	var object_id = object.get_instance_id()
 	
-	# MODIFIED: Check if object is in cooldown period
 	if recently_missed_objects.has(object_id):
 		var last_miss_time = recently_missed_objects[object_id]
 		var current_time = Time.get_time_dict_from_system()
 		var time_diff = _calculate_time_difference(current_time, last_miss_time)
 		
-		# If not enough time has passed, skip this near miss
 		if time_diff < same_object_cooldown:
 			print("Object %s is still in cooldown (%.1f seconds remaining)" % [object.name, same_object_cooldown - time_diff])
 			return
 	
-	# Update the timestamp for this object (whether it's new or cooldown expired)
 	recently_missed_objects[object_id] = Time.get_time_dict_from_system()
 	
 	if near_miss_manager and near_miss_manager.has_method("register_near_miss"):
@@ -174,8 +169,6 @@ func _cleanup_old_misses():
 		var miss_time = recently_missed_objects[object_id]
 		var time_diff = _calculate_time_difference(current_time, miss_time)
 		
-		# MODIFIED: Use same_object_cooldown instead of object_cleanup_time
-		# Clean up objects that are way past their cooldown to prevent memory bloat
 		if time_diff > (same_object_cooldown * 2):
 			keys_to_remove.append(object_id)
 	
@@ -187,7 +180,6 @@ func _calculate_time_difference(current: Dictionary, previous: Dictionary) -> fl
 	var previous_total = previous.hour * 3600 + previous.minute * 60 + previous.second
 	return current_total - previous_total
 
-# NEW: Helper function to check if an object can trigger a near miss
 func can_object_trigger_near_miss(object: Node3D) -> bool:
 	var object_id = object.get_instance_id()
 	
@@ -200,7 +192,6 @@ func can_object_trigger_near_miss(object: Node3D) -> bool:
 	
 	return time_diff >= same_object_cooldown
 
-# NEW: Get remaining cooldown time for an object
 func get_object_cooldown_remaining(object: Node3D) -> float:
 	var object_id = object.get_instance_id()
 	

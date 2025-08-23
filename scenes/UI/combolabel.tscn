@@ -30,5 +30,5 @@ script = ExtResource("2_4d4hk")
 lifetime = 1.0
 position_curve = SubResource("Curve_b6j2h")
 opacity_curve = SubResource("Curve_tp1yl")
-point_marker = true
+combo_marker = true
 random_offset_range = 0.0

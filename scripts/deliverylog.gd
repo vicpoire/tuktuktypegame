@@ -4,6 +4,7 @@ extends Label
 @export var position_curve: Curve
 @export var opacity_curve: Curve
 @export var point_marker: bool = false
+@export var combo_marker: bool = false  # NEW: Flag for combo labels
 @export var random_offset_range: float = 150.0
 
 var elapsed_time := 0.0
@@ -27,7 +28,8 @@ func show_point_formula(boxes: int, points_per_box: int):
 func _ready():
 	start_pos = position
 	
-	if point_marker:
+	# Only randomize position for point markers, not combo markers
+	if point_marker and not combo_marker:
 		position_randomly()
 		start_pos = position
 	
