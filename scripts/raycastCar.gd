@@ -141,8 +141,6 @@ func _physics_process(delta: float) -> void:
 	else:
 		center_of_mass_mode = RigidBody3D.CENTER_OF_MASS_MODE_CUSTOM
 		center_of_mass = Vector3.DOWN * 0.5
-	if jump_pressed:
-		_apply_jump_hold_force()
 
 func get_current_speed() -> float:
 	return linear_velocity.length()
@@ -353,20 +351,7 @@ func _handle_air_control(delta: float) -> void:
 func _get_point_velocity(point: Vector3) -> Vector3:
 	return linear_velocity + angular_velocity.cross(point - global_position)
 
-func _do_jump() -> void:
-	if _is_grounded():
-		apply_central_impulse(Vector3.UP * jump_force)
 
-func _apply_jump_hold_force() -> void:
-	var max_compression: float = 0.0
-	for wheel in wheels:
-		if wheel.is_colliding():
-			var hit_point: Vector3 = wheel.get_collision_point()
-			var spring_length: float = wheel.global_position.distance_to(hit_point) - wheel.wheel_radius
-			var compression: float = wheel.rest_dist - spring_length
-			max_compression = max(max_compression, compression)
-	if max_compression < wheels[0].rest_dist * 0.9:
-		apply_central_force(Vector3.DOWN * jump_hold_force)
 
 func _is_grounded() -> bool:
 	for wheel in wheels:

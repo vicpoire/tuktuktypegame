@@ -3,6 +3,7 @@ class_name ComboManager
 
 signal combo_achieved(combo_count: int)
 signal combo_broken
+signal point_scored(point_type: String, amount: int)  # New signal for UI
 
 @export var combo_timeout: float = 3.0  
 @export var min_combo_threshold: int = 2
@@ -44,7 +45,7 @@ func _find_delivery_manager() -> Node:
 	
 	return null
 
-func register_action(action_type: int, amount: int = 1):
+func register_action(action_type: int, base_points: int = 0):
 	if not delivery_manager:
 		return
 		
@@ -64,7 +65,14 @@ func register_action(action_type: int, amount: int = 1):
 	if time_since_last > combo_timeout and combo_active:
 		_break_combo()
 	
-	current_combo += amount
+	# Calculate final points with combo multiplier
+	var final_points = base_points
+	var multiplier = get_combo_multiplier()
+	if multiplier > 1.0:
+		final_points = int(base_points * multiplier)
+	
+	# Update combo count
+	current_combo += 1
 	last_action_time = current_time
 	
 	combo_timer.wait_time = combo_timeout
@@ -73,6 +81,8 @@ func register_action(action_type: int, amount: int = 1):
 	if current_combo >= min_combo_threshold:
 		combo_active = true
 		_trigger_combo_effects()
+	
+	return final_points  # Return the final calculated points
 
 func _trigger_combo_effects():
 	if delivery_manager and "show_combo_notification" in delivery_manager:
@@ -113,14 +123,25 @@ func get_time_until_combo_break() -> float:
 		return 0.0
 	return combo_timer.time_left
 
-func on_delivery_pickup(amount: int):
-	register_action(0, amount)
+# Centralized methods that handle points and emit signals
+func on_delivery_pickup(base_points: int) -> int:
+	var final_points = register_action(0, base_points)
+	# For pickups, just show "pickup" without points if base_points is 0
+	if base_points == 0:
+		point_scored.emit("pickup", 0)  # UI will handle displaying just "pickup"
+	else:
+		point_scored.emit("pickup", final_points)
+	return final_points
 
-func on_delivery_dropoff(amount: int):
-	register_action(1, amount)
+func on_delivery_dropoff(base_points: int) -> int:
+	var final_points = register_action(1, base_points)
+	point_scored.emit("delivery", final_points)
+	return final_points
 
-func on_near_miss():
-	register_action(2, 1)
+func on_near_miss(base_points: int = 0) -> int:
+	var final_points = register_action(2, base_points)
+	point_scored.emit("coming through", final_points)
+	return final_points
 
 func on_collision():
 	force_break_combo()
