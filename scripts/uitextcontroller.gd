@@ -12,7 +12,7 @@ extends Control
 
 @export_group("directional movement")
 @export var movement_enabled := true
-@export var acceleration_amplitude := 3.0
+@export var acceleration_amplitude := 0.0  # Set to 0 to disable forward/backward shake
 @export var turning_amplitude := 1.0
 @export var movement_smoothing := 8.0
 @export var acceleration_sensitivity := 0.1
@@ -62,7 +62,7 @@ func _process(delta):
 func update_speed_text():
 	if car and speed_text:
 		var speed: float = car.get_current_speed()
-		speed_text.text = "Speed: %d km/h" % round(speed * 3.6)
+		speed_text.text = "speed: %d" % round(speed)
 
 func update_tracking_data(delta: float):
 	var current_velocity = car.linear_velocity
@@ -104,21 +104,20 @@ func handle_directional_movement(delta: float):
 	if velocity_history.size() >= 2:
 		acceleration = (velocity_history[-1] - velocity_history[-2]) / delta
 	
-	var linear_effect = Vector2(
-		-acceleration.x * acceleration_amplitude * acceleration_sensitivity,
-		acceleration.z * acceleration_amplitude * acceleration_sensitivity
-	)
+	# Remove forward/backward movement by setting acceleration effects to zero
+	var linear_effect = Vector2.ZERO
 	
 	var angular_velocity_y = car.angular_velocity.y
 	var turn_effect = Vector2(
 		angular_velocity_y * turning_amplitude * 0.2,  
-		-abs(angular_velocity_y) * turning_amplitude * 0.1 
+		0.0  # Remove vertical component from turning
 	)
 	
 	var ground_factor = float(grounded_wheels) / max(1.0, car.get_wheels().size())
 	ground_factor = lerp(air_time_reduction, 1.0, ground_factor)
 	
-	var target_movement = (linear_effect + turn_effect) * ground_factor
+	# Only apply turning effects now
+	var target_movement = turn_effect * ground_factor
 	
 	var speed_factor = clamp(car.get_current_speed() / 20.0, 0.3, 1.0)
 	var dynamic_smoothing = movement_smoothing * speed_factor
@@ -160,7 +159,7 @@ func handle_screen_shake(delta: float):
 	
 	var current_speed = car.get_current_speed()
 	
-	# Collision shake
+	# collision shake
 	if shake_timer > 0.0:
 		shake_timer -= delta
 		var shake_power = (shake_timer / shake_duration) * (shake_timer / shake_duration)
@@ -199,7 +198,6 @@ func trigger_collision_shake(intensity: float = 1.0):
 		randf_range(-collision_shake_amplitude * 0.7, collision_shake_amplitude * 0.7) * scaled_intensity
 	)
 
-# Public control methods
 func set_turning_intensity(intensity: float):
 	turning_amplitude = intensity
 

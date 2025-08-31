@@ -7,6 +7,11 @@ extends RigidBody3D
 @export var tire_turn_speed := 2.0
 @export var tire_turn_max_degree := 25
 
+@export var lights_disabled := false
+@export var lights := Node3D
+@export var cam_disabled := false
+@export var cam := Node3D
+
 @export_group("drift")
 @export var drift_turn_boost := 2.0  
 @export var drift_min_speed := 3.0
@@ -54,7 +59,11 @@ var steering_wheels: Array[RaycastWheel] = []
 func _ready():
 	add_to_group("car")
 	_setup_wheels()
-
+	if lights_disabled:
+		lights.visible = false
+	if cam_disabled:
+		cam.visible = false
+		
 func _setup_wheels() -> void:
 	wheels.clear()
 	skid_marks.clear()
@@ -316,6 +325,13 @@ func _do_acceleration(wheel: RaycastWheel) -> void:
 func _do_suspension(wheel: RaycastWheel) -> void:
 	if not wheel.is_colliding():
 		return
+		
+	var surface_normal = wheel.get_collision_normal()
+	var angle_from_up = rad_to_deg(Vector3.UP.angle_to(surface_normal))
+	
+	if angle_from_up > 50.0: # fixed the fucking thing finally im so stupid
+		return
+		
 	wheel.target_position.y = -(wheel.rest_dist + wheel.wheel_radius + wheel.over_extend)
 	var hit_point := wheel.get_collision_point()
 	var spring_dir := wheel.global_transform.basis.y
@@ -326,7 +342,9 @@ func _do_suspension(wheel: RaycastWheel) -> void:
 	var contact_velocity := _get_point_velocity(hit_point)
 	var spring_velocity := spring_dir.dot(contact_velocity)
 	var damping_force := wheel.spring_damping * spring_velocity
-	var total_force := (spring_force - damping_force) * wheel.get_collision_normal()
+	
+	var total_force: Vector3 = surface_normal * (spring_force - damping_force)
+	
 	var force_position := wheel.wheel.global_position - global_position
 	apply_force(total_force, force_position)
 

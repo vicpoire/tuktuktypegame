@@ -13,9 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://cuwfikqv4h8uk" path="res://car/new/chassis.png" id="12_5nmht"]
 [ext_resource type="Script" uid="uid://82igdbfokds1" path="res://scripts/lights.gd" id="14_br1ke"]
 
-[sub_resource type="Curve" id="Curve_utrr5"]
-_data = [Vector2(0, 0.374117), 0.0, 0.0, 0, 0, Vector2(0.211137, 0.460247), 0.0, 0.0, 0, 0, Vector2(0.487239, 0.787544), 0.0, 0.0, 0, 0, Vector2(0.529002, 1), 0.0, 0.0, 0, 0, Vector2(0.742459, 0.793286), 0.0, 0.0, 0, 0, Vector2(1, 0.632509), 0.0, 0.0, 0, 0]
-point_count = 6
+[sub_resource type="Curve" id="Curve_tsgyt"]
+_data = [Vector2(0, 0.276231), 0.0, 0.0, 0, 0, Vector2(0.185615, 0.724382), 0.0, 0.0, 0, 0, Vector2(0.320186, 1), 0.0, 0.0, 0, 0, Vector2(0.8, 0.90257), 0.0, 0.0, 0, 0, Vector2(0.99726, 0.297109), 0.0, 0.0, 0, 0]
+point_count = 5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_23hxl"]
 resource_name = "Material.002"
@@ -190,20 +190,31 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_p6l4x")
 
-[node name="Car" type="RigidBody3D"]
+[node name="Car" type="RigidBody3D" node_paths=PackedStringArray("lights", "cam")]
 process_physics_priority = 3
 transform = Transform3D(1, 0, -1.19209e-07, 0, 1, 0, 1.19209e-07, 0, 1, 0, 0, 0)
 mass = 50.0
 physics_material_override = ExtResource("1_x7f1w")
-center_of_mass_mode = 1
-center_of_mass = Vector3(0, -0.5, 0)
 script = ExtResource("2_2te80")
 acceleration = 1400.0
 max_speed = 30.0
-accel_curve = SubResource("Curve_utrr5")
+accel_curve = SubResource("Curve_tsgyt")
+tire_turn_speed = 1.0
 tire_turn_max_degree = 8
-ledge_check_distance = 1.5
-side_pushback_force = 2000.0
+lights = NodePath("LIGHTS")
+cam = NodePath("CAM")
+drift_turn_boost = 50.0
+drift_min_speed = 5.0
+drift_angle_multiplier = 1.85
+drift_side_grip = 0.8
+side_grip = 1.5
+min_grip_angle = 32.0
+ledge_check_distance = 2.0
+air_flip_torque = 75.0
+side_raycast_distance = 0.5
+side_pushback_force = 3000.0
+tilt_torque = 10000.0
+tilt_rest_offset = 0.4
 
 [node name="Boot2" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1.5, 0, -1.31134e-07, 0, 1.5, 0, 1.31134e-07, 0, -1.5, 0, 0.273128, -1.24152)
@@ -319,7 +330,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, -2.51)
 script = ExtResource("6_utrr5")
 spring_strength = 12000.0
 spring_damping = 200.0
-over_extend = 1.0
+over_extend = 0.75
 is_motor = true
 grip_curve = SubResource("Curve_xfrxd")
 
