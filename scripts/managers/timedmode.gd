@@ -35,11 +35,7 @@ func _ready():
 	update_deliveries_label()
 	update_current_boxes_label()
 	
-	if countdown_timer:
-		countdown_timer.wait_time = 0.01 # ms precision
-		countdown_timer.one_shot = false
-		countdown_timer.start()
-		countdown_timer.timeout.connect(_on_timer_timeout)
+	# Remove timer setup - we'll use _process instead
 	
 	add_to_group("point_manager")
 	add_to_group("delivery_manager")
@@ -48,6 +44,15 @@ func _ready():
 	if combo_manager:
 		combo_manager.combo_achieved.connect(_on_combo_achieved)
 		combo_manager.combo_broken.connect(_on_combo_broken)
+
+func _process(delta):
+	if game_active:
+		time_remaining -= delta
+		if time_remaining <= 0:
+			time_remaining = 0
+			end_game()
+		update_time_label()
+
 
 func _on_timer_timeout():
 	if game_active:
@@ -128,7 +133,6 @@ func add_points(points: int, source_type: String = ""):
 	var final_points = points
 	
 	if source_type == "near_miss":
-		# Let combo manager handle all combo calculations
 		if combo_manager:
 			final_points = combo_manager.on_near_miss(points)
 		
@@ -148,7 +152,6 @@ func add_points(points: int, source_type: String = ""):
 			parent_node.add_child(point_label)
 	
 	elif source_type == "combo":
-		# This is for any bonus combo points (if you have them)
 		final_points = points
 	
 	else:

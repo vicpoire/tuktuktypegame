@@ -1,14 +1,9 @@
-[gd_scene load_steps=15 format=4 uid="uid://bwvxhhp7dwwaj"]
+[gd_scene load_steps=14 format=4 uid="uid://bwvxhhp7dwwaj"]
 
 [ext_resource type="PackedScene" uid="uid://cshcuhxmno2a7" path="res://prefab/car.tscn" id="1_1h6uk"]
 [ext_resource type="Texture2D" uid="uid://d2htiggny51rq" path="res://car/new/trunk.png" id="2_3dw2s"]
-[ext_resource type="Texture2D" uid="uid://cqx1l57r0knyg" path="res://sprites/material/Stoned Tile Ground 4-export.png" id="2_vnikc"]
+[ext_resource type="Material" uid="uid://dpilvdowdwqby" path="res://materials/brickfloor.tres" id="2_vnikc"]
 [ext_resource type="Script" uid="uid://cvqh4yggtps2c" path="res://scripts/startscreen/followerrotation.gd" id="3_m5iha"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cannl"]
-albedo_texture = ExtResource("2_vnikc")
-uv1_scale = Vector3(250, 250, 250)
-texture_filter = 0
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_vnikc"]
 
@@ -112,7 +107,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 
 [node name="CSGBox3D" type="CSGBox3D" parent="Environment"]
 use_collision = true
 size = Vector3(1000, 0.1, 1000)
-material = SubResource("StandardMaterial3D_cannl")
+material = ExtResource("2_vnikc")
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Environment"]
 transform = Transform3D(-0.959593, 0.280579, -0.0213857, 0.0909676, 0.237399, -0.967144, -0.266283, -0.930009, -0.25333, 0, 3.17393, 0)
@@ -160,8 +155,6 @@ max_speed = 0.0
 accel_curve = null
 lights_disabled = true
 cam_disabled = true
-min_grip_angle = 45.0
-ledge_check_distance = 1.5
 
 [node name="HingeJoint3D" type="HingeJoint3D" parent="Car"]
 transform = Transform3D(-1.66, 0, -1.45122e-07, 0, 1.66, 0, 1.45122e-07, 0, -1.66, 0, 0.037797, 0.758194)

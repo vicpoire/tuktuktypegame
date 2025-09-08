@@ -136,13 +136,20 @@ func _process(_delta):
 	current_combo = combo_manager.get_current_combo()
 	var time_left = combo_manager.get_time_until_combo_break()
 	var total_timeout = combo_manager.combo_timeout
-	combo_progress = time_left / total_timeout if total_timeout > 0 else 0.0
-	is_combo_active = current_combo >= 1
+	
+	# Fixed progress calculation - clamp to prevent values > 1.0
+	combo_progress = clamp(time_left / total_timeout, 0.0, 1.0) if total_timeout > 0 else 0.0
+	
+	# Use combo manager's active state instead of just checking count
+	is_combo_active = combo_manager.is_combo_active() or current_combo > 0
 	
 	_update_combo_ui()
 
 func _update_combo_ui():
-	if current_combo >= 1:
+	# Show UI if we have any combo progress OR if combo is active
+	var should_show_ui = current_combo >= 1 or is_combo_active
+	
+	if should_show_ui:
 		if combo_panel and not combo_panel.visible and not is_panel_fade_animating:
 			_fade_in_panel()
 		

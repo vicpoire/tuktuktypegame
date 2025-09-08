@@ -7,7 +7,11 @@ extends Area3D
 @export var detect_area3d: bool = false
 @export var detection_mode: String = "on_exit"  # "on_exit" or "on_enter"
 @export var exit_delay: float = 0.3  
-@export var same_object_cooldown: float = 2.0  
+@export var same_object_cooldown: float = 2.0
+
+@export var detect_rigidbodies: bool = true
+@export var allowed_rigidbody_names: Array[String] = []
+@export var exclude_player_vehicle: bool = true
 
 var recently_missed_objects: Dictionary = {}
 var objects_inside: Dictionary = {} 
@@ -46,13 +50,37 @@ func test_near_miss_manager_direct():
 			var fake_data = {"speed": 10.0, "position": Vector3.ZERO, "object": self}
 			near_miss_manager.register_near_miss(fake_data)
 
-func _on_body_entered(body: Node3D):
+func _should_detect_object(body: Node3D) -> bool:
 	if body is RigidBody3D:
-		return
+		if not detect_rigidbodies:
+			return false
+		
+		if exclude_player_vehicle and _is_player_vehicle(body):
+			return false
+		
+		
+		# Check if it's in allowed names
+		if allowed_rigidbody_names.size() > 0:
+			var name_allowed = false
+			for allowed_name in allowed_rigidbody_names:
+				if body.name.to_lower().contains(allowed_name.to_lower()):
+					name_allowed = true
+					break
+			if not name_allowed:
+				return false
 	
 	for excluded_name in excluded_objects:
 		if body.name.to_lower().contains(excluded_name.to_lower()):
-			return
+			return false
+	
+	return true
+
+func _is_player_vehicle(body: RigidBody3D) -> bool:
+	return body.is_in_group("player") or body.is_in_group("vehicle")
+
+func _on_body_entered(body: Node3D):
+	if not _should_detect_object(body):
+		return
 	
 	var object_id = body.get_instance_id()
 	objects_inside[object_id] = {
@@ -65,12 +93,8 @@ func _on_body_entered(body: Node3D):
 		_handle_near_miss(body)
 
 func _on_body_exited(body: Node3D):
-	if body is RigidBody3D:
+	if not _should_detect_object(body):
 		return
-	
-	for excluded_name in excluded_objects:
-		if body.name.to_lower().contains(excluded_name.to_lower()):
-			return
 	
 	var object_id = body.get_instance_id()
 	if objects_inside.has(object_id) and detection_mode == "on_exit":
@@ -107,7 +131,7 @@ func _handle_near_miss(object: Node3D):
 	if current_speed == 0:
 		return
 		
-	print("found car, current speed: ", current_speed)
+	print("found object, current speed: ", current_speed)
 	
 	if current_speed < min_speed_threshold:
 		return
@@ -119,10 +143,6 @@ func _handle_near_miss(object: Node3D):
 		var current_time = Time.get_time_dict_from_system()
 		var time_diff = _calculate_time_difference(current_time, last_miss_time)
 		
-		if time_diff < same_object_cooldown:
-			print("Object %s is still in cooldown (%.1f seconds remaining)" % [object.name, same_object_cooldown - time_diff])
-			return
-	
 	recently_missed_objects[object_id] = Time.get_time_dict_from_system()
 	
 	if near_miss_manager and near_miss_manager.has_method("register_near_miss"):
@@ -133,7 +153,6 @@ func _handle_near_miss(object: Node3D):
 			"car_velocity": _get_car_velocity()
 		}
 		near_miss_manager.register_near_miss(miss_data)
-		print("Near miss registered for object: %s (speed: %.1f)" % [object.name, current_speed])
 
 func _get_current_speed() -> float:
 	var car = _find_car()
@@ -203,3 +222,10 @@ func get_object_cooldown_remaining(object: Node3D) -> float:
 	var time_diff = _calculate_time_difference(current_time, last_miss_time)
 	
 	return max(0.0, same_object_cooldown - time_diff)
+
+func add_rigidbody_name(name: String):
+	if not allowed_rigidbody_names.has(name):
+		allowed_rigidbody_names.append(name)
+
+func remove_rigidbody_name(name: String):
+	allowed_rigidbody_names.erase(name)

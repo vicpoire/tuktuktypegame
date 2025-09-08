@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dpilvdowdwqby"]
+
+[ext_resource type="Texture2D" uid="uid://cqx1l57r0knyg" path="res://sprites/material/Stoned Tile Ground 4-export.png" id="1_sm668"]
+
+[resource]
+albedo_texture = ExtResource("1_sm668")
+uv1_scale = Vector3(250, 250, 250)
+texture_filter = 0

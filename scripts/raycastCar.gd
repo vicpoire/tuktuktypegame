@@ -1,4 +1,6 @@
 extends RigidBody3D
+class_name RaycastCar
+
 
 @export var acceleration := 600.0
 @export var max_speed := 20.0

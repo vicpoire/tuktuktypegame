@@ -26,7 +26,7 @@ orientation = 1
 [node name="GPUParticles3D" type="GPUParticles3D"]
 emitting = false
 amount = 150
-lifetime = 1.5
+lifetime = 3.0
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_tsgyt")
 draw_pass_1 = SubResource("QuadMesh_02ht7")

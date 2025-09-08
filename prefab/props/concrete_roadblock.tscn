@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cukghw3hnqeoi"]
+
+[ext_resource type="PackedScene" uid="uid://cyd3wk1kgwfjn" path="res://3d/parking garage level/Assets/roadblockconc.glb" id="1_fowdx"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fowdx"]
+rough = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jdim4"]
+size = Vector3(1.25, 1.681, 3.965)
+
+[node name="ConcreteRoadblock" type="RigidBody3D"]
+mass = 900.0
+physics_material_override = SubResource("PhysicsMaterial_fowdx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.849125, 0)
+shape = SubResource("BoxShape3D_jdim4")
+
+[node name="roadblockconc" parent="." instance=ExtResource("1_fowdx")]

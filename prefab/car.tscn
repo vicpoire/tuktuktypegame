@@ -1,7 +1,7 @@
 [gd_scene load_steps=32 format=4 uid="uid://cshcuhxmno2a7"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://hgfwxjyu0ddn" path="res://shapes/capsulephysmat.tres" id="1_x7f1w"]
-[ext_resource type="Script" uid="uid://c7xgqy1tiplgf" path="res://scripts/raycastCar.gd" id="2_2te80"]
+[ext_resource type="Script" uid="uid://c7xgqy1tiplgf" path="res://scripts/RaycastCar.gd" id="2_2te80"]
 [ext_resource type="Texture2D" uid="uid://retivv58hwsr" path="res://car/new/boot.png" id="3_utrr5"]
 [ext_resource type="Shape3D" uid="uid://bx2722uvrbjnp" path="res://shapes/capsule.tres" id="4_vtxnp"]
 [ext_resource type="Script" path="res://.godot/editor/cam_pivot.gd" id="5_tclv2"]
@@ -14,7 +14,7 @@
 [ext_resource type="Script" uid="uid://82igdbfokds1" path="res://scripts/lights.gd" id="14_br1ke"]
 
 [sub_resource type="Curve" id="Curve_utrr5"]
-_data = [Vector2(0, 0.374117), 0.0, 0.0, 0, 0, Vector2(0.211137, 0.460247), 0.0, 0.0, 0, 0, Vector2(0.487239, 0.787544), 0.0, 0.0, 0, 0, Vector2(0.529002, 1), 0.0, 0.0, 0, 0, Vector2(0.742459, 0.793286), 0.0, 0.0, 0, 0, Vector2(1, 0.632509), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.374117), 0.0, 0.0, 0, 0, Vector2(0.211137, 0.460247), 0.0, 0.0, 0, 0, Vector2(0.487239, 0.787544), 0.0, 0.0, 0, 0, Vector2(0.593967, 0.592314), 0.0, 0.0, 0, 0, Vector2(0.791183, 0.506184), 0.0, 0.0, 0, 0, Vector2(1, 0.420053), 0.0, 0.0, 0, 0]
 point_count = 6
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_23hxl"]
@@ -190,7 +190,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_p6l4x")
 
-[node name="Car" type="RigidBody3D"]
+[node name="Car" type="RigidBody3D" node_paths=PackedStringArray("lights", "cam")]
 process_physics_priority = 3
 transform = Transform3D(1, 0, -1.19209e-07, 0, 1, 0, 1.19209e-07, 0, 1, 0, 0, 0)
 mass = 50.0
@@ -198,11 +198,18 @@ physics_material_override = ExtResource("1_x7f1w")
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, -0.5, 0)
 script = ExtResource("2_2te80")
-acceleration = 1400.0
+acceleration = 1500.0
 max_speed = 30.0
 accel_curve = SubResource("Curve_utrr5")
+tire_turn_speed = 1.2
 tire_turn_max_degree = 8
-ledge_check_distance = 1.5
+lights = NodePath("LIGHTS")
+cam = NodePath("CAM")
+drift_angle_multiplier = 2.0
+drift_side_grip = 0.8
+side_grip = 1.5
+min_grip_angle = 360.0
+ledge_check_distance = 0.0
 side_pushback_force = 2000.0
 
 [node name="Boot2" type="MeshInstance3D" parent="."]
@@ -294,12 +301,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14161e-09, -0.7545, -2.497
 [node name="CAM" type="Node3D" parent="." node_paths=PackedStringArray("camera", "camera_views", "lookback_view")]
 transform = Transform3D(-1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, -1, 0, 0, 0)
 script = ExtResource("5_tclv2")
-smooth_speed = 1.8
 camera = NodePath("Camera3D")
 camera_views = [NodePath("Node3D")]
 lookback_view = NodePath("Node3D2")
-camera_lerp_speed = 2.0
-lookback_lerp_speed = 1.5
+camera_lerp_speed = 3.0
 
 [node name="Node3D" type="Node3D" parent="CAM"]
 transform = Transform3D(1, 0, -1.42109e-14, 0, 0.994485, 0.104876, 0, -0.104876, 0.994485, 0, 4.3863, 12.6421)

@@ -1,5 +1,6 @@
 @tool
-class_name GravityBody3D extends RigidBody3D
+class_name GravityBody3D 
+extends "res://scripts/RaycastCar.gd"
 
 @export var customGravityScale : float = 1
 
