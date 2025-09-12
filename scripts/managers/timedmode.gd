@@ -18,6 +18,8 @@ extends Node
 @export var point_parent: Node 
 @export var box_capacity: int = 3
 @export var dropoff_points_per_box: int = 5 
+@export_group("endscreen")
+@export var end_screen: Node
 
 var time_remaining: float
 var total_points: int = 0
@@ -243,8 +245,9 @@ func end_game():
 	
 	if combo_manager:
 		combo_manager.force_break_combo()
-		
-	print("gameover, total points: %d (delivery: %d, near miss: %d)" % [total_points, total_points - near_miss_points, near_miss_points])
+	
+	if end_screen:
+		end_screen.on_game_end()
 
 func _on_combo_achieved(combo_count: int):
 	print("combo achieved: x%d" % combo_count)

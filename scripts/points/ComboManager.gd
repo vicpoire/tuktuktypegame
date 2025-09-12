@@ -4,6 +4,7 @@ class_name ComboManager
 signal combo_achieved(combo_count: int)
 signal combo_broken
 signal point_scored(point_type: String, amount: int)
+signal pickup_occurred
 
 @export var combo_timeout: float = 3.0  
 @export var min_combo_threshold: int = 2
@@ -68,10 +69,6 @@ func _is_game_active() -> bool:
 		game_active = delivery_manager.is_game_active()
 	elif "game_active" in delivery_manager:
 		game_active = delivery_manager.game_active
-	else:
-		if debug_output:
-			print("WARNING: Delivery manager has no game_active property")
-		return false
 	
 	return game_active
 
@@ -83,13 +80,11 @@ func register_action(action_type: int, base_points: int = 0, action_name: String
 	
 	var current_time = Time.get_unix_time_from_system()
 	
-	# Debug info
 	last_registered_action = action_name if action_name != "" else "action_" + str(action_type)
 	
 	if debug_output:
 		print("Registering action: ", last_registered_action, " | Current combo: ", current_combo, " | Combo active: ", combo_active)
 	
-	# First, restart/start the timer to prevent timeout during this action
 	combo_timer.wait_time = combo_timeout
 	combo_timer.start()
 	if debug_output:
@@ -132,9 +127,6 @@ func _trigger_combo_effects():
 	combo_achieved.emit(current_combo)
 
 func _on_combo_timeout():
-	if debug_output:
-		print("Combo timer timeout - Active: ", combo_active, " Count: ", current_combo)
-	
 	if combo_active or current_combo > 0:
 		combo_break_reason = "timer_timeout"
 		_break_combo()
@@ -152,7 +144,6 @@ func _break_combo():
 	combo_timer.stop()
 	combo_break_reason = ""
 	
-	# Only emit signal if combo was actually active
 	if was_active:
 		combo_broken.emit()
 		if debug_output:
@@ -162,7 +153,6 @@ func force_break_combo():
 	combo_break_reason = "forced"
 	_break_combo()
 
-# Getter methods
 func get_current_combo() -> int:
 	return current_combo
 
@@ -181,18 +171,18 @@ func get_time_until_combo_break() -> float:
 		return 0.0
 	return combo_timer.time_left
 
-# Centralized methods that handle points and emit signals
 func on_delivery_pickup(base_points: int) -> int:
 	var final_points = register_action(0, base_points, "pickup")
 	
-	# Emit point scored signal
+	pickup_occurred.emit()
+	
 	if base_points == 0:
 		point_scored.emit("pickup", 0)
 	else:
 		point_scored.emit("pickup", final_points)
 	
 	if debug_output:
-		print("Delivery pickup processed: ", base_points, " -> ", final_points)
+		print("pickup processed: ", base_points, " = ", final_points)
 	
 	return final_points
 
@@ -201,7 +191,7 @@ func on_delivery_dropoff(base_points: int) -> int:
 	point_scored.emit("delivery", final_points)
 	
 	if debug_output:
-		print("Delivery dropoff processed: ", base_points, " -> ", final_points)
+		print("dropoff processed: ", base_points, " = ", final_points)
 	
 	return final_points
 
@@ -210,7 +200,7 @@ func on_near_miss(base_points: int = 0) -> int:
 	point_scored.emit("coming through", final_points)
 	
 	if debug_output:
-		print("Near miss processed: ", base_points, " -> ", final_points)
+		print("coming through processed ", base_points, " = ", final_points)
 	
 	return final_points
 
@@ -220,7 +210,6 @@ func on_collision():
 	combo_break_reason = "collision"
 	force_break_combo()
 
-# Debug methods
 func get_debug_info() -> Dictionary:
 	return {
 		"current_combo": current_combo,
@@ -231,10 +220,3 @@ func get_debug_info() -> Dictionary:
 		"game_active": _is_game_active(),
 		"delivery_manager_found": delivery_manager != null
 	}
-
-func print_debug_info():
-	var info = get_debug_info()
-	print("=== COMBO MANAGER DEBUG ===")
-	for key in info:
-		print(key, ": ", info[key])
-	print("============================")

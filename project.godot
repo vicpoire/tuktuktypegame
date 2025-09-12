@@ -13,6 +13,7 @@ config_version=5
 config/name="vitvitdriver3d"
 run/main_scene="res://.godot/editor/scene.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
+boot_splash/show_image=false
 config/icon="res://icon.svg"
 
 [display]

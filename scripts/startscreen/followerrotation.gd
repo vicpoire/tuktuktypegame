@@ -59,7 +59,6 @@ func _process(delta):
 	# Look at target
 	look_at(target_pos, Vector3.UP)
 
-# Public methods to control camera
 func set_target(new_target: Node3D):
 	target = new_target
 

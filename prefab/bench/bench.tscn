@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpghs6ri6p00b"]
+
+[ext_resource type="PackedScene" uid="uid://bf20vdcdr4cd1" path="res://3d/assets/benches/bench.glb" id="1_x7xio"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x7xio"]
+size = Vector3(1.55444, 1.38184, 0.338867)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b24ar"]
+size = Vector3(1.55444, 0.133789, 7.30548)
+
+[node name="bench" type="RigidBody3D"]
+mass = 30.0
+
+[node name="bench" parent="." instance=ExtResource("1_x7xio")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0.00939941, 0.219017, 2.48131)
+shape = SubResource("BoxShape3D_x7xio")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0.219017, -2.57095)
+shape = SubResource("BoxShape3D_x7xio")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0.769407, -0.017498)
+shape = SubResource("BoxShape3D_b24ar")

@@ -12,7 +12,7 @@ extends Control
 
 @export_group("directional movement")
 @export var movement_enabled := true
-@export var acceleration_amplitude := 0.0  # Set to 0 to disable forward/backward shake
+@export var acceleration_amplitude := 0.0 
 @export var turning_amplitude := 1.0
 @export var movement_smoothing := 8.0
 @export var acceleration_sensitivity := 0.1
@@ -35,7 +35,7 @@ var velocity_history: Array[Vector3] = []
 var grounded_wheels := 0
 
 func _ready():
-	car = get_node("../Car")
+	car = get_node("../../Car")
 	original_position = position
 	
 	velocity_history.resize(5)
@@ -104,19 +104,15 @@ func handle_directional_movement(delta: float):
 	if velocity_history.size() >= 2:
 		acceleration = (velocity_history[-1] - velocity_history[-2]) / delta
 	
-	# Remove forward/backward movement by setting acceleration effects to zero
 	var linear_effect = Vector2.ZERO
 	
 	var angular_velocity_y = car.angular_velocity.y
-	var turn_effect = Vector2(
-		angular_velocity_y * turning_amplitude * 0.2,  
-		0.0  # Remove vertical component from turning
+	var turn_effect = Vector2(angular_velocity_y * turning_amplitude * 0.2, 0.0  
 	)
 	
 	var ground_factor = float(grounded_wheels) / max(1.0, car.get_wheels().size())
 	ground_factor = lerp(air_time_reduction, 1.0, ground_factor)
 	
-	# Only apply turning effects now
 	var target_movement = turn_effect * ground_factor
 	
 	var speed_factor = clamp(car.get_current_speed() / 20.0, 0.3, 1.0)

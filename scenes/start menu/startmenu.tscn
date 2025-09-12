@@ -7,26 +7,26 @@
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_vnikc"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_not10"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vnikc"]
 noise = SubResource("FastNoiseLite_vnikc")
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1h6uk"]
 sky_top_color = Color(0.270222, 0.270222, 0.270222, 1)
 sky_horizon_color = Color(0.0740386, 0.0680388, 0.0588482, 1)
 sky_curve = 0.0430762
-sky_cover = SubResource("NoiseTexture2D_not10")
+sky_cover = SubResource("NoiseTexture2D_vnikc")
 sky_cover_modulate = Color(0.404511, 0.404511, 0.404511, 1)
 ground_bottom_color = Color(0, 0, 0, 1)
 ground_horizon_color = Color(0.164797, 0.169738, 0.177539, 1)
 energy_multiplier = 0.2
 
-[sub_resource type="Sky" id="Sky_3dw2s"]
+[sub_resource type="Sky" id="Sky_1h6uk"]
 sky_material = SubResource("ProceduralSkyMaterial_1h6uk")
 
 [sub_resource type="Environment" id="Environment_5em7u"]
 background_mode = 2
 background_color = Color(0.676798, 0.527817, 0.710493, 1)
-sky = SubResource("Sky_3dw2s")
+sky = SubResource("Sky_1h6uk")
 tonemap_mode = 4
 tonemap_exposure = 3.4
 ssr_max_steps = 1
@@ -55,7 +55,7 @@ cull_mode = 2
 albedo_texture = ExtResource("2_3dw2s")
 texture_filter = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_3360s"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_3dw2s"]
 _surfaces = [{
 "aabb": AABB(-1, -1, -2.22887, 2, 2.24008, 3.22887),
 "format": 34896613377,
@@ -87,7 +87,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AAAQJdsGAAAAABAlAAAAAAAA//8AAAAAAAAAAP//AAAAAAAA2wYAAAAA/////wAA//8AANsG/7///wAA////v/////////+///8QJdsG/7//////AAD/v///ECUAAP+/AAAAANsG/////wAA2wb/////ECXbBv//AAAQJdsG//+0B///2wb/v/////8AAP+/h/j//9sG/7+H+P//LPf/vwAA//8AAP+//////////78AAP//////v7QH//8s9/+/AAAQJQAA////////AAD//wAA//8AAP////8QJQAA/////wAA///+fwAAAAD///5//////////n8AAP/////+fwAAAADbBv+///8AAP///7///wAA2wb/vwAAAAD///+/h/j//yz3VNWH+NFJ2wZU1Yf4///bBlTVh/jRSSz3VNX//xAl2wb/vwAAECUAAP+/AAAQJdsG/7///xAlAAD/v4f40UnbBlTVtAfRSSz3VNW0B9FJ2wZU1Yf40Uks91TVtAf//9sGVNW0B9FJLPdU1bQH//8s91TVtAfRSdsGVNWH+P//2wb/v7QH0UnbBv+/tAf//9sG/7+H+NFJ2wb/v7QH//8s9///h/jRSSz3//+H+P//LPf//7QH0Uks9///AAAQJSz3AAAAAP//2wYAAAAA//8s9wAAAAAQJf//AAAAAAAALPcAAP//ECUs9/+//////yz3/7///xAl////v//////bBv+///8AACz3/7+0BxAl///+f7QH//////5/AAAQJf///n+0BwAA///+f4f4AAD///5/h/gQJf///n+H+P/////+f///ECX///5/h/gAACz3/7///wAALPf/v4f4AAD///+/h/gAANsG/7+0BwAA2wb/v7QHAAAs9/+/tAcAAP///78AAAAALPf/vwAA//8s9/+/tAf//////78AAP//2wb/v4f4//////+/tAf//wAA/7+H+P//AAD/v//////bBv+//////yz3/7+H+AAA2wb//4f4ECXbBv//tAcAANsG//+0BxAl2wb//4f4ECUAAP//h/j//wAA//+0BxAlAAD//7QH//8AAP//tAcQJdsG/7+0BxAlAAD/v4f4ECXbBv+/h/gQJQAA/7//P/9//z//f/8//3//P/9//z//f/8//3//fwAA/38AAP9/AAD/fwAA/38AAP9/AABefV79X31e/V99Xv1efV79////f////3////9/////f////3////9/////f////39efV79Xn1e/V99Xv1ffV79/3////9/////f////3///wAA/38AAP9/AAD/fwAA/39UVaqqVFWqqlRVqqpUVaqqAAD/fwAA/38AAP9/AAD/f1TVqipU1aoqVNWqKlTVqiqqqlRVqqpUVaqqVFWqqlRV/3//f/9//3//f/9//3//f/8//7//P/+//z//v/8//7//P/9//z//f/8//3//P/9//z//f/9/AAD/fwAA/38AAP9/AAD/fwAA/3////9/////f////3////9/////f////3////9///8AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/f////3////9/////f////3////9/////f////3////9/Xn1e/V59Xv1efV79Xn1e/V59Xv1efV79Xn1e/V99Xv0AAP9/AAD/fwAA/38AAP9/")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_3360s")
+shadow_mesh = SubResource("ArrayMesh_3dw2s")
 
 [node name="StartMenu" type="Node3D"]
 
@@ -188,6 +188,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="UI"]
 layout_mode = 0
