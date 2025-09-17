@@ -18,12 +18,16 @@ extends Node
 @export var point_parent: Node 
 @export var box_capacity: int = 3
 @export var dropoff_points_per_box: int = 5 
-@export_group("endscreen")
+
+@export_group("begining and end")
+@export var start_screen: Node
 @export var end_screen: Node
+
+@export var time_before_starting: float
 
 var time_remaining: float
 var total_points: int = 0
-var game_active: bool = true
+var game_active: bool = false
 var near_miss_points: int = 0
 var combo_manager: ComboManager
 
@@ -31,13 +35,16 @@ var total_boxes_delivered := 0
 var current_box_amount := 0
 
 func _ready():
+	
 	time_remaining = start_time
+	
+	start_game()
+	
 	update_time_label()
 	update_points_label()
 	update_deliveries_label()
 	update_current_boxes_label()
 	
-	# Remove timer setup - we'll use _process instead
 	
 	add_to_group("point_manager")
 	add_to_group("delivery_manager")
@@ -46,6 +53,7 @@ func _ready():
 	if combo_manager:
 		combo_manager.combo_achieved.connect(_on_combo_achieved)
 		combo_manager.combo_broken.connect(_on_combo_broken)
+	
 
 func _process(delta):
 	if game_active:
@@ -98,8 +106,7 @@ func register_delivery(action_type: int, amount: int):
 		
 		time_remaining += pickup_time_bonus * actual_amount
 		if combo_manager:
-			# Pass base pickup points (could be 0 if pickups don't give points)
-			var final_points = combo_manager.on_delivery_pickup(0)  # Adjust base points as needed
+			var final_points = combo_manager.on_delivery_pickup(0) 
 			
 	elif action_type == 1: # dropoff
 		if current_box_amount <= 0:
@@ -238,6 +245,13 @@ func update_points_label():
 	if points_label:
 		points_label.text = "points: %d" % total_points
 
+func start_game():
+	#if start_screen:
+		#start_screen.update_label()
+		#
+	await get_tree().create_timer(time_before_starting).timeout
+	game_active = true
+	
 func end_game():
 	game_active = false
 	if countdown_timer:

@@ -1,4 +1,4 @@
 [gd_resource type="ViewportTexture" format=3 uid="uid://cwq5ok8w5pep3"]
 
 [resource]
-viewport_path = NodePath("UI/Box/HBoxContainer/SubViewport2")
+viewport_path = NodePath("UI/MovableUI/Box/HBoxContainer/SubViewport2")

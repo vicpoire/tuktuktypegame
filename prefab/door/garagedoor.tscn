@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://dovoe1ysabchb"]
+
+[ext_resource type="Script" uid="uid://dyqxqdlmokr60" path="res://prefab/door/door_open.gd" id="1_w8gp5"]
+[ext_resource type="PackedScene" uid="uid://b25vo0bo4e57h" path="res://3d/assets/garagedoor/1/garagedoor.glb" id="2_scw21"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rmog3"]
+size = Vector3(0.225, 6.826, 8.8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w8gp5"]
+size = Vector3(17.17, 6.881, 16.825)
+
+[node name="garagedoor" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00587809, 2.91284, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_rmog3")
+
+[node name="Area3D" type="Area3D" parent="." node_paths=PackedStringArray("door_collider", "glb_door_node")]
+script = ExtResource("1_w8gp5")
+door_collider = NodePath("../StaticBody3D/CollisionShape3D")
+glb_door_node = NodePath("../garagedoor")
+door_animation_name = "Action"
+animation_speed = 0.7
+exit_delay = 0.15
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.031189, 2.99711, -0.0753021)
+shape = SubResource("BoxShape3D_w8gp5")
+debug_color = Color(0.954949, 1.15514e-06, 0.545768, 0.42)
+
+[node name="garagedoor" parent="." instance=ExtResource("2_scw21")]
+transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, 0, 0.343753, 0)

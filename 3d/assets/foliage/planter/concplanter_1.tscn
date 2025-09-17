@@ -1,16 +1,16 @@
 [gd_scene load_steps=3 format=3 uid="uid://bogr6yvlyp5rl"]
 
-[ext_resource type="PackedScene" uid="uid://yhidvjuy551r" path="res://3d/assets/foliage/planter/planter1.glb" id="1_oalwe"]
+[ext_resource type="PackedScene" uid="uid://ucesx54785h0" path="res://3d/assets/foliage/planter/concplanter1.glb" id="1_oalwe"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0eum3"]
 size = Vector3(1.645, 1.248, 3.59)
 
 [node name="concplanter1" type="Node3D"]
 
-[node name="planter1" parent="." instance=ExtResource("1_oalwe")]
-
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.597485, 0)
 shape = SubResource("BoxShape3D_0eum3")
+
+[node name="concplanter1" parent="." instance=ExtResource("1_oalwe")]

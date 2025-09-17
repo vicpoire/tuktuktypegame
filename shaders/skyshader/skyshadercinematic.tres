@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://beuwqlow0d5jk"]
+
+[ext_resource type="Shader" uid="uid://b8uj1b5qwedy" path="res://shaders/skyshader/skyshader.gdshader" id="1_u6bnf"]
+
+[resource]
+shader = ExtResource("1_u6bnf")
+shader_parameter/skyColor = Color(1, 0.373971, 0.671563, 1)
+shader_parameter/horizonColor = Color(0.799364, 0.536888, 0.987987, 1)
+shader_parameter/cloudColor = Color(1, 1, 1, 1)
+shader_parameter/cloud_threshold = 0.45
+shader_parameter/cloud_softness = 0.2
+shader_parameter/cloud_opacity = 0.237
+shader_parameter/cloud_scale_x = 4.0
+shader_parameter/cloud_scale_y = 16.0
+shader_parameter/cloud_speed = 0.02
+shader_parameter/time_offset = 0.0
+shader_parameter/viewport_size = Vector2(640, 0)
+shader_parameter/dither_strength = 0.769

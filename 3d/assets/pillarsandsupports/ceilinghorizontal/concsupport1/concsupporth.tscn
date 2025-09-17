@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://hettj8lpbh7h"]
+
+[ext_resource type="PackedScene" uid="uid://dqa33tpn8do01" path="res://3d/assets/pillarsandsupports/ceilinghorizontal/concsupport1/concsupport1.glb" id="1_q52kg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_82ojj"]
+size = Vector3(2.25, 2, 8)
+
+[node name="concsupporth" type="Node3D"]
+
+[node name="concsupport1" parent="." instance=ExtResource("1_q52kg")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_82ojj")
