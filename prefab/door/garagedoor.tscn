@@ -22,7 +22,7 @@ script = ExtResource("1_w8gp5")
 door_collider = NodePath("../StaticBody3D/CollisionShape3D")
 glb_door_node = NodePath("../garagedoor")
 door_animation_name = "Action"
-animation_speed = 0.7
+animation_speed = 0.35
 exit_delay = 0.15
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]

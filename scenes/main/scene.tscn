@@ -34,11 +34,9 @@
 [ext_resource type="Texture2D" uid="uid://dll2pgfgkib57" path="res://addons/kenney_prototype_textures/dark/texture_09.png" id="32_7e1qp"]
 [ext_resource type="Script" uid="uid://4b1uetb8wofi" path="res://scripts/UI/start/start_screen.gd" id="32_kxstq"]
 [ext_resource type="Environment" uid="uid://b4aa8imqate7i" path="res://shaders/skyshader/environment.tres" id="33_s4n3e"]
-[ext_resource type="Material" uid="uid://beuwqlow0d5jk" path="res://shaders/skyshader/skyshadercinematic.tres" id="33_t6rkx"]
 [ext_resource type="Script" uid="uid://divtinawimeye" path="res://shaders/skyshader/sky profiles/skyprofilemanager.gd" id="34_f0uag"]
 [ext_resource type="Material" uid="uid://ooihdqe6uxgk" path="res://shaders/skyshader/skyshader.tres" id="35_lpy21"]
 [ext_resource type="Script" uid="uid://cq2kq7fxs1woj" path="res://shaders/skyshader/sky profiles/skyprofileressource.gd" id="36_ivthl"]
-[ext_resource type="Texture2D" uid="uid://hd82pvb1m382" path="res://sprites/IMG_7834.jpg" id="37_53ukj"]
 [ext_resource type="PackedScene" uid="uid://cshcuhxmno2a7" path="res://prefab/car.tscn" id="38_wclxn"]
 [ext_resource type="Texture2D" uid="uid://d2htiggny51rq" path="res://car/new/trunk.png" id="39_njrm0"]
 [ext_resource type="Script" uid="uid://bhurcmi1u678k" path="res://scripts/managers/boxmanager.gd" id="40_jj8ad"]
@@ -78,8 +76,8 @@
 [ext_resource type="PackedScene" uid="uid://bbjsw5qspapq7" path="res://3d/parking garage level/CONCPILLAR.glb" id="73_7tcmr"]
 [ext_resource type="PackedScene" uid="uid://bogr6yvlyp5rl" path="res://3d/assets/foliage/planter/concplanter_1.tscn" id="74_3ktak"]
 [ext_resource type="PackedScene" uid="uid://hettj8lpbh7h" path="res://3d/assets/pillarsandsupports/ceilinghorizontal/concsupport1/concsupporth.tscn" id="75_pst0h"]
-[ext_resource type="PackedScene" uid="uid://l6au7a5jj5hk" path="res://3d/assets/sidewalks/yellowsidewalkcornerin.glb" id="76_jhq4w"]
 [ext_resource type="PackedScene" uid="uid://dovoe1ysabchb" path="res://prefab/door/garagedoor.tscn" id="77_v54vm"]
+[ext_resource type="PackedScene" uid="uid://bkakbmqtrxdhh" path="res://3d/warehouse level/warehouse.glb" id="78_kxstq"]
 
 [sub_resource type="Theme" id="Theme_w5vgm"]
 
@@ -141,13 +139,13 @@ corner_radius_bottom_left = 5
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_bxi23"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bxi23"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rrh80"]
 texture = SubResource("CanvasTexture_bxi23")
 
 [sub_resource type="Theme" id="Theme_y7jhe"]
 ProgressBar/colors/font_color = Color(0, 0, 0, 0)
 ProgressBar/font_sizes/font_size = 16
-ProgressBar/styles/background = SubResource("StyleBoxTexture_bxi23")
+ProgressBar/styles/background = SubResource("StyleBoxTexture_rrh80")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bxi23"]
 
@@ -219,17 +217,17 @@ animations = [{
 "speed": 20.0
 }]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pxp53"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kxstq"]
 bg_color = Color(0.527008, 0.544591, 0.980742, 1)
 
 [sub_resource type="Theme" id="Theme_85ps2"]
-Panel/styles/panel = SubResource("StyleBoxFlat_pxp53")
+Panel/styles/panel = SubResource("StyleBoxFlat_kxstq")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ylqq5"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nhtav"]
 bg_color = Color(0.936222, 0.943969, 0.997552, 1)
 
 [sub_resource type="Theme" id="Theme_5gsen"]
-Panel/styles/panel = SubResource("StyleBoxFlat_ylqq5")
+Panel/styles/panel = SubResource("StyleBoxFlat_nhtav")
 
 [sub_resource type="LabelSettings" id="LabelSettings_xm05y"]
 font = ExtResource("29_0ppfq")
@@ -431,378 +429,13 @@ _data = {
 &"fade_out": SubResource("Animation_t6rkx")
 }
 
-[sub_resource type="Animation" id="Animation_7ydy4"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-7.58193e-06, 3.23411, 4.89042)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D:fov")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [90.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Camera3D:current")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Camera3D:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.434605, 2.98023e-08, 0)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../../../Car/CAM/Camera3D:current")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_525vw"]
-resource_name = "camanimation1"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.166667, 2),
-"transitions": PackedFloat32Array(0.757858, 0.757858),
-"update": 0,
-"values": [Vector3(0, 6, 10.83), Vector3(0, 3.75, 10.83)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.166667, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-0.434605, 2.98023e-08, 0), Vector3(-0.296706, 0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Camera3D:fov")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.166667, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [90.0, 80.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Camera3D:current")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-
-[sub_resource type="Animation" id="Animation_qih3j"]
-resource_name = "new_animation"
-length = 0.9
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.9),
-"transitions": PackedFloat32Array(0.95, 0.95),
-"update": 0,
-"values": [Vector3(4.305, 1.359, 3.34), Vector3(3.91, 1.359, 1.045)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.9),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-0.434587, 1.309, 0), Vector3(-0.434587, 1.71042, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Camera3D:fov")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 0,
-"values": []
-}
-
-[sub_resource type="Animation" id="Animation_nwcwt"]
-resource_name = "camanimation4"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.9),
-"transitions": PackedFloat32Array(0.757858, 0.757858),
-"update": 0,
-"values": [Vector3(-3, -0.046, 5), Vector3(-3, -0.046, -0.5)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.9),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0.523599, -0.991347, 0), Vector3(0.523599, -1.36136, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Camera3D:fov")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [115.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Camera3D:current")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.9, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../../../Car/CAM/Camera3D:current")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.933333, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-
-[sub_resource type="Animation" id="Animation_ageew"]
-resource_name = "camanimation3"
-length = 0.9
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.9),
-"transitions": PackedFloat32Array(0.933033, 0.933033),
-"update": 0,
-"values": [Vector3(-0.945, 1.359, 5), Vector3(-0.945, -0.181, 5)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.9),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-0.434587, -0.261799, 0), Vector3(0.261799, -0.261799, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Camera3D:fov")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 0,
-"values": []
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_qih3j"]
-_data = {
-&"RESET": SubResource("Animation_7ydy4"),
-&"camanimation1": SubResource("Animation_525vw"),
-&"camanimation2": SubResource("Animation_qih3j"),
-&"camanimation3": SubResource("Animation_ageew"),
-&"camanimation4": SubResource("Animation_nwcwt")
-}
-
-[sub_resource type="Sky" id="Sky_nhtav"]
-sky_material = ExtResource("33_t6rkx")
-
-[sub_resource type="Environment" id="Environment_525vw"]
-background_mode = 2
-sky = SubResource("Sky_nhtav")
-
-[sub_resource type="GDScript" id="GDScript_oq0kl"]
-script/source = "extends Node
-"
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_oq0kl"]
-size = Vector3(350, 2, 350)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fej7f"]
-render_priority = 5
-albedo_texture = ExtResource("32_7e1qp")
-uv1_scale = Vector3(200, 130, 100)
-uv2_scale = Vector3(0.5, 0.5, 0.5)
-texture_filter = 0
-
-[sub_resource type="BoxMesh" id="BoxMesh_hjkst"]
-material = SubResource("StandardMaterial3D_fej7f")
-size = Vector3(350, 2, 350)
-
-[sub_resource type="Resource" id="Resource_s3nwd"]
-script = ExtResource("36_ivthl")
-sky_mode = 0
-profile_name = "oranger"
-sky_color = Color(1, 0.182893, 0.225506, 1)
-horizon_color = Color(0.995661, 0.640538, 3.85046e-07, 1)
-cloud_color = Color(1, 1, 1, 1)
-cloud_threshold = 0.4
-cloud_softness = 0.2
-cloud_scale_x = 6.0
-cloud_scale_y = 20.0
-cloud_speed = 0.02
-cloud_opacity = 0.3
-dither_strength = 1.0
-viewport_size = Vector2(0, 960)
-sun_intensity = 0.75
-sun_color = Color(1, 1, 1, 1)
-ambient_color = Color(0.825346, 0.551429, 0.190155, 1)
-fog_enabled = false
-fog_color = Color(1, 1, 1, 1)
-fog_density = 0.01
-metadata/_custom_type_script = "uid://cq2kq7fxs1woj"
-
-[sub_resource type="Resource" id="Resource_vlwj0"]
-script = ExtResource("36_ivthl")
-sky_mode = 0
-profile_name = "defsky"
-sky_color = Color(0.340922, 0.823456, 0.896114, 1)
-horizon_color = Color(0.860803, 0.838647, 0.994014, 1)
-cloud_color = Color(1, 1, 1, 1)
-cloud_threshold = 0.5
-cloud_softness = 0.2
-cloud_scale_x = 2.0
-cloud_scale_y = 2.0
-cloud_speed = 0.02
-cloud_opacity = 1.0
-dither_strength = 1.0
-viewport_size = Vector2(1280, 720)
-sun_intensity = 1.0
-sun_color = Color(1, 1, 1, 1)
-ambient_color = Color(0.48291, 0.531317, 0.65548, 1)
-fog_enabled = false
-fog_color = Color(1, 1, 1, 1)
-fog_density = 0.01
-metadata/_custom_type_script = "uid://cq2kq7fxs1woj"
-
-[sub_resource type="Resource" id="Resource_fxj3y"]
-script = ExtResource("36_ivthl")
-sky_mode = 1
-profile_name = "defsky"
-sky_color = Color(1, 1, 1, 1)
-horizon_color = Color(1, 1, 1, 1)
-cloud_color = Color(1, 1, 1, 1)
-cloud_threshold = 0.5
-cloud_softness = 0.2
-cloud_scale_x = 2.0
-cloud_scale_y = 2.0
-cloud_speed = 0.02
-cloud_opacity = 1.0
-dither_strength = 1.0
-viewport_size = Vector2(1280, 720)
-sun_intensity = 1.0
-sun_color = Color(1, 1, 1, 1)
-ambient_color = Color(0.2, 0.2, 0.3, 1)
-fog_enabled = false
-fog_color = Color(1, 1, 1, 1)
-fog_density = 0.01
-skybox_texture = ExtResource("37_53ukj")
-metadata/_custom_type_script = "uid://cq2kq7fxs1woj"
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_hbyln"]
-size = Vector3(1.905, 0.25, 2.61957)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jwvl3"]
 resource_name = "Material.004"
 cull_mode = 2
 albedo_texture = ExtResource("39_njrm0")
 texture_filter = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_y7jhe"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_rrh80"]
 _surfaces = [{
 "aabb": AABB(-1, -1, -2.22887, 2, 2.24008, 3.22887),
 "format": 34896613377,
@@ -834,7 +467,10 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AAAQJdsGAAAAABAlAAAAAAAA//8AAAAAAAAAAP//AAAAAAAA2wYAAAAA/////wAA//8AANsG/7///wAA////v/////////+///8QJdsG/7//////AAD/v///ECUAAP+/AAAAANsG/////wAA2wb/////ECXbBv//AAAQJdsG//+0B///2wb/v/////8AAP+/h/j//9sG/7+H+P//LPf/vwAA//8AAP+//////////78AAP//////v7QH//8s9/+/AAAQJQAA////////AAD//wAA//8AAP////8QJQAA/////wAA///+fwAAAAD///5//////////n8AAP/////+fwAAAADbBv+///8AAP///7///wAA2wb/vwAAAAD///+/h/j//yz3VNWH+NFJ2wZU1Yf4///bBlTVh/jRSSz3VNX//xAl2wb/vwAAECUAAP+/AAAQJdsG/7///xAlAAD/v4f40UnbBlTVtAfRSSz3VNW0B9FJ2wZU1Yf40Uks91TVtAf//9sGVNW0B9FJLPdU1bQH//8s91TVtAfRSdsGVNWH+P//2wb/v7QH0UnbBv+/tAf//9sG/7+H+NFJ2wb/v7QH//8s9///h/jRSSz3//+H+P//LPf//7QH0Uks9///AAAQJSz3AAAAAP//2wYAAAAA//8s9wAAAAAQJf//AAAAAAAALPcAAP//ECUs9/+//////yz3/7///xAl////v//////bBv+///8AACz3/7+0BxAl///+f7QH//////5/AAAQJf///n+0BwAA///+f4f4AAD///5/h/gQJf///n+H+P/////+f///ECX///5/h/gAACz3/7///wAALPf/v4f4AAD///+/h/gAANsG/7+0BwAA2wb/v7QHAAAs9/+/tAcAAP///78AAAAALPf/vwAA//8s9/+/tAf//////78AAP//2wb/v4f4//////+/tAf//wAA/7+H+P//AAD/v//////bBv+//////yz3/7+H+AAA2wb//4f4ECXbBv//tAcAANsG//+0BxAl2wb//4f4ECUAAP//h/j//wAA//+0BxAlAAD//7QH//8AAP//tAcQJdsG/7+0BxAlAAD/v4f4ECXbBv+/h/gQJQAA/7//P/9//z//f/8//3//P/9//z//f/8//3//fwAA/38AAP9/AAD/fwAA/38AAP9/AABefV79X31e/V99Xv1efV79////f////3////9/////f////3////9/////f////39efV79Xn1e/V99Xv1ffV79/3////9/////f////3///wAA/38AAP9/AAD/fwAA/39UVaqqVFWqqlRVqqpUVaqqAAD/fwAA/38AAP9/AAD/f1TVqipU1aoqVNWqKlTVqiqqqlRVqqpUVaqqVFWqqlRV/3//f/9//3//f/9//3//f/8//7//P/+//z//v/8//7//P/9//z//f/8//3//P/9//z//f/9/AAD/fwAA/38AAP9/AAD/fwAA/3////9/////f////3////9/////f////3////9///8AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/f////3////9/////f////3////9/////f////3////9/Xn1e/V59Xv1efV79Xn1e/V59Xv1efV79Xn1e/V99Xv0AAP9/AAD/fwAA/38AAP9/")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_y7jhe")
+shadow_mesh = SubResource("ArrayMesh_rrh80")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hbyln"]
+size = Vector3(1.475, 0.111, 1.51429)
 
 [sub_resource type="Curve" id="Curve_82n5j"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.6), 0.0, 0.0, 0, 0]
@@ -848,7 +484,7 @@ point_count = 2
 offsets = PackedFloat32Array(0, 0.284722, 0.729167, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_3j8ed"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_kxstq"]
 gradient = SubResource("Gradient_rbbvt")
 
 [sub_resource type="Curve" id="Curve_not10"]
@@ -856,7 +492,7 @@ _limits = [0.0, 3.0, 0.0, 1.0]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.316151, 3), 0.0, 0.0, 0, 0, Vector2(0.725086, 3), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="CurveTexture" id="CurveTexture_sphec"]
+[sub_resource type="CurveTexture" id="CurveTexture_nhtav"]
 curve = SubResource("Curve_not10")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vko5g"]
@@ -868,15 +504,15 @@ spread = 180.0
 initial_velocity_min = 4.0
 initial_velocity_max = 4.0
 gravity = Vector3(0, -5, 0)
-scale_over_velocity_curve = SubResource("CurveTexture_sphec")
-color_ramp = SubResource("GradientTexture1D_3j8ed")
+scale_over_velocity_curve = SubResource("CurveTexture_nhtav")
+color_ramp = SubResource("GradientTexture1D_kxstq")
 turbulence_enabled = true
 collision_mode = 1
 collision_friction = 0.1
 collision_bounce = 0.3
 collision_use_scale = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yot6u"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t6rkx"]
 transparency = 1
 albedo_color = Color(0.937255, 0.67451, 0.443137, 0.4)
 billboard_mode = 3
@@ -885,7 +521,7 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_7dkec"]
-material = SubResource("StandardMaterial3D_yot6u")
+material = SubResource("StandardMaterial3D_t6rkx")
 size = Vector2(0.1, 0.1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kjbfq"]
@@ -893,6 +529,157 @@ size = Vector3(0.959473, 0.954584, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ygi7b"]
 size = Vector3(1.75, 0.375, 3.314)
+
+[sub_resource type="Animation" id="Animation_p660e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(9.94763e-14, 1.82227, 2.88354)]
+}
+
+[sub_resource type="Animation" id="Animation_v321g"]
+resource_name = "up_game_cam"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.63728, 0.63728),
+"update": 0,
+"values": [Vector3(9.94763e-14, 1.82227, 2.88354), Vector3(0, 8, 14)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vc3nt"]
+_data = {
+&"RESET": SubResource("Animation_p660e"),
+&"up_game_cam": SubResource("Animation_v321g")
+}
+
+[sub_resource type="GDScript" id="GDScript_oq0kl"]
+script/source = "extends Node
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oq0kl"]
+size = Vector3(350, 2.01, 350)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fej7f"]
+render_priority = 5
+albedo_texture = ExtResource("32_7e1qp")
+uv1_scale = Vector3(200, 130, 100)
+uv2_scale = Vector3(0.5, 0.5, 0.5)
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_hjkst"]
+material = SubResource("StandardMaterial3D_fej7f")
+size = Vector3(350, 2, 350)
+
+[sub_resource type="Resource" id="Resource_525vw"]
+script = ExtResource("36_ivthl")
+sky_mode = 0
+profile_name = "defsky"
+sky_color = Color(3.27289e-06, 0.740557, 0.638027, 1)
+horizon_color = Color(0.908953, 0.582764, 0.353286, 1)
+cloud_color = Color(1, 1, 1, 1)
+horizon_height = -0.1
+cloud_threshold = 0.5
+cloud_softness = 0.2
+cloud_scale_x = 1.0
+cloud_scale_y = 10.0
+cloud_speed = 0.04
+cloud_opacity = 0.8
+dither_strength = 0.45
+viewport_size = Vector2(0, 480)
+sun_intensity = 0.5
+sun_color = Color(0.982548, 0.573, 3.85046e-07, 1)
+ambient_color = Color(0.2, 0.2, 0.3, 1)
+fog_enabled = false
+fog_color = Color(1, 1, 1, 1)
+fog_density = 0.01
+metadata/_custom_type_script = "uid://cq2kq7fxs1woj"
+
+[sub_resource type="Resource" id="Resource_lmsdp"]
+script = ExtResource("36_ivthl")
+sky_mode = 0
+profile_name = "defsky"
+sky_color = Color(0.510406, 0.872798, 0.955949, 1)
+horizon_color = Color(0.754652, 0.844686, 0.917564, 1)
+cloud_color = Color(1, 1, 1, 1)
+horizon_height = 0.0
+cloud_threshold = 0.47
+cloud_softness = 0.225
+cloud_scale_x = 2.0
+cloud_scale_y = 10.0
+cloud_speed = 0.1
+cloud_opacity = 0.8
+dither_strength = 0.45
+viewport_size = Vector2(0, 480)
+sun_intensity = 0.75
+sun_color = Color(1, 1, 1, 1)
+ambient_color = Color(0.2, 0.2, 0.3, 1)
+fog_enabled = false
+fog_color = Color(1, 1, 1, 1)
+fog_density = 0.01
+metadata/_custom_type_script = "uid://cq2kq7fxs1woj"
+
+[sub_resource type="Resource" id="Resource_nhtav"]
+script = ExtResource("36_ivthl")
+sky_mode = 0
+profile_name = "defsky"
+sky_color = Color(0.0974178, 0.0637129, 0.214433, 1)
+horizon_color = Color(0.356408, 0.239355, 0.400073, 1)
+cloud_color = Color(1, 1, 1, 1)
+horizon_height = 0.25
+cloud_threshold = 0.6
+cloud_softness = 0.19
+cloud_scale_x = 1.0
+cloud_scale_y = 10.0
+cloud_speed = 0.02
+cloud_opacity = 0.375
+dither_strength = 0.45
+viewport_size = Vector2(0, 480)
+sun_intensity = 0.75
+sun_color = Color(0.742856, 0.410011, 1, 1)
+ambient_color = Color(0.951046, 0.48547, 0.86648, 1)
+fog_enabled = false
+fog_color = Color(1, 1, 1, 1)
+fog_density = 0.01
+metadata/_custom_type_script = "uid://cq2kq7fxs1woj"
+
+[sub_resource type="Resource" id="Resource_t6rkx"]
+script = ExtResource("36_ivthl")
+sky_mode = 0
+profile_name = "defsky"
+sky_color = Color(0.998233, 0, 0.376426, 1)
+horizon_color = Color(0.883773, 0.000209465, 0.773058, 1)
+cloud_color = Color(0.931779, 0.682239, 0.842258, 1)
+horizon_height = 0.5
+cloud_threshold = 0.55
+cloud_softness = 0.19
+cloud_scale_x = 1.0
+cloud_scale_y = 10.0
+cloud_speed = 0.1
+cloud_opacity = 1.0
+dither_strength = 0.45
+viewport_size = Vector2(0, 480)
+sun_intensity = 1.5
+sun_color = Color(1, 0.250038, 0.620223, 1)
+ambient_color = Color(1, 0.479277, 0.721638, 1)
+fog_enabled = false
+fog_color = Color(1, 1, 1, 1)
+fog_density = 0.01
+metadata/_custom_type_script = "uid://cq2kq7fxs1woj"
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_hjkst"]
 height = 4.5
@@ -1243,6 +1030,213 @@ size = Vector3(0.05, 8.38, 27.71)
 material = SubResource("StandardMaterial3D_85yty")
 size = Vector3(0.05, 2.565, 13.08)
 
+[sub_resource type="Animation" id="Animation_7ydy4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CinematicCam:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.434605, 2.98023e-08, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CinematicCam:fov")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [90.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CinematicCam:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-7.58193e-06, 3.23411, 4.89042)]
+}
+
+[sub_resource type="Animation" id="Animation_525vw"]
+resource_name = "camanimation1"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CinematicCam:fov")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.166667, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [90.0, 80.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CinematicCam:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.166667, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.434605, 2.98023e-08, 0), Vector3(-0.296706, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CinematicCam:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.166667, 2),
+"transitions": PackedFloat32Array(0.757858, 0.757858),
+"update": 0,
+"values": [Vector3(0, 6, 10.83), Vector3(0, 3.75, 10.83)]
+}
+
+[sub_resource type="Animation" id="Animation_qih3j"]
+resource_name = "new_animation"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CinematicCam:fov")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CinematicCam:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.434587, 1.309, 0), Vector3(-0.434587, 1.71042, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CinematicCam:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(0.95, 0.95),
+"update": 0,
+"values": [Vector3(4.305, 1.359, 3.34), Vector3(3.91, 1.359, 1.045)]
+}
+
+[sub_resource type="Animation" id="Animation_ageew"]
+resource_name = "camanimation3"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CinematicCam:fov")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CinematicCam:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.434587, -0.261799, 0), Vector3(0.261799, -0.261799, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CinematicCam:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(0.933033, 0.933033),
+"update": 0,
+"values": [Vector3(-0.945, 1.359, 5), Vector3(-0.945, -0.181, 5)]
+}
+
+[sub_resource type="Animation" id="Animation_nwcwt"]
+resource_name = "camanimation4"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CinematicCam:fov")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [115.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CinematicCam:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.523599, -0.991347, 0), Vector3(0.523599, -1.36136, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CinematicCam:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(0.757858, 0.757858),
+"update": 0,
+"values": [Vector3(-3, -0.046, 5), Vector3(-3, -0.046, -0.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qih3j"]
+_data = {
+&"RESET": SubResource("Animation_7ydy4"),
+&"camanimation1": SubResource("Animation_525vw"),
+&"camanimation2": SubResource("Animation_qih3j"),
+&"camanimation3": SubResource("Animation_ageew"),
+&"camanimation4": SubResource("Animation_nwcwt")
+}
+
 [node name="Scene" type="Node3D"]
 
 [node name="TimedMode" type="Node3D" parent="." node_paths=PackedStringArray("time_label", "points_label", "deliveries_count_label", "current_boxes_label", "log_parent", "point_parent", "start_screen", "end_screen")]
@@ -1250,17 +1244,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0689621, 0.19075, 0.100113
 script = ExtResource("1_rrh80")
 pickup_time_bonus = 2.0
 time_label = NodePath("../UI/MainGameUI/TimerContainer/timer")
-points_label = NodePath("../UI/MainGameUI/DEBUG/MarginContainer5/points")
-deliveries_count_label = NodePath("../UI/MainGameUI/DEBUG/MarginContainer3/deliverycount")
+points_label = NodePath("../UI/MainGameUI/Panel/DEBUG/MarginContainer5/points")
+deliveries_count_label = NodePath("../UI/MainGameUI/Panel/DEBUG/MarginContainer3/deliverycount")
 current_boxes_label = NodePath("../Car/Label3D")
 log_label_scene = ExtResource("2_kxstq")
 point_label_scene = ExtResource("3_nhtav")
-log_parent = NodePath("../UI/MainGameUI/VBoxContainer2")
-point_parent = NodePath("../UI/MainGameUI/VBoxContainer3")
+log_parent = NodePath("../UI/MainGameUI/LogParent")
+point_parent = NodePath("../UI/MainGameUI/PointsParent")
 dropoff_points_per_box = 25
 start_screen = NodePath("../UI/StartScreen")
 end_screen = NodePath("../UI/EndScreen")
-time_before_starting = 9.0
+time_before_starting = 6.0
 
 [node name="Timer" type="Timer" parent="TimedMode"]
 autostart = true
@@ -1293,7 +1287,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_w5vgm")
 script = ExtResource("6_525vw")
-speed_text = NodePath("DEBUG/MarginContainer/speedtext")
+speed_text = NodePath("Panel/DEBUG/MarginContainer/speedtext")
 wheel_shake_amplitude = 0.0
 shake_duration = 0.4
 shake_decay = 10.0
@@ -1329,45 +1323,47 @@ offset_top = 120.0
 offset_right = -466.0
 offset_bottom = -305.0
 
-[node name="DEBUG" type="VBoxContainer" parent="UI/MainGameUI"]
+[node name="DEBUG" type="VBoxContainer" parent="UI/MainGameUI/Panel"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -320.0
-offset_top = 129.54
-offset_right = 20.0
-offset_bottom = 229.54
+anchors_preset = -1
+anchor_left = -0.101
+anchor_top = -2.191
+anchor_right = 3.949
+anchor_bottom = 6.545
+offset_left = -0.0419998
+offset_top = 130.045
+offset_right = -299.942
+offset_bottom = -250.435
 grow_horizontal = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/MainGameUI/DEBUG"]
+[node name="MarginContainer" type="MarginContainer" parent="UI/MainGameUI/Panel/DEBUG"]
 layout_mode = 2
 theme_override_constants/margin_left = 25
 
-[node name="speedtext" type="Label" parent="UI/MainGameUI/DEBUG/MarginContainer"]
+[node name="speedtext" type="Label" parent="UI/MainGameUI/Panel/DEBUG/MarginContainer"]
 layout_mode = 2
 text = "speedtext"
 label_settings = SubResource("LabelSettings_lqrax")
 
-[node name="MarginContainer3" type="MarginContainer" parent="UI/MainGameUI/DEBUG"]
+[node name="MarginContainer3" type="MarginContainer" parent="UI/MainGameUI/Panel/DEBUG"]
 layout_mode = 2
 theme_override_constants/margin_left = 25
 
-[node name="deliverycount" type="Label" parent="UI/MainGameUI/DEBUG/MarginContainer3"]
+[node name="deliverycount" type="Label" parent="UI/MainGameUI/Panel/DEBUG/MarginContainer3"]
 layout_mode = 2
 text = "deliverycount"
 label_settings = SubResource("LabelSettings_rbbvt")
 
-[node name="MarginContainer5" type="MarginContainer" parent="UI/MainGameUI/DEBUG"]
+[node name="MarginContainer5" type="MarginContainer" parent="UI/MainGameUI/Panel/DEBUG"]
 layout_mode = 2
 theme_override_constants/margin_left = 25
 
-[node name="points" type="Label" parent="UI/MainGameUI/DEBUG/MarginContainer5"]
+[node name="points" type="Label" parent="UI/MainGameUI/Panel/DEBUG/MarginContainer5"]
 layout_mode = 2
 text = "points"
 label_settings = SubResource("LabelSettings_rcfhs")
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="UI/MainGameUI"]
+[node name="LogParent" type="VBoxContainer" parent="UI/MainGameUI"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -1381,7 +1377,7 @@ offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="UI/MainGameUI"]
+[node name="PointsParent" type="VBoxContainer" parent="UI/MainGameUI"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -1393,7 +1389,7 @@ offset_bottom = -245.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Control" type="Control" parent="UI/MainGameUI"]
+[node name="POPUPCONTAINER" type="Control" parent="UI/MainGameUI"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1587,7 +1583,7 @@ fade_duration = 0.25
 wait_duration = 0.25
 car_anim_player = NodePath("CarAnimation")
 debrief_anim_player = NodePath("DebriefPanel")
-texts_to_fade = [NodePath("../MainGameUI/TimerContainer/timer"), NodePath("../MainGameUI/DEBUG/MarginContainer/speedtext"), NodePath("../MainGameUI/DEBUG/MarginContainer3/deliverycount"), NodePath("../MainGameUI/DEBUG/MarginContainer5/points"), NodePath("../MainGameUI/ComboUI/ComboVisuals/Control/Label"), NodePath("../MainGameUI/ComboUI/ComboVisuals/Control/Label2")]
+texts_to_fade = [NodePath("../MainGameUI/TimerContainer/timer"), NodePath("../MainGameUI/Panel/DEBUG/MarginContainer/speedtext"), NodePath("../MainGameUI/Panel/DEBUG/MarginContainer3/deliverycount"), NodePath("../MainGameUI/Panel/DEBUG/MarginContainer5/points"), NodePath("../MainGameUI/ComboUI/ComboVisuals/Control/Label"), NodePath("../MainGameUI/ComboUI/ComboVisuals/Control/Label2")]
 panels_to_fade = [NodePath("../MainGameUI/ComboUI/ComboVisuals/Panel"), NodePath("../MainGameUI/Panel")]
 progress_bar = NodePath("../MainGameUI/ComboUI/ComboVisuals/Control/ProgressBar")
 label3d = NodePath("../../Car/Label3D")
@@ -1817,7 +1813,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_5b646")
 }
 
-[node name="StartScreen" type="Control" parent="UI" node_paths=PackedStringArray("main_ui", "car", "time_mode", "time_label", "anim_player", "anim_player_cam")]
+[node name="StartScreen" type="Control" parent="UI" node_paths=PackedStringArray("main_ui", "car", "time_mode", "start_cinematic", "time_label", "anim_player", "anim_player_cam", "anim_player_game_cam", "sky_profile_manager", "game_cam", "cinematic_cam")]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -1825,9 +1821,14 @@ script = ExtResource("32_kxstq")
 main_ui = NodePath("../MainGameUI")
 car = NodePath("../../Car")
 time_mode = NodePath("../../TimedMode")
+start_cinematic = NodePath("../../StartCinematic")
 time_label = NodePath("countdown_label")
 anim_player = NodePath("AnimationPlayer")
-anim_player_cam = NodePath("CinematicCam/AnimationPlayer")
+anim_player_cam = NodePath("../../StartCinematic/AnimationPlayer")
+anim_player_game_cam = NodePath("../../Car/CAM/AnimationPlayer")
+sky_profile_manager = NodePath("../../Environment/LightAndSky/SkyProfileManager")
+game_cam = NodePath("../../Car/CAM/GameCam")
+cinematic_cam = NodePath("../../StartCinematic/CinematicCam")
 
 [node name="countdown_label" type="Label" parent="UI/StartScreen"]
 layout_mode = 0
@@ -1843,173 +1844,43 @@ libraries = {
 &"": SubResource("AnimationLibrary_t6rkx")
 }
 
-[node name="CinematicCam" type="Node3D" parent="UI/StartScreen"]
-transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -118.3, 1.76606, -9.80401)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/StartScreen/CinematicCam"]
-libraries = {
-&"": SubResource("AnimationLibrary_qih3j")
-}
-
-[node name="Camera3D" type="Camera3D" parent="UI/StartScreen/CinematicCam"]
-transform = Transform3D(1, -1.25483e-08, 2.70318e-08, 0, 0.907036, 0.421052, -2.98023e-08, -0.421052, 0.907037, -7.58193e-06, 3.23411, 4.89042)
-cull_mask = 524304
-environment = SubResource("Environment_525vw")
-fov = 90.0
-
-[node name="boxes" type="Node3D" parent="UI/StartScreen/CinematicCam"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.734866, 0)
-
-[node name="BOX2" type="MeshInstance3D" parent="UI/StartScreen/CinematicCam/boxes"]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -3.4908, 0.0388806, -3.88908)
-layers = 524288
-mesh = ExtResource("43_jf088")
-skeleton = NodePath("")
-
-[node name="BOX4" type="MeshInstance3D" parent="UI/StartScreen/CinematicCam/boxes"]
-transform = Transform3D(0.519615, 0, 0.3, 0, 0.6, 0, -0.3, 0, 0.519615, 2.5092, 0.0388806, 4.51092)
-layers = 524288
-mesh = ExtResource("43_jf088")
-skeleton = NodePath("")
-
-[node name="BOX" type="MeshInstance3D" parent="UI/StartScreen/CinematicCam/boxes"]
-transform = Transform3D(0.6, -2.22045e-16, 0, -4.44089e-16, 0.6, 6.75848e-15, 0, -7.10543e-15, 0.6, -2.54159, 0.0780025, -5.2174)
-layers = 524288
-mesh = ExtResource("44_lgnrr")
-skeleton = NodePath("")
-
-[node name="BOX3" type="MeshInstance3D" parent="UI/StartScreen/CinematicCam/boxes"]
-transform = Transform3D(0.6, -2.22045e-16, 0, -4.44089e-16, 0.6, 6.75848e-15, 0, -7.10543e-15, 0.6, -3.14158, 1.278, -4.6174)
-layers = 524288
-mesh = ExtResource("44_lgnrr")
-skeleton = NodePath("")
-
-[node name="Node3D" type="Node3D" parent="UI/StartScreen/CinematicCam/boxes"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.644108, 0, 2.35139)
-
-[node name="BOX4" type="MeshInstance3D" parent="UI/StartScreen/CinematicCam/boxes/Node3D"]
-transform = Transform3D(0.580781, 0, -0.150644, 0, 0.6, 0, 0.150644, 0, 0.580781, 3.64024, 0.0388803, -3.56461)
-layers = 524288
-mesh = ExtResource("43_jf088")
-skeleton = NodePath("")
-
-[node name="BOX7" type="MeshInstance3D" parent="UI/StartScreen/CinematicCam/boxes/Node3D"]
-transform = Transform3D(0.580781, 0, -0.150644, 0, 0.6, 0, 0.150644, 0, 0.580781, 3.64024, 3.52384, -3.56461)
-layers = 524288
-mesh = ExtResource("43_jf088")
-skeleton = NodePath("")
-
-[node name="BOX5" type="MeshInstance3D" parent="UI/StartScreen/CinematicCam/boxes/Node3D"]
-transform = Transform3D(0.424264, 0, 0.424264, 0, 0.6, 0, -0.424264, 0, 0.424264, 3.6313, 1.23888, -3.61679)
-layers = 524288
-mesh = ExtResource("43_jf088")
-skeleton = NodePath("")
-
-[node name="BOX6" type="MeshInstance3D" parent="UI/StartScreen/CinematicCam/boxes/Node3D"]
-transform = Transform3D(0.59225, -2.22045e-16, 0.0961252, -1.58531e-15, 0.6, 6.70227e-15, -0.0961252, -7.10543e-15, 0.59225, 3.62128, 2.478, -3.66274)
-layers = 524288
-mesh = ExtResource("44_lgnrr")
-skeleton = NodePath("")
-
-[node name="Environment" type="Node" parent="."]
-script = SubResource("GDScript_oq0kl")
-metadata/test = false
-
-[node name="Stuff" type="Node3D" parent="Environment"]
-
-[node name="Floor" type="StaticBody3D" parent="Environment/Stuff"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Stuff/Floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-shape = SubResource("BoxShape3D_oq0kl")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Stuff/Floor/CollisionShape3D"]
-mesh = SubResource("BoxMesh_hjkst")
-
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Environment/Stuff"]
-transform = Transform3D(0.858244, 0, -0.513242, 0, 1, 0, 0.513242, 0, 0.858244, 12.8163, 0.482811, 87.5045)
-use_collision = true
-polygon = PackedVector2Array(-3, 0, 0, 1, 3, 1, 6, 0)
-
-[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="Environment/Stuff"]
-transform = Transform3D(0.858244, 0, -0.513242, 0, 1, 0, 0.513242, 0, 0.858244, 11.6044, 0.482811, 89.531)
-use_collision = true
-polygon = PackedVector2Array(-3, 0, 0, 1, 3, 1, 6, 0)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="Environment/Stuff"]
-transform = Transform3D(0.959057, -0.0700536, -0.274411, 0, 0.968925, -0.247354, 0.283212, 0.237227, 0.929255, -142.645, -1.40665, 72.0451)
-use_collision = true
-size = Vector3(8.91199, 8.02246, 16.5223)
-
-[node name="CSGBox3D9" type="CSGBox3D" parent="Environment/Stuff"]
-transform = Transform3D(0.000646856, -0.42678, -0.904355, 0.0211374, 0.904159, -0.426673, 0.999776, -0.0188398, 0.00960592, -8.35712, 0.845452, 33.4595)
-use_collision = true
-size = Vector3(8.91199, 3.13257, 29.3243)
-
-[node name="CSGTorus3D" type="CSGTorus3D" parent="Environment/Stuff"]
-transform = Transform3D(0.950021, -0.312185, -0.000514776, -6.63681e-05, 0.00144707, -0.999999, 0.312186, 0.95002, 0.00135402, -135.946, 9.69786, 53.0429)
-inner_radius = 5.10043
-outer_radius = 5.49513
-
-[node name="LightAndSky" type="Node3D" parent="Environment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.94897, 0)
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment/LightAndSky"]
-transform = Transform3D(0.939619, -0.309064, 0.146956, -0.342183, -0.855058, 0.389595, 0.00524674, -0.416357, -0.909186, 0, 3.17393, 0)
-light_energy = 0.75
-light_volumetric_fog_energy = 1.5
-light_specular = 0.91
-light_bake_mode = 1
-directional_shadow_mode = 0
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment/LightAndSky"]
-environment = ExtResource("33_s4n3e")
-
-[node name="SkyProfile" type="Node" parent="Environment/LightAndSky" node_paths=PackedStringArray("sun_light")]
-script = ExtResource("34_f0uag")
-sky_material = ExtResource("35_lpy21")
-sun_light = NodePath("../DirectionalLight3D")
-environment = ExtResource("33_s4n3e")
-profiles = Array[ExtResource("36_ivthl")]([SubResource("Resource_s3nwd"), SubResource("Resource_vlwj0"), SubResource("Resource_fxj3y")])
-
 [node name="Car" parent="." node_paths=PackedStringArray("cam") instance=ExtResource("38_wclxn")]
-transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, -118.3, 1.76606, -9.80401)
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -84.4369, 1.35219, 140.074)
 mass = 100.0
-cam = NodePath("CAM/Camera3D")
+cam = NodePath("CAM/GameCam")
+forward_grip = 0.75
 min_grip_angle = 45.0
 ledge_check_distance = 1.5
 
 [node name="Generic6DOFJoint3D" type="Generic6DOFJoint3D" parent="Car"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0560818, 0.736664)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0335066, 0)
 node_a = NodePath("..")
 node_b = NodePath("../Trunk")
-linear_limit_x/upper_distance = 0.01
-linear_limit_x/lower_distance = -0.01
-linear_limit_x/damping = 0.25
-linear_limit_y/damping = 0.25
-linear_limit_z/damping = 0.25
-angular_limit_x/softness = 0.25
-angular_limit_x/damping = 3.0
-angular_limit_x/erp = 1.0
-angular_limit_y/softness = 0.25
-angular_limit_y/erp = 1.0
-angular_limit_z/softness = 0.25
-angular_limit_z/damping = 3.0
-angular_limit_z/erp = 1.0
+exclude_nodes_from_collision = false
+linear_limit_x/restitution = 1.26
+linear_limit_y/restitution = 3.0
+linear_limit_y/damping = 0.15
+linear_limit_z/softness = 0.5
+linear_limit_z/restitution = 2.0
+angular_limit_x/damping = 2.0
+angular_limit_y/restitution = 4.5
+angular_limit_y/damping = 0.8
+angular_limit_z/damping = 2.0
 
 [node name="Trunk" type="RigidBody3D" parent="Car"]
-transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0, 0.331143, 0.292473)
-collision_layer = 2
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, -6.61686e-09, 0.345537, 0.360918)
+collision_layer = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Car/Trunk"]
-transform = Transform3D(1, 0, -2.24532e-12, 0, 1, 0, 2.24532e-12, 0, 1, 0, -0.079834, -0.431572)
-shape = SubResource("BoxShape3D_hbyln")
-
-[node name="Trunk2" type="MeshInstance3D" parent="Car/Trunk/CollisionShape3D"]
-transform = Transform3D(1.13, 0, 1.56319e-12, 0, 0.272, 0, -2.089e-12, 0, 0.818, 0, 0.090538, 0.41761)
+[node name="Trunk2" type="MeshInstance3D" parent="Car/Trunk"]
+transform = Transform3D(1.13, 0, -4.21979e-08, 0, 0.272, 0, 5.96046e-08, 0, 0.8, 1.52564e-05, -0.0121308, 0.15229)
 layers = 17
 mesh = SubResource("ArrayMesh_bxi23")
 skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Car/Trunk"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -2.28882e-05, -0.133572, -0.865784)
+shape = SubResource("BoxShape3D_hbyln")
+debug_color = Color(0.807105, 0.573649, 1.92523e-07, 0.709804)
 
 [node name="TrunkManager" type="Node3D" parent="Car/Trunk"]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0.00656891, 0.0925169, -0.432434)
@@ -2038,10 +1909,11 @@ animation_stagger_delay = 0.0
 transform = Transform3D(1, 6.21173e-22, 0, 6.21173e-22, 1, 0, 0, 0, 1, -1.04715, 0.0400995, -0.00488418)
 node_a = NodePath("../../..")
 node_b = NodePath("../Box1")
+params/bias = 0.99
 angular_limit/enable = true
 angular_limit/upper = 0.00349066
 angular_limit/lower = -0.00349066
-angular_limit/bias = 0.4
+angular_limit/bias = 0.69
 
 [node name="Box1" parent="Car/Trunk/TrunkManager/BOXES" instance=ExtResource("42_w31na")]
 transform = Transform3D(1.31106e-07, 1, -8.58629e-08, 0.999363, -1.27959e-07, 0.0356846, 0.0356846, -9.04867e-08, -0.999363, -0.419714, 0.0277249, 0)
@@ -2084,7 +1956,7 @@ angular_limit/lower = -0.0261799
 angular_limit/bias = 0.1
 
 [node name="Box2" parent="Car/Trunk/TrunkManager/BOXES" instance=ExtResource("42_w31na")]
-transform = Transform3D(-2.14826e-09, 1, -1.31081e-07, -0.0491462, -1.31029e-07, -0.998792, -0.998792, 4.29648e-09, 0.0491462, 0.843896, 0.00781631, -0.00376892)
+transform = Transform3D(-2.14826e-09, 1, -1.31081e-07, -0.0491462, -1.31029e-07, -0.998792, -0.998792, 4.29648e-09, 0.0491462, 0.888166, 0.0078163, -0.00376892)
 collision_layer = 7
 
 [node name="BOX" type="MeshInstance3D" parent="Car/Trunk/TrunkManager/BOXES/Box2"]
@@ -2114,7 +1986,7 @@ shape = SubResource("BoxShape3D_kjbfq")
 disabled = true
 
 [node name="HingeJoint3D4" type="HingeJoint3D" parent="Car/Trunk/TrunkManager/BOXES"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.48525, -0.119209, 0.0505524)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.48525, -0.0877635, 0.0505524)
 node_a = NodePath("../Box2")
 node_b = NodePath("../Box3")
 angular_limit/enable = true
@@ -2123,7 +1995,7 @@ angular_limit/lower = -0.0261799
 angular_limit/bias = 0.1
 
 [node name="Box3" parent="Car/Trunk/TrunkManager/BOXES" instance=ExtResource("45_sebpm")]
-transform = Transform3D(-4.37114e-08, 1, 1.19209e-07, -1, -4.37114e-08, -1.19209e-07, -1.19209e-07, -1.19209e-07, 1, 1.96447, 0, 0)
+transform = Transform3D(-4.37114e-08, 1, 1.19209e-07, -1, -4.37114e-08, -1.19209e-07, -1.19209e-07, -1.19209e-07, 1, 2.00874, -1.93513e-09, -5.27744e-09)
 collision_layer = 7
 
 [node name="BOX2" type="MeshInstance3D" parent="Car/Trunk/TrunkManager/BOXES/Box3"]
@@ -2197,104 +2069,172 @@ max_near_misses_per_second = 4
 [node name="CAM" type="Node3D" parent="Car" node_paths=PackedStringArray("camera", "camera_views")]
 transform = Transform3D(-1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, -1, 0, 0, 0)
 script = ExtResource("49_nhtav")
-camera = NodePath("Camera3D")
+smooth_speed = 1.5
+camera = NodePath("GameCam")
 camera_views = [NodePath("Pivot")]
-camera_lerp_speed = 3.0
+camera_lerp_speed = 1.0
 
 [node name="Pivot" type="Node3D" parent="Car/CAM"]
-transform = Transform3D(1, 0, -1.42109e-14, 0, 0.994485, 0.104876, 0, -0.104876, 0.994485, 0, 4.3863, 12.6421)
+transform = Transform3D(1, 0, -1.42109e-14, 0, 0.96422, 0.265102, 0, -0.265102, 0.96422, 9.94763e-14, 1.82227, 2.88354)
 
-[node name="Camera3D" type="Camera3D" parent="Car/CAM"]
-transform = Transform3D(1, 0, 0, 0, 0.994485, 0.104876, 0, -0.104876, 0.994485, -2.21671e-07, 0.329663, 3.52152)
+[node name="GameCam" type="Camera3D" parent="Car/CAM"]
+transform = Transform3D(1, 0, 0, 0, 0.813202, 0.581981, 0, -0.581981, 0.813202, 0, 0.33, 0)
 cull_mask = 524287
 current = true
 fov = 90.0
 
-[node name="testcourse" type="Node" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Car/CAM"]
+libraries = {
+&"": SubResource("AnimationLibrary_vc3nt")
+}
 
-[node name="3d" type="Node3D" parent="testcourse"]
+[node name="Environment" type="Node" parent="."]
+script = SubResource("GDScript_oq0kl")
+metadata/test = false
 
-[node name="floorstuff" type="Node3D" parent="testcourse/3d"]
+[node name="Stuff" type="Node3D" parent="Environment"]
+
+[node name="Floor" type="StaticBody3D" parent="Environment/Stuff"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Stuff/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_oq0kl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Stuff/Floor/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0191879, 0, -0.0590496)
+mesh = SubResource("BoxMesh_hjkst")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Environment/Stuff"]
+transform = Transform3D(0.858244, 0, -0.513242, 0, 1, 0, 0.513242, 0, 0.858244, 12.8163, 0.482811, 87.5045)
+use_collision = true
+polygon = PackedVector2Array(-3, 0, 0, 1, 3, 1, 6, 0)
+
+[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="Environment/Stuff"]
+transform = Transform3D(0.858244, 0, -0.513242, 0, 1, 0, 0.513242, 0, 0.858244, 11.6044, 0.482811, 89.531)
+use_collision = true
+polygon = PackedVector2Array(-3, 0, 0, 1, 3, 1, 6, 0)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Environment/Stuff"]
+transform = Transform3D(0.959057, -0.0700536, -0.274411, 0, 0.968925, -0.247354, 0.283212, 0.237227, 0.929255, -142.645, -1.40665, 72.0451)
+use_collision = true
+size = Vector3(8.91199, 8.02246, 16.5223)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Environment/Stuff"]
+transform = Transform3D(0.000646856, -0.42678, -0.904355, 0.0211374, 0.904159, -0.426673, 0.999776, -0.0188398, 0.00960592, -8.35712, 0.845452, 33.4595)
+use_collision = true
+size = Vector3(8.91199, 3.13257, 29.3243)
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="Environment/Stuff"]
+transform = Transform3D(0.950021, -0.312185, -0.000514776, -6.63681e-05, 0.00144707, -0.999999, 0.312186, 0.95002, 0.00135402, -135.946, 9.69786, 53.0429)
+inner_radius = 5.10043
+outer_radius = 5.49513
+
+[node name="LightAndSky" type="Node3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.94897, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment/LightAndSky"]
+transform = Transform3D(0.939619, -0.309064, 0.146956, -0.342183, -0.855058, 0.389595, 0.00524674, -0.416357, -0.909186, 0, 3.17393, 0)
+light_energy = 0.75
+light_volumetric_fog_energy = 1.5
+light_specular = 0.91
+light_bake_mode = 1
+directional_shadow_mode = 0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment/LightAndSky"]
+environment = ExtResource("33_s4n3e")
+
+[node name="SkyProfileManager" type="Node" parent="Environment/LightAndSky" node_paths=PackedStringArray("sun_light")]
+script = ExtResource("34_f0uag")
+sky_material = ExtResource("35_lpy21")
+sun_light = NodePath("../DirectionalLight3D")
+environment = ExtResource("33_s4n3e")
+profiles = Array[ExtResource("36_ivthl")]([SubResource("Resource_525vw"), SubResource("Resource_lmsdp"), SubResource("Resource_nhtav"), SubResource("Resource_t6rkx")])
+
+[node name="testcourse" type="Node" parent="Environment"]
+
+[node name="3d" type="Node3D" parent="Environment/testcourse"]
+
+[node name="floorstuff" type="Node3D" parent="Environment/testcourse/3d"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.272, 0, 95.0069)
 
-[node name="Cylinder" type="StaticBody3D" parent="testcourse/3d/floorstuff"]
+[node name="Cylinder" type="StaticBody3D" parent="Environment/testcourse/3d/floorstuff"]
 transform = Transform3D(-3.09086e-08, 0.707107, -0.707107, -1, -4.37114e-08, 0, -3.09086e-08, 0.707107, 0.707107, -43.1079, 0.449658, -7.61382)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="testcourse/3d/floorstuff/Cylinder"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/testcourse/3d/floorstuff/Cylinder"]
 shape = SubResource("CylinderShape3D_hjkst")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="testcourse/3d/floorstuff/Cylinder/CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/testcourse/3d/floorstuff/Cylinder/CollisionShape3D"]
 mesh = SubResource("CylinderMesh_xfrxd")
 
-[node name="Cylinder2" type="StaticBody3D" parent="testcourse/3d/floorstuff"]
+[node name="Cylinder2" type="StaticBody3D" parent="Environment/testcourse/3d/floorstuff"]
 transform = Transform3D(-3.09086e-08, 0.707107, -0.707107, -1, -4.37114e-08, 0, -3.09086e-08, 0.707107, 0.707107, -44.7039, 0.449658, -6.01772)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="testcourse/3d/floorstuff/Cylinder2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/testcourse/3d/floorstuff/Cylinder2"]
 shape = SubResource("CylinderShape3D_hjkst")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="testcourse/3d/floorstuff/Cylinder2/CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/testcourse/3d/floorstuff/Cylinder2/CollisionShape3D"]
 mesh = SubResource("CylinderMesh_xfrxd")
 
-[node name="Cylinder3" type="StaticBody3D" parent="testcourse/3d/floorstuff"]
+[node name="Cylinder3" type="StaticBody3D" parent="Environment/testcourse/3d/floorstuff"]
 transform = Transform3D(-1.48205e-08, 0.339053, 1.26536, -1.31, -5.72619e-08, 1.16351e-15, 5.53108e-08, -1.26536, 0.339053, -13.1101, 0.449654, 25.1327)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="testcourse/3d/floorstuff/Cylinder3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/testcourse/3d/floorstuff/Cylinder3"]
 shape = SubResource("CylinderShape3D_hjkst")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="testcourse/3d/floorstuff/Cylinder3/CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/testcourse/3d/floorstuff/Cylinder3/CollisionShape3D"]
 mesh = SubResource("CylinderMesh_xfrxd")
 
-[node name="Cylinder4" type="StaticBody3D" parent="testcourse/3d/floorstuff"]
+[node name="Cylinder4" type="StaticBody3D" parent="Environment/testcourse/3d/floorstuff"]
 transform = Transform3D(-1.48205e-08, 0.339053, 1.26536, -1.31, -5.72619e-08, 1.16351e-15, 5.53108e-08, -1.26536, 0.339053, -18.49, 0.449654, 23.7507)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="testcourse/3d/floorstuff/Cylinder4"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/testcourse/3d/floorstuff/Cylinder4"]
 shape = SubResource("CylinderShape3D_hjkst")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="testcourse/3d/floorstuff/Cylinder4/CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/testcourse/3d/floorstuff/Cylinder4/CollisionShape3D"]
 mesh = SubResource("CylinderMesh_xfrxd")
 
-[node name="Cylinder5" type="StaticBody3D" parent="testcourse/3d/floorstuff"]
+[node name="Cylinder5" type="StaticBody3D" parent="Environment/testcourse/3d/floorstuff"]
 transform = Transform3D(-1.62748e-08, 0.372324, 0.928103, -1, -4.37114e-08, 0, 4.05687e-08, -0.928103, 0.372324, 22.1976, 0.449654, -30.3945)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="testcourse/3d/floorstuff/Cylinder5"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/testcourse/3d/floorstuff/Cylinder5"]
 shape = SubResource("CylinderShape3D_hjkst")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="testcourse/3d/floorstuff/Cylinder5/CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/testcourse/3d/floorstuff/Cylinder5/CollisionShape3D"]
 mesh = SubResource("CylinderMesh_xfrxd")
 
-[node name="Cylinder6" type="StaticBody3D" parent="testcourse/3d/floorstuff"]
+[node name="Cylinder6" type="StaticBody3D" parent="Environment/testcourse/3d/floorstuff"]
 transform = Transform3D(-1.62748e-08, 0.372324, 0.928103, -1, -4.37114e-08, 0, 4.05687e-08, -0.928103, 0.372324, 24.2926, 0.449654, -29.5541)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="testcourse/3d/floorstuff/Cylinder6"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/testcourse/3d/floorstuff/Cylinder6"]
 shape = SubResource("CylinderShape3D_hjkst")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="testcourse/3d/floorstuff/Cylinder6/CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/testcourse/3d/floorstuff/Cylinder6/CollisionShape3D"]
 mesh = SubResource("CylinderMesh_xfrxd")
 
-[node name="Cylinder7" type="StaticBody3D" parent="testcourse/3d/floorstuff"]
+[node name="Cylinder7" type="StaticBody3D" parent="Environment/testcourse/3d/floorstuff"]
 transform = Transform3D(-3.49741e-08, 0.800114, -0.599848, -1, -4.37114e-08, 0, -2.62202e-08, 0.599848, 0.800114, 39.5604, 0.449654, -2.56182)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="testcourse/3d/floorstuff/Cylinder7"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/testcourse/3d/floorstuff/Cylinder7"]
 shape = SubResource("CylinderShape3D_hjkst")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="testcourse/3d/floorstuff/Cylinder7/CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/testcourse/3d/floorstuff/Cylinder7/CollisionShape3D"]
 mesh = SubResource("CylinderMesh_xfrxd")
 
-[node name="Cylinder8" type="StaticBody3D" parent="testcourse/3d/floorstuff"]
+[node name="Cylinder8" type="StaticBody3D" parent="Environment/testcourse/3d/floorstuff"]
 transform = Transform3D(-3.49741e-08, 0.800114, -0.599848, -1, -4.37114e-08, 0, -2.62202e-08, 0.599848, 0.800114, 37.8494, 0.449654, -0.192223)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="testcourse/3d/floorstuff/Cylinder8"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/testcourse/3d/floorstuff/Cylinder8"]
 shape = SubResource("CylinderShape3D_hjkst")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="testcourse/3d/floorstuff/Cylinder8/CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/testcourse/3d/floorstuff/Cylinder8/CollisionShape3D"]
 mesh = SubResource("CylinderMesh_xfrxd")
 
-[node name="deliveryzones" type="Node3D" parent="testcourse/3d"]
+[node name="deliveryzones" type="Node3D" parent="Environment/testcourse/3d"]
 
-[node name="PICKUPZONE" parent="testcourse/3d/deliveryzones" instance=ExtResource("48_inte5")]
+[node name="PICKUPZONE" parent="Environment/testcourse/3d/deliveryzones" instance=ExtResource("48_inte5")]
 transform = Transform3D(1.77, 0, 0, 0, 1.77, 0, 0, 0, 1.77, -59.7103, 5.05311, 121.736)
 
-[node name="PICKUPZONE7" type="Area3D" parent="testcourse/3d/deliveryzones" node_paths=PackedStringArray("light_to_disable")]
+[node name="PICKUPZONE7" type="Area3D" parent="Environment/testcourse/3d/deliveryzones" node_paths=PackedStringArray("light_to_disable")]
 transform = Transform3D(1.77, 0, 0, 0, 1.77, 0, 0, 0, 1.77, 182.29, 20.4661, 25.736)
 script = ExtResource("49_by771")
 amount = 3
@@ -2303,10 +2243,10 @@ light_to_disable = NodePath("SpotLight3D")
 light_flare_time = 0.25
 light_flare_down_time = 0.1
 
-[node name="Visuals" type="Node3D" parent="testcourse/3d/deliveryzones/PICKUPZONE7"]
+[node name="Visuals" type="Node3D" parent="Environment/testcourse/3d/deliveryzones/PICKUPZONE7"]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="testcourse/3d/deliveryzones/PICKUPZONE7/Visuals"]
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Environment/testcourse/3d/deliveryzones/PICKUPZONE7/Visuals"]
 transform = Transform3D(-1.042, 0, -9.10945e-08, 0, 1.042, 0, 9.10945e-08, 0, -1.042, 0, -0.699546, -2)
 modulate = Color(0, 0.823529, 0, 0.588235)
 shaded = true
@@ -2317,7 +2257,7 @@ frame = 1
 frame_progress = 0.855157
 script = ExtResource("51_5wk7k")
 
-[node name="AnimatedSprite3D2" type="AnimatedSprite3D" parent="testcourse/3d/deliveryzones/PICKUPZONE7/Visuals"]
+[node name="AnimatedSprite3D2" type="AnimatedSprite3D" parent="Environment/testcourse/3d/deliveryzones/PICKUPZONE7/Visuals"]
 transform = Transform3D(1.24257e-08, 0, -1.042, 0, 1.042, 0, 1.042, 0, 1.24257e-08, -2, -0.699546, 0)
 modulate = Color(0, 0.823529, 0, 0.588235)
 shaded = true
@@ -2326,7 +2266,7 @@ sprite_frames = SubResource("SpriteFrames_qnw61")
 animation = &"scrolling"
 script = ExtResource("51_5wk7k")
 
-[node name="AnimatedSprite3D3" type="AnimatedSprite3D" parent="testcourse/3d/deliveryzones/PICKUPZONE7/Visuals"]
+[node name="AnimatedSprite3D3" type="AnimatedSprite3D" parent="Environment/testcourse/3d/deliveryzones/PICKUPZONE7/Visuals"]
 transform = Transform3D(1.042, 0, 0, 0, 1.042, 0, 0, 0, 1.042, 0, -0.699546, 2)
 modulate = Color(0, 0.823529, 0, 0.588235)
 shaded = true
@@ -2335,7 +2275,7 @@ sprite_frames = SubResource("SpriteFrames_qnw61")
 animation = &"scrolling"
 script = ExtResource("51_5wk7k")
 
-[node name="AnimatedSprite3D4" type="AnimatedSprite3D" parent="testcourse/3d/deliveryzones/PICKUPZONE7/Visuals"]
+[node name="AnimatedSprite3D4" type="AnimatedSprite3D" parent="Environment/testcourse/3d/deliveryzones/PICKUPZONE7/Visuals"]
 transform = Transform3D(-4.55473e-08, 0, 1.042, 0, 1.042, 0, -1.042, 0, -4.55473e-08, 2, -0.699546, 0)
 modulate = Color(0, 0.823529, 0, 0.588235)
 shaded = true
@@ -2344,18 +2284,18 @@ sprite_frames = SubResource("SpriteFrames_qnw61")
 animation = &"scrolling"
 script = ExtResource("51_5wk7k")
 
-[node name="Sprite3D" type="Sprite3D" parent="testcourse/3d/deliveryzones/PICKUPZONE7/Visuals"]
+[node name="Sprite3D" type="Sprite3D" parent="Environment/testcourse/3d/deliveryzones/PICKUPZONE7/Visuals"]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1.09605, 0)
 modulate = Color(0, 0.823529, 0, 1)
 billboard = 2
 texture_filter = 0
 texture = ExtResource("52_mw6mj")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="testcourse/3d/deliveryzones/PICKUPZONE7"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Environment/testcourse/3d/deliveryzones/PICKUPZONE7"]
 transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 0.999998, 0, 0, 0)
 shape = SubResource("BoxShape3D_qoucm")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="testcourse/3d/deliveryzones/PICKUPZONE7"]
+[node name="OmniLight3D" type="OmniLight3D" parent="Environment/testcourse/3d/deliveryzones/PICKUPZONE7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.59489, 0)
 visible = false
 light_color = Color(0, 1, 0, 1)
@@ -2363,7 +2303,7 @@ light_energy = 12.636
 light_volumetric_fog_energy = 5.0
 omni_range = 9.97599
 
-[node name="SpotLight3D" type="SpotLight3D" parent="testcourse/3d/deliveryzones/PICKUPZONE7"]
+[node name="SpotLight3D" type="SpotLight3D" parent="Environment/testcourse/3d/deliveryzones/PICKUPZONE7"]
 transform = Transform3D(0.999897, -0.006196, 0.0129619, 0.0129643, 0.000352189, -0.999916, 0.00619091, 0.999981, 0.00043248, 0, -11.8926, 0)
 light_color = Color(0, 1, 0, 1)
 light_energy = 8.0
@@ -2372,54 +2312,54 @@ spot_range = 27.407
 spot_attenuation = 0.25
 spot_angle = 15.0
 
-[node name="PICKUPZONE2" parent="testcourse/3d/deliveryzones" instance=ExtResource("48_inte5")]
+[node name="PICKUPZONE2" parent="Environment/testcourse/3d/deliveryzones" instance=ExtResource("48_inte5")]
 transform = Transform3D(1.77, 0, 0, 0, 1.77, 0, 0, 0, 1.77, -117.233, 5.05311, 110.133)
 amount = 3
 
-[node name="PICKUPZONE8" parent="testcourse/3d/deliveryzones" instance=ExtResource("48_inte5")]
+[node name="PICKUPZONE8" parent="Environment/testcourse/3d/deliveryzones" instance=ExtResource("48_inte5")]
 transform = Transform3D(1.6661, 0, 0.597502, 0, 1.77, 0, -0.597502, 0, 1.6661, -110.362, 5.05311, 3.57601)
 amount = 3
 
-[node name="PICKUPZONE5" parent="testcourse/3d/deliveryzones" instance=ExtResource("48_inte5")]
+[node name="PICKUPZONE5" parent="Environment/testcourse/3d/deliveryzones" instance=ExtResource("48_inte5")]
 transform = Transform3D(1.53286, 0.29894, 0.832983, 0, 1.66597, -0.59788, -0.885, 0.517779, 1.44277, -33.2377, 7.58233, 118.871)
 amount = 3
 
-[node name="PICKUPZONE3" parent="testcourse/3d/deliveryzones" instance=ExtResource("48_inte5")]
+[node name="PICKUPZONE3" parent="Environment/testcourse/3d/deliveryzones" instance=ExtResource("48_inte5")]
 transform = Transform3D(1.77, 0, 0, 0, 1.77, 0, 0, 0, 1.77, -60.9913, 5.05311, 50.6423)
 
-[node name="PICKUPZONE4" parent="testcourse/3d/deliveryzones" instance=ExtResource("48_inte5")]
+[node name="PICKUPZONE4" parent="Environment/testcourse/3d/deliveryzones" instance=ExtResource("48_inte5")]
 transform = Transform3D(1.77, 0, 0, 0, 1.77, 0, 0, 0, 1.77, -19.7227, 5.05311, 72.9946)
 
-[node name="DROPZONE" parent="testcourse/3d/deliveryzones" instance=ExtResource("53_er858")]
+[node name="DROPZONE" parent="Environment/testcourse/3d/deliveryzones" instance=ExtResource("53_er858")]
 transform = Transform3D(1.77, 0, 0, 0, 1.77, 0, 0, 0, 1.77, -59.7709, 8.05311, 86.2309)
 
-[node name="DROPZONE2" parent="testcourse/3d/deliveryzones" instance=ExtResource("53_er858")]
+[node name="DROPZONE2" parent="Environment/testcourse/3d/deliveryzones" instance=ExtResource("53_er858")]
 transform = Transform3D(1.77, 0, 0, 0, 1.77, 0, 0, 0, 1.77, 202.295, 25.1761, -41.0511)
 
-[node name="slalom" type="Node3D" parent="testcourse/3d"]
+[node name="slalom" type="Node3D" parent="Environment/testcourse/3d"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -129.443, 0, 97.3709)
 
-[node name="high" type="StaticBody3D" parent="testcourse/3d/slalom"]
+[node name="high" type="StaticBody3D" parent="Environment/testcourse/3d/slalom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.2653, 0.499998, 43.5179)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="testcourse/3d/slalom/high"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/testcourse/3d/slalom/high"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.0146561, 6.12818, -0.00088501)
 shape = SubResource("BoxShape3D_nde4r")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="testcourse/3d/slalom/high"]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Environment/testcourse/3d/slalom/high"]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -6.87154, 3.03399, 0.00161743)
 shape = SubResource("BoxShape3D_rpvwv")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="testcourse/3d/slalom/high"]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Environment/testcourse/3d/slalom/high"]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 6.93018, 2.8285, 0)
 shape = SubResource("BoxShape3D_rpvwv")
 
-[node name="Cylinder" type="MeshInstance3D" parent="testcourse/3d/slalom/high"]
+[node name="Cylinder" type="MeshInstance3D" parent="Environment/testcourse/3d/slalom/high"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = SubResource("ArrayMesh_rbbvt")
 skeleton = NodePath("")
 
-[node name="HingeJoint3D3" type="HingeJoint3D" parent="testcourse/3d/slalom/high"]
+[node name="HingeJoint3D3" type="HingeJoint3D" parent="Environment/testcourse/3d/slalom/high"]
 transform = Transform3D(-4.47035e-08, 0, 1, 0, 1, 0, -1, 0, -4.47035e-08, -3, 5.66678, 0)
 node_b = NodePath("../MaxHeightSign")
 angular_limit/enable = true
@@ -2427,7 +2367,7 @@ angular_limit/upper = 1.0472
 angular_limit/lower = -1.0472
 angular_limit/bias = 0.5
 
-[node name="HingeJoint3D4" type="HingeJoint3D" parent="testcourse/3d/slalom/high"]
+[node name="HingeJoint3D4" type="HingeJoint3D" parent="Environment/testcourse/3d/slalom/high"]
 transform = Transform3D(-4.47035e-08, 0, 1, 0, 1, 0, -1, 0, -4.47035e-08, 2.99998, 5.66678, 0)
 node_b = NodePath("../MaxHeightSign")
 angular_limit/enable = true
@@ -2435,30 +2375,30 @@ angular_limit/upper = 1.0472
 angular_limit/lower = -1.0472
 angular_limit/bias = 0.5
 
-[node name="MaxHeightSign" parent="testcourse/3d/slalom/high" instance=ExtResource("54_jj4k5")]
+[node name="MaxHeightSign" parent="Environment/testcourse/3d/slalom/high" instance=ExtResource("54_jj4k5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.37065, 0)
 
-[node name="high2" type="StaticBody3D" parent="testcourse/3d/slalom"]
+[node name="high2" type="StaticBody3D" parent="Environment/testcourse/3d/slalom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 108.31, 0.499998, 43.5179)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="testcourse/3d/slalom/high2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/testcourse/3d/slalom/high2"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.0146561, 6.12818, -0.00088501)
 shape = SubResource("BoxShape3D_nde4r")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="testcourse/3d/slalom/high2"]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Environment/testcourse/3d/slalom/high2"]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -6.87154, 3.03399, 0.00161743)
 shape = SubResource("BoxShape3D_rpvwv")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="testcourse/3d/slalom/high2"]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Environment/testcourse/3d/slalom/high2"]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 6.93018, 2.8285, 0)
 shape = SubResource("BoxShape3D_rpvwv")
 
-[node name="Cylinder" type="MeshInstance3D" parent="testcourse/3d/slalom/high2"]
+[node name="Cylinder" type="MeshInstance3D" parent="Environment/testcourse/3d/slalom/high2"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = SubResource("ArrayMesh_rbbvt")
 skeleton = NodePath("")
 
-[node name="HingeJoint3D3" type="HingeJoint3D" parent="testcourse/3d/slalom/high2"]
+[node name="HingeJoint3D3" type="HingeJoint3D" parent="Environment/testcourse/3d/slalom/high2"]
 transform = Transform3D(-4.47035e-08, 0, 1, 0, 1, 0, -1, 0, -4.47035e-08, -3, 5.66678, 0)
 node_b = NodePath("../MaxHeightSign")
 angular_limit/enable = true
@@ -2466,7 +2406,7 @@ angular_limit/upper = 1.0472
 angular_limit/lower = -1.0472
 angular_limit/bias = 0.5
 
-[node name="HingeJoint3D4" type="HingeJoint3D" parent="testcourse/3d/slalom/high2"]
+[node name="HingeJoint3D4" type="HingeJoint3D" parent="Environment/testcourse/3d/slalom/high2"]
 transform = Transform3D(-4.47035e-08, 0, 1, 0, 1, 0, -1, 0, -4.47035e-08, 2.99998, 5.66678, 0)
 node_b = NodePath("../MaxHeightSign")
 angular_limit/enable = true
@@ -2474,30 +2414,30 @@ angular_limit/upper = 1.0472
 angular_limit/lower = -1.0472
 angular_limit/bias = 0.5
 
-[node name="MaxHeightSign" parent="testcourse/3d/slalom/high2" instance=ExtResource("54_jj4k5")]
+[node name="MaxHeightSign" parent="Environment/testcourse/3d/slalom/high2" instance=ExtResource("54_jj4k5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.37065, 0)
 
-[node name="high3" type="StaticBody3D" parent="testcourse/3d/slalom"]
+[node name="high3" type="StaticBody3D" parent="Environment/testcourse/3d/slalom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140.265, 0.499998, 43.5179)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="testcourse/3d/slalom/high3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/testcourse/3d/slalom/high3"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.0146561, 6.12818, -0.00088501)
 shape = SubResource("BoxShape3D_nde4r")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="testcourse/3d/slalom/high3"]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Environment/testcourse/3d/slalom/high3"]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -6.87154, 3.03399, 0.00161743)
 shape = SubResource("BoxShape3D_rpvwv")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="testcourse/3d/slalom/high3"]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Environment/testcourse/3d/slalom/high3"]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 6.93018, 2.8285, 0)
 shape = SubResource("BoxShape3D_rpvwv")
 
-[node name="Cylinder" type="MeshInstance3D" parent="testcourse/3d/slalom/high3"]
+[node name="Cylinder" type="MeshInstance3D" parent="Environment/testcourse/3d/slalom/high3"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = SubResource("ArrayMesh_rbbvt")
 skeleton = NodePath("")
 
-[node name="HingeJoint3D3" type="HingeJoint3D" parent="testcourse/3d/slalom/high3"]
+[node name="HingeJoint3D3" type="HingeJoint3D" parent="Environment/testcourse/3d/slalom/high3"]
 transform = Transform3D(-4.47035e-08, 0, 1, 0, 1, 0, -1, 0, -4.47035e-08, -3, 5.66678, 0)
 node_b = NodePath("../MaxHeightSign")
 angular_limit/enable = true
@@ -2505,7 +2445,7 @@ angular_limit/upper = 1.0472
 angular_limit/lower = -1.0472
 angular_limit/bias = 0.5
 
-[node name="HingeJoint3D4" type="HingeJoint3D" parent="testcourse/3d/slalom/high3"]
+[node name="HingeJoint3D4" type="HingeJoint3D" parent="Environment/testcourse/3d/slalom/high3"]
 transform = Transform3D(-4.47035e-08, 0, 1, 0, 1, 0, -1, 0, -4.47035e-08, 2.99998, 5.66678, 0)
 node_b = NodePath("../MaxHeightSign")
 angular_limit/enable = true
@@ -2513,30 +2453,30 @@ angular_limit/upper = 1.0472
 angular_limit/lower = -1.0472
 angular_limit/bias = 0.5
 
-[node name="MaxHeightSign" parent="testcourse/3d/slalom/high3" instance=ExtResource("54_jj4k5")]
+[node name="MaxHeightSign" parent="Environment/testcourse/3d/slalom/high3" instance=ExtResource("54_jj4k5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.37065, 0)
 
-[node name="high4" type="StaticBody3D" parent="testcourse/3d/slalom"]
+[node name="high4" type="StaticBody3D" parent="Environment/testcourse/3d/slalom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 170.31, 0.499998, 43.5179)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="testcourse/3d/slalom/high4"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/testcourse/3d/slalom/high4"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.0146561, 6.12818, -0.00088501)
 shape = SubResource("BoxShape3D_nde4r")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="testcourse/3d/slalom/high4"]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Environment/testcourse/3d/slalom/high4"]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -6.87154, 3.03399, 0.00161743)
 shape = SubResource("BoxShape3D_rpvwv")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="testcourse/3d/slalom/high4"]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Environment/testcourse/3d/slalom/high4"]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 6.93018, 2.8285, 0)
 shape = SubResource("BoxShape3D_rpvwv")
 
-[node name="Cylinder" type="MeshInstance3D" parent="testcourse/3d/slalom/high4"]
+[node name="Cylinder" type="MeshInstance3D" parent="Environment/testcourse/3d/slalom/high4"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = SubResource("ArrayMesh_rbbvt")
 skeleton = NodePath("")
 
-[node name="HingeJoint3D3" type="HingeJoint3D" parent="testcourse/3d/slalom/high4"]
+[node name="HingeJoint3D3" type="HingeJoint3D" parent="Environment/testcourse/3d/slalom/high4"]
 transform = Transform3D(-4.47035e-08, 0, 1, 0, 1, 0, -1, 0, -4.47035e-08, -3, 5.66678, 0)
 node_b = NodePath("../MaxHeightSign")
 angular_limit/enable = true
@@ -2544,7 +2484,7 @@ angular_limit/upper = 1.0472
 angular_limit/lower = -1.0472
 angular_limit/bias = 0.5
 
-[node name="HingeJoint3D4" type="HingeJoint3D" parent="testcourse/3d/slalom/high4"]
+[node name="HingeJoint3D4" type="HingeJoint3D" parent="Environment/testcourse/3d/slalom/high4"]
 transform = Transform3D(-4.47035e-08, 0, 1, 0, 1, 0, -1, 0, -4.47035e-08, 2.99998, 5.66678, 0)
 node_b = NodePath("../MaxHeightSign")
 angular_limit/enable = true
@@ -2552,33 +2492,33 @@ angular_limit/upper = 1.0472
 angular_limit/lower = -1.0472
 angular_limit/bias = 0.5
 
-[node name="MaxHeightSign" parent="testcourse/3d/slalom/high4" instance=ExtResource("54_jj4k5")]
+[node name="MaxHeightSign" parent="Environment/testcourse/3d/slalom/high4" instance=ExtResource("54_jj4k5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.37065, 0)
 
-[node name="heightlimsigns" type="Node3D" parent="testcourse/3d"]
+[node name="heightlimsigns" type="Node3D" parent="Environment/testcourse/3d"]
 transform = Transform3D(0.996622, 0, 0.0821299, 0, 1, 0, -0.0821299, 0, 0.996622, -69.3673, 0, 97.7709)
 
-[node name="high" type="StaticBody3D" parent="testcourse/3d/heightlimsigns"]
+[node name="high" type="StaticBody3D" parent="Environment/testcourse/3d/heightlimsigns"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.40328, 0.499998, 14.8374)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="testcourse/3d/heightlimsigns/high"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/testcourse/3d/heightlimsigns/high"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.0146561, 6.12818, -0.00088501)
 shape = SubResource("BoxShape3D_nde4r")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="testcourse/3d/heightlimsigns/high"]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Environment/testcourse/3d/heightlimsigns/high"]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -6.87154, 3.03399, 0.00161743)
 shape = SubResource("BoxShape3D_rpvwv")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="testcourse/3d/heightlimsigns/high"]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Environment/testcourse/3d/heightlimsigns/high"]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 6.93018, 2.8285, 0)
 shape = SubResource("BoxShape3D_rpvwv")
 
-[node name="Cylinder" type="MeshInstance3D" parent="testcourse/3d/heightlimsigns/high"]
+[node name="Cylinder" type="MeshInstance3D" parent="Environment/testcourse/3d/heightlimsigns/high"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = SubResource("ArrayMesh_rbbvt")
 skeleton = NodePath("")
 
-[node name="HingeJoint3D3" type="HingeJoint3D" parent="testcourse/3d/heightlimsigns/high"]
+[node name="HingeJoint3D3" type="HingeJoint3D" parent="Environment/testcourse/3d/heightlimsigns/high"]
 transform = Transform3D(-4.47035e-08, 0, 1, 0, 1, 0, -1, 0, -4.47035e-08, -3, 5.66678, 0)
 node_b = NodePath("../MaxHeightSign")
 angular_limit/enable = true
@@ -2586,7 +2526,7 @@ angular_limit/upper = 1.0472
 angular_limit/lower = -1.0472
 angular_limit/bias = 0.5
 
-[node name="HingeJoint3D4" type="HingeJoint3D" parent="testcourse/3d/heightlimsigns/high"]
+[node name="HingeJoint3D4" type="HingeJoint3D" parent="Environment/testcourse/3d/heightlimsigns/high"]
 transform = Transform3D(-4.47035e-08, 0, 1, 0, 1, 0, -1, 0, -4.47035e-08, 2.99998, 5.66678, 0)
 node_b = NodePath("../MaxHeightSign")
 angular_limit/enable = true
@@ -2594,30 +2534,30 @@ angular_limit/upper = 1.0472
 angular_limit/lower = -1.0472
 angular_limit/bias = 0.5
 
-[node name="MaxHeightSign" parent="testcourse/3d/heightlimsigns/high" instance=ExtResource("54_jj4k5")]
+[node name="MaxHeightSign" parent="Environment/testcourse/3d/heightlimsigns/high" instance=ExtResource("54_jj4k5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.37065, 0)
 
-[node name="high2" type="StaticBody3D" parent="testcourse/3d/heightlimsigns"]
+[node name="high2" type="StaticBody3D" parent="Environment/testcourse/3d/heightlimsigns"]
 transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 27.3385, 0.332881, -35.0972)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="testcourse/3d/heightlimsigns/high2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/testcourse/3d/heightlimsigns/high2"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 4.98564, 0)
 shape = SubResource("BoxShape3D_nde4r")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="testcourse/3d/heightlimsigns/high2"]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Environment/testcourse/3d/heightlimsigns/high2"]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -6.87154, 3.03399, 0.00161743)
 shape = SubResource("BoxShape3D_rpvwv")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="testcourse/3d/heightlimsigns/high2"]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Environment/testcourse/3d/heightlimsigns/high2"]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 6.93018, 2.8285, 0)
 shape = SubResource("BoxShape3D_rpvwv")
 
-[node name="Cylinder3" type="MeshInstance3D" parent="testcourse/3d/heightlimsigns/high2"]
+[node name="Cylinder3" type="MeshInstance3D" parent="Environment/testcourse/3d/heightlimsigns/high2"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = SubResource("ArrayMesh_nde4r")
 skeleton = NodePath("")
 
-[node name="HingeJoint3D3" type="HingeJoint3D" parent="testcourse/3d/heightlimsigns/high2"]
+[node name="HingeJoint3D3" type="HingeJoint3D" parent="Environment/testcourse/3d/heightlimsigns/high2"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 4.75045, 0)
 node_b = NodePath("../MaxHeightSign")
 angular_limit/enable = true
@@ -2625,7 +2565,7 @@ angular_limit/upper = 1.0472
 angular_limit/lower = -1.0472
 angular_limit/bias = 0.5
 
-[node name="HingeJoint3D4" type="HingeJoint3D" parent="testcourse/3d/heightlimsigns/high2"]
+[node name="HingeJoint3D4" type="HingeJoint3D" parent="Environment/testcourse/3d/heightlimsigns/high2"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, 4.75045, 0)
 node_b = NodePath("../MaxHeightSign")
 angular_limit/enable = true
@@ -2633,30 +2573,30 @@ angular_limit/upper = 1.0472
 angular_limit/lower = -1.0472
 angular_limit/bias = 0.5
 
-[node name="MaxHeightSign" parent="testcourse/3d/heightlimsigns/high2" instance=ExtResource("54_jj4k5")]
+[node name="MaxHeightSign" parent="Environment/testcourse/3d/heightlimsigns/high2" instance=ExtResource("54_jj4k5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.45432, 0)
 
-[node name="high3" type="StaticBody3D" parent="testcourse/3d/heightlimsigns"]
+[node name="high3" type="StaticBody3D" parent="Environment/testcourse/3d/heightlimsigns"]
 transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, -28.5682, 0.499998, 17.538)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="testcourse/3d/heightlimsigns/high3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/testcourse/3d/heightlimsigns/high3"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 4.98564, 0)
 shape = SubResource("BoxShape3D_nde4r")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="testcourse/3d/heightlimsigns/high3"]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Environment/testcourse/3d/heightlimsigns/high3"]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -6.87154, 3.03399, 0.00161743)
 shape = SubResource("BoxShape3D_rpvwv")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="testcourse/3d/heightlimsigns/high3"]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Environment/testcourse/3d/heightlimsigns/high3"]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 6.93018, 2.8285, 0)
 shape = SubResource("BoxShape3D_rpvwv")
 
-[node name="Cylinder3" type="MeshInstance3D" parent="testcourse/3d/heightlimsigns/high3"]
+[node name="Cylinder3" type="MeshInstance3D" parent="Environment/testcourse/3d/heightlimsigns/high3"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = SubResource("ArrayMesh_nde4r")
 skeleton = NodePath("")
 
-[node name="HingeJoint3D3" type="HingeJoint3D" parent="testcourse/3d/heightlimsigns/high3"]
+[node name="HingeJoint3D3" type="HingeJoint3D" parent="Environment/testcourse/3d/heightlimsigns/high3"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 4.75045, 0)
 node_b = NodePath("../MaxHeightSign")
 angular_limit/enable = true
@@ -2664,7 +2604,7 @@ angular_limit/upper = 1.0472
 angular_limit/lower = -1.0472
 angular_limit/bias = 0.5
 
-[node name="HingeJoint3D4" type="HingeJoint3D" parent="testcourse/3d/heightlimsigns/high3"]
+[node name="HingeJoint3D4" type="HingeJoint3D" parent="Environment/testcourse/3d/heightlimsigns/high3"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, 4.75045, 0)
 node_b = NodePath("../MaxHeightSign")
 angular_limit/enable = true
@@ -2672,30 +2612,30 @@ angular_limit/upper = 1.0472
 angular_limit/lower = -1.0472
 angular_limit/bias = 0.5
 
-[node name="MaxHeightSign" parent="testcourse/3d/heightlimsigns/high3" instance=ExtResource("54_jj4k5")]
+[node name="MaxHeightSign" parent="Environment/testcourse/3d/heightlimsigns/high3" instance=ExtResource("54_jj4k5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.45432, 0)
 
-[node name="high6" type="StaticBody3D" parent="testcourse/3d/heightlimsigns"]
+[node name="high6" type="StaticBody3D" parent="Environment/testcourse/3d/heightlimsigns"]
 transform = Transform3D(-0.709079, 0, 0.70513, 0, 1, 0, -0.70513, 0, -0.709079, -33.2302, 0.499997, -1.26105)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="testcourse/3d/heightlimsigns/high6"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/testcourse/3d/heightlimsigns/high6"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 4.98564, 0)
 shape = SubResource("BoxShape3D_nde4r")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="testcourse/3d/heightlimsigns/high6"]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Environment/testcourse/3d/heightlimsigns/high6"]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -6.87154, 3.03399, 0.00161743)
 shape = SubResource("BoxShape3D_rpvwv")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="testcourse/3d/heightlimsigns/high6"]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Environment/testcourse/3d/heightlimsigns/high6"]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 6.93018, 2.8285, 0)
 shape = SubResource("BoxShape3D_rpvwv")
 
-[node name="Cylinder3" type="MeshInstance3D" parent="testcourse/3d/heightlimsigns/high6"]
+[node name="Cylinder3" type="MeshInstance3D" parent="Environment/testcourse/3d/heightlimsigns/high6"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = SubResource("ArrayMesh_nde4r")
 skeleton = NodePath("")
 
-[node name="HingeJoint3D3" type="HingeJoint3D" parent="testcourse/3d/heightlimsigns/high6"]
+[node name="HingeJoint3D3" type="HingeJoint3D" parent="Environment/testcourse/3d/heightlimsigns/high6"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 4.75045, 0)
 node_b = NodePath("../MaxHeightSign")
 angular_limit/enable = true
@@ -2703,7 +2643,7 @@ angular_limit/upper = 1.0472
 angular_limit/lower = -1.0472
 angular_limit/bias = 0.5
 
-[node name="HingeJoint3D4" type="HingeJoint3D" parent="testcourse/3d/heightlimsigns/high6"]
+[node name="HingeJoint3D4" type="HingeJoint3D" parent="Environment/testcourse/3d/heightlimsigns/high6"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, 4.75045, 0)
 node_b = NodePath("../MaxHeightSign")
 angular_limit/enable = true
@@ -2711,35 +2651,35 @@ angular_limit/upper = 1.0472
 angular_limit/lower = -1.0472
 angular_limit/bias = 0.5
 
-[node name="MaxHeightSign" parent="testcourse/3d/heightlimsigns/high6" instance=ExtResource("54_jj4k5")]
+[node name="MaxHeightSign" parent="Environment/testcourse/3d/heightlimsigns/high6" instance=ExtResource("54_jj4k5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.45432, 0)
 
-[node name="high4" type="StaticBody3D" parent="testcourse/3d/heightlimsigns"]
+[node name="high4" type="StaticBody3D" parent="Environment/testcourse/3d/heightlimsigns"]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -24.0753, 0.499998, -21.8786)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="testcourse/3d/heightlimsigns/high4"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/testcourse/3d/heightlimsigns/high4"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 4.98564, 0)
 shape = SubResource("BoxShape3D_nde4r")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="testcourse/3d/heightlimsigns/high4"]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Environment/testcourse/3d/heightlimsigns/high4"]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -6.87154, 3.03399, 0.00161743)
 shape = SubResource("BoxShape3D_rpvwv")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="testcourse/3d/heightlimsigns/high4"]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Environment/testcourse/3d/heightlimsigns/high4"]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 6.93018, 2.8285, 0)
 shape = SubResource("BoxShape3D_rpvwv")
 
-[node name="Cylinder3" type="MeshInstance3D" parent="testcourse/3d/heightlimsigns/high4"]
+[node name="Cylinder3" type="MeshInstance3D" parent="Environment/testcourse/3d/heightlimsigns/high4"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = SubResource("ArrayMesh_nde4r")
 skeleton = NodePath("")
 
-[node name="Cylinder4" type="MeshInstance3D" parent="testcourse/3d/heightlimsigns/high4"]
+[node name="Cylinder4" type="MeshInstance3D" parent="Environment/testcourse/3d/heightlimsigns/high4"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = SubResource("ArrayMesh_nde4r")
 skeleton = NodePath("")
 
-[node name="HingeJoint3D3" type="HingeJoint3D" parent="testcourse/3d/heightlimsigns/high4"]
+[node name="HingeJoint3D3" type="HingeJoint3D" parent="Environment/testcourse/3d/heightlimsigns/high4"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 4.75045, 0)
 node_b = NodePath("../MaxHeightSign")
 angular_limit/enable = true
@@ -2747,7 +2687,7 @@ angular_limit/upper = 1.0472
 angular_limit/lower = -1.0472
 angular_limit/bias = 0.5
 
-[node name="HingeJoint3D4" type="HingeJoint3D" parent="testcourse/3d/heightlimsigns/high4"]
+[node name="HingeJoint3D4" type="HingeJoint3D" parent="Environment/testcourse/3d/heightlimsigns/high4"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, 4.75045, 0)
 node_b = NodePath("../MaxHeightSign")
 angular_limit/enable = true
@@ -2755,30 +2695,30 @@ angular_limit/upper = 1.0472
 angular_limit/lower = -1.0472
 angular_limit/bias = 0.5
 
-[node name="MaxHeightSign" parent="testcourse/3d/heightlimsigns/high4" instance=ExtResource("54_jj4k5")]
+[node name="MaxHeightSign" parent="Environment/testcourse/3d/heightlimsigns/high4" instance=ExtResource("54_jj4k5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.45432, 0)
 
-[node name="high5" type="StaticBody3D" parent="testcourse/3d/heightlimsigns"]
+[node name="high5" type="StaticBody3D" parent="Environment/testcourse/3d/heightlimsigns"]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 39.4407, 0.499998, 5.39006)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="testcourse/3d/heightlimsigns/high5"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/testcourse/3d/heightlimsigns/high5"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 4.98564, 0)
 shape = SubResource("BoxShape3D_nde4r")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="testcourse/3d/heightlimsigns/high5"]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Environment/testcourse/3d/heightlimsigns/high5"]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -6.87154, 3.03399, 0.00161743)
 shape = SubResource("BoxShape3D_rpvwv")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="testcourse/3d/heightlimsigns/high5"]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Environment/testcourse/3d/heightlimsigns/high5"]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 6.93018, 2.8285, 0)
 shape = SubResource("BoxShape3D_rpvwv")
 
-[node name="Cylinder3" type="MeshInstance3D" parent="testcourse/3d/heightlimsigns/high5"]
+[node name="Cylinder3" type="MeshInstance3D" parent="Environment/testcourse/3d/heightlimsigns/high5"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = SubResource("ArrayMesh_nde4r")
 skeleton = NodePath("")
 
-[node name="HingeJoint3D3" type="HingeJoint3D" parent="testcourse/3d/heightlimsigns/high5"]
+[node name="HingeJoint3D3" type="HingeJoint3D" parent="Environment/testcourse/3d/heightlimsigns/high5"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 4.75045, 0)
 node_b = NodePath("../MaxHeightSign")
 angular_limit/enable = true
@@ -2786,7 +2726,7 @@ angular_limit/upper = 1.0472
 angular_limit/lower = -1.0472
 angular_limit/bias = 0.5
 
-[node name="HingeJoint3D4" type="HingeJoint3D" parent="testcourse/3d/heightlimsigns/high5"]
+[node name="HingeJoint3D4" type="HingeJoint3D" parent="Environment/testcourse/3d/heightlimsigns/high5"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, 4.75045, 0)
 node_b = NodePath("../MaxHeightSign")
 angular_limit/enable = true
@@ -2794,237 +2734,237 @@ angular_limit/upper = 1.0472
 angular_limit/lower = -1.0472
 angular_limit/bias = 0.5
 
-[node name="MaxHeightSign" parent="testcourse/3d/heightlimsigns/high5" instance=ExtResource("54_jj4k5")]
+[node name="MaxHeightSign" parent="Environment/testcourse/3d/heightlimsigns/high5" instance=ExtResource("54_jj4k5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.45432, 0)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="testcourse/3d/heightlimsigns"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/testcourse/3d/heightlimsigns"]
 transform = Transform3D(0.996765, 0, -0.0803729, 0, 1, 0, 0.0803729, 0, 0.996765, 10.6573, 2.55211, -11.0114)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="testcourse/3d/heightlimsigns/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/testcourse/3d/heightlimsigns/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.923016, 0)
 shape = SubResource("BoxShape3D_748tb")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="testcourse/3d/heightlimsigns/StaticBody3D/CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/testcourse/3d/heightlimsigns/StaticBody3D/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0395384, 0)
 mesh = SubResource("BoxMesh_rbbvt")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="testcourse/3d/heightlimsigns/StaticBody3D"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Environment/testcourse/3d/heightlimsigns/StaticBody3D"]
 transform = Transform3D(0.965926, 0.258819, -6.00661e-05, -0.258819, 0.965926, -0.000456248, -6.00661e-05, 0.000456248, 1, 14.2415, -2.78828, 0.0250549)
 shape = SubResource("BoxShape3D_748tb")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="testcourse/3d/heightlimsigns/StaticBody3D/CollisionShape3D2"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/testcourse/3d/heightlimsigns/StaticBody3D/CollisionShape3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0395384, 0)
 mesh = SubResource("BoxMesh_rbbvt")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="testcourse/3d/heightlimsigns/StaticBody3D"]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Environment/testcourse/3d/heightlimsigns/StaticBody3D"]
 transform = Transform3D(-4.22588e-08, -1.12341e-08, 1, -0.258819, 0.965926, 0, -0.965926, -0.258819, -4.36557e-08, -0.0176468, -2.78828, -14.2286)
 shape = SubResource("BoxShape3D_748tb")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="testcourse/3d/heightlimsigns/StaticBody3D/CollisionShape3D3"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/testcourse/3d/heightlimsigns/StaticBody3D/CollisionShape3D3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0395384, 0)
 mesh = SubResource("BoxMesh_rbbvt")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="testcourse/3d/heightlimsigns/StaticBody3D"]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Environment/testcourse/3d/heightlimsigns/StaticBody3D"]
 transform = Transform3D(0.470002, 0.170564, -0.866029, -0.34138, 0.939925, -0.000152444, 0.813977, 0.295717, 0.499994, 25.9079, -1.64878, 32.6151)
 shape = SubResource("BoxShape3D_rbbvt")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="testcourse/3d/heightlimsigns/StaticBody3D/CollisionShape3D4"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/testcourse/3d/heightlimsigns/StaticBody3D/CollisionShape3D4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0395384, 0)
 mesh = SubResource("BoxMesh_rcfhs")
 
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="testcourse/3d/heightlimsigns/StaticBody3D"]
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Environment/testcourse/3d/heightlimsigns/StaticBody3D"]
 transform = Transform3D(-0.965926, -0.258819, -8.74279e-08, -0.258819, 0.965926, 0, 8.44011e-08, 2.25264e-08, -1, -14.1482, -2.78828, 0.0288773)
 shape = SubResource("BoxShape3D_748tb")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="testcourse/3d/heightlimsigns/StaticBody3D/CollisionShape3D5"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/testcourse/3d/heightlimsigns/StaticBody3D/CollisionShape3D5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0395384, 0)
 mesh = SubResource("BoxMesh_rbbvt")
 
-[node name="CSGTorus3D" type="CSGTorus3D" parent="testcourse/3d/heightlimsigns"]
+[node name="CSGTorus3D" type="CSGTorus3D" parent="Environment/testcourse/3d/heightlimsigns"]
 transform = Transform3D(0.892515, 0.451018, 0.000593435, -6.63681e-05, 0.00144707, -0.999999, -0.451017, 0.892514, 0.00132144, 25.9058, 11.0694, 7.7858)
 inner_radius = 5.10043
 outer_radius = 5.49513
 
-[node name="props" type="Node3D" parent="testcourse/3d"]
+[node name="props" type="Node3D" parent="Environment/testcourse/3d"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -91.5603, 1.76194, 67.4839)
 
-[node name="Cone" parent="testcourse/3d/props" instance=ExtResource("55_1rjg3")]
+[node name="Cone" parent="Environment/testcourse/3d/props" instance=ExtResource("55_1rjg3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.1002, -1.22349, 45.1821)
 
-[node name="Cone10" parent="testcourse/3d/props" instance=ExtResource("55_1rjg3")]
+[node name="Cone10" parent="Environment/testcourse/3d/props" instance=ExtResource("55_1rjg3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.7475, -1.22349, 45.316)
 
-[node name="Cone11" parent="testcourse/3d/props" instance=ExtResource("55_1rjg3")]
+[node name="Cone11" parent="Environment/testcourse/3d/props" instance=ExtResource("55_1rjg3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.2569, -1.22349, 43.0322)
 
-[node name="Cone12" parent="testcourse/3d/props" instance=ExtResource("55_1rjg3")]
+[node name="Cone12" parent="Environment/testcourse/3d/props" instance=ExtResource("55_1rjg3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.3097, -1.22349, 47.057)
 
-[node name="Cone13" parent="testcourse/3d/props" instance=ExtResource("55_1rjg3")]
+[node name="Cone13" parent="Environment/testcourse/3d/props" instance=ExtResource("55_1rjg3")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 24.3971, -1.22349, 28.0724)
 
-[node name="Cone14" parent="testcourse/3d/props" instance=ExtResource("55_1rjg3")]
+[node name="Cone14" parent="Environment/testcourse/3d/props" instance=ExtResource("55_1rjg3")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 11.6368, -1.22349, 28.4829)
 
-[node name="Cone15" parent="testcourse/3d/props" instance=ExtResource("55_1rjg3")]
+[node name="Cone15" parent="Environment/testcourse/3d/props" instance=ExtResource("55_1rjg3")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 14.319, -1.22349, 27.9353)
 
-[node name="Cone16" parent="testcourse/3d/props" instance=ExtResource("55_1rjg3")]
+[node name="Cone16" parent="Environment/testcourse/3d/props" instance=ExtResource("55_1rjg3")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -12.834, -1.22349, 4.66287)
 
-[node name="Cone17" parent="testcourse/3d/props" instance=ExtResource("55_1rjg3")]
+[node name="Cone17" parent="Environment/testcourse/3d/props" instance=ExtResource("55_1rjg3")]
 transform = Transform3D(0.93574, 0, -0.352691, 0, 1, 0, 0.352691, 0, 0.93574, -7.17683, -1.22349, 8.81727)
 
-[node name="Cone18" parent="testcourse/3d/props" instance=ExtResource("55_1rjg3")]
+[node name="Cone18" parent="Environment/testcourse/3d/props" instance=ExtResource("55_1rjg3")]
 transform = Transform3D(0.93574, 0, -0.352691, 0, 1, 0, 0.352691, 0, 0.93574, 2.64898, -1.22349, 29.1811)
 
-[node name="Cone19" parent="testcourse/3d/props" instance=ExtResource("55_1rjg3")]
+[node name="Cone19" parent="Environment/testcourse/3d/props" instance=ExtResource("55_1rjg3")]
 transform = Transform3D(0.93574, 0, -0.352691, 0, 1, 0, 0.352691, 0, 0.93574, 4.8669, -1.22349, 27.5763)
 
-[node name="Cone20" parent="testcourse/3d/props" instance=ExtResource("55_1rjg3")]
+[node name="Cone20" parent="Environment/testcourse/3d/props" instance=ExtResource("55_1rjg3")]
 transform = Transform3D(0.93574, 0, -0.352691, 0, 1, 0, 0.352691, 0, 0.93574, 3.49682, -1.22349, 31.3611)
 
-[node name="Cone2" parent="testcourse/3d/props" instance=ExtResource("55_1rjg3")]
+[node name="Cone2" parent="Environment/testcourse/3d/props" instance=ExtResource("55_1rjg3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.408, 1.90561, 11.7425)
 
-[node name="Cone3" parent="testcourse/3d/props" instance=ExtResource("55_1rjg3")]
+[node name="Cone3" parent="Environment/testcourse/3d/props" instance=ExtResource("55_1rjg3")]
 transform = Transform3D(0.959795, 0, -0.2807, 0, 1, 0, 0.2807, 0, 0.959795, 27.408, 1.90561, 11.7425)
 
-[node name="Cone4" parent="testcourse/3d/props" instance=ExtResource("55_1rjg3")]
+[node name="Cone4" parent="Environment/testcourse/3d/props" instance=ExtResource("55_1rjg3")]
 transform = Transform3D(0.992254, 0, 0.124225, 0, 1, 0, -0.124225, 0, 0.992254, 29.4158, 1.90561, 11.8667)
 
-[node name="Cone5" parent="testcourse/3d/props" instance=ExtResource("55_1rjg3")]
+[node name="Cone5" parent="Environment/testcourse/3d/props" instance=ExtResource("55_1rjg3")]
 transform = Transform3D(0.987231, 0, -0.159295, 0, 1, 0, 0.159295, 0, 0.987231, 31.4003, 1.90561, 11.6183)
 
-[node name="Cone6" parent="testcourse/3d/props" instance=ExtResource("55_1rjg3")]
+[node name="Cone6" parent="Environment/testcourse/3d/props" instance=ExtResource("55_1rjg3")]
 transform = Transform3D(-0.999946, 0, -0.0103495, 0, 1, 0, 0.0103495, 0, -0.999946, 35.1336, 1.90561, 11.7322)
 
-[node name="Cone7" parent="testcourse/3d/props" instance=ExtResource("55_1rjg3")]
+[node name="Cone7" parent="Environment/testcourse/3d/props" instance=ExtResource("55_1rjg3")]
 transform = Transform3D(-0.962649, 0, 0.270752, 0, 1, 0, -0.270752, 0, -0.962649, 33.1337, 1.90561, 11.7529)
 
-[node name="Cone8" parent="testcourse/3d/props" instance=ExtResource("55_1rjg3")]
+[node name="Cone8" parent="Environment/testcourse/3d/props" instance=ExtResource("55_1rjg3")]
 transform = Transform3D(-0.969257, 0, -0.246052, 0, 1, 0, 0.246052, 0, -0.969257, 38.8129, 1.9056, 11.7547)
 
-[node name="Cone9" parent="testcourse/3d/props" instance=ExtResource("55_1rjg3")]
+[node name="Cone9" parent="Environment/testcourse/3d/props" instance=ExtResource("55_1rjg3")]
 transform = Transform3D(-0.999355, 0, 0.0359113, 0, 1, 0, -0.0359113, 0, -0.999355, 36.8744, 1.9056, 12.2468)
 
-[node name="Box3" parent="testcourse/3d/props" instance=ExtResource("42_w31na")]
+[node name="Box3" parent="Environment/testcourse/3d/props" instance=ExtResource("42_w31na")]
 transform = Transform3D(0.514647, 0.0459689, 0.856169, -0.0335827, 0.998877, -0.0334443, -0.856745, -0.0115405, 0.515612, 0, 0, 0)
 
-[node name="BOX2" type="MeshInstance3D" parent="testcourse/3d/props/Box3"]
+[node name="BOX2" type="MeshInstance3D" parent="Environment/testcourse/3d/props/Box3"]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
 mesh = SubResource("ArrayMesh_rpvwv")
 skeleton = NodePath("")
 
-[node name="Box2" parent="testcourse/3d/props" instance=ExtResource("42_w31na")]
+[node name="Box2" parent="Environment/testcourse/3d/props" instance=ExtResource("42_w31na")]
 transform = Transform3D(-0.997817, -0.0441779, 0.0490982, -0.0491462, -1.31029e-07, -0.998792, 0.044124, -0.999024, -0.00217105, 0.609207, 0, 5.21298)
 
-[node name="BOX" type="MeshInstance3D" parent="testcourse/3d/props/Box2"]
+[node name="BOX" type="MeshInstance3D" parent="Environment/testcourse/3d/props/Box2"]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, -0.00881007, 0)
 mesh = SubResource("ArrayMesh_qoucm")
 skeleton = NodePath("")
 
-[node name="constructionbarrel" parent="testcourse/3d/props" instance=ExtResource("58_fi7xq")]
+[node name="constructionbarrel" parent="Environment/testcourse/3d/props" instance=ExtResource("58_fi7xq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.7291, 1.86715, 23.9285)
 
-[node name="constructionbarrel2" parent="testcourse/3d/props" instance=ExtResource("58_fi7xq")]
+[node name="constructionbarrel2" parent="Environment/testcourse/3d/props" instance=ExtResource("58_fi7xq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.1113, 1.86715, 24.7576)
 
-[node name="constructionbarrel4" parent="testcourse/3d/props" instance=ExtResource("58_fi7xq")]
+[node name="constructionbarrel4" parent="Environment/testcourse/3d/props" instance=ExtResource("58_fi7xq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3979, -1.26194, 30.2887)
 
-[node name="constructionbarrel5" parent="testcourse/3d/props" instance=ExtResource("58_fi7xq")]
+[node name="constructionbarrel5" parent="Environment/testcourse/3d/props" instance=ExtResource("58_fi7xq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.97157, -1.26194, 16.172)
 
-[node name="constructionbarrel6" parent="testcourse/3d/props" instance=ExtResource("58_fi7xq")]
+[node name="constructionbarrel6" parent="Environment/testcourse/3d/props" instance=ExtResource("58_fi7xq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.08762, -1.26194, 22.3047)
 
-[node name="constructionbarrel7" parent="testcourse/3d/props" instance=ExtResource("58_fi7xq")]
+[node name="constructionbarrel7" parent="Environment/testcourse/3d/props" instance=ExtResource("58_fi7xq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.99746, -1.26194, 44.3262)
 
-[node name="constructionbarrel3" parent="testcourse/3d/props" instance=ExtResource("58_fi7xq")]
+[node name="constructionbarrel3" parent="Environment/testcourse/3d/props" instance=ExtResource("58_fi7xq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.0427, 1.86715, 24.8983)
 
-[node name="Cone21" parent="testcourse/3d/props" instance=ExtResource("55_1rjg3")]
+[node name="Cone21" parent="Environment/testcourse/3d/props" instance=ExtResource("55_1rjg3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.27422, -1.22349, 13.5025)
 
-[node name="constructionbarrel8" parent="testcourse/3d/props" instance=ExtResource("58_fi7xq")]
+[node name="constructionbarrel8" parent="Environment/testcourse/3d/props" instance=ExtResource("58_fi7xq")]
 transform = Transform3D(0.99585, 0, -0.091015, 0, 1, 0, 0.091015, 0, 0.99585, 265.203, 14.5184, -30.7188)
 
-[node name="constructionbarrel9" parent="testcourse/3d/props" instance=ExtResource("58_fi7xq")]
+[node name="constructionbarrel9" parent="Environment/testcourse/3d/props" instance=ExtResource("58_fi7xq")]
 transform = Transform3D(0.99585, 0, -0.091015, 0, 1, 0, 0.091015, 0, 0.99585, 258.233, 14.5184, -31.3559)
 
-[node name="Cone24" parent="testcourse/3d/props" instance=ExtResource("55_1rjg3")]
+[node name="Cone24" parent="Environment/testcourse/3d/props" instance=ExtResource("55_1rjg3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 278.961, 14.5564, -47.7873)
 
-[node name="Cone25" parent="testcourse/3d/props" instance=ExtResource("55_1rjg3")]
+[node name="Cone25" parent="Environment/testcourse/3d/props" instance=ExtResource("55_1rjg3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 283.408, 14.5564, -46.6652)
 
-[node name="Cone26" parent="testcourse/3d/props" instance=ExtResource("55_1rjg3")]
+[node name="Cone26" parent="Environment/testcourse/3d/props" instance=ExtResource("55_1rjg3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 285.961, 14.5564, -42.7873)
 
-[node name="Cone27" parent="testcourse/3d/props" instance=ExtResource("55_1rjg3")]
+[node name="Cone27" parent="Environment/testcourse/3d/props" instance=ExtResource("55_1rjg3")]
 transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, 268.061, 14.5564, -36.0715)
 
-[node name="Cone28" parent="testcourse/3d/props" instance=ExtResource("55_1rjg3")]
+[node name="Cone28" parent="Environment/testcourse/3d/props" instance=ExtResource("55_1rjg3")]
 transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, 264.771, 14.5564, -39.2667)
 
-[node name="Cone29" parent="testcourse/3d/props" instance=ExtResource("55_1rjg3")]
+[node name="Cone29" parent="Environment/testcourse/3d/props" instance=ExtResource("55_1rjg3")]
 transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, 264.499, 14.5564, -43.9016)
 
-[node name="Cone22" parent="testcourse/3d/props" instance=ExtResource("55_1rjg3")]
+[node name="Cone22" parent="Environment/testcourse/3d/props" instance=ExtResource("55_1rjg3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.82645, -1.22349, 6.05083)
 
-[node name="Cone23" parent="testcourse/3d/props" instance=ExtResource("55_1rjg3")]
+[node name="Cone23" parent="Environment/testcourse/3d/props" instance=ExtResource("55_1rjg3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.49908, -1.22349, 14.5666)
 
-[node name="streetlights" type="Node3D" parent="testcourse/3d"]
+[node name="streetlights" type="Node3D" parent="Environment/testcourse/3d"]
 
-[node name="streetlight" parent="testcourse/3d/streetlights" instance=ExtResource("59_225ok")]
+[node name="streetlight" parent="Environment/testcourse/3d/streetlights" instance=ExtResource("59_225ok")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.0386, 0.0494156, 95.2335)
 
-[node name="streetlight2" parent="testcourse/3d/streetlights" instance=ExtResource("59_225ok")]
+[node name="streetlight2" parent="Environment/testcourse/3d/streetlights" instance=ExtResource("59_225ok")]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -71.0386, 0.0494156, 74.2335)
 
-[node name="streetlight3" parent="testcourse/3d/streetlights" instance=ExtResource("59_225ok")]
+[node name="streetlight3" parent="Environment/testcourse/3d/streetlights" instance=ExtResource("59_225ok")]
 transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, -51.7669, 0.0494156, 78.052)
 
-[node name="streetlight4" parent="testcourse/3d/streetlights" instance=ExtResource("59_225ok")]
+[node name="streetlight4" parent="Environment/testcourse/3d/streetlights" instance=ExtResource("59_225ok")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -42.7669, 0.0494156, 116.052)
 
-[node name="streetlight5" parent="testcourse/3d/streetlights" instance=ExtResource("59_225ok")]
+[node name="streetlight5" parent="Environment/testcourse/3d/streetlights" instance=ExtResource("59_225ok")]
 transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -28.7244, 0.0494156, 82.7145)
 
-[node name="roadblocks" type="Node3D" parent="testcourse/3d"]
+[node name="roadblocks" type="Node3D" parent="Environment/testcourse/3d"]
 
-[node name="ConcreteRoadblock5" parent="testcourse/3d/roadblocks" instance=ExtResource("60_onpej")]
+[node name="ConcreteRoadblock5" parent="Environment/testcourse/3d/roadblocks" instance=ExtResource("60_onpej")]
 transform = Transform3D(-0.739408, 0, -0.673257, 0, 1, 0, 0.673257, 0, -0.739408, -18.2028, 0.590775, 61.0378)
 
-[node name="ConcreteRoadblock6" parent="testcourse/3d/roadblocks" instance=ExtResource("60_onpej")]
+[node name="ConcreteRoadblock6" parent="Environment/testcourse/3d/roadblocks" instance=ExtResource("60_onpej")]
 transform = Transform3D(-0.952762, 0, 0.303718, 0, 1, 0, -0.303718, 0, -0.952762, -12.727, 0.590775, 89.9786)
 
-[node name="ConcreteRoadblock7" parent="testcourse/3d/roadblocks" instance=ExtResource("60_onpej")]
+[node name="ConcreteRoadblock7" parent="Environment/testcourse/3d/roadblocks" instance=ExtResource("60_onpej")]
 transform = Transform3D(0.303717, 0, 0.952762, 0, 1, 0, -0.952762, 0, 0.303717, -51.3754, 0.590775, 99.9219)
 
-[node name="ConcreteRoadblock8" parent="testcourse/3d/roadblocks" instance=ExtResource("60_onpej")]
+[node name="ConcreteRoadblock8" parent="Environment/testcourse/3d/roadblocks" instance=ExtResource("60_onpej")]
 transform = Transform3D(0.739408, 0, 0.673257, 0, 1, 0, -0.673257, 0, 0.739408, -92.6604, 0.480646, 130.356)
 
-[node name="ConcreteRoadblock9" parent="testcourse/3d/roadblocks" instance=ExtResource("60_onpej")]
+[node name="ConcreteRoadblock9" parent="Environment/testcourse/3d/roadblocks" instance=ExtResource("60_onpej")]
 transform = Transform3D(0.84169, 0, -0.539962, 0, 1, 0, 0.539962, 0, 0.84169, -124.027, 0.480646, 96.2506)
 
-[node name="ConcreteRoadblock10" parent="testcourse/3d/roadblocks" instance=ExtResource("60_onpej")]
+[node name="ConcreteRoadblock10" parent="Environment/testcourse/3d/roadblocks" instance=ExtResource("60_onpej")]
 transform = Transform3D(0.976975, 0, 0.213354, 0, 1, 0, -0.213354, 0, 0.976975, -125.027, 0.480646, 114.251)
 
-[node name="ConcreteRoadblock11" parent="testcourse/3d/roadblocks" instance=ExtResource("60_onpej")]
+[node name="ConcreteRoadblock11" parent="Environment/testcourse/3d/roadblocks" instance=ExtResource("60_onpej")]
 transform = Transform3D(0.976975, 0, 0.213354, 0, 1, 0, -0.213354, 0, 0.976975, -74.0268, 0.480646, 96.2506)
 
-[node name="ConcreteRoadblock12" parent="testcourse/3d/roadblocks" instance=ExtResource("60_onpej")]
+[node name="ConcreteRoadblock12" parent="Environment/testcourse/3d/roadblocks" instance=ExtResource("60_onpej")]
 transform = Transform3D(0.976975, 0, 0.213354, 0, 1, 0, -0.213354, 0, 0.976975, -81.0268, 0.480646, 70.2506)
 
-[node name="ConcreteRoadblock13" parent="testcourse/3d/roadblocks" instance=ExtResource("60_onpej")]
+[node name="ConcreteRoadblock13" parent="Environment/testcourse/3d/roadblocks" instance=ExtResource("60_onpej")]
 transform = Transform3D(0.213354, 0, -0.976975, 0, 1, 0, 0.976975, 0, 0.213354, -68.0268, 0.480646, 42.2506)
 
-[node name="ConcreteRoadblock14" parent="testcourse/3d/roadblocks" instance=ExtResource("60_onpej")]
+[node name="ConcreteRoadblock14" parent="Environment/testcourse/3d/roadblocks" instance=ExtResource("60_onpej")]
 transform = Transform3D(-0.539962, 0, -0.84169, 0, 1, 0, 0.84169, 0, -0.539962, -49.0268, 0.480646, 47.2506)
 
 [node name="Debug" type="Node" parent="."]
@@ -3032,7 +2972,7 @@ transform = Transform3D(-0.539962, 0, -0.84169, 0, 1, 0, 0.84169, 0, -0.539962, 
 [node name="1" type="Node" parent="Debug"]
 
 [node name="ParkingGarage" type="Node3D" parent="."]
-transform = Transform3D(2.98023e-08, 0, -1, 0, 1, 0, 1, 0, 2.98023e-08, 78.1752, 2.35417, -8.6561)
+transform = Transform3D(2.98023e-08, 0, -1, 0, 1, 0, 1, 0, 2.98023e-08, 309.344, 2.35417, -320.728)
 
 [node name="HighestFloor" type="Node3D" parent="ParkingGarage"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075, 0)
@@ -4088,26 +4028,95 @@ transform = Transform3D(0.213354, 0, -0.976975, 0, 1, 0, 0.976975, 0, 0.213354, 
 [node name="ConcreteRoadblock4" parent="ParkingGarage" instance=ExtResource("60_onpej")]
 transform = Transform3D(0.888465, 0, 0.458944, 0, 1, 0, -0.458944, 0, 0.888465, -42.1686, 4.77298, 55.7288)
 
-[node name="yellowsidewalkcornerin" parent="." instance=ExtResource("76_jhq4w")]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 87.258, 0.895895, 4.81554)
+[node name="Node3D" type="Node3D" parent="ParkingGarage"]
+transform = Transform3D(-0.309216, 0, 0.950992, 0, 1, 0, -0.950992, 0, -0.309216, -31.238, -2.35417, 94.534)
 
-[node name="Node3D" type="Node3D" parent="."]
-transform = Transform3D(0.950992, 0, 0.309216, 0, 1, 0, -0.309216, 0, 0.950992, -16.3588, -3.8147e-06, -39.8941)
-
-[node name="garagedoor" parent="Node3D" instance=ExtResource("77_v54vm")]
+[node name="garagedoor" parent="ParkingGarage/Node3D" instance=ExtResource("77_v54vm")]
 transform = Transform3D(-3.71547e-08, 0, -0.85, 0, 0.85, 0, 0.85, 0, -3.71547e-08, -102.497, -0.0171421, 37.449)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -107.998, 3.16654, 37.2013)
+[node name="CSGBox3D" type="CSGBox3D" parent="ParkingGarage/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -107.998, 3.16654, 37.4287)
 use_collision = true
-size = Vector3(4.26282, 5.49719, 1)
+size = Vector3(4.26282, 5.49719, 0.203125)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -97.1442, 3.25584, 37.2013)
+[node name="CSGBox3D2" type="CSGBox3D" parent="ParkingGarage/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -97.1442, 3.25584, 37.4373)
 use_collision = true
-size = Vector3(4.32422, 5.67578, 1)
+size = Vector3(4.32422, 5.67578, 0.189453)
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="Node3D"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0.258819, 0.965926, 1.13133e-08, -0.965926, 0.258819, -4.2222e-08, -102.556, 8.4502, 30.0891)
+[node name="CSGBox3D3" type="CSGBox3D" parent="ParkingGarage/Node3D"]
+transform = Transform3D(-1.13133e-08, 2.98023e-08, 1, 1, 8.9407e-08, 1.13133e-08, -8.9407e-08, 1, -2.98023e-08, -102.523, 6.4502, 37.407)
 use_collision = true
-size = Vector3(16, 1.15088, 15.2612)
+size = Vector3(2, 0.231202, 15.1381)
+
+[node name="StartCinematic" type="Node3D" parent="."]
+transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, -74.7985, 1.76606, 147.873)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StartCinematic"]
+libraries = {
+&"": SubResource("AnimationLibrary_qih3j")
+}
+
+[node name="CinematicCam" type="Camera3D" parent="StartCinematic"]
+transform = Transform3D(1, -1.25483e-08, 2.70318e-08, 0, 0.907036, 0.421052, -2.98023e-08, -0.421052, 0.907037, -7.58193e-06, 3.23411, 4.89042)
+cull_mask = 1047569
+fov = 90.0
+
+[node name="boxes" type="Node3D" parent="StartCinematic"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.999581, 0, -7.2485e-08)
+
+[node name="BOX2" type="MeshInstance3D" parent="StartCinematic/boxes"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -3.4908, 0.0388806, -3.88908)
+layers = 524288
+mesh = ExtResource("43_jf088")
+skeleton = NodePath("")
+
+[node name="BOX4" type="MeshInstance3D" parent="StartCinematic/boxes"]
+transform = Transform3D(0.519615, 0, 0.3, 0, 0.6, 0, -0.3, 0, 0.519615, 2.5092, 0.0388806, 4.51092)
+layers = 524288
+mesh = ExtResource("43_jf088")
+skeleton = NodePath("")
+
+[node name="BOX" type="MeshInstance3D" parent="StartCinematic/boxes"]
+transform = Transform3D(0.6, -2.22045e-16, 0, -4.44089e-16, 0.6, 6.75848e-15, 0, -7.10543e-15, 0.6, -2.54159, 0.0780025, -5.2174)
+layers = 524288
+mesh = ExtResource("44_lgnrr")
+skeleton = NodePath("")
+
+[node name="BOX3" type="MeshInstance3D" parent="StartCinematic/boxes"]
+transform = Transform3D(0.6, -2.22045e-16, 0, -4.44089e-16, 0.6, 6.75848e-15, 0, -7.10543e-15, 0.6, -3.14158, 1.278, -4.6174)
+layers = 524288
+mesh = ExtResource("44_lgnrr")
+skeleton = NodePath("")
+
+[node name="Node3D" type="Node3D" parent="StartCinematic/boxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.644108, 0, 2.35139)
+
+[node name="BOX4" type="MeshInstance3D" parent="StartCinematic/boxes/Node3D"]
+transform = Transform3D(0.580781, 0, -0.150644, 0, 0.6, 0, 0.150644, 0, 0.580781, 3.64024, 0.0388803, -3.56461)
+layers = 524288
+mesh = ExtResource("43_jf088")
+skeleton = NodePath("")
+
+[node name="BOX7" type="MeshInstance3D" parent="StartCinematic/boxes/Node3D"]
+transform = Transform3D(0.580781, 0, -0.150644, 0, 0.6, 0, 0.150644, 0, 0.580781, 3.64024, 3.52384, -3.56461)
+layers = 524288
+mesh = ExtResource("43_jf088")
+skeleton = NodePath("")
+
+[node name="BOX5" type="MeshInstance3D" parent="StartCinematic/boxes/Node3D"]
+transform = Transform3D(0.424264, 0, 0.424264, 0, 0.6, 0, -0.424264, 0, 0.424264, 3.6313, 1.23888, -3.61679)
+layers = 524288
+mesh = ExtResource("43_jf088")
+skeleton = NodePath("")
+
+[node name="BOX6" type="MeshInstance3D" parent="StartCinematic/boxes/Node3D"]
+transform = Transform3D(0.59225, -2.22045e-16, 0.0961252, -1.58531e-15, 0.6, 6.70227e-15, -0.0961252, -7.10543e-15, 0.59225, 3.62128, 2.478, -3.66274)
+layers = 524288
+mesh = ExtResource("44_lgnrr")
+skeleton = NodePath("")
+
+[node name="Warehouse" type="Node3D" parent="."]
+
+[node name="warehouse" parent="." instance=ExtResource("78_kxstq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3763, 1.49999, -107.007)

@@ -71,7 +71,6 @@ shape = SubResource("BoxShape3D_um4q5")
 transform = Transform3D(1, 0, 0, 0, -0.0993893, 0.995049, 0, -0.995049, -0.0993893, 0, 4.39645, 1.12975)
 light_color = Color(0.760784, 1, 1, 1)
 light_energy = 16.0
-light_volumetric_fog_energy = 16.0
 shadow_bias = 6.115
 spot_range = 16.9264
 spot_attenuation = 0.82
@@ -81,7 +80,6 @@ spot_angle_attenuation = 0.702397
 [node name="OmniLight3D" type="OmniLight3D" parent="streetlight"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.57425, 1.12211)
 light_energy = 10.0
-light_volumetric_fog_energy = 10.0
 omni_range = 1.30652
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

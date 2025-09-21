@@ -8,6 +8,8 @@ class_name SkyProfile
 @export var sky_color: Color = Color(1.0, 1.0, 1.0)
 @export var horizon_color: Color = Color(1.0, 1.0, 1.0)
 @export var cloud_color: Color = Color(1.0, 1.0, 1.0)
+@export var horizon_height: float = 0.0
+
 
 @export_group("cloud settings")
 @export var cloud_threshold: float = 0.5
@@ -17,7 +19,7 @@ class_name SkyProfile
 @export var cloud_speed: float = 0.02
 @export var cloud_opacity: float = 1.0
 @export var dither_strength: float = 1.0
-@export var viewport_size: Vector2 = Vector2(1280,720)
+@export var viewport_size: Vector2 = Vector2(640,480)
 
 @export_group("lighting")
 @export var sun_intensity: float = 1.0

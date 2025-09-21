@@ -1,6 +1,8 @@
 extends Node
 
 @export var start_time: float = 30.0
+@export var time_frozen: bool
+
 @export var pickup_time_bonus: float = 5.0 
 @export var time_label: Label
 @export var points_label: Label
@@ -24,7 +26,7 @@ extends Node
 @export var end_screen: Node
 
 @export var time_before_starting: float
-
+@export var play_intro: bool
 var time_remaining: float
 var total_points: int = 0
 var game_active: bool = false
@@ -33,7 +35,6 @@ var combo_manager: ComboManager
 
 var total_boxes_delivered := 0
 var current_box_amount := 0
-
 func _ready():
 	
 	time_remaining = start_time
@@ -49,14 +50,19 @@ func _ready():
 	add_to_group("point_manager")
 	add_to_group("delivery_manager")
 	
-	combo_manager = _find_combo_manager()
+	combo_manager = $ComboManager
 	if combo_manager:
 		combo_manager.combo_achieved.connect(_on_combo_achieved)
 		combo_manager.combo_broken.connect(_on_combo_broken)
 	
 
 func _process(delta):
-	if game_active:
+	if Input.is_action_pressed("toggle_time"):
+		time_frozen = !time_frozen
+	if Input.is_action_pressed("end_timer"):
+		time_remaining = -1
+	
+	if game_active && !time_frozen:
 		time_remaining -= delta
 		if time_remaining <= 0:
 			time_remaining = 0
@@ -72,24 +78,6 @@ func _on_timer_timeout():
 			end_game()
 		update_time_label()
 
-func _find_combo_manager() -> ComboManager:
-	var possible_paths = [
-		"ComboManager", 
-		"../ComboManager",
-		"../../ComboManager",
-		"/root/ComboManager", 
-	]
-	
-	for path in possible_paths:
-		var node = get_node_or_null(path)
-		if node and node is ComboManager:
-			return node
-	
-	var combo_nodes = get_tree().get_nodes_in_group("combo_manager")
-	if combo_nodes.size() > 0:
-		return combo_nodes[0] as ComboManager
-	
-	return null
 
 func register_delivery(action_type: int, amount: int):
 	if not game_active:
@@ -106,7 +94,7 @@ func register_delivery(action_type: int, amount: int):
 		
 		time_remaining += pickup_time_bonus * actual_amount
 		if combo_manager:
-			var final_points = combo_manager.on_delivery_pickup(0) 
+			var _final_points = combo_manager.on_delivery_pickup(0) 
 			
 	elif action_type == 1: # dropoff
 		if current_box_amount <= 0:
@@ -164,11 +152,8 @@ func add_points(points: int, source_type: String = ""):
 		final_points = points
 	
 	else:
-		# For other point sources, let combo manager handle if applicable
 		if combo_manager:
-			# You can create specific methods for other point types
-			# For now, treat as general points
-			final_points = points  # Or handle through combo manager if needed
+			final_points = points 
 	
 	total_points += final_points
 	update_points_label()
@@ -246,12 +231,10 @@ func update_points_label():
 		points_label.text = "points: %d" % total_points
 
 func start_game():
-	#if start_screen:
-		#start_screen.update_label()
-		#
-	await get_tree().create_timer(time_before_starting).timeout
+	if play_intro:
+		await get_tree().create_timer(time_before_starting).timeout
 	game_active = true
-	
+
 func end_game():
 	game_active = false
 	if countdown_timer:

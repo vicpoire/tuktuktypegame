@@ -124,19 +124,10 @@ texture = ExtResource("4_up3ni")
 transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 0.999998, 0, 0, 0)
 shape = SubResource("BoxShape3D_qoucm")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.59489, 0)
-visible = false
-light_color = Color(0, 1, 0, 1)
-light_energy = 12.636
-light_volumetric_fog_energy = 5.0
-omni_range = 9.97599
-
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(0.999897, -0.006196, 0.0129619, 0.0129643, 0.000352189, -0.999916, 0.00619091, 0.999981, 0.00043248, 0, -11.8926, 0)
 light_color = Color(0, 1, 0, 1)
-light_energy = 8.0
-light_volumetric_fog_energy = 10.0
+light_energy = 16.0
 spot_range = 27.407
 spot_attenuation = 0.25
 spot_angle = 15.0

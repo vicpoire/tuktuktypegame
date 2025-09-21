@@ -1,6 +1,6 @@
 extends Area3D
 
-@export_enum("Pickup", "Dropoff") var action_type := 0
+@export_enum("pickup", "dropoff") var action_type := 0
 @export var amount: int = 1
 @export var cooldown_time = 1.0
 @export var pickup_color: Color = Color(0, 210, 0, 0)

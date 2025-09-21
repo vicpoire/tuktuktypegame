@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://cshcuhxmno2a7"]
+[gd_scene load_steps=32 format=4 uid="uid://cshcuhxmno2a7"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://hgfwxjyu0ddn" path="res://shapes/capsulephysmat.tres" id="1_x7f1w"]
 [ext_resource type="Script" uid="uid://c7xgqy1tiplgf" path="res://scripts/RaycastCar.gd" id="2_2te80"]
@@ -13,7 +13,7 @@
 [ext_resource type="Script" uid="uid://82igdbfokds1" path="res://scripts/lights.gd" id="14_br1ke"]
 
 [sub_resource type="Curve" id="Curve_utrr5"]
-_data = [Vector2(0, 0.374117), 0.0, 0.0, 0, 0, Vector2(0.211137, 0.460247), 0.0, 0.0, 0, 0, Vector2(0.487239, 0.787544), 0.0, 0.0, 0, 0, Vector2(0.593967, 0.592314), 0.0, 0.0, 0, 0, Vector2(0.791183, 0.506184), 0.0, 0.0, 0, 0, Vector2(1, 0.420053), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.374117), 0.0, 0.0, 0, 0, Vector2(0.211765, 0.73096), 0.0, 0.0, 0, 0, Vector2(0.487239, 0.787544), 0.0, 0.0, 0, 0, Vector2(0.593967, 0.592314), 0.0, 0.0, 0, 0, Vector2(0.791183, 0.506184), 0.0, 0.0, 0, 0, Vector2(1, 0.420053), 0.0, 0.0, 0, 0]
 point_count = 6
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_23hxl"]
@@ -100,7 +100,14 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_5nmht")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_02ht7"]
-size = Vector3(1.6, 3.32521, 0.256185)
+size = Vector3(1.6, 3.7002, 0.2028)
+
+[sub_resource type="Curve" id="Curve_tclv2"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.724138, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_utrr5"]
+curve = SubResource("Curve_tclv2")
 
 [sub_resource type="Gradient" id="Gradient_hjkst"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0.027451)
@@ -121,6 +128,7 @@ scale_min = 0.8
 scale_max = 655.29
 color = Color(1, 1, 1, 0)
 color_ramp = SubResource("GradientTexture1D_kfihb")
+alpha_curve = SubResource("CurveTexture_utrr5")
 
 [sub_resource type="FogMaterial" id="FogMaterial_mc6y4"]
 
@@ -190,6 +198,7 @@ shadow_mesh = SubResource("ArrayMesh_br1ke")
 [node name="Car" type="RigidBody3D" node_paths=PackedStringArray("lights")]
 process_physics_priority = 3
 transform = Transform3D(1, 0, -1.19209e-07, 0, 1, 0, 1.19209e-07, 0, 1, 0, 0, 0)
+collision_layer = 3
 mass = 50.0
 physics_material_override = ExtResource("1_x7f1w")
 center_of_mass_mode = 1
@@ -223,11 +232,11 @@ mesh = SubResource("ArrayMesh_kfihb")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.554249, -0.832351, 0, 0.832351, 0.554249, 0, 0.670658, -1.40965)
+transform = Transform3D(1, -2.55137e-08, 2.76175e-08, 3.71284e-08, 0.785922, -0.618326, -5.92939e-09, 0.618326, 0.785922, -9.05345e-09, 0.670658, -1.4856)
 shape = ExtResource("4_vtxnp")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.0309186, -0.783161)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.0576113, -0.595665)
 shape = SubResource("BoxShape3D_02ht7")
 
 [node name="Particles" type="Node3D" parent="." node_paths=PackedStringArray("skid_marks", "dust_emitters", "skid_smoke_emitters", "wheels")]
@@ -258,6 +267,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.774571, -2.4784)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.856707, -0.20792, 1.00969)
 emitting = false
 amount = 32
+lifetime = 1.5
 preprocess = 0.5
 randomness = 0.82
 process_material = SubResource("ParticleProcessMaterial_t6ch1")
@@ -269,6 +279,7 @@ draw_pass_2 = null
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.887303, -0.20792, 1.00969)
 emitting = false
 amount = 32
+lifetime = 1.5
 preprocess = 0.5
 randomness = 0.82
 process_material = SubResource("ParticleProcessMaterial_t6ch1")
@@ -280,6 +291,7 @@ draw_pass_2 = null
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0101997, -0.20792, -2.15196)
 emitting = false
 amount = 32
+lifetime = 1.5
 preprocess = 0.5
 randomness = 0.82
 process_material = SubResource("ParticleProcessMaterial_t6ch1")

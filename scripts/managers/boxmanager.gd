@@ -12,7 +12,6 @@ var current_box_amount := 0
 var animating_boxes: Array[BoxAnim] = []
 var pending_animations: Array[PendingAnim] = []
 
-# Reference to UI manager - assign in inspector
 @export var ui_manager: Node
 
 class BoxAnim:
@@ -78,19 +77,15 @@ func _process(delta):
 
 func add_box():
 	if stacked_boxes.is_empty():
-		print("⚠ No stacked_boxes assigned")
 		return
 	
 	if current_box_amount >= min(stacked_boxes.size(), current_box_max):
-		print("⚠ Max boxes reached")
 		return
 	
 	var box_index = current_box_amount
 	current_box_amount += 1
 	
-	print("Adding box at index:", box_index)
 	
-	# Update UI through UI manager
 	if ui_manager:
 		ui_manager.update_ui_viewports(current_box_amount)
 	
@@ -106,14 +101,9 @@ func remove_box():
 	if current_box_amount <= 0:
 		return
 	
-	if stacked_boxes.is_empty():
-		print("Warning: No stacked_boxes assigned")
-		return
-	
 	current_box_amount -= 1
 	var box_index = current_box_amount
 	
-	# Update UI through UI manager
 	if ui_manager:
 		ui_manager.update_ui_viewports(current_box_amount)
 	
@@ -198,7 +188,6 @@ func disable_all_boxes():
 	pending_animations.clear()
 	animating_boxes.clear()
 	
-	# Update UI through UI manager
 	if ui_manager:
 		ui_manager.disable_all_ui_viewports()
 	

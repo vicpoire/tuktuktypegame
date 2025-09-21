@@ -29,7 +29,6 @@ func setup_sky_resources():
 	skybox_sky.sky_material = skybox_material
 
 func _process(delta: float):
-	# Update shader with the **current profile’s viewport & dither**
 	if profiles.size() > 0 and sky_material:
 		var current := profiles[current_profile_index]
 		sky_material.set_shader_parameter("viewport_size", current.viewport_size)
@@ -77,7 +76,10 @@ func create_current_profile_snapshot() -> SkyProfile:
 			snapshot.cloud_color = sky_material.get_shader_parameter("cloudColor")
 			snapshot.cloud_threshold = sky_material.get_shader_parameter("cloud_threshold")
 			snapshot.cloud_softness = sky_material.get_shader_parameter("cloud_softness")
-			snapshot.cloud_scale = sky_material.get_shader_parameter("cloud_scale")
+			snapshot.cloud_scale_x = sky_material.get_shader_parameter("cloud_scale_x")
+			snapshot.cloud_scale_y = sky_material.get_shader_parameter("cloud_scale_y")
+			snapshot.horizon_height = sky_material.get_shader_parameter("horizon_height")
+
 			snapshot.cloud_speed = sky_material.get_shader_parameter("cloud_speed")
 			snapshot.cloud_opacity = sky_material.get_shader_parameter("cloud_opacity")
 			snapshot.dither_strength = sky_material.get_shader_parameter("dither_strength")
@@ -166,6 +168,7 @@ func apply_procedural_sky(profile: SkyProfile):
 	sky_material.set_shader_parameter("cloud_opacity", profile.cloud_opacity)
 	sky_material.set_shader_parameter("dither_strength", profile.dither_strength)
 	sky_material.set_shader_parameter("viewport_size", profile.viewport_size)
+	sky_material.set_shader_parameter("horizon_height", profile.horizon_height)
 
 func lerp_procedural_sky(from: SkyProfile, to: SkyProfile, t: float):
 	if not sky_material: return
@@ -188,6 +191,7 @@ func lerp_procedural_sky(from: SkyProfile, to: SkyProfile, t: float):
 			lerp(from.viewport_size.y, to.viewport_size.y, smooth_t)
 		)
 	)
+	sky_material.set_shader_parameter("horizon_height", lerp(from.horizon_height, to.horizon_height, smooth_t))
 
 
 func apply_skybox(profile: SkyProfile):
