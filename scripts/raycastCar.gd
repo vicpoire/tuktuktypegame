@@ -1,7 +1,6 @@
 extends RigidBody3D
 class_name RaycastCar
 
-
 @export var acceleration := 600.0
 @export var max_speed := 20.0
 @export var accel_curve : Curve
@@ -40,23 +39,43 @@ class_name RaycastCar
 @export var tilt_rest_offset := 0.1 
 @export var tilt_speed := 3.0
 
-var jump_force := 15000.0
-var jump_hold_force := 2000.0
+@export_group("jumping")
+@export var jump_compression := 0.3 # How much to compress suspension initially
+@export var jump_extension := 0.5 # How much to extend suspension for jump
+@export var jump_force := 8000.0 # Direct upward force applied to front
+@export var jump_cooldown := 0.5 # Minimum time between jumps
+@export var jump_grip_loss := 0.2 # Reduced grip during jump preparation
+@export var jump_grip_duration := 0.4 # How long reduced grip lasts
 
 var current_speed: float
-
 var motor_input := 0
 var hand_brake := false
 var is_sharp_turning := false
 var sharp_turn_amount := 0.0
-
-var jump_pressed := false
 
 var wheels: Array[RaycastWheel] = []
 var wheel_default_rest_dists: Dictionary = {}
 var wheel_target_rest_dists: Dictionary = {}
 var skid_marks: Array[GPUParticles3D] = []
 var steering_wheels: Array[RaycastWheel] = []
+
+# Jump mechanic state
+var _last_jump_time := 0.0
+var _physics_time := 0.0
+var _jump_state := JumpState.READY
+var _jump_tween: Tween
+var _previous_forward_pressed := false
+var _previous_backward_pressed := false
+
+# Per-wheel grip overrides for jump mechanics
+var wheel_grip_overrides: Dictionary = {}
+
+enum JumpState {
+	READY,
+	COMPRESSED,
+	JUMPING,
+	COOLDOWN
+}
 
 func _ready():
 	add_to_group("car")
@@ -74,6 +93,7 @@ func _setup_wheels() -> void:
 	for wheel in wheels:
 		wheel_default_rest_dists[wheel] = wheel.rest_dist
 		wheel_target_rest_dists[wheel] = wheel.rest_dist
+		wheel_grip_overrides[wheel] = 1.0
 		var skid_mark := GPUParticles3D.new()
 		add_child(skid_mark)
 		skid_marks.append(skid_mark)
@@ -107,6 +127,146 @@ func _handle_suspension_tilt(delta: float) -> void:
 		wheel_target_rest_dists[wheel] = current
 		wheel.rest_dist = current
 
+func _handle_jump_mechanic(delta: float) -> void:
+	var forward_pressed := Input.is_action_pressed("tiltforward")
+	var backward_pressed := Input.is_action_pressed("tiltbackward")
+	
+	# Detect transitions (pressed this frame but not last frame)
+	var forward_just_pressed := forward_pressed and not _previous_forward_pressed
+	var backward_just_pressed := backward_pressed and not _previous_backward_pressed
+	var forward_just_released := not forward_pressed and _previous_forward_pressed
+	var backward_just_released := not backward_pressed and _previous_backward_pressed
+	
+	var now := _physics_time
+	
+	# Handle jump state machine
+	match _jump_state:
+		JumpState.READY:
+			if forward_just_pressed:  # Down just pressed
+				_start_compression()
+				_jump_state = JumpState.COMPRESSED
+				print("Jump: Compression started")
+				
+		JumpState.COMPRESSED:
+			if backward_just_pressed:  # Up just pressed after down
+				_execute_jump()
+				_jump_state = JumpState.JUMPING
+				_last_jump_time = now
+				print("Jump: Executed!")
+			elif forward_just_released and not backward_pressed:  # Released down without pressing up
+				# Slowly return to normal
+				_reset_suspension()
+				_jump_state = JumpState.READY
+				print("Jump: Cancelled, returning to normal")
+				
+		JumpState.JUMPING:
+			# Wait for cooldown
+			if now - _last_jump_time >= jump_cooldown:
+				_jump_state = JumpState.READY
+				print("Jump: Ready again")
+				
+		JumpState.COOLDOWN:
+			# Legacy state, shouldn't reach here
+			_jump_state = JumpState.READY
+	
+	# Handle gradual tilting when not in jump sequence and keys are held
+	if _jump_state == JumpState.READY:
+		var current_direction := 0
+		if forward_pressed and not backward_pressed:
+			current_direction = 1  # down
+		elif backward_pressed and not forward_pressed:
+			current_direction = -1  # up
+			
+		if current_direction != 0:
+			_handle_gradual_tilt(current_direction, delta)
+		else:
+			_reset_suspension_gradual(delta)
+	
+	# Update previous states for next frame
+	_previous_forward_pressed = forward_pressed
+	_previous_backward_pressed = backward_pressed
+
+func _start_compression() -> void:
+	# Compress front suspension
+	for wheel in steering_wheels:
+		var default_rest = wheel_default_rest_dists.get(wheel, wheel.rest_dist)
+		var compressed_rest = default_rest - jump_compression
+		wheel_target_rest_dists[wheel] = compressed_rest
+		wheel.rest_dist = compressed_rest
+		
+	# Reduce front grip for preparation
+	for wheel in steering_wheels:
+		wheel_grip_overrides[wheel] = jump_grip_loss
+
+func _execute_jump() -> void:
+	# Extend front suspension dramatically (visual effect only)
+	for wheel in steering_wheels:
+		var default_rest = wheel_default_rest_dists.get(wheel, wheel.rest_dist)
+		var extended_rest = default_rest + jump_extension
+		wheel_target_rest_dists[wheel] = extended_rest
+		wheel.rest_dist = extended_rest
+	
+	# Apply upward force to the bottom/center of the car for actual jump
+	var upward_force = Vector3.UP * jump_force
+	var force_position = Vector3.DOWN * 0.5  # Apply force below center of mass
+	
+	# Apply the jump force to the car's center/bottom
+	apply_force(upward_force, force_position)
+	
+	# Create a tween to restore suspension after a moment
+	if _jump_tween:
+		_jump_tween.kill()
+	_jump_tween = create_tween()
+	_jump_tween.tween_interval(0.2)  # Brief delay before restoration
+	_jump_tween.tween_callback(_restore_suspension_after_jump)
+
+func _restore_suspension_after_jump() -> void:
+	# Smoothly restore front suspension
+	if _jump_tween:
+		_jump_tween.kill()
+	_jump_tween = create_tween()
+	_jump_tween.set_parallel(true)
+	
+	for wheel in steering_wheels:
+		var default_rest = wheel_default_rest_dists.get(wheel, wheel.rest_dist)
+		_jump_tween.tween_method(
+			func(value): 
+				wheel_target_rest_dists[wheel] = value
+				wheel.rest_dist = value,
+			wheel.rest_dist,
+			default_rest,
+			0.3
+		)
+	
+	# Restore grip after duration
+	await get_tree().create_timer(jump_grip_duration).timeout
+	for wheel in steering_wheels:
+		wheel_grip_overrides[wheel] = 1.0
+
+func _handle_gradual_tilt(direction: int, delta: float) -> void:
+	var offset := tilt_rest_offset * direction
+	for wheel in steering_wheels:
+		var default_rest = wheel_default_rest_dists.get(wheel, wheel.rest_dist)
+		var current = wheel_target_rest_dists.get(wheel, default_rest)
+		current = lerp(current, default_rest + offset, delta * tilt_speed)
+		wheel_target_rest_dists[wheel] = current
+		wheel.rest_dist = current
+
+func _reset_suspension() -> void:
+	for wheel in steering_wheels:
+		var default_rest = wheel_default_rest_dists.get(wheel, wheel.rest_dist)
+		wheel_target_rest_dists[wheel] = default_rest
+		wheel.rest_dist = default_rest
+		wheel_grip_overrides[wheel] = 1.0
+
+func _reset_suspension_gradual(delta: float) -> void:
+	for wheel in steering_wheels:
+		var default_rest = wheel_default_rest_dists.get(wheel, wheel.rest_dist)
+		var current = wheel_target_rest_dists.get(wheel, default_rest)
+		current = lerp(current, default_rest, delta * tilt_speed)
+		wheel_target_rest_dists[wheel] = current
+		wheel.rest_dist = current
+
 func _collect_wheels_recursive(node: Node) -> void:
 	for child in node.get_children():
 		if child is RaycastWheel:
@@ -131,11 +291,15 @@ func _unhandled_input(event: InputEvent) -> void:
 		motor_input = 0
 
 func _physics_process(delta: float) -> void:
+	_physics_time += delta
+	
 	_update_sharp_turn_state(delta)
 	_handle_steering(delta)
 	_handle_wheel_side_collision()
 	_handle_suspension_tilt(delta)
+	_handle_jump_mechanic(delta)
 	get_current_speed()
+	
 	var grounded := false
 	for i in range(wheels.size()):
 		var wheel = wheels[i]
@@ -199,15 +363,6 @@ func _update_sharp_turn_state(delta: float) -> void:
 		if sharp_turn_amount < 0.05:
 			is_sharp_turning = false
 			sharp_turn_amount = 0.0
-
-func _handle_tilt_input() -> void:
-	var tilt_left := Input.is_action_pressed("tiltleft")
-	var tilt_right := Input.is_action_pressed("tiltright")
-	if tilt_left == tilt_right:
-		return
-	var direction := 1.0 if tilt_right else -1.0
-	var torque := global_basis.x * direction * tilt_torque
-	apply_torque(torque)
 
 func _handle_steering(delta: float) -> void:
 	var turn_input := Input.get_axis("right", "left") * tire_turn_speed
@@ -296,7 +451,11 @@ func _do_traction(wheel: RaycastWheel, idx: int) -> void:
 		return
 	var grip_loss: float = abs(side_speed / speed_factor) if speed_factor > 0.01 else 0.0
 	var base_traction: float = wheel.grip_curve.sample_baked(grip_loss) if wheel.grip_curve else 1.0
-	var final_side_grip := base_traction * side_grip
+	
+	# Apply per-wheel grip override (for jump mechanics)
+	var grip_multiplier: float = wheel_grip_overrides.get(wheel, 1.0)
+	var final_side_grip: float = base_traction * side_grip * grip_multiplier
+	
 	if is_sharp_turning:
 		var drift_grip = base_traction * drift_side_grip
 		final_side_grip = lerp(final_side_grip, drift_grip, sharp_turn_amount)
@@ -331,7 +490,7 @@ func _do_suspension(wheel: RaycastWheel) -> void:
 	var surface_normal = wheel.get_collision_normal()
 	var angle_from_up = rad_to_deg(Vector3.UP.angle_to(surface_normal))
 	
-	if angle_from_up > 50.0: # fixed the fucking thing finally im so stupid
+	if angle_from_up > 50.0:
 		return
 		
 	wheel.target_position.y = -(wheel.rest_dist + wheel.wheel_radius + wheel.over_extend)
@@ -370,8 +529,6 @@ func _handle_air_control(delta: float) -> void:
 
 func _get_point_velocity(point: Vector3) -> Vector3:
 	return linear_velocity + angular_velocity.cross(point - global_position)
-
-
 
 func _is_grounded() -> bool:
 	for wheel in wheels:

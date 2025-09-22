@@ -1845,12 +1845,15 @@ libraries = {
 }
 
 [node name="Car" parent="." node_paths=PackedStringArray("cam") instance=ExtResource("38_wclxn")]
-transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -84.4369, 1.35219, 140.074)
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -13.2838, 1.35219, 152.594)
 mass = 100.0
 cam = NodePath("CAM/GameCam")
 forward_grip = 0.75
 min_grip_angle = 45.0
 ledge_check_distance = 1.5
+jump_extension = 0.75
+jump_force = 12000.0
+jump_cooldown = 0.01
 
 [node name="Generic6DOFJoint3D" type="Generic6DOFJoint3D" parent="Car"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0335066, 0)

@@ -95,7 +95,6 @@ func add_box():
 	pending.scaling_up = true
 	
 	pending_animations.append(pending)
-	print("Pending anim queued:", pending)
 
 func remove_box():
 	if current_box_amount <= 0:
