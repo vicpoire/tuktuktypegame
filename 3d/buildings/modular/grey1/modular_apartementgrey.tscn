@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0j3qcvcp2ipw"]
+
+[ext_resource type="PackedScene" uid="uid://b6uc553a05cab" path="res://3d/buildings/modular/grey1/modular_apartementgrey1.glb" id="1_nyuur"]
+
+[node name="modular_apartementgrey" type="Node3D"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="modular_apartementgrey1" parent="." instance=ExtResource("1_nyuur")]

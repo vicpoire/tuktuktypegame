@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://bvol4btjdqy7y"
+path.s3tc="res://.godot/imported/modularbuildingdarkgrey_facade5.png-216d13267ab3edd88eb3cb917c6023c8.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "db2b1c7b44281be9a2e8a7829c87d51a"
+}
+
+[deps]
+
+source_file="res://3d/buildings/modular/far/darkgrey/modularbuildingdarkgrey_facade5.png"
+dest_files=["res://.godot/imported/modularbuildingdarkgrey_facade5.png-216d13267ab3edd88eb3cb917c6023c8.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

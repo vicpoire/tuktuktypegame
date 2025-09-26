@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cexq7p3q24eqv"]
+
+[ext_resource type="PackedScene" uid="uid://detoqbae31n5o" path="res://3d/buildings/modular/far/darkgrey/modularbuildingdarkgrey.glb" id="1_fwqf3"]
+
+[node name="modular_darkgrey_far" type="Node3D"]
+
+[node name="modularbuildingdarkgrey" parent="." instance=ExtResource("1_fwqf3")]
+transform = Transform3D(3, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0)

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4cubemvg357w"]
+
+[ext_resource type="PackedScene" uid="uid://bqjy1mh7cvepu" path="res://3d/buildings/modular/brick1/modular_brick1.glb" id="1_dh7gl"]
+
+[node name="modular_brick1" type="Node3D"]
+
+[node name="modular_brick1" parent="." instance=ExtResource("1_dh7gl")]
+transform = Transform3D(0.765, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxgy1o8cxi6b8"]
+
+[ext_resource type="PackedScene" uid="uid://cd1x2guvpua4j" path="res://3d/buildings/modular/far/balconey/balconey.glb" id="1_btsyc"]
+
+[node name="modular_balconey_far" type="Node3D"]
+
+[node name="balconey" parent="." instance=ExtResource("1_btsyc")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)

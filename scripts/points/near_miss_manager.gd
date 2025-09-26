@@ -16,7 +16,6 @@ signal near_miss_rejected(reason: String)
 
 func _ready():
 	add_to_group("near_miss_manager")
-	print("ready with %s second acceptance window" % near_miss_acceptance_window)
 
 func register_near_miss(miss_data: Dictionary):
 	var current_time = Time.get_time_dict_from_system()
@@ -25,12 +24,10 @@ func register_near_miss(miss_data: Dictionary):
 	print("near miss attempt at timestamp: ", current_timestamp)
 	
 	if not _is_within_acceptance_window(current_timestamp):
-		print("near miss rejected - outside time window")
 		near_miss_rejected.emit("outside_time_window")
 		return
 	
 	if not _check_rate_limit(current_timestamp):
-		print("near miss rejected - rate limited")
 		near_miss_rejected.emit("rate_limited")
 		return
 	
@@ -38,14 +35,12 @@ func register_near_miss(miss_data: Dictionary):
 	
 	recent_near_misses.append(current_timestamp)
 	
-	# Calculate base points only (no combo logic here)
 	var base_points = base_near_miss_points
 	var speed_bonus = int(miss_data.speed * speed_multiplier)
 	var total_base_points = base_points + speed_bonus
 	
 	total_near_misses += 1
 	
-	# Let point manager handle the points and combo logic
 	if point_manager and point_manager.has_method("add_points"):
 		point_manager.add_points(total_base_points, "near_miss")
 	
@@ -71,9 +66,7 @@ func _is_within_acceptance_window(current_timestamp: float) -> bool:
 
 func _check_rate_limit(current_timestamp: float) -> bool:
 	_cleanup_old_near_misses(current_timestamp)
-	
 	var recent_count = recent_near_misses.size()
-	print("NearMissManager: Recent near misses in last second: ", recent_count)
 	
 	return recent_count < max_near_misses_per_second
 

@@ -1,9 +1,8 @@
-[gd_scene load_steps=218 format=4 uid="uid://c84ix0n11nmpc"]
+[gd_scene load_steps=233 format=4 uid="uid://c84ix0n11nmpc"]
 
-[ext_resource type="Script" uid="uid://nwr4fn8qjis2" path="res://scripts/managers/timedmode.gd" id="1_rrh80"]
+[ext_resource type="Script" uid="uid://nwr4fn8qjis2" path="res://scripts/managers/delivery_manager.gd" id="1_rrh80"]
 [ext_resource type="PackedScene" uid="uid://byqekj61i5nbr" path="res://prefab/deliverylog.tscn" id="2_kxstq"]
 [ext_resource type="PackedScene" uid="uid://cdvu7bc1jt402" path="res://prefab/pointlabel.tscn" id="3_nhtav"]
-[ext_resource type="Script" path="res://.godot/editor/delivery_manager.gd" id="4_t6rkx"]
 [ext_resource type="Script" uid="uid://p0kghnx6h15s" path="res://scripts/points/ComboManager.gd" id="5_lmsdp"]
 [ext_resource type="Script" uid="uid://dvi0feabxnjbi" path="res://scripts/uitextcontroller.gd" id="6_525vw"]
 [ext_resource type="FontFile" uid="uid://c6q055wpmolo4" path="res://font/metro_df/METRO-DF.TTF" id="7_7ydy4"]
@@ -15,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dirvejfpwfuva" path="res://scenes/UI/sub_viewport2.tscn" id="13_vc3nt"]
 [ext_resource type="Texture2D" uid="uid://cwq5ok8w5pep3" path="res://UI/box2.tres" id="14_uv8ab"]
 [ext_resource type="Texture2D" uid="uid://7spl3tvf5lho" path="res://UI/box1.tres" id="15_ayl21"]
+[ext_resource type="Script" uid="uid://28voer1nlody" path="res://scripts/managers/delivery_menu.gd" id="15_kxstq"]
 [ext_resource type="Script" uid="uid://bmfxkvkyf32nf" path="res://scripts/UI/End/end_screen.gd" id="16_dkehw"]
 [ext_resource type="Texture2D" uid="uid://g6o5e04sp67a" path="res://sprites/timeout/timeout1.png" id="17_1wxcs"]
 [ext_resource type="Texture2D" uid="uid://cs2ydldmkqqa4" path="res://sprites/timeout/timeout2.png" id="18_7cken"]
@@ -62,11 +62,15 @@
 [ext_resource type="PackedScene" uid="uid://cn2jh25n7hsb3" path="res://prefab/streetlamp/streetlamp.tscn" id="59_225ok"]
 [ext_resource type="PackedScene" uid="uid://cukghw3hnqeoi" path="res://prefab/props/concrete_roadblock.tscn" id="60_onpej"]
 [ext_resource type="PackedScene" uid="uid://db7tgxsw8gy24" path="res://3d/parking garage level/parkinggarage.glb" id="61_tdl4v"]
+[ext_resource type="Script" uid="uid://cjm82mhf2ii1a" path="res://addons/road-generator/nodes/road_manager.gd" id="62_ageew"]
 [ext_resource type="PackedScene" uid="uid://dkqp28ldl4t5n" path="res://3d/parking garage level/conveniencestore/conveniencestore.glb" id="62_oj2kp"]
 [ext_resource type="PackedScene" uid="uid://clq6b0xtqi4m2" path="res://3d/parking garage level/laundromat/laundromat/laundromat.glb" id="63_nm6wb"]
+[ext_resource type="Material" uid="uid://dpashsuk5lr4x" path="res://addons/road-generator/resources/road_texture.material" id="63_nwcwt"]
 [ext_resource type="PackedScene" uid="uid://6dn0dwtlbwbj" path="res://3d/parking garage level/laundromat/laundrymachine/laundrymachineblue.glb" id="64_opmfb"]
+[ext_resource type="Script" uid="uid://dblejd4cxc8b0" path="res://addons/road-generator/nodes/road_container.gd" id="64_v321g"]
 [ext_resource type="PackedScene" uid="uid://b3npcmxcjeyeh" path="res://3d/parking garage level/laundromat/laundrymachine/laundrymachine.glb" id="65_wuxcx"]
 [ext_resource type="PackedScene" uid="uid://btrjw1t4npqs4" path="res://3d/assets/garbage/bin1/bin1.glb" id="66_6o1h8"]
+[ext_resource type="PackedScene" uid="uid://dydqrxt0b4l45" path="res://3d/buildings/level1/flooraptblock/flooraptblock.glb" id="66_nwcwt"]
 [ext_resource type="PackedScene" uid="uid://dulmufx3pbwac" path="res://3d/assets/vents/vent.glb" id="67_vkbfx"]
 [ext_resource type="PackedScene" uid="uid://dllngt23ibum2" path="res://prefab/lights/ceilingled_1.tscn" id="68_olt46"]
 [ext_resource type="PackedScene" uid="uid://cpghs6ri6p00b" path="res://prefab/bench/bench.tscn" id="69_am7xc"]
@@ -78,18 +82,12 @@
 [ext_resource type="PackedScene" uid="uid://hettj8lpbh7h" path="res://3d/assets/pillarsandsupports/ceilinghorizontal/concsupport1/concsupporth.tscn" id="75_pst0h"]
 [ext_resource type="PackedScene" uid="uid://dovoe1ysabchb" path="res://prefab/door/garagedoor.tscn" id="77_v54vm"]
 [ext_resource type="PackedScene" uid="uid://bkakbmqtrxdhh" path="res://3d/warehouse level/warehouse.glb" id="78_kxstq"]
+[ext_resource type="PackedScene" uid="uid://d0j3qcvcp2ipw" path="res://3d/buildings/modular/grey1/modular_apartementgrey.tscn" id="79_nhtav"]
+[ext_resource type="PackedScene" uid="uid://cxgy1o8cxi6b8" path="res://3d/buildings/modular/far/balconey/modular_balconey_far.tscn" id="81_525vw"]
+[ext_resource type="PackedScene" uid="uid://b4cubemvg357w" path="res://3d/buildings/modular/brick1/modular_brick_1.tscn" id="81_lmsdp"]
+[ext_resource type="PackedScene" uid="uid://c0qcymgs1kxn2" path="res://3d/buildings/modular/apt/modular_apt_balc.tscn" id="82_525vw"]
 
 [sub_resource type="Theme" id="Theme_w5vgm"]
-
-[sub_resource type="Theme" id="Theme_3360s"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_748tb"]
-font = ExtResource("7_7ydy4")
-font_size = 24
-font_color = Color(0.828396, 0.895207, 0.927241, 1)
-outline_color = Color(0, 0, 0, 1)
-shadow_size = 11
-shadow_color = Color(0, 0, 0, 0.596078)
 
 [sub_resource type="LabelSettings" id="LabelSettings_lqrax"]
 font = ExtResource("8_qih3j")
@@ -107,6 +105,16 @@ shadow_color = Color(0, 0, 0, 0.596078)
 font = ExtResource("8_qih3j")
 font_size = 15
 shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.596078)
+
+[sub_resource type="Theme" id="Theme_3360s"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_748tb"]
+font = ExtResource("7_7ydy4")
+font_size = 24
+font_color = Color(0.828396, 0.895207, 0.927241, 1)
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 11
 shadow_color = Color(0, 0, 0, 0.596078)
 
 [sub_resource type="Curve" id="Curve_bxi23"]
@@ -172,6 +180,158 @@ point_count = 2
 [sub_resource type="Curve" id="Curve_kjbfq"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rrh80"]
+bg_color = Color(0.263849, 0.596891, 0.924129, 0.235294)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 0.8, 0.639216)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 75.0
+expand_margin_right = 75.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_nhtav"]
+line_spacing = 0.0
+font = ExtResource("8_qih3j")
+font_size = 20
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.596078)
+
+[sub_resource type="Animation" id="Animation_uv8ab"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(40, 40)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel/Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ayl21"]
+resource_name = "box_prompt_close"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(0.75, 0.75),
+"update": 0,
+"values": [Vector2(40, 40), Vector2(40, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel/Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dkehw"]
+resource_name = "box_prompt_close_after_input"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.3),
+"transitions": PackedFloat32Array(0.75, 0.75, 0.75),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.735, 1.735), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel/Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vc3nt"]
+resource_name = "box_prompt"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(0.75, 0.75),
+"update": 0,
+"values": [Vector2(40, 0), Vector2(40, 40)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel/Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dkehw"]
+_data = {
+&"RESET": SubResource("Animation_uv8ab"),
+&"box_prompt_close": SubResource("Animation_ayl21"),
+&"box_prompt_close_after_input": SubResource("Animation_dkehw"),
+&"box_prompt_open": SubResource("Animation_vc3nt")
+}
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ymodl"]
 animations = [{
@@ -470,7 +630,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_rrh80")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hbyln"]
-size = Vector3(1.475, 0.111, 1.51429)
+size = Vector3(1.475, 0.111, 2.44318)
 
 [sub_resource type="Curve" id="Curve_82n5j"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.6), 0.0, 0.0, 0, 0]
@@ -601,7 +761,7 @@ cloud_speed = 0.04
 cloud_opacity = 0.8
 dither_strength = 0.45
 viewport_size = Vector2(0, 480)
-sun_intensity = 0.5
+sun_intensity = 0.65
 sun_color = Color(0.982548, 0.573, 3.85046e-07, 1)
 ambient_color = Color(0.2, 0.2, 0.3, 1)
 fog_enabled = false
@@ -915,121 +1075,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ldjw7")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y7jhe"]
-albedo_color = Color(1, 0.486275, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3j8ed"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sphec"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e1wpp"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e7r4u"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t7oo2"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o143m"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hhheb"]
-albedo_color = Color(0.803219, 0.00240057, 0.996525, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3nkb1"]
-albedo_color = Color(1, 0.356271, 0.165444, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aejcr"]
-albedo_color = Color(1, 0, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_60qlx"]
-albedo_color = Color(0.803219, 0.00240057, 0.996525, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_yot6u"]
-size = Vector3(1, 9.88861, 61.0606)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_e1wpp"]
-size = Vector3(1, 9.88861, 5.47544)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_e7r4u"]
-size = Vector3(1, 9.88861, 11.5756)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_t7oo2"]
-size = Vector3(1, 9.88861, 28.737)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_o143m"]
-size = Vector3(1, 9.88861, 22)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_hhheb"]
-size = Vector3(1, 9.88861, 38)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_3nkb1"]
-size = Vector3(1, 5, 28.2485)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_aejcr"]
-size = Vector3(1.43311, 5, 21)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_60qlx"]
-size = Vector3(60, 0.114914, 38)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_gqi3p"]
-size = Vector3(2.53095, 3.60449, 13.1265)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_uqhyq"]
-size = Vector3(58, 4.67737, 3.19971)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_d3oxg"]
-size = Vector3(1, 3, 16)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_8jofy"]
-size = Vector3(1, 7, 4)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_up6oq"]
-size = Vector3(38.2939, 2, 61.2048)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_8nrvh"]
-size = Vector3(16.9114, 0.434082, 53.2115)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_u1opp"]
-size = Vector3(17.7769, 9.34924, 0.805176)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_85yty"]
-size = Vector3(4, 9.34924, 0.805176)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_jwuug"]
-size = Vector3(17.1552, 3.37027, 0.805176)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_unhrq"]
-size = Vector3(1.28488, 0.69413, 53)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_3xcd8"]
-size = Vector3(4, 9.34924, 0.805176)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_pvkv1"]
-size = Vector3(53, 9.34924, 0.805176)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_8dn3i"]
-size = Vector3(3.35266, 3.42029, 6.34656)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_6t37o"]
-size = Vector3(3.35266, 3.42029, 10)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_biipp"]
-size = Vector3(3.35266, 3.42029, 53)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_85yty"]
-transparency = 1
-albedo_color = Color(0.501961, 1, 1, 0.470588)
-
-[sub_resource type="BoxMesh" id="BoxMesh_jwuug"]
-material = SubResource("StandardMaterial3D_85yty")
-size = Vector3(0.05, 8.38, 11)
-
-[sub_resource type="BoxMesh" id="BoxMesh_3xcd8"]
-material = SubResource("StandardMaterial3D_85yty")
-size = Vector3(0.05, 8.38, 27.71)
-
-[sub_resource type="BoxMesh" id="BoxMesh_unhrq"]
-material = SubResource("StandardMaterial3D_85yty")
-size = Vector3(0.05, 2.565, 13.08)
-
 [sub_resource type="Animation" id="Animation_7ydy4"]
 length = 0.001
 tracks/0/type = "value"
@@ -1237,15 +1282,130 @@ _data = {
 &"camanimation4": SubResource("Animation_nwcwt")
 }
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y7jhe"]
+albedo_color = Color(1, 0.486275, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3j8ed"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sphec"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e1wpp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e7r4u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t7oo2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o143m"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hhheb"]
+albedo_color = Color(0.803219, 0.00240057, 0.996525, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3nkb1"]
+albedo_color = Color(1, 0.356271, 0.165444, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aejcr"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_60qlx"]
+albedo_color = Color(0.803219, 0.00240057, 0.996525, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yot6u"]
+size = Vector3(1, 9.88861, 61.0606)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e1wpp"]
+size = Vector3(1, 9.88861, 5.47544)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e7r4u"]
+size = Vector3(1, 9.88861, 11.5756)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t7oo2"]
+size = Vector3(1, 9.88861, 28.737)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o143m"]
+size = Vector3(1, 9.88861, 22)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hhheb"]
+size = Vector3(1, 9.88861, 38)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3nkb1"]
+size = Vector3(1, 5, 28.2485)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aejcr"]
+size = Vector3(1.43311, 5, 21)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_60qlx"]
+size = Vector3(60, 0.114914, 38)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gqi3p"]
+size = Vector3(2.53095, 3.60449, 13.1265)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uqhyq"]
+size = Vector3(58, 4.67737, 3.19971)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d3oxg"]
+size = Vector3(1, 3, 16)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8jofy"]
+size = Vector3(1, 7, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_up6oq"]
+size = Vector3(38.2939, 2, 61.2048)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8nrvh"]
+size = Vector3(16.9114, 0.434082, 53.2115)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u1opp"]
+size = Vector3(17.7769, 9.34924, 0.805176)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_85yty"]
+size = Vector3(4, 9.34924, 0.805176)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jwuug"]
+size = Vector3(17.1552, 3.37027, 0.805176)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_unhrq"]
+size = Vector3(1.28488, 0.69413, 53)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3xcd8"]
+size = Vector3(4, 9.34924, 0.805176)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pvkv1"]
+size = Vector3(53, 9.34924, 0.805176)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8dn3i"]
+size = Vector3(3.35266, 3.42029, 6.34656)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6t37o"]
+size = Vector3(3.35266, 3.42029, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_biipp"]
+size = Vector3(3.35266, 3.42029, 53)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_85yty"]
+transparency = 1
+albedo_color = Color(0.501961, 1, 1, 0.470588)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jwuug"]
+material = SubResource("StandardMaterial3D_85yty")
+size = Vector3(0.05, 8.38, 11)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3xcd8"]
+material = SubResource("StandardMaterial3D_85yty")
+size = Vector3(0.05, 8.38, 27.71)
+
+[sub_resource type="BoxMesh" id="BoxMesh_unhrq"]
+material = SubResource("StandardMaterial3D_85yty")
+size = Vector3(0.05, 2.565, 13.08)
+
 [node name="Scene" type="Node3D"]
 
-[node name="TimedMode" type="Node3D" parent="." node_paths=PackedStringArray("time_label", "points_label", "deliveries_count_label", "current_boxes_label", "log_parent", "point_parent", "start_screen", "end_screen")]
+[node name="DeliveryManager" type="Node3D" parent="." node_paths=PackedStringArray("time_label", "points_label", "deliveries_count_label", "current_boxes_label", "log_parent", "point_parent", "start_screen", "end_screen")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0689621, 0.19075, 0.100113)
 script = ExtResource("1_rrh80")
 pickup_time_bonus = 2.0
 time_label = NodePath("../UI/MainGameUI/TimerContainer/timer")
-points_label = NodePath("../UI/MainGameUI/Panel/DEBUG/MarginContainer5/points")
-deliveries_count_label = NodePath("../UI/MainGameUI/Panel/DEBUG/MarginContainer3/deliverycount")
+points_label = NodePath("../UI/MainGameUI/DebugPanel/DEBUG/MarginContainer5/points")
+deliveries_count_label = NodePath("../UI/MainGameUI/DebugPanel/DEBUG/MarginContainer3/deliverycount")
 current_boxes_label = NodePath("../Car/Label3D")
 log_label_scene = ExtResource("2_kxstq")
 point_label_scene = ExtResource("3_nhtav")
@@ -1256,16 +1416,10 @@ start_screen = NodePath("../UI/StartScreen")
 end_screen = NodePath("../UI/EndScreen")
 time_before_starting = 6.0
 
-[node name="Timer" type="Timer" parent="TimedMode"]
+[node name="Timer" type="Timer" parent="DeliveryManager"]
 autostart = true
 
-[node name="DeliveryManager" type="Node3D" parent="TimedMode"]
-script = ExtResource("4_t6rkx")
-
-[node name="timedmode" type="Node3D" parent="TimedMode/DeliveryManager"]
-script = ExtResource("1_rrh80")
-
-[node name="ComboManager" type="Node" parent="TimedMode"]
+[node name="ComboManager" type="Node" parent="DeliveryManager"]
 script = ExtResource("5_lmsdp")
 combo_timeout = 6.0
 min_combo_threshold = 0
@@ -1287,7 +1441,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_w5vgm")
 script = ExtResource("6_525vw")
-speed_text = NodePath("Panel/DEBUG/MarginContainer/speedtext")
+speed_text = NodePath("DebugPanel/DEBUG/MarginContainer/speedtext")
 wheel_shake_amplitude = 0.0
 shake_duration = 0.4
 shake_decay = 10.0
@@ -1296,6 +1450,55 @@ acceleration_amplitude = 1.0
 turning_amplitude = 10.0
 wheel_vibration_amplitude = 0.25
 speed_threshold = 20.0
+
+[node name="DebugPanel" type="Panel" parent="UI/MainGameUI"]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 120.0
+offset_right = -466.0
+offset_bottom = -305.0
+
+[node name="DEBUG" type="VBoxContainer" parent="UI/MainGameUI/DebugPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.101
+anchor_top = -2.191
+anchor_right = 3.949
+anchor_bottom = 6.545
+offset_left = -0.0419998
+offset_top = 130.045
+offset_right = -299.942
+offset_bottom = -250.435
+grow_horizontal = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/MainGameUI/DebugPanel/DEBUG"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+
+[node name="speedtext" type="Label" parent="UI/MainGameUI/DebugPanel/DEBUG/MarginContainer"]
+layout_mode = 2
+text = "speedtext"
+label_settings = SubResource("LabelSettings_lqrax")
+
+[node name="MarginContainer3" type="MarginContainer" parent="UI/MainGameUI/DebugPanel/DEBUG"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+
+[node name="deliverycount" type="Label" parent="UI/MainGameUI/DebugPanel/DEBUG/MarginContainer3"]
+layout_mode = 2
+text = "deliverycount"
+label_settings = SubResource("LabelSettings_rbbvt")
+
+[node name="MarginContainer5" type="MarginContainer" parent="UI/MainGameUI/DebugPanel/DEBUG"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+
+[node name="points" type="Label" parent="UI/MainGameUI/DebugPanel/DEBUG/MarginContainer5"]
+layout_mode = 2
+text = "points"
+label_settings = SubResource("LabelSettings_rcfhs")
 
 [node name="TimerContainer" type="VBoxContainer" parent="UI/MainGameUI"]
 layout_mode = 1
@@ -1313,55 +1516,6 @@ layout_mode = 2
 theme = SubResource("Theme_3360s")
 text = "00:00,000"
 label_settings = SubResource("LabelSettings_748tb")
-
-[node name="Panel" type="Panel" parent="UI/MainGameUI"]
-layout_mode = 2
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 16.0
-offset_top = 120.0
-offset_right = -466.0
-offset_bottom = -305.0
-
-[node name="DEBUG" type="VBoxContainer" parent="UI/MainGameUI/Panel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.101
-anchor_top = -2.191
-anchor_right = 3.949
-anchor_bottom = 6.545
-offset_left = -0.0419998
-offset_top = 130.045
-offset_right = -299.942
-offset_bottom = -250.435
-grow_horizontal = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/MainGameUI/Panel/DEBUG"]
-layout_mode = 2
-theme_override_constants/margin_left = 25
-
-[node name="speedtext" type="Label" parent="UI/MainGameUI/Panel/DEBUG/MarginContainer"]
-layout_mode = 2
-text = "speedtext"
-label_settings = SubResource("LabelSettings_lqrax")
-
-[node name="MarginContainer3" type="MarginContainer" parent="UI/MainGameUI/Panel/DEBUG"]
-layout_mode = 2
-theme_override_constants/margin_left = 25
-
-[node name="deliverycount" type="Label" parent="UI/MainGameUI/Panel/DEBUG/MarginContainer3"]
-layout_mode = 2
-text = "deliverycount"
-label_settings = SubResource("LabelSettings_rbbvt")
-
-[node name="MarginContainer5" type="MarginContainer" parent="UI/MainGameUI/Panel/DEBUG"]
-layout_mode = 2
-theme_override_constants/margin_left = 25
-
-[node name="points" type="Label" parent="UI/MainGameUI/Panel/DEBUG/MarginContainer5"]
-layout_mode = 2
-text = "points"
-label_settings = SubResource("LabelSettings_rcfhs")
 
 [node name="LogParent" type="VBoxContainer" parent="UI/MainGameUI"]
 layout_mode = 1
@@ -1389,18 +1543,6 @@ offset_bottom = -245.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="POPUPCONTAINER" type="Control" parent="UI/MainGameUI"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 174.0
-offset_top = 151.0
-offset_right = -161.0
-offset_bottom = -240.0
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="ComboNotif" type="VBoxContainer" parent="UI/MainGameUI"]
 layout_mode = 1
 anchors_preset = -1
@@ -1413,6 +1555,18 @@ offset_bottom = -304.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="POPUPCONTAINER" type="Control" parent="UI/MainGameUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 174.0
+offset_top = 151.0
+offset_right = -161.0
+offset_bottom = -240.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="ComboUI" type="Control" parent="UI/MainGameUI" node_paths=PackedStringArray("combo_progress_bar", "combo_level_label", "combo_points_label", "combo_panel", "combo_manager")]
 layout_mode = 2
 anchors_preset = 0
@@ -1422,12 +1576,13 @@ offset_left = 479.0
 offset_top = 140.0
 offset_right = -18.0
 offset_bottom = -313.0
+grow_horizontal = 0
 script = ExtResource("9_ageew")
 combo_progress_bar = NodePath("ComboVisuals/Control/ProgressBar")
 combo_level_label = NodePath("ComboVisuals/Control/Label")
 combo_points_label = NodePath("ComboVisuals/Control/Label2")
 combo_panel = NodePath("ComboVisuals/Panel")
-combo_manager = NodePath("../../../TimedMode/ComboManager")
+combo_manager = NodePath("../../../DeliveryManager/ComboManager")
 panel_fade_in_duration = 0.1
 panel_fade_out_duration = 0.1
 progress_color_full = Color(0.424682, 0.811951, 0.718061, 0.784314)
@@ -1569,6 +1724,61 @@ layout_mode = 2
 texture = ExtResource("14_uv8ab")
 stretch_mode = 5
 
+[node name="Delivery" type="Control" parent="UI/MainGameUI" node_paths=PackedStringArray("drop_ui", "drop_ui_animator", "drop_ui_label")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("15_kxstq")
+drop_ui = NodePath(".")
+drop_ui_animator = NodePath("AnimationPlayer")
+drop_ui_label = NodePath("Panel/Label")
+
+[node name="Panel" type="Panel" parent="UI/MainGameUI/Delivery"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 160.0
+offset_right = 20.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(20, 20)
+theme_override_styles/panel = SubResource("StyleBoxFlat_rrh80")
+
+[node name="Label" type="Label" parent="UI/MainGameUI/Delivery/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -111.0
+offset_top = -2.0
+offset_right = 111.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_nhtav")
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/MainGameUI/Delivery"]
+libraries = {
+&"": SubResource("AnimationLibrary_dkehw")
+}
+
 [node name="EndScreen" type="Control" parent="UI" node_paths=PackedStringArray("panel_fade_in", "animated_sprite", "car_anim_player", "debrief_anim_player", "texts_to_fade", "panels_to_fade", "progress_bar", "label3d", "debrief_letters", "debrief_delivery_point", "debrief_delivery_point_amount", "debrief_style_point", "debrief_style_point_amount", "driver_type")]
 layout_mode = 1
 anchors_preset = 15
@@ -1583,8 +1793,8 @@ fade_duration = 0.25
 wait_duration = 0.25
 car_anim_player = NodePath("CarAnimation")
 debrief_anim_player = NodePath("DebriefPanel")
-texts_to_fade = [NodePath("../MainGameUI/TimerContainer/timer"), NodePath("../MainGameUI/Panel/DEBUG/MarginContainer/speedtext"), NodePath("../MainGameUI/Panel/DEBUG/MarginContainer3/deliverycount"), NodePath("../MainGameUI/Panel/DEBUG/MarginContainer5/points"), NodePath("../MainGameUI/ComboUI/ComboVisuals/Control/Label"), NodePath("../MainGameUI/ComboUI/ComboVisuals/Control/Label2")]
-panels_to_fade = [NodePath("../MainGameUI/ComboUI/ComboVisuals/Panel"), NodePath("../MainGameUI/Panel")]
+texts_to_fade = [NodePath("../MainGameUI/TimerContainer/timer"), NodePath("../MainGameUI/DebugPanel/DEBUG/MarginContainer/speedtext"), NodePath("../MainGameUI/DebugPanel/DEBUG/MarginContainer3/deliverycount"), NodePath("../MainGameUI/DebugPanel/DEBUG/MarginContainer5/points"), NodePath("../MainGameUI/ComboUI/ComboVisuals/Control/Label"), NodePath("../MainGameUI/ComboUI/ComboVisuals/Control/Label2")]
+panels_to_fade = [NodePath("../MainGameUI/ComboUI/ComboVisuals/Panel"), NodePath("../MainGameUI/DebugPanel")]
 progress_bar = NodePath("../MainGameUI/ComboUI/ComboVisuals/Control/ProgressBar")
 label3d = NodePath("../../Car/Label3D")
 fade_out_duration = 0.2
@@ -1820,7 +2030,7 @@ offset_bottom = 40.0
 script = ExtResource("32_kxstq")
 main_ui = NodePath("../MainGameUI")
 car = NodePath("../../Car")
-time_mode = NodePath("../../TimedMode")
+time_mode = NodePath("../../DeliveryManager")
 start_cinematic = NodePath("../../StartCinematic")
 time_label = NodePath("countdown_label")
 anim_player = NodePath("AnimationPlayer")
@@ -1845,33 +2055,38 @@ libraries = {
 }
 
 [node name="Car" parent="." node_paths=PackedStringArray("cam") instance=ExtResource("38_wclxn")]
-transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -13.2838, 1.35219, 152.594)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.1127, 1.37899, 71.6935)
 mass = 100.0
 cam = NodePath("CAM/GameCam")
 forward_grip = 0.75
 min_grip_angle = 45.0
 ledge_check_distance = 1.5
-jump_extension = 0.75
-jump_force = 12000.0
+tilt_torque = 12000.0
+jump_extension = 1.5
+jump_force = 25000.0
 jump_cooldown = 0.01
+jump_grip_loss = 0.0
+jump_grip_duration = 1.4
 
 [node name="Generic6DOFJoint3D" type="Generic6DOFJoint3D" parent="Car"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0335066, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0335066, 0.718556)
 node_a = NodePath("..")
 node_b = NodePath("../Trunk")
 exclude_nodes_from_collision = false
-linear_limit_x/restitution = 1.26
-linear_limit_y/restitution = 3.0
+linear_limit_x/upper_distance = 0.025
+linear_limit_x/lower_distance = -0.025
+linear_limit_x/restitution = 0.25
+linear_limit_y/upper_distance = 0.1
 linear_limit_y/damping = 0.15
-linear_limit_z/softness = 0.5
-linear_limit_z/restitution = 2.0
+linear_limit_z/upper_distance = 0.05
+linear_limit_z/lower_distance = -0.05
 angular_limit_x/damping = 2.0
 angular_limit_y/restitution = 4.5
 angular_limit_y/damping = 0.8
 angular_limit_z/damping = 2.0
 
 [node name="Trunk" type="RigidBody3D" parent="Car"]
-transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, -6.61686e-09, 0.345537, 0.360918)
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, -3.67034e-08, 0.399809, 0.513913)
 collision_layer = 3
 
 [node name="Trunk2" type="MeshInstance3D" parent="Car/Trunk"]
@@ -1881,7 +2096,7 @@ mesh = SubResource("ArrayMesh_bxi23")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Car/Trunk"]
-transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -2.28882e-05, -0.133572, -0.865784)
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -3.05176e-05, -0.133572, -0.401321)
 shape = SubResource("BoxShape3D_hbyln")
 debug_color = Color(0.807105, 0.573649, 1.92523e-07, 0.709804)
 
@@ -1901,7 +2116,7 @@ ui_manager = NodePath("../../../../UI/MainGameUI/Box/BoxUIManager")
 
 [node name="BoxAnimationManager" type="Node3D" parent="Car/Trunk/TrunkManager/BOXES" node_paths=PackedStringArray("combo_manager", "box_meshes")]
 script = ExtResource("41_qhyx0")
-combo_manager = NodePath("../../../../../TimedMode/ComboManager")
+combo_manager = NodePath("../../../../../DeliveryManager/ComboManager")
 box_meshes = [NodePath("../Box3/BOX2"), NodePath("../Box2/BOX"), NodePath("../Box1/BOX2")]
 combo_trigger_interval = 1
 base_jump_height = 0.25
@@ -2042,7 +2257,7 @@ outline_size = 10
 uppercase = true
 
 [node name="NearMissDetector" type="Area3D" parent="Car" node_paths=PackedStringArray("near_miss_manager")]
-transform = Transform3D(0.999989, -0.00480028, -0.000307252, 0.00479987, 0.999987, -0.00135563, 0.000313762, 0.00135413, 0.999999, 0, 0, 0)
+transform = Transform3D(0.999989, -0.00480028, -0.000307232, 0.00479987, 0.999987, -0.00135563, 0.000313789, 0.00135413, 0.999999, 0, 0, 0)
 script = ExtResource("46_v3ihm")
 near_miss_manager = NodePath("../NearMissManager")
 min_speed_threshold = 19.0
@@ -2063,7 +2278,7 @@ debug_color = Color(0.953048, 2.59906e-06, 0.558028, 0.580392)
 
 [node name="NearMissManager" type="Node3D" parent="Car" node_paths=PackedStringArray("point_manager")]
 script = ExtResource("47_e7b4q")
-point_manager = NodePath("../../TimedMode")
+point_manager = NodePath("../../DeliveryManager")
 base_near_miss_points = 1
 speed_multiplier = 0.25
 near_miss_acceptance_window = 0.15
@@ -2137,6 +2352,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.94897, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment/LightAndSky"]
 transform = Transform3D(0.939619, -0.309064, 0.146956, -0.342183, -0.855058, 0.389595, 0.00524674, -0.416357, -0.909186, 0, 3.17393, 0)
+light_energy = 0.75
+light_specular = 0.91
+light_bake_mode = 1
+directional_shadow_mode = 0
+
+[node name="DirectionalLight3DNight" type="DirectionalLight3D" parent="Environment/LightAndSky"]
+transform = Transform3D(0.939619, -0.309064, 0.146956, -0.342183, -0.855058, 0.389595, 0.00524674, -0.416357, -0.909186, 0, 3.17393, 0)
+visible = false
+light_color = Color(0.640829, 0.379605, 0.814878, 1)
 light_energy = 0.75
 light_volumetric_fog_energy = 1.5
 light_specular = 0.91
@@ -2974,1084 +3198,6 @@ transform = Transform3D(-0.539962, 0, -0.84169, 0, 1, 0, 0.84169, 0, -0.539962, 
 
 [node name="1" type="Node" parent="Debug"]
 
-[node name="ParkingGarage" type="Node3D" parent="."]
-transform = Transform3D(2.98023e-08, 0, -1, 0, 1, 0, 1, 0, 2.98023e-08, 309.344, 2.35417, -320.728)
-
-[node name="HighestFloor" type="Node3D" parent="ParkingGarage"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075, 0)
-visible = false
-
-[node name="CSGBox3D14" type="CSGBox3D" parent="ParkingGarage/HighestFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.5, 27, 32)
-use_collision = true
-size = Vector3(68, 1, 25)
-material = SubResource("StandardMaterial3D_y7jhe")
-
-[node name="CSGBox3D12" type="CSGBox3D" parent="ParkingGarage/HighestFloor"]
-transform = Transform3D(1, -8.88178e-16, 0, 1.60982e-15, 1, 0, 1.77636e-15, -2.64698e-23, 1, -49.4999, 27, -57)
-use_collision = true
-size = Vector3(110, 1, 39)
-material = SubResource("StandardMaterial3D_3j8ed")
-
-[node name="CSGBox3D15" type="CSGBox3D" parent="ParkingGarage/HighestFloor"]
-transform = Transform3D(1, -8.88178e-16, 0, 1.60982e-15, 1, 0, 1.77636e-15, -2.64698e-23, 1, -29.9999, 27, -9)
-use_collision = true
-size = Vector3(5, 1, 57)
-material = SubResource("StandardMaterial3D_sphec")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="ParkingGarage/HighestFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.5, 27, 3.5)
-use_collision = true
-size = Vector3(40, 1, 82)
-material = SubResource("StandardMaterial3D_y7jhe")
-
-[node name="CSGBox3D13" type="CSGBox3D" parent="ParkingGarage/HighestFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.4913, 27, 3.51109)
-use_collision = true
-size = Vector3(40, 1, 82)
-material = SubResource("StandardMaterial3D_e1wpp")
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="ParkingGarage/HighestFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 27, -104)
-use_collision = true
-size = Vector3(55, 1, 61)
-material = SubResource("StandardMaterial3D_3j8ed")
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="ParkingGarage/HighestFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, 27, -55.5)
-use_collision = true
-size = Vector3(38, 1, 36)
-material = SubResource("StandardMaterial3D_3j8ed")
-
-[node name="Stairs" type="Node3D" parent="ParkingGarage"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -13.983, 0)
-visible = false
-
-[node name="CSGBox3D13" type="CSGBox3D" parent="ParkingGarage/Stairs"]
-transform = Transform3D(1, 5.043e-10, 8.43094e-11, -5.11281e-10, 0.984859, 0.173356, 4.38583e-12, -0.173356, 0.984859, -93.4996, 23.9712, -99.4437)
-use_collision = true
-size = Vector3(22, 1, 35.3248)
-
-[node name="CSGBox3D14" type="CSGBox3D" parent="ParkingGarage/Stairs"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -99.9999, 21, -124.5)
-use_collision = true
-size = Vector3(37, 1, 20)
-
-[node name="CSGBox3D15" type="CSGBox3D" parent="ParkingGarage/Stairs"]
-transform = Transform3D(0.987688, 0.156434, 0, -0.156434, 0.987688, 0, 0, 0, 1, -72.8711, 19.6032, -121)
-use_collision = true
-size = Vector3(19, 1, 19)
-
-[node name="CSGBox3D17" type="CSGBox3D" parent="ParkingGarage/Stairs"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.7495, 18, -121)
-use_collision = true
-size = Vector3(45.5009, 1, 19)
-
-[node name="CSGBox3D18" type="CSGBox3D" parent="ParkingGarage/Stairs"]
-transform = Transform3D(-4.31119e-08, -7.21446e-09, -1, -0.165048, 0.986285, 0, 0.986285, 0.165048, -4.37114e-08, -32.0127, 14.7274, -92.1049)
-use_collision = true
-size = Vector3(39.7761, 1, 28)
-
-[node name="Stairs2" type="Node3D" parent="ParkingGarage"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075, 0)
-visible = false
-
-[node name="CSGBox3D13" type="CSGBox3D" parent="ParkingGarage/Stairs2"]
-transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, -93.4997, 24.0258, -99.6555)
-use_collision = true
-size = Vector3(22, 1, 35)
-
-[node name="CSGBox3D14" type="CSGBox3D" parent="ParkingGarage/Stairs2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92.9999, 21, -125)
-use_collision = true
-size = Vector3(23, 1, 21)
-
-[node name="CSGBox3D15" type="CSGBox3D" parent="ParkingGarage/Stairs2"]
-transform = Transform3D(0.987688, 0.156434, 0, -0.156434, 0.987688, 0, 0, 0, 1, -72.8711, 19.6032, -123)
-use_collision = true
-size = Vector3(19, 1, 23)
-
-[node name="CSGBox3D17" type="CSGBox3D" parent="ParkingGarage/Stairs2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.7495, 18, -123)
-use_collision = true
-size = Vector3(45.5009, 1, 23)
-
-[node name="CSGBox3D18" type="CSGBox3D" parent="ParkingGarage/Stairs2"]
-transform = Transform3D(-4.31732e-08, -6.83797e-09, -1, -0.156434, 0.987688, 0, 0.987688, 0.156434, -4.37114e-08, -32.0127, 13.1223, -81.1298)
-use_collision = true
-size = Vector3(62, 1, 28)
-
-[node name="MidFloor" type="Node3D" parent="ParkingGarage"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075, 0)
-visible = false
-
-[node name="CSGBox3D5" type="CSGBox3D" parent="ParkingGarage/MidFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.5, 13, 27)
-use_collision = true
-size = Vector3(148, 1, 19)
-material = SubResource("StandardMaterial3D_e7r4u")
-
-[node name="CSGBox3D14" type="CSGBox3D" parent="ParkingGarage/MidFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.5, 13, -7.5)
-use_collision = true
-size = Vector3(84, 1, 6)
-material = SubResource("StandardMaterial3D_e7r4u")
-
-[node name="CSGBox3D7" type="CSGBox3D" parent="ParkingGarage/MidFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88.5, 13, -8)
-use_collision = true
-size = Vector3(32, 1, 51)
-material = SubResource("StandardMaterial3D_e7r4u")
-
-[node name="CSGBox3D8" type="CSGBox3D" parent="ParkingGarage/MidFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.5, 13, -8)
-use_collision = true
-size = Vector3(32, 1, 51)
-material = SubResource("StandardMaterial3D_e7r4u")
-
-[node name="CSGBox3D6" type="CSGBox3D" parent="ParkingGarage/MidFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.5, 13, -58)
-use_collision = true
-size = Vector3(148, 1, 49)
-material = SubResource("StandardMaterial3D_e7r4u")
-
-[node name="CSGBox3D12" type="CSGBox3D" parent="ParkingGarage/MidFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52, 13, -78)
-use_collision = true
-size = Vector3(17, 1, 9)
-material = SubResource("StandardMaterial3D_e7r4u")
-
-[node name="CSGBox3D13" type="CSGBox3D" parent="ParkingGarage/MidFloor"]
-transform = Transform3D(0.926804, 0.375545, -2.18141e-09, -0.375545, 0.926804, -1.11921e-08, -2.18141e-09, 1.11921e-08, 1, 5.09964, 15.2091, -114.92)
-use_collision = true
-size = Vector3(11.9283, 1, 7.32748)
-material = SubResource("StandardMaterial3D_e7r4u")
-
-[node name="CSGBox3D9" type="CSGBox3D" parent="ParkingGarage/MidFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.5, 13, -108.5)
-use_collision = true
-size = Vector3(70, 1, 52)
-material = SubResource("StandardMaterial3D_e7r4u")
-
-[node name="CSGBox3D10" type="CSGBox3D" parent="ParkingGarage/MidFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.5, 13, -43.5)
-use_collision = true
-size = Vector3(10, 1, 78)
-material = SubResource("StandardMaterial3D_e7r4u")
-
-[node name="CSGBox3D11" type="CSGBox3D" parent="ParkingGarage/MidFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52, 13, -13.5)
-use_collision = true
-size = Vector3(17, 1, 18)
-material = SubResource("StandardMaterial3D_e7r4u")
-
-[node name="FirstFloor" type="Node3D" parent="ParkingGarage"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.778306, 0.075, -0.478745)
-visible = false
-
-[node name="CSGBox3D8" type="CSGBox3D" parent="ParkingGarage/FirstFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57, 4, 51.5)
-use_collision = true
-size = Vector3(27, 1, 44)
-material = SubResource("StandardMaterial3D_t7oo2")
-
-[node name="CSGBox3D6" type="CSGBox3D" parent="ParkingGarage/FirstFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.5, 4, 49)
-use_collision = true
-size = Vector3(162, 1, 49)
-material = SubResource("StandardMaterial3D_o143m")
-
-[node name="CSGBox3D23" type="CSGBox3D" parent="ParkingGarage/FirstFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -111.871, 4.01617, 13.9791)
-use_collision = true
-size = Vector3(14.7417, 1, 21)
-
-[node name="ExtraStairs" type="Node3D" parent="ParkingGarage"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075, 0)
-visible = false
-
-[node name="CSGBox3D16" type="CSGBox3D" parent="ParkingGarage/ExtraStairs"]
-transform = Transform3D(1, 0, 0, 0, 0.987688, -0.156434, 0, 0.156434, 0.987688, -114, 18.0162, -96.0209)
-use_collision = true
-size = Vector3(9, 1, 37)
-material = SubResource("StandardMaterial3D_hhheb")
-
-[node name="CSGBox3D19" type="CSGBox3D" parent="ParkingGarage/ExtraStairs"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114, 15.0162, -73.5209)
-use_collision = true
-size = Vector3(9, 1, 8)
-material = SubResource("StandardMaterial3D_hhheb")
-
-[node name="CSGBox3D20" type="CSGBox3D" parent="ParkingGarage/ExtraStairs"]
-transform = Transform3D(1, 0, 0, 0, 0.978148, -0.207912, 0, 0.207912, 0.978148, -114, 11.0162, -51.0209)
-use_collision = true
-size = Vector3(9, 1, 37)
-material = SubResource("StandardMaterial3D_hhheb")
-
-[node name="CSGBox3D21" type="CSGBox3D" parent="ParkingGarage/ExtraStairs"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114, 7.01617, -28.5209)
-use_collision = true
-size = Vector3(9, 1, 8)
-material = SubResource("StandardMaterial3D_hhheb")
-
-[node name="CSGBox3D22" type="CSGBox3D" parent="ParkingGarage/ExtraStairs"]
-transform = Transform3D(1, 0, 0, 0, 0.994522, -0.104528, 0, 0.104528, 0.994522, -114, 5.48655, -10.4963)
-use_collision = true
-size = Vector3(9, 1, 28)
-material = SubResource("StandardMaterial3D_hhheb")
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="ParkingGarage/ExtraStairs"]
-transform = Transform3D(1, -7.71341e-09, 1.01549e-09, 7.71341e-09, 0.965926, -0.258819, 1.01549e-09, 0.258819, 0.965926, 57, 8.31787, 12.8304)
-use_collision = true
-size = Vector3(27, 1, 36)
-material = SubResource("StandardMaterial3D_hhheb")
-
-[node name="CSGBox3D9" type="CSGBox3D" parent="ParkingGarage/ExtraStairs"]
-transform = Transform3D(1, -7.71341e-09, 1.01549e-09, 7.71341e-09, 0.965926, -0.258819, 1.01549e-09, 0.258819, 0.965926, 52, 19.9647, -47.6363)
-use_collision = true
-size = Vector3(17, 1, 54)
-material = SubResource("StandardMaterial3D_hhheb")
-
-[node name="CSGBox3D10" type="CSGBox3D" parent="ParkingGarage/ExtraStairs"]
-transform = Transform3D(1, -7.71341e-09, 1.01549e-09, 7.71341e-09, 0.965926, -0.258819, 1.01549e-09, 0.258819, 0.965926, 52, 3.24712, -37.4941)
-use_collision = true
-size = Vector3(17, 1, 75)
-material = SubResource("StandardMaterial3D_hhheb")
-
-[node name="Under" type="Node3D" parent="ParkingGarage"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075, 0)
-visible = false
-
-[node name="CSGBox3D7" type="CSGBox3D" parent="ParkingGarage/Under"]
-transform = Transform3D(1, 7.71341e-09, 1.01549e-09, -7.71341e-09, 0.965926, 0.258819, 1.01549e-09, -0.258819, 0.965926, -30.5, -0.776457, 7.10223)
-use_collision = true
-size = Vector3(148, 1, 37)
-material = SubResource("StandardMaterial3D_3nkb1")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="ParkingGarage/Under"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29, -2, -53)
-use_collision = true
-size = Vector3(179, 1, 163)
-material = SubResource("StandardMaterial3D_3nkb1")
-
-[node name="Environment" type="Node3D" parent="ParkingGarage"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075, 0)
-visible = false
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="ParkingGarage/Environment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.9999, 21.4821, -94)
-radius = 19.0
-height = 61.875
-material = SubResource("StandardMaterial3D_aejcr")
-
-[node name="CSGBox3D11" type="CSGBox3D" parent="ParkingGarage/Environment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 150.5, -80.5)
-size = Vector3(111, 220, 109)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="ParkingGarage/Environment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.5, 51.5, -53.5)
-size = Vector3(190, 8, 164)
-
-[node name="MainWalls" type="Node3D" parent="ParkingGarage"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075, 0)
-visible = false
-
-[node name="CSGBox3D" type="CSGBox3D" parent="ParkingGarage/MainWalls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71, 16, -69.5)
-use_collision = true
-size = Vector3(1, 7, 130)
-material = SubResource("StandardMaterial3D_60qlx")
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="ParkingGarage/MainWalls"]
-transform = Transform3D(1, -7.71341e-09, 1.01549e-09, 7.71341e-09, 0.965926, -0.258819, 1.01549e-09, 0.258819, 0.965926, 71, 6.95638, 31.0334)
-use_collision = true
-size = Vector3(1, 6, 74)
-material = SubResource("StandardMaterial3D_60qlx")
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="ParkingGarage/MainWalls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61, 5.5, -70)
-use_collision = true
-size = Vector3(1, 16, 129)
-material = SubResource("StandardMaterial3D_60qlx")
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="ParkingGarage/MainWalls"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -23, 22.5, -135)
-use_collision = true
-size = Vector3(1, 50, 189)
-material = SubResource("StandardMaterial3D_60qlx")
-
-[node name="CSGBox3D5" type="CSGBox3D" parent="ParkingGarage/MainWalls"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -118, 22.5, -53.5)
-use_collision = true
-size = Vector3(1, 50, 164)
-material = SubResource("StandardMaterial3D_60qlx")
-
-[node name="CSGBox3D6" type="CSGBox3D" parent="ParkingGarage/MainWalls"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -107, 22.5, -43.5)
-use_collision = true
-size = Vector3(5, 50, 144)
-material = SubResource("StandardMaterial3D_60qlx")
-
-[node name="CSGBox3D7" type="CSGBox3D" parent="ParkingGarage/MainWalls"]
-transform = Transform3D(-8.9407e-08, 0, 1, 0, 1, 0, -1, 0, -8.9407e-08, 54.5, 5, -5)
-use_collision = true
-size = Vector3(1, 15, 22)
-material = SubResource("StandardMaterial3D_60qlx")
-
-[node name="CSGBox3D8" type="CSGBox3D" parent="ParkingGarage/MainWalls"]
-transform = Transform3D(-1, 0, -1.33118e-07, 0, 1, 0, 1.33118e-07, 0, -1, 43.5, 7, 12.5)
-use_collision = true
-size = Vector3(1, 19, 35)
-material = SubResource("StandardMaterial3D_60qlx")
-
-[node name="Guard" type="Node3D" parent="ParkingGarage/MainWalls"]
-transform = Transform3D(-8.9407e-08, 0, 1, 0, 1, 0, -1, 0, -8.9407e-08, 54.5, 5.5, -5)
-
-[node name="MidGuard" type="Node3D" parent="ParkingGarage/MainWalls/Guard"]
-
-[node name="CSGBox3D6" type="CSGBox3D" parent="ParkingGarage/MainWalls/Guard/MidGuard"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -38.5, 9, -11.0001)
-use_collision = true
-size = Vector3(1, 4, 7)
-material = SubResource("StandardMaterial3D_hhheb")
-
-[node name="CSGBox3D7" type="CSGBox3D" parent="ParkingGarage/MainWalls/Guard/MidGuard"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.5, 9, -85.5001)
-use_collision = true
-size = Vector3(1, 4, 148)
-material = SubResource("StandardMaterial3D_hhheb")
-
-[node name="CSGBox3D8" type="CSGBox3D" parent="ParkingGarage/MainWalls/Guard/MidGuard"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -34.5, 9, -159)
-use_collision = true
-size = Vector3(1, 4, 13)
-material = SubResource("StandardMaterial3D_hhheb")
-
-[node name="TopGuard" type="Node3D" parent="ParkingGarage/MainWalls/Guard"]
-
-[node name="CSGBox3D9" type="CSGBox3D" parent="ParkingGarage/MainWalls/Guard/TopGuard"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.00004, 23, -11.0001)
-use_collision = true
-size = Vector3(1, 4, 118)
-material = SubResource("StandardMaterial3D_hhheb")
-
-[node name="CSGBox3D12" type="CSGBox3D" parent="ParkingGarage/MainWalls/Guard/TopGuard"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 97.0001, 31.5, 5.99994)
-use_collision = true
-size = Vector3(1, 21, 66)
-material = SubResource("StandardMaterial3D_hhheb")
-
-[node name="CSGBox3D10" type="CSGBox3D" parent="ParkingGarage/MainWalls/Guard/TopGuard"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.5, 23, -85.5001)
-use_collision = true
-size = Vector3(1, 4, 148)
-material = SubResource("StandardMaterial3D_hhheb")
-
-[node name="CSGBox3D11" type="CSGBox3D" parent="ParkingGarage/MainWalls/Guard/TopGuard"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -41.4999, 23, -159.5)
-use_collision = true
-size = Vector3(1, 4, 16)
-material = SubResource("StandardMaterial3D_hhheb")
-
-[node name="parkinggarage" parent="ParkingGarage" instance=ExtResource("61_tdl4v")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-
-[node name="conveniencestore" parent="ParkingGarage" instance=ExtResource("62_oj2kp")]
-transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, 38.9988, 14.6458, -107.825)
-
-[node name="StaticBody3D2" type="StaticBody3D" parent="ParkingGarage/conveniencestore"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ParkingGarage/conveniencestore/StaticBody3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.9279, 4.44431, -7.12215)
-shape = SubResource("BoxShape3D_yot6u")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="ParkingGarage/conveniencestore/StaticBody3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.7446, 4.44431, 20.5641)
-shape = SubResource("BoxShape3D_e1wpp")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="ParkingGarage/conveniencestore/StaticBody3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.7446, 4.44431, -32.0933)
-shape = SubResource("BoxShape3D_e7r4u")
-
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="ParkingGarage/conveniencestore/StaticBody3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.7446, 4.44431, -4.75162)
-shape = SubResource("BoxShape3D_t7oo2")
-
-[node name="CollisionShape3D6" type="CollisionShape3D" parent="ParkingGarage/conveniencestore/StaticBody3D2"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.6867, 4.44431, -37.4615)
-shape = SubResource("BoxShape3D_o143m")
-
-[node name="CollisionShape3D9" type="CollisionShape3D" parent="ParkingGarage/conveniencestore/StaticBody3D2"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.68672, 4.44431, 22.9221)
-shape = SubResource("BoxShape3D_hhheb")
-
-[node name="CollisionShape3D10" type="CollisionShape3D" parent="ParkingGarage/conveniencestore/StaticBody3D2"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.56245, 2, 21.9221)
-shape = SubResource("BoxShape3D_3nkb1")
-
-[node name="CollisionShape3D13" type="CollisionShape3D" parent="ParkingGarage/conveniencestore/StaticBody3D2"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.9382, 2, -35.8613)
-shape = SubResource("BoxShape3D_aejcr")
-
-[node name="CollisionShape3D14" type="CollisionShape3D" parent="ParkingGarage/conveniencestore/StaticBody3D2"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.43818, -0.988182, -6.57786)
-shape = SubResource("BoxShape3D_60qlx")
-
-[node name="CollisionShape3D11" type="CollisionShape3D" parent="ParkingGarage/conveniencestore/StaticBody3D2"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.79285, 1.30225, 6.49191)
-shape = SubResource("BoxShape3D_gqi3p")
-
-[node name="CollisionShape3D12" type="CollisionShape3D" parent="ParkingGarage/conveniencestore/StaticBody3D2"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.8102, 1.30225, -14.6652)
-shape = SubResource("BoxShape3D_gqi3p")
-
-[node name="CollisionShape3D15" type="CollisionShape3D" parent="ParkingGarage/conveniencestore/StaticBody3D2"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 13.8536, 1.83868, -6.82574)
-shape = SubResource("BoxShape3D_uqhyq")
-
-[node name="CollisionShape3D7" type="CollisionShape3D" parent="ParkingGarage/conveniencestore/StaticBody3D2"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.31328, 1, -37.4615)
-shape = SubResource("BoxShape3D_d3oxg")
-
-[node name="CollisionShape3D8" type="CollisionShape3D" parent="ParkingGarage/conveniencestore/StaticBody3D2"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3133, 6, -37.4615)
-shape = SubResource("BoxShape3D_8jofy")
-
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="ParkingGarage/conveniencestore/StaticBody3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.09761, 8.38861, -7.36371)
-shape = SubResource("BoxShape3D_up6oq")
-
-[node name="laundromat" type="Node3D" parent="ParkingGarage"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.5014, 17.7813, 0)
-
-[node name="laundromat2" parent="ParkingGarage/laundromat" instance=ExtResource("63_nm6wb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54, -4.22838, -18)
-
-[node name="BlueLaundryMachines" type="Node3D" parent="ParkingGarage/laundromat"]
-
-[node name="laundrymachineblue2" parent="ParkingGarage/laundromat/BlueLaundryMachines" instance=ExtResource("64_opmfb")]
-transform = Transform3D(1, 0, -7.35137e-08, 0, 1, 0, 7.35137e-08, 0, 1, -61.1249, -3.94615, 8.92327)
-
-[node name="laundrymachineblue3" parent="ParkingGarage/laundromat/BlueLaundryMachines" instance=ExtResource("64_opmfb")]
-transform = Transform3D(1, 0, -7.35137e-08, 0, 1, 0, 7.35137e-08, 0, 1, -61.1249, -3.94615, 3.67022)
-
-[node name="laundrymachineblue4" parent="ParkingGarage/laundromat/BlueLaundryMachines" instance=ExtResource("64_opmfb")]
-transform = Transform3D(1, 0, -7.35137e-08, 0, 1, 0, 7.35137e-08, 0, 1, -61.1249, -3.94615, -1.62241)
-
-[node name="laundrymachineblue5" parent="ParkingGarage/laundromat/BlueLaundryMachines" instance=ExtResource("64_opmfb")]
-transform = Transform3D(1, 0, -7.35137e-08, 0, 1, 0, 7.35137e-08, 0, 1, -61.1249, -3.94615, -6.87546)
-
-[node name="laundrymachineblue6" parent="ParkingGarage/laundromat/BlueLaundryMachines" instance=ExtResource("64_opmfb")]
-transform = Transform3D(1, 0, -7.35137e-08, 0, 1, 0, 7.35137e-08, 0, 1, -61.1249, -3.94615, -12.1677)
-
-[node name="laundrymachineblue7" parent="ParkingGarage/laundromat/BlueLaundryMachines" instance=ExtResource("64_opmfb")]
-transform = Transform3D(1, 0, -7.35137e-08, 0, 1, 0, 7.35137e-08, 0, 1, -61.1249, -3.94615, -17.4207)
-
-[node name="laundrymachineblue8" parent="ParkingGarage/laundromat/BlueLaundryMachines" instance=ExtResource("64_opmfb")]
-transform = Transform3D(1, 0, -7.35137e-08, 0, 1, 0, 7.35137e-08, 0, 1, -61.1249, -3.94615, -22.6414)
-
-[node name="laundrymachineblue9" parent="ParkingGarage/laundromat/BlueLaundryMachines" instance=ExtResource("64_opmfb")]
-transform = Transform3D(1, 0, -7.35137e-08, 0, 1, 0, 7.35137e-08, 0, 1, -61.1249, -3.94615, -27.8944)
-
-[node name="laundrymachineblue10" parent="ParkingGarage/laundromat/BlueLaundryMachines" instance=ExtResource("64_opmfb")]
-transform = Transform3D(1, 0, -7.35137e-08, 0, 1, 0, 7.35137e-08, 0, 1, -61.1249, -3.94615, -33.0747)
-
-[node name="BeigeLaundryMachines" type="Node3D" parent="ParkingGarage/laundromat"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -49.7203, -3.93742, 3.59558)
-
-[node name="laundrymachine2" parent="ParkingGarage/laundromat/BeigeLaundryMachines" instance=ExtResource("65_wuxcx")]
-transform = Transform3D(-1.053e-07, 0, -1, 0, 1, 0, 1, 0, -1.053e-07, 6.52636, 0, 1.58017)
-
-[node name="laundrymachine4" parent="ParkingGarage/laundromat/BeigeLaundryMachines" instance=ExtResource("65_wuxcx")]
-transform = Transform3D(-1.053e-07, 0, -1, 0, 1, 0, 1, 0, -1.053e-07, -0.0207367, 0, 1.58017)
-
-[node name="laundrymachine3" parent="ParkingGarage/laundromat/BeigeLaundryMachines" instance=ExtResource("65_wuxcx")]
-transform = Transform3D(-1.053e-07, 0, -1, 0, 1, 0, 1, 0, -1.053e-07, 3.23241, 0, 1.58017)
-
-[node name="laundrymachine5" parent="ParkingGarage/laundromat/BeigeLaundryMachines" instance=ExtResource("65_wuxcx")]
-transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, 0, 0, 0)
-
-[node name="laundrymachine8" parent="ParkingGarage/laundromat/BeigeLaundryMachines" instance=ExtResource("65_wuxcx")]
-transform = Transform3D(-1.053e-07, 0, -1, 0, 1, 0, 1, 0, -1.053e-07, -19.0207, 0, 1.58017)
-
-[node name="laundrymachine9" parent="ParkingGarage/laundromat/BeigeLaundryMachines" instance=ExtResource("65_wuxcx")]
-transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -19, 0, 0)
-
-[node name="laundrymachine10" parent="ParkingGarage/laundromat/BeigeLaundryMachines" instance=ExtResource("65_wuxcx")]
-transform = Transform3D(-1.053e-07, 0, -1, 0, 1, 0, 1, 0, -1.053e-07, -22.1673, 0, 1.58017)
-
-[node name="laundrymachine11" parent="ParkingGarage/laundromat/BeigeLaundryMachines" instance=ExtResource("65_wuxcx")]
-transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -22.1466, 0, 0)
-
-[node name="laundrymachine6" parent="ParkingGarage/laundromat/BeigeLaundryMachines" instance=ExtResource("65_wuxcx")]
-transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, 6.5471, 0, 0)
-
-[node name="laundrymachine7" parent="ParkingGarage/laundromat/BeigeLaundryMachines" instance=ExtResource("65_wuxcx")]
-transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, 3.29395, 0, 0)
-
-[node name="bin1" parent="ParkingGarage/laundromat/BeigeLaundryMachines" instance=ExtResource("66_6o1h8")]
-transform = Transform3D(-1, 0, -1.39091e-08, 0, 1, 0, 1.39091e-08, 0, -1, -24.4553, 1.29331, 0.83609)
-
-[node name="bin4" parent="ParkingGarage/laundromat/BeigeLaundryMachines" instance=ExtResource("66_6o1h8")]
-transform = Transform3D(-1, 0, -1.39091e-08, 0, 1, 0, 1.39091e-08, 0, -1, -2.03518, 1.29331, 0.83609)
-
-[node name="bin3" parent="ParkingGarage/laundromat/BeigeLaundryMachines" instance=ExtResource("66_6o1h8")]
-transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -43.6727, 1.29331, -2.61279)
-
-[node name="bin2" parent="ParkingGarage/laundromat/BeigeLaundryMachines" instance=ExtResource("66_6o1h8")]
-transform = Transform3D(0.990967, 0, 0.134107, 0, 1, 0, -0.134107, 0, 0.990967, -16.8582, 0.995146, 0.614326)
-
-[node name="vents" type="Node3D" parent="ParkingGarage/laundromat"]
-
-[node name="vent" parent="ParkingGarage/laundromat/vents" instance=ExtResource("67_vkbfx")]
-transform = Transform3D(-1.17225e-07, 0, -1, 0, 1, 0, 1, 0, -1.17225e-07, -61.1424, 3.27281, 10.6088)
-
-[node name="vent2" parent="ParkingGarage/laundromat/vents" instance=ExtResource("67_vkbfx")]
-transform = Transform3D(-1.17225e-07, 0, -1, 0, 1, 0, 1, 0, -1.17225e-07, -61.1424, 3.27281, 5.67619)
-
-[node name="vent3" parent="ParkingGarage/laundromat/vents" instance=ExtResource("67_vkbfx")]
-transform = Transform3D(-1.17225e-07, 0, -1, 0, 1, 0, 1, 0, -1.17225e-07, -61.1424, 3.27281, 0.713112)
-
-[node name="vent4" parent="ParkingGarage/laundromat/vents" instance=ExtResource("67_vkbfx")]
-transform = Transform3D(-1.17225e-07, 0, -1, 0, 1, 0, 1, 0, -1.17225e-07, -61.1424, 3.27281, -4.2195)
-
-[node name="vent5" parent="ParkingGarage/laundromat/vents" instance=ExtResource("67_vkbfx")]
-transform = Transform3D(-1.17225e-07, 0, -1, 0, 1, 0, 1, 0, -1.17225e-07, -61.1424, 3.27281, -9.14854)
-
-[node name="vent6" parent="ParkingGarage/laundromat/vents" instance=ExtResource("67_vkbfx")]
-transform = Transform3D(-1.17225e-07, 0, -1, 0, 1, 0, 1, 0, -1.17225e-07, -61.1424, 3.27281, -14.0812)
-
-[node name="vent7" parent="ParkingGarage/laundromat/vents" instance=ExtResource("67_vkbfx")]
-transform = Transform3D(-1.17225e-07, 0, -1, 0, 1, 0, 1, 0, -1.17225e-07, -61.1424, 3.27281, -19.0442)
-
-[node name="vent8" parent="ParkingGarage/laundromat/vents" instance=ExtResource("67_vkbfx")]
-transform = Transform3D(-1.17225e-07, 0, -1, 0, 1, 0, 1, 0, -1.17225e-07, -61.1424, 3.27281, -23.9768)
-
-[node name="vent9" parent="ParkingGarage/laundromat/vents" instance=ExtResource("67_vkbfx")]
-transform = Transform3D(-1.17225e-07, 0, -1, 0, 1, 0, 1, 0, -1.17225e-07, -61.1424, 3.27281, -28.8755)
-
-[node name="vent10" parent="ParkingGarage/laundromat/vents" instance=ExtResource("67_vkbfx")]
-transform = Transform3D(-1.17225e-07, 0, -1, 0, 1, 0, 1, 0, -1.17225e-07, -61.1424, 3.27281, -33.8081)
-
-[node name="lights" type="Node3D" parent="ParkingGarage/laundromat"]
-transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -53.8152, 3.65062, -7.80373)
-
-[node name="ceilingled2" parent="ParkingGarage/laundromat/lights" instance=ExtResource("68_olt46")]
-
-[node name="ceilingled3" parent="ParkingGarage/laundromat/lights" instance=ExtResource("68_olt46")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 0)
-
-[node name="ceilingled4" parent="ParkingGarage/laundromat/lights" instance=ExtResource("68_olt46")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 0)
-
-[node name="ceilingled5" parent="ParkingGarage/laundromat/lights" instance=ExtResource("68_olt46")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
-
-[node name="Collider" type="Node3D" parent="ParkingGarage/laundromat"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.5264, -3.86636, -6.04788)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="ParkingGarage/laundromat/Collider"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ParkingGarage/laundromat/Collider/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.63269, -0.282959, -8.22056)
-shape = SubResource("BoxShape3D_8nrvh")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="ParkingGarage/laundromat/Collider/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.63269, 8.20588, -8.22056)
-shape = SubResource("BoxShape3D_8nrvh")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="ParkingGarage/laundromat/Collider/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.54721, 4.17462, 18.2597)
-shape = SubResource("BoxShape3D_u1opp")
-
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="ParkingGarage/laundromat/Collider/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.34125, 4.17462, -34.8395)
-shape = SubResource("BoxShape3D_85yty")
-
-[node name="CollisionShape3D10" type="CollisionShape3D" parent="ParkingGarage/laundromat/Collider/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.67041, 6.83861, -34.8395)
-shape = SubResource("BoxShape3D_jwuug")
-
-[node name="CollisionShape3D11" type="CollisionShape3D" parent="ParkingGarage/laundromat/Collider/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.4584, 5.14856, -8.08645)
-shape = SubResource("BoxShape3D_unhrq")
-
-[node name="CollisionShape3D9" type="CollisionShape3D" parent="ParkingGarage/laundromat/Collider/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.43567, 4.17462, -34.8395)
-shape = SubResource("BoxShape3D_3xcd8")
-
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="ParkingGarage/laundromat/Collider/StaticBody3D"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.98453, 4.17462, -8.22796)
-shape = SubResource("BoxShape3D_pvkv1")
-
-[node name="CollisionShape3D6" type="CollisionShape3D" parent="ParkingGarage/laundromat/Collider/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0117, 1.68036, -10.9644)
-shape = SubResource("BoxShape3D_8dn3i")
-
-[node name="CollisionShape3D7" type="CollisionShape3D" parent="ParkingGarage/laundromat/Collider/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0117, 1.68036, 13.2088)
-shape = SubResource("BoxShape3D_6t37o")
-
-[node name="CollisionShape3D8" type="CollisionShape3D" parent="ParkingGarage/laundromat/Collider/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9883, 1.68036, -8.29115)
-shape = SubResource("BoxShape3D_biipp")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ParkingGarage/laundromat"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.4602, -0.078228, 6.31922)
-mesh = SubResource("BoxMesh_jwuug")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="ParkingGarage/laundromat"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.4602, -0.078228, -26.4805)
-mesh = SubResource("BoxMesh_3xcd8")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="ParkingGarage/laundromat"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.3311, 2.75914, -5.87492)
-mesh = SubResource("BoxMesh_unhrq")
-
-[node name="movableprops" type="Node3D" parent="ParkingGarage"]
-
-[node name="bench" parent="ParkingGarage/movableprops" instance=ExtResource("69_am7xc")]
-transform = Transform3D(0.999931, 0, -0.0117982, 0, 1, 0, 0.0117982, 0, 0.999931, -90.0479, 14.1503, -27.3245)
-
-[node name="hardprops" type="Node3D" parent="ParkingGarage"]
-
-[node name="vendingmachine" parent="ParkingGarage/hardprops" instance=ExtResource("70_wffs7")]
-transform = Transform3D(5.76205e-08, 0, -1, 0, 1, 0, 1, 0, 5.76205e-08, 9.49002, 13.575, -84.1464)
-
-[node name="sidewalks" type="Node3D" parent="ParkingGarage/hardprops"]
-
-[node name="ParkingLeft" type="Node3D" parent="ParkingGarage/hardprops/sidewalks"]
-
-[node name="yellowsidewalklong17" parent="ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
-transform = Transform3D(0.75, 0, -5.51353e-08, 0, 0.75, 0, 5.51353e-08, 0, 0.75, -84.0518, -1.11085, -9.11237)
-
-[node name="yellowsidewalklong18" parent="ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
-transform = Transform3D(-0.75, 0, -2.23518e-08, 0, 0.75, 0, 2.23518e-08, 0, -0.75, -84.0518, -1.11085, -5.80357)
-
-[node name="yellowsidewalklong19" parent="ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
-transform = Transform3D(0.75, 0, -5.51353e-08, 0, 0.75, 0, 5.51353e-08, 0, 0.75, -80.8184, -1.11085, -9.11237)
-
-[node name="yellowsidewalklong20" parent="ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
-transform = Transform3D(-0.75, 0, -2.23518e-08, 0, 0.75, 0, 2.23518e-08, 0, -0.75, -80.8184, -1.11085, -5.80357)
-
-[node name="yellowsidewalklong21" parent="ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
-transform = Transform3D(0.75, 0, -5.51353e-08, 0, 0.75, 0, 5.51353e-08, 0, 0.75, -77.5593, -1.11085, -9.11237)
-
-[node name="yellowsidewalklong22" parent="ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
-transform = Transform3D(-0.75, 0, -2.23518e-08, 0, 0.75, 0, 2.23518e-08, 0, -0.75, -77.5593, -1.11085, -5.80357)
-
-[node name="yellowsidewalklong23" parent="ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
-transform = Transform3D(0.75, 0, -5.51353e-08, 0, 0.75, 0, 5.51353e-08, 0, 0.75, -74.2757, -1.11085, -9.11237)
-
-[node name="yellowsidewalklong24" parent="ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
-transform = Transform3D(-0.75, 0, -2.23518e-08, 0, 0.75, 0, 2.23518e-08, 0, -0.75, -74.2757, -1.11085, -5.80357)
-
-[node name="yellowsidewalklong25" parent="ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
-transform = Transform3D(0.75, 0, -5.51353e-08, 0, 0.75, 0, 5.51353e-08, 0, 0.75, -70.9727, -1.11085, -9.11237)
-
-[node name="yellowsidewalklong26" parent="ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
-transform = Transform3D(-0.75, 0, -2.23518e-08, 0, 0.75, 0, 2.23518e-08, 0, -0.75, -70.9727, -1.11085, -5.80357)
-
-[node name="yellowsidewalklong27" parent="ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
-transform = Transform3D(0.75, 0, -5.51353e-08, 0, 0.75, 0, 5.51353e-08, 0, 0.75, -67.7393, -1.11085, -9.11237)
-
-[node name="yellowsidewalklong28" parent="ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
-transform = Transform3D(-0.75, 0, -2.23518e-08, 0, 0.75, 0, 2.23518e-08, 0, -0.75, -67.7393, -1.11085, -5.80357)
-
-[node name="yellowsidewalklong29" parent="ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
-transform = Transform3D(0.75, 0, -5.51353e-08, 0, 0.75, 0, 5.51353e-08, 0, 0.75, -64.4802, -1.11085, -9.11237)
-
-[node name="yellowsidewalklong30" parent="ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
-transform = Transform3D(-0.75, 0, -2.23518e-08, 0, 0.75, 0, 2.23518e-08, 0, -0.75, -64.4802, -1.11085, -5.80357)
-
-[node name="yellowsidewalklong31" parent="ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
-transform = Transform3D(0.75, 0, -5.51353e-08, 0, 0.75, 0, 5.51353e-08, 0, 0.75, -61.1965, -1.11085, -9.11237)
-
-[node name="yellowsidewalklong32" parent="ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
-transform = Transform3D(-0.75, 0, -2.23518e-08, 0, 0.75, 0, 2.23518e-08, 0, -0.75, -61.1965, -1.11085, -5.80357)
-
-[node name="yellowsidewalklong37" parent="ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
-transform = Transform3D(0.75, 0, -5.51353e-08, 0, 0.75, 0, 5.51353e-08, 0, 0.75, -103.691, -1.11085, -9.11237)
-
-[node name="yellowsidewalklong38" parent="ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
-transform = Transform3D(-0.75, 0, -2.23518e-08, 0, 0.75, 0, 2.23518e-08, 0, -0.75, -103.691, -1.11085, -5.80357)
-
-[node name="yellowsidewalklong39" parent="ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
-transform = Transform3D(0.75, 0, -5.51353e-08, 0, 0.75, 0, 5.51353e-08, 0, 0.75, -100.408, -1.11085, -9.11237)
-
-[node name="yellowsidewalklong40" parent="ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
-transform = Transform3D(-0.75, 0, -2.23518e-08, 0, 0.75, 0, 2.23518e-08, 0, -0.75, -100.408, -1.11085, -5.80357)
-
-[node name="yellowsidewalklong41" parent="ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
-transform = Transform3D(0.75, 0, -5.51353e-08, 0, 0.75, 0, 5.51353e-08, 0, 0.75, -97.1047, -1.11085, -9.11237)
-
-[node name="yellowsidewalklong42" parent="ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
-transform = Transform3D(-0.75, 0, -2.23518e-08, 0, 0.75, 0, 2.23518e-08, 0, -0.75, -97.1047, -1.11085, -5.80357)
-
-[node name="yellowsidewalklong43" parent="ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
-transform = Transform3D(0.75, 0, -5.51353e-08, 0, 0.75, 0, 5.51353e-08, 0, 0.75, -93.8713, -1.11085, -9.11237)
-
-[node name="yellowsidewalklong44" parent="ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
-transform = Transform3D(-0.75, 0, -2.23518e-08, 0, 0.75, 0, 2.23518e-08, 0, -0.75, -93.8713, -1.11085, -5.80357)
-
-[node name="yellowsidewalklong45" parent="ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
-transform = Transform3D(0.75, 0, -5.51353e-08, 0, 0.75, 0, 5.51353e-08, 0, 0.75, -90.6122, -1.11085, -9.11237)
-
-[node name="yellowsidewalklong46" parent="ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
-transform = Transform3D(-0.75, 0, -2.23518e-08, 0, 0.75, 0, 2.23518e-08, 0, -0.75, -90.6122, -1.11085, -5.80357)
-
-[node name="yellowsidewalklong47" parent="ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
-transform = Transform3D(0.75, 0, -5.51353e-08, 0, 0.75, 0, 5.51353e-08, 0, 0.75, -87.3286, -1.11085, -9.11237)
-
-[node name="yellowsidewalklong48" parent="ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
-transform = Transform3D(-0.75, 0, -2.23518e-08, 0, 0.75, 0, 2.23518e-08, 0, -0.75, -87.3286, -1.11085, -5.80357)
-
-[node name="yellowsidewalkcornerout" parent="ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("72_4qc3u")]
-transform = Transform3D(-3.27835e-08, 0, -0.75, 0, 0.75, 0, 0.75, 0, -3.27835e-08, -57.904, -1.11085, -5.82045)
-
-[node name="yellowsidewalkcornerout2" parent="ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("72_4qc3u")]
-transform = Transform3D(0.75, 0, 3.55271e-15, 0, 0.75, 0, -3.55271e-15, 0, 0.75, -57.904, -1.11085, -9.11087)
-
-[node name="ParkingRight" type="Node3D" parent="ParkingGarage/hardprops/sidewalks"]
-
-[node name="yellowsidewalklong" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(0.75, 0, -5.51353e-08, 0, 0.75, 0, 5.51353e-08, 0, 0.75, -25.7579, -1.40636, -9.11237)
-
-[node name="yellowsidewalklong2" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(-0.75, 0, -2.23518e-08, 0, 0.75, 0, 2.23518e-08, 0, -0.75, -25.7579, -1.40636, -5.80357)
-
-[node name="yellowsidewalklong17" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(0.75, 0, -5.51353e-08, 0, 0.75, 0, 5.51353e-08, 0, 0.75, -29.0719, -1.40636, -9.11237)
-
-[node name="yellowsidewalklong18" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(-0.75, 0, -2.23518e-08, 0, 0.75, 0, 2.23518e-08, 0, -0.75, -29.0719, -1.40636, -5.80357)
-
-[node name="yellowsidewalklong3" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(0.75, 0, -5.51353e-08, 0, 0.75, 0, 5.51353e-08, 0, 0.75, -22.5244, -1.40636, -9.11237)
-
-[node name="yellowsidewalklong4" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(-0.75, 0, -2.23518e-08, 0, 0.75, 0, 2.23518e-08, 0, -0.75, -22.5244, -1.40636, -5.80357)
-
-[node name="yellowsidewalklong5" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(0.75, 0, -5.51353e-08, 0, 0.75, 0, 5.51353e-08, 0, 0.75, -19.2653, -1.40636, -9.11237)
-
-[node name="yellowsidewalklong6" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(-0.75, 0, -2.23518e-08, 0, 0.75, 0, 2.23518e-08, 0, -0.75, -19.2653, -1.40636, -5.80357)
-
-[node name="yellowsidewalklong7" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(0.75, 0, -5.51353e-08, 0, 0.75, 0, 5.51353e-08, 0, 0.75, -15.9817, -1.40636, -9.11237)
-
-[node name="yellowsidewalklong8" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(-0.75, 0, -2.23518e-08, 0, 0.75, 0, 2.23518e-08, 0, -0.75, -15.9817, -1.40636, -5.80357)
-
-[node name="yellowsidewalklong9" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(0.75, 0, -5.51353e-08, 0, 0.75, 0, 5.51353e-08, 0, 0.75, -12.6788, -1.40636, -9.11237)
-
-[node name="yellowsidewalklong10" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(-0.75, 0, -2.23518e-08, 0, 0.75, 0, 2.23518e-08, 0, -0.75, -12.6788, -1.40636, -5.80357)
-
-[node name="yellowsidewalklong11" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(0.749961, 0.00764441, -5.51336e-08, -0.00764441, 0.749961, 3.34148e-10, 5.51341e-08, 2.27821e-10, 0.75, -9.4451, -1.3664, -9.11237)
-
-[node name="yellowsidewalklong12" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(-0.75, 0, -2.23518e-08, 0, 0.75, 0, 2.23518e-08, 0, -0.75, -9.4453, -1.40636, -5.80357)
-
-[node name="yellowsidewalklong13" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(0.749961, 0.00764441, -5.51336e-08, -0.00764441, 0.749961, 3.34148e-10, 5.51341e-08, 2.27821e-10, 0.75, -6.18616, -1.39962, -9.11237)
-
-[node name="yellowsidewalklong14" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(-0.749961, 0.00764441, -2.23494e-08, 0.00764441, 0.749961, 4.55642e-10, 2.23529e-08, 2.27821e-10, -0.75, -6.18616, -1.39962, -5.80357)
-
-[node name="yellowsidewalklong15" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(0.749961, 0.00764441, -5.51336e-08, -0.00764441, 0.749961, 3.34148e-10, 5.51341e-08, 2.27821e-10, 0.75, -2.90273, -1.43308, -9.11237)
-
-[node name="yellowsidewalklong16" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(-0.749961, 0.00764441, -2.23494e-08, 0.00764441, 0.749961, 4.55642e-10, 2.23529e-08, 2.27821e-10, -0.75, -2.90273, -1.43308, -5.80357)
-
-[node name="yellowsidewalklong19" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(0.75, 0, -5.51353e-08, 0, 0.75, 0, 5.51353e-08, 0, 0.75, 0.376083, -1.40636, -9.11237)
-
-[node name="yellowsidewalklong20" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(-0.75, 0, -2.23518e-08, 0, 0.75, 0, 2.23518e-08, 0, -0.75, 0.376085, -1.40636, -5.80357)
-
-[node name="yellowsidewalklong21" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(0.749961, 0.00764441, -5.51336e-08, -0.00764441, 0.749961, 3.34148e-10, 5.51341e-08, 2.27821e-10, 0.75, 3.60974, -1.3664, -9.11237)
-
-[node name="yellowsidewalklong22" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(-0.75, 0, -2.23518e-08, 0, 0.75, 0, 2.23518e-08, 0, -0.75, 3.60954, -1.40636, -5.80357)
-
-[node name="yellowsidewalklong23" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(0.749961, 0.00764441, -5.51336e-08, -0.00764441, 0.749961, 3.34148e-10, 5.51341e-08, 2.27821e-10, 0.75, 6.86868, -1.39962, -9.11237)
-
-[node name="yellowsidewalklong24" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(-0.749961, 0.00764441, -2.23494e-08, 0.00764441, 0.749961, 4.55642e-10, 2.23529e-08, 2.27821e-10, -0.75, 6.86868, -1.39962, -5.80357)
-
-[node name="yellowsidewalklong25" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(0.749961, 0.00764441, -5.51336e-08, -0.00764441, 0.749961, 3.34148e-10, 5.51341e-08, 2.27821e-10, 0.75, 10.1521, -1.43308, -9.11237)
-
-[node name="yellowsidewalklong26" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(-0.749961, 0.00764441, -2.23494e-08, 0.00764441, 0.749961, 4.55642e-10, 2.23529e-08, 2.27821e-10, -0.75, 10.1521, -1.43308, -5.80357)
-
-[node name="yellowsidewalklong27" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(-8.79188e-08, 0, -0.75, 0, 0.75, 0, 0.75, 0, -8.79188e-08, 16.7515, -1.40636, -48.3293)
-
-[node name="yellowsidewalklong29" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(1.04318e-08, 0, 0.75, 0, 0.75, 0, -0.75, 0, 1.04318e-08, 13.4427, -1.40636, -48.3293)
-
-[node name="yellowsidewalklong30" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(-8.79188e-08, 0, -0.75, 0, 0.75, 0, 0.75, 0, -8.79188e-08, 16.7515, -1.40636, -51.6434)
-
-[node name="yellowsidewalklong31" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(1.04318e-08, 0, 0.75, 0, 0.75, 0, -0.75, 0, 1.04318e-08, 13.4427, -1.40636, -51.6434)
-
-[node name="yellowsidewalklong54" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(-8.79188e-08, 0, -0.75, 0, 0.75, 0, 0.75, 0, -8.79188e-08, 16.7515, -1.40636, -54.9199)
-
-[node name="yellowsidewalklong55" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(1.04318e-08, 0, 0.75, 0, 0.75, 0, -0.75, 0, 1.04318e-08, 13.4427, -1.40636, -54.9199)
-
-[node name="yellowsidewalklong56" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(-8.79188e-08, 0, -0.75, 0, 0.75, 0, 0.75, 0, -8.79188e-08, 16.7515, -1.40636, -58.2463)
-
-[node name="yellowsidewalklong57" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(1.04318e-08, 0, 0.75, 0, 0.75, 0, -0.75, 0, 1.04318e-08, 13.4427, -1.40636, -58.2463)
-
-[node name="yellowsidewalklong32" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(-8.79188e-08, 0, -0.75, 0, 0.75, 0, 0.75, 0, -8.79188e-08, 16.7515, -1.40636, -45.0959)
-
-[node name="yellowsidewalklong33" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(1.04318e-08, 0, 0.75, 0, 0.75, 0, -0.75, 0, 1.04318e-08, 13.4427, -1.40636, -45.0959)
-
-[node name="yellowsidewalklong34" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(-8.79188e-08, 0, -0.75, 0, 0.75, 0, 0.75, 0, -8.79188e-08, 16.7515, -1.40636, -41.8368)
-
-[node name="yellowsidewalklong35" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(1.04318e-08, 0, 0.75, 0, 0.75, 0, -0.75, 0, 1.04318e-08, 13.4427, -1.40636, -41.8368)
-
-[node name="yellowsidewalklong36" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(-8.79188e-08, 0, -0.75, 0, 0.75, 0, 0.75, 0, -8.79188e-08, 16.7515, -1.40636, -38.5532)
-
-[node name="yellowsidewalklong37" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(1.04318e-08, 0, 0.75, 0, 0.75, 0, -0.75, 0, 1.04318e-08, 13.4427, -1.40636, -38.5532)
-
-[node name="yellowsidewalklong38" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(-8.79188e-08, 0, -0.75, 0, 0.75, 0, 0.75, 0, -8.79188e-08, 16.7515, -1.40636, -35.2502)
-
-[node name="yellowsidewalklong39" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(1.04318e-08, 0, 0.75, 0, 0.75, 0, -0.75, 0, 1.04318e-08, 13.4427, -1.40636, -35.2502)
-
-[node name="yellowsidewalklong40" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(-8.79159e-08, -5.61969e-10, -0.75, -0.00764441, 0.749961, 3.34148e-10, 0.749961, 0.00764441, -8.79171e-08, 16.7515, -1.3664, -32.0166)
-
-[node name="yellowsidewalklong41" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(1.04318e-08, 0, 0.75, 0, 0.75, 0, -0.75, 0, 1.04318e-08, 13.4427, -1.40636, -32.0168)
-
-[node name="yellowsidewalklong42" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(-8.79159e-08, -5.61969e-10, -0.75, -0.00764441, 0.749961, 3.34148e-10, 0.749961, 0.00764441, -8.79171e-08, 16.7515, -1.39962, -28.7576)
-
-[node name="yellowsidewalklong43" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(1.04432e-08, 8.34943e-10, 0.75, 0.00764441, 0.749961, 4.55642e-10, -0.749961, 0.00764441, 1.04341e-08, 13.4427, -1.39962, -28.7576)
-
-[node name="yellowsidewalklong44" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(-8.79159e-08, -5.61969e-10, -0.75, -0.00764441, 0.749961, 3.34148e-10, 0.749961, 0.00764441, -8.79171e-08, 16.7515, -1.43308, -25.4742)
-
-[node name="yellowsidewalklong45" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(1.04432e-08, 8.34943e-10, 0.75, 0.00764441, 0.749961, 4.55642e-10, -0.749961, 0.00764441, 1.04341e-08, 13.4427, -1.43308, -25.4742)
-
-[node name="yellowsidewalklong46" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(-8.79188e-08, 0, -0.75, 0, 0.75, 0, 0.75, 0, -8.79188e-08, 16.7515, -1.40636, -22.1954)
-
-[node name="yellowsidewalklong47" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(1.04318e-08, 0, 0.75, 0, 0.75, 0, -0.75, 0, 1.04318e-08, 13.4427, -1.40636, -22.1954)
-
-[node name="yellowsidewalklong48" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(-8.79159e-08, -5.61969e-10, -0.75, -0.00764441, 0.749961, 3.34148e-10, 0.749961, 0.00764441, -8.79171e-08, 16.7515, -1.3664, -18.9617)
-
-[node name="yellowsidewalklong49" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(1.04318e-08, 0, 0.75, 0, 0.75, 0, -0.75, 0, 1.04318e-08, 13.4427, -1.40636, -18.9619)
-
-[node name="yellowsidewalklong50" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(-8.79159e-08, -5.61969e-10, -0.75, -0.00764441, 0.749961, 3.34148e-10, 0.749961, 0.00764441, -8.79171e-08, 16.7515, -1.39962, -15.7028)
-
-[node name="yellowsidewalklong51" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(1.04432e-08, 8.34943e-10, 0.75, 0.00764441, 0.749961, 4.55642e-10, -0.749961, 0.00764441, 1.04341e-08, 13.4427, -1.39962, -15.7028)
-
-[node name="yellowsidewalklong52" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(-8.79159e-08, -5.61969e-10, -0.75, -0.00764441, 0.749961, 3.34148e-10, 0.749961, 0.00764441, -8.79171e-08, 16.7515, -1.43308, -12.4193)
-
-[node name="yellowsidewalklong58" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(-8.79159e-08, -5.61969e-10, -0.75, -0.00764441, 0.749961, 3.34148e-10, 0.749961, 0.00764441, -8.79171e-08, 16.7515, -1.43308, -9.08843)
-
-[node name="yellowsidewalklong53" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(1.04432e-08, 8.34943e-10, 0.75, 0.00764441, 0.749961, 4.55642e-10, -0.749961, 0.00764441, 1.04341e-08, 13.4427, -1.43308, -12.4193)
-
-[node name="yellowsidewalklong28" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
-transform = Transform3D(-0.749961, 0.00764441, -2.23494e-08, 0.00764441, 0.749961, 4.55642e-10, 2.23529e-08, 2.27821e-10, -0.75, 13.4611, -1.46356, -5.80357)
-
-[node name="yellowsidewalkcornerout" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("72_4qc3u")]
-transform = Transform3D(-2.23518e-08, 0, 0.75, 0, 0.75, 0, -0.75, 0, -2.23518e-08, -32.3957, -1.40636, -9.11087)
-
-[node name="yellowsidewalkcornerout2" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("72_4qc3u")]
-transform = Transform3D(-0.75, 0, -5.21541e-08, 0, 0.75, 0, 5.21541e-08, 0, -0.75, -32.3957, -1.40636, -5.82045)
-
-[node name="yellowsidewalkcornerout4" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("72_4qc3u")]
-transform = Transform3D(0.75, 0, -1.04318e-08, 0, 0.75, 0, 1.04318e-08, 0, 0.75, 16.733, -1.40636, -61.5377)
-
-[node name="yellowsidewalkcornerout5" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("72_4qc3u")]
-transform = Transform3D(-1.93705e-08, 0, 0.75, 0, 0.75, 0, -0.75, 0, -1.93705e-08, 13.4425, -1.40636, -61.5377)
-
-[node name="yellowsidewalkcornerout3" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("72_4qc3u")]
-transform = Transform3D(-1.22191e-07, 0, -0.75, 0, 0.75, 0, 0.75, 0, -1.22191e-07, 16.8035, -1.44538, -5.80706)
-
-[node name="CONCPILLAR" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("73_7tcmr")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 15.1788, -1.03135, -33.941)
-
-[node name="CONCPILLAR3" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("73_7tcmr")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 15.1788, -1.03135, -59.9409)
-
-[node name="CONCPILLAR2" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("73_7tcmr")]
-transform = Transform3D(-0.5, 0, 4.37114e-08, 0, 0.5, 0, -4.37114e-08, 0, -0.5, 15.1788, -1.03135, -7.41303)
-
-[node name="CONCPILLAR4" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("73_7tcmr")]
-transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, -13.8212, -1.03135, -7.41303)
-
-[node name="CONCPILLAR5" parent="ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("73_7tcmr")]
-transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, -60.1445, -1.03135, -7.41303)
-
-[node name="Planter" type="Node3D" parent="ParkingGarage/hardprops"]
-transform = Transform3D(1, 0, -7.35137e-08, 0, 1, 0, 7.35137e-08, 0, 1, 12.5898, 13.5112, -13.0086)
-
-[node name="concplanter1" parent="ParkingGarage/hardprops/Planter" instance=ExtResource("74_3ktak")]
-
-[node name="concplanter2" parent="ParkingGarage/hardprops/Planter" instance=ExtResource("74_3ktak")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
-
-[node name="concplanter3" parent="ParkingGarage/hardprops/Planter" instance=ExtResource("74_3ktak")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
-
-[node name="concplanter4" parent="ParkingGarage/hardprops/Planter" instance=ExtResource("74_3ktak")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18)
-
-[node name="concplanter5" parent="ParkingGarage/hardprops/Planter" instance=ExtResource("74_3ktak")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.66893e-06, 0, 28.6271)
-
-[node name="concplanter6" parent="ParkingGarage/hardprops/Planter" instance=ExtResource("74_3ktak")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19209e-06, 0, 22.6271)
-
-[node name="concplanter7" parent="ParkingGarage/hardprops/Planter" instance=ExtResource("74_3ktak")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19209e-06, 0, 16.6271)
-
-[node name="concplanter8" parent="ParkingGarage/hardprops/Planter" instance=ExtResource("74_3ktak")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19209e-06, 0, 10.6271)
-
-[node name="concplanter9" parent="ParkingGarage/hardprops/Planter" instance=ExtResource("74_3ktak")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.93369, -14.8654, 133.184)
-
-[node name="parkingsupports" type="Node3D" parent="ParkingGarage/hardprops"]
-
-[node name="concsupporth" parent="ParkingGarage/hardprops/parkingsupports" instance=ExtResource("75_pst0h")]
-transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, 40.8393, 10.9214, -59.9657)
-
-[node name="concsupporth2" parent="ParkingGarage/hardprops/parkingsupports" instance=ExtResource("75_pst0h")]
-transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, 32.8393, 10.9214, -59.9657)
-
-[node name="concsupporth3" parent="ParkingGarage/hardprops/parkingsupports" instance=ExtResource("75_pst0h")]
-transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, 24.8393, 10.9214, -59.9657)
-
-[node name="concsupporth4" parent="ParkingGarage/hardprops/parkingsupports" instance=ExtResource("75_pst0h")]
-transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, 16.8393, 10.9214, -59.9657)
-
-[node name="concsupporth5" parent="ParkingGarage/hardprops/parkingsupports" instance=ExtResource("75_pst0h")]
-transform = Transform3D(1.15134e-07, 0, 1, 0, 1, 0, -1.525, 0, 7.54979e-08, 9.83926, 10.9214, -59.9657)
-
-[node name="concsupporth6" parent="ParkingGarage/hardprops/parkingsupports" instance=ExtResource("75_pst0h")]
-transform = Transform3D(1.15134e-07, 0, 1, 0, 1, 0, -1.525, 0, 7.54979e-08, 1.83926, 10.9214, -59.9657)
-
-[node name="concsupporth7" parent="ParkingGarage/hardprops/parkingsupports" instance=ExtResource("75_pst0h")]
-transform = Transform3D(1.15134e-07, 0, 1, 0, 1, 0, -1.525, 0, 7.54979e-08, -6.16074, 10.9214, -59.9657)
-
-[node name="concsupporth22" parent="ParkingGarage/hardprops/parkingsupports" instance=ExtResource("75_pst0h")]
-transform = Transform3D(1.15134e-07, 0, 1, 0, 1, 0, -1.525, 0, 7.54979e-08, -14.1607, 10.9214, -59.9657)
-
-[node name="concsupporth20" parent="ParkingGarage/hardprops/parkingsupports" instance=ExtResource("75_pst0h")]
-transform = Transform3D(-1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, -1, -16.9494, 10.9214, -73.6482)
-
-[node name="concsupporth21" parent="ParkingGarage/hardprops/parkingsupports" instance=ExtResource("75_pst0h")]
-transform = Transform3D(-1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, -1, -16.9494, 10.9214, -65.6482)
-
-[node name="concsupporth8" parent="ParkingGarage/hardprops/parkingsupports" instance=ExtResource("75_pst0h")]
-transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -19.9837, 10.9214, -56.9801)
-
-[node name="concsupporth9" parent="ParkingGarage/hardprops/parkingsupports" instance=ExtResource("75_pst0h")]
-transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -27.9837, 10.9214, -56.9801)
-
-[node name="concsupporth10" parent="ParkingGarage/hardprops/parkingsupports" instance=ExtResource("75_pst0h")]
-transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -35.9837, 10.9214, -56.9801)
-
-[node name="concsupporth11" parent="ParkingGarage/hardprops/parkingsupports" instance=ExtResource("75_pst0h")]
-transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -43.9837, 10.9214, -56.9801)
-
-[node name="concsupporth12" parent="ParkingGarage/hardprops/parkingsupports" instance=ExtResource("75_pst0h")]
-transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -51.9837, 10.9214, -56.9801)
-
-[node name="concsupporth13" parent="ParkingGarage/hardprops/parkingsupports" instance=ExtResource("75_pst0h")]
-transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -58.9837, 10.9214, -56.9801)
-
-[node name="concsupporth14" parent="ParkingGarage/hardprops/parkingsupports" instance=ExtResource("75_pst0h")]
-transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -66.9836, 10.9214, -56.9801)
-
-[node name="concsupporth15" parent="ParkingGarage/hardprops/parkingsupports" instance=ExtResource("75_pst0h")]
-transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -74.9836, 10.9214, -56.9801)
-
-[node name="concsupporth16" parent="ParkingGarage/hardprops/parkingsupports" instance=ExtResource("75_pst0h")]
-transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -82.9836, 10.9214, -56.9801)
-
-[node name="concsupporth17" parent="ParkingGarage/hardprops/parkingsupports" instance=ExtResource("75_pst0h")]
-transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -91.0358, 11.0303, -56.9543)
-
-[node name="concsupporth18" parent="ParkingGarage/hardprops/parkingsupports" instance=ExtResource("75_pst0h")]
-transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -99.0358, 11.0303, -56.9543)
-
-[node name="concsupporth19" parent="ParkingGarage/hardprops/parkingsupports" instance=ExtResource("75_pst0h")]
-transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -107.036, 11.0303, -56.9543)
-
-[node name="PICKUPZONE6" parent="ParkingGarage" instance=ExtResource("48_inte5")]
-transform = Transform3D(5.27501e-08, 0, 1.77, 0, 1.77, 0, -1.77, 0, 5.27501e-08, -33.9202, 8.84563, 52.8607)
-amount = 3
-
-[node name="ConcreteRoadblock" parent="ParkingGarage" instance=ExtResource("60_onpej")]
-transform = Transform3D(-0.212553, 0, -0.97715, 0, 1, 0, 0.97715, 0, -0.212553, -5.1317, 4.77298, 56.8841)
-
-[node name="ConcreteRoadblock2" parent="ParkingGarage" instance=ExtResource("60_onpej")]
-transform = Transform3D(0.213354, 0, -0.976975, 0, 1, 0, 0.976975, 0, 0.213354, -15.7727, 4.77298, 58.465)
-
-[node name="ConcreteRoadblock3" parent="ParkingGarage" instance=ExtResource("60_onpej")]
-transform = Transform3D(0.213354, 0, -0.976975, 0, 1, 0, 0.976975, 0, 0.213354, -25.4526, 4.77298, 57.1563)
-
-[node name="ConcreteRoadblock4" parent="ParkingGarage" instance=ExtResource("60_onpej")]
-transform = Transform3D(0.888465, 0, 0.458944, 0, 1, 0, -0.458944, 0, 0.888465, -42.1686, 4.77298, 55.7288)
-
-[node name="Node3D" type="Node3D" parent="ParkingGarage"]
-transform = Transform3D(-0.309216, 0, 0.950992, 0, 1, 0, -0.950992, 0, -0.309216, -31.238, -2.35417, 94.534)
-
-[node name="garagedoor" parent="ParkingGarage/Node3D" instance=ExtResource("77_v54vm")]
-transform = Transform3D(-3.71547e-08, 0, -0.85, 0, 0.85, 0, 0.85, 0, -3.71547e-08, -102.497, -0.0171421, 37.449)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="ParkingGarage/Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -107.998, 3.16654, 37.4287)
-use_collision = true
-size = Vector3(4.26282, 5.49719, 0.203125)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="ParkingGarage/Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -97.1442, 3.25584, 37.4373)
-use_collision = true
-size = Vector3(4.32422, 5.67578, 0.189453)
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="ParkingGarage/Node3D"]
-transform = Transform3D(-1.13133e-08, 2.98023e-08, 1, 1, 8.9407e-08, 1.13133e-08, -8.9407e-08, 1, -2.98023e-08, -102.523, 6.4502, 37.407)
-use_collision = true
-size = Vector3(2, 0.231202, 15.1381)
-
 [node name="StartCinematic" type="Node3D" parent="."]
 transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, -74.7985, 1.76606, 147.873)
 
@@ -4066,7 +3212,7 @@ cull_mask = 1047569
 fov = 90.0
 
 [node name="boxes" type="Node3D" parent="StartCinematic"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.999581, 0, -7.2485e-08)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -1, -0.12, 0)
 
 [node name="BOX2" type="MeshInstance3D" parent="StartCinematic/boxes"]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -3.4908, 0.0388806, -3.88908)
@@ -4119,7 +3265,1203 @@ layers = 524288
 mesh = ExtResource("44_lgnrr")
 skeleton = NodePath("")
 
-[node name="Warehouse" type="Node3D" parent="."]
+[node name="leveltest" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.6281, -8.12126, 121.376)
 
-[node name="warehouse" parent="." instance=ExtResource("78_kxstq")]
+[node name="housing" type="Node3D" parent="leveltest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23.7566, 0)
+
+[node name="apt_wall" type="Node3D" parent="leveltest/housing"]
+transform = Transform3D(0.682769, 0, -0.310365, 0, 0.75, 0, 0.310365, 0, 0.682769, -1.79851, -5.90252, -112.222)
+
+[node name="modular_apartementgrey" parent="leveltest/housing/apt_wall" instance=ExtResource("79_nhtav")]
+transform = Transform3D(1.5, 0, -2.59808, 0, 3, 0, 2.59808, 0, 1.5, -15.1054, 0.505, -5.60965)
+
+[node name="modular_apartementgrey2" parent="leveltest/housing/apt_wall" instance=ExtResource("79_nhtav")]
+transform = Transform3D(1.5, 0, -2.59808, 0, 3, 0, 2.59808, 0, 1.5, -2.20792, 0.505, -13.056)
+
+[node name="modular_apartementgrey3" parent="leveltest/housing/apt_wall" instance=ExtResource("79_nhtav")]
+transform = Transform3D(1.5, 0, -2.59808, 0, 3, 0, 2.59808, 0, 1.5, -15.1054, 15.4236, -5.60965)
+
+[node name="modular_apartementgrey4" parent="leveltest/housing/apt_wall" instance=ExtResource("79_nhtav")]
+transform = Transform3D(1.5, 0, -2.59808, 0, 3, 0, 2.59808, 0, 1.5, -2.20792, 15.4236, -13.056)
+
+[node name="modular_apartementgrey5" parent="leveltest/housing/apt_wall" instance=ExtResource("79_nhtav")]
+transform = Transform3D(1.5, 0, -2.59808, 0, 3, 0, 2.59808, 0, 1.5, -40.9261, 0.505001, 9.28058)
+
+[node name="modular_apartementgrey6" parent="leveltest/housing/apt_wall" instance=ExtResource("79_nhtav")]
+transform = Transform3D(1.5, 0, -2.59808, 0, 3, 0, 2.59808, 0, 1.5, -28.0287, 0.505001, 1.8342)
+
+[node name="modular_apartementgrey7" parent="leveltest/housing/apt_wall" instance=ExtResource("79_nhtav")]
+transform = Transform3D(1.5, 0, -2.59808, 0, 3, 0, 2.59808, 0, 1.5, -40.9261, 15.4236, 9.28058)
+
+[node name="modular_apartementgrey8" parent="leveltest/housing/apt_wall" instance=ExtResource("79_nhtav")]
+transform = Transform3D(1.5, 0, -2.59808, 0, 3, 0, 2.59808, 0, 1.5, -28.0287, 15.4236, 1.8342)
+
+[node name="modular_apartementgrey9" parent="leveltest/housing/apt_wall" instance=ExtResource("79_nhtav")]
+transform = Transform3D(1.5, 0, -2.59808, 0, 3, 0, 2.59808, 0, 1.5, -15.1054, 30.3592, -5.60965)
+
+[node name="modular_apartementgrey10" parent="leveltest/housing/apt_wall" instance=ExtResource("79_nhtav")]
+transform = Transform3D(1.5, 0, -2.59808, 0, 3, 0, 2.59808, 0, 1.5, -2.20792, 30.3592, -13.056)
+
+[node name="modular_apartementgrey11" parent="leveltest/housing/apt_wall" instance=ExtResource("79_nhtav")]
+transform = Transform3D(1.5, 0, -2.59808, 0, 3, 0, 2.59808, 0, 1.5, -15.1054, 45.2778, -5.60965)
+
+[node name="modular_apartementgrey12" parent="leveltest/housing/apt_wall" instance=ExtResource("79_nhtav")]
+transform = Transform3D(1.5, 0, -2.59808, 0, 3, 0, 2.59808, 0, 1.5, -2.20792, 45.2778, -13.056)
+
+[node name="modular_apartementgrey13" parent="leveltest/housing/apt_wall" instance=ExtResource("79_nhtav")]
+transform = Transform3D(1.5, 0, -2.59808, 0, 3, 0, 2.59808, 0, 1.5, -40.9261, 30.3592, 9.28058)
+
+[node name="modular_apartementgrey14" parent="leveltest/housing/apt_wall" instance=ExtResource("79_nhtav")]
+transform = Transform3D(1.5, 0, -2.59808, 0, 3, 0, 2.59808, 0, 1.5, -28.0287, 30.3592, 1.8342)
+
+[node name="modular_apartementgrey15" parent="leveltest/housing/apt_wall" instance=ExtResource("79_nhtav")]
+transform = Transform3D(1.5, 0, -2.59808, 0, 3, 0, 2.59808, 0, 1.5, -40.9261, 45.2778, 9.28058)
+
+[node name="modular_apartementgrey16" parent="leveltest/housing/apt_wall" instance=ExtResource("79_nhtav")]
+transform = Transform3D(1.5, 0, -2.59808, 0, 3, 0, 2.59808, 0, 1.5, -28.0287, 45.2778, 1.8342)
+
+[node name="far_buildings" type="Node3D" parent="leveltest/housing"]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, -5.90252, -88.4113)
+
+[node name="balconey" type="Node3D" parent="leveltest/housing/far_buildings"]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 48.2603, 12.7823, 49.0492)
+
+[node name="modular_balconey_far" parent="leveltest/housing/far_buildings/balconey" instance=ExtResource("81_525vw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.0361, 0, -15.9935)
+
+[node name="modular_balconey_far2" parent="leveltest/housing/far_buildings/balconey" instance=ExtResource("81_525vw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.0418, 23.0312, -16.0252)
+
+[node name="modular_balconey_far3" parent="leveltest/housing/far_buildings/balconey" instance=ExtResource("81_525vw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.3615, 0, -49.8471)
+
+[node name="modular_balconey_far4" parent="leveltest/housing/far_buildings/balconey" instance=ExtResource("81_525vw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.3615, 23, -49.8471)
+
+[node name="modular_apartementgrey" parent="leveltest/housing/far_buildings/balconey" instance=ExtResource("79_nhtav")]
+transform = Transform3D(4.935, 0, 4.76837e-07, 0, 4.935, 0, -4.76837e-07, 0, 4.935, -70.2773, -24.6114, -11.8694)
+
+[node name="modular_apartementgrey2" parent="leveltest/housing/far_buildings/balconey" instance=ExtResource("79_nhtav")]
+transform = Transform3D(4.935, 0, 4.76837e-07, 0, 4.935, 0, -4.76837e-07, 0, 4.935, -69.7521, -24.6114, -36.0371)
+
+[node name="modular_apartementgrey3" parent="leveltest/housing/far_buildings/balconey" instance=ExtResource("79_nhtav")]
+transform = Transform3D(4.935, 0, 4.76837e-07, 0, 4.935, 0, -4.76837e-07, 0, 4.935, -69.7521, -24.6114, -60.7121)
+
+[node name="modular_brick1" parent="leveltest/housing/far_buildings/balconey" instance=ExtResource("81_lmsdp")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -28.3303, -11.1155, -89.3387)
+
+[node name="modular_brick2" parent="leveltest/housing/far_buildings/balconey" instance=ExtResource("81_lmsdp")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -28.3303, 19.4782, -89.3387)
+
+[node name="modular_apt_balc" parent="leveltest/housing/far_buildings/balconey" instance=ExtResource("82_525vw")]
+transform = Transform3D(-0.599792, 0, -0.800156, 0, 1, 0, 0.800156, 0, -0.599792, 25.8837, -11.0193, -84.1205)
+
+[node name="modular_apt_balc2" parent="leveltest/housing/far_buildings/balconey" instance=ExtResource("82_525vw")]
+transform = Transform3D(-0.599792, 0, -0.800156, 0, 1, 0, 0.800156, 0, -0.599792, 25.8837, 16.5317, -84.1205)
+
+[node name="modular_apt_balc3" parent="leveltest/housing/far_buildings/balconey" instance=ExtResource("82_525vw")]
+transform = Transform3D(0.800155, 0, 0.599792, 0, 1, 0, 0.599791, 0, -0.800156, 61.5902, -11.0193, -89.1024)
+
+[node name="modular_apt_balc4" parent="leveltest/housing/far_buildings/balconey" instance=ExtResource("82_525vw")]
+transform = Transform3D(0.800155, 0, 0.599792, 0, 1, 0, 0.599791, 0, -0.800156, 61.5902, 16.5317, -89.1024)
+
+[node name="flooraptblock" parent="leveltest/housing" instance=ExtResource("66_nwcwt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.90252, 0)
+
+[node name="Buildings" type="Node3D" parent="."]
+
+[node name="RoadManager" type="Node3D" parent="Buildings"]
+script = ExtResource("62_ageew")
+material_resource = ExtResource("63_nwcwt")
+metadata/_custom_type_script = "uid://cjm82mhf2ii1a"
+
+[node name="RoadContainer" type="Node3D" parent="Buildings/RoadManager"]
+script = ExtResource("64_v321g")
+material_resource = ExtResource("63_nwcwt")
+use_lowpoly_preview = true
+metadata/_custom_type_script = "uid://dblejd4cxc8b0"
+
+[node name="ParkingGarage" type="Node3D" parent="Buildings"]
+transform = Transform3D(2.98023e-08, 0, -1, 0, 1, 0, 1, 0, 2.98023e-08, 309.344, 2.35417, -320.728)
+
+[node name="HighestFloor" type="Node3D" parent="Buildings/ParkingGarage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075, 0)
+visible = false
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="Buildings/ParkingGarage/HighestFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.5, 27, 32)
+use_collision = true
+size = Vector3(68, 1, 25)
+material = SubResource("StandardMaterial3D_y7jhe")
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="Buildings/ParkingGarage/HighestFloor"]
+transform = Transform3D(1, -8.88178e-16, 0, 1.60982e-15, 1, 0, 1.77636e-15, -2.64698e-23, 1, -49.4999, 27, -57)
+use_collision = true
+size = Vector3(110, 1, 39)
+material = SubResource("StandardMaterial3D_3j8ed")
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="Buildings/ParkingGarage/HighestFloor"]
+transform = Transform3D(1, -8.88178e-16, 0, 1.60982e-15, 1, 0, 1.77636e-15, -2.64698e-23, 1, -29.9999, 27, -9)
+use_collision = true
+size = Vector3(5, 1, 57)
+material = SubResource("StandardMaterial3D_sphec")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Buildings/ParkingGarage/HighestFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.5, 27, 3.5)
+use_collision = true
+size = Vector3(40, 1, 82)
+material = SubResource("StandardMaterial3D_y7jhe")
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="Buildings/ParkingGarage/HighestFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.4913, 27, 3.51109)
+use_collision = true
+size = Vector3(40, 1, 82)
+material = SubResource("StandardMaterial3D_e1wpp")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Buildings/ParkingGarage/HighestFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 27, -104)
+use_collision = true
+size = Vector3(55, 1, 61)
+material = SubResource("StandardMaterial3D_3j8ed")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Buildings/ParkingGarage/HighestFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, 27, -55.5)
+use_collision = true
+size = Vector3(38, 1, 36)
+material = SubResource("StandardMaterial3D_3j8ed")
+
+[node name="Stairs" type="Node3D" parent="Buildings/ParkingGarage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -13.983, 0)
+visible = false
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="Buildings/ParkingGarage/Stairs"]
+transform = Transform3D(1, 5.043e-10, 8.43094e-11, -5.11281e-10, 0.984859, 0.173356, 4.38583e-12, -0.173356, 0.984859, -93.4996, 23.9712, -99.4437)
+use_collision = true
+size = Vector3(22, 1, 35.3248)
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="Buildings/ParkingGarage/Stairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -99.9999, 21, -124.5)
+use_collision = true
+size = Vector3(37, 1, 20)
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="Buildings/ParkingGarage/Stairs"]
+transform = Transform3D(0.987688, 0.156434, 0, -0.156434, 0.987688, 0, 0, 0, 1, -72.8711, 19.6032, -121)
+use_collision = true
+size = Vector3(19, 1, 19)
+
+[node name="CSGBox3D17" type="CSGBox3D" parent="Buildings/ParkingGarage/Stairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.7495, 18, -121)
+use_collision = true
+size = Vector3(45.5009, 1, 19)
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="Buildings/ParkingGarage/Stairs"]
+transform = Transform3D(-4.31119e-08, -7.21446e-09, -1, -0.165048, 0.986285, 0, 0.986285, 0.165048, -4.37114e-08, -32.0127, 14.7274, -92.1049)
+use_collision = true
+size = Vector3(39.7761, 1, 28)
+
+[node name="Stairs2" type="Node3D" parent="Buildings/ParkingGarage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075, 0)
+visible = false
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="Buildings/ParkingGarage/Stairs2"]
+transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, -93.4997, 24.0258, -99.6555)
+use_collision = true
+size = Vector3(22, 1, 35)
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="Buildings/ParkingGarage/Stairs2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92.9999, 21, -125)
+use_collision = true
+size = Vector3(23, 1, 21)
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="Buildings/ParkingGarage/Stairs2"]
+transform = Transform3D(0.987688, 0.156434, 0, -0.156434, 0.987688, 0, 0, 0, 1, -72.8711, 19.6032, -123)
+use_collision = true
+size = Vector3(19, 1, 23)
+
+[node name="CSGBox3D17" type="CSGBox3D" parent="Buildings/ParkingGarage/Stairs2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.7495, 18, -123)
+use_collision = true
+size = Vector3(45.5009, 1, 23)
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="Buildings/ParkingGarage/Stairs2"]
+transform = Transform3D(-4.31732e-08, -6.83797e-09, -1, -0.156434, 0.987688, 0, 0.987688, 0.156434, -4.37114e-08, -32.0127, 13.1223, -81.1298)
+use_collision = true
+size = Vector3(62, 1, 28)
+
+[node name="MidFloor" type="Node3D" parent="Buildings/ParkingGarage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075, 0)
+visible = false
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Buildings/ParkingGarage/MidFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.5, 13, 27)
+use_collision = true
+size = Vector3(148, 1, 19)
+material = SubResource("StandardMaterial3D_e7r4u")
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="Buildings/ParkingGarage/MidFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.5, 13, -7.5)
+use_collision = true
+size = Vector3(84, 1, 6)
+material = SubResource("StandardMaterial3D_e7r4u")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Buildings/ParkingGarage/MidFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88.5, 13, -8)
+use_collision = true
+size = Vector3(32, 1, 51)
+material = SubResource("StandardMaterial3D_e7r4u")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Buildings/ParkingGarage/MidFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.5, 13, -8)
+use_collision = true
+size = Vector3(32, 1, 51)
+material = SubResource("StandardMaterial3D_e7r4u")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Buildings/ParkingGarage/MidFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.5, 13, -58)
+use_collision = true
+size = Vector3(148, 1, 49)
+material = SubResource("StandardMaterial3D_e7r4u")
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="Buildings/ParkingGarage/MidFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52, 13, -78)
+use_collision = true
+size = Vector3(17, 1, 9)
+material = SubResource("StandardMaterial3D_e7r4u")
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="Buildings/ParkingGarage/MidFloor"]
+transform = Transform3D(0.926804, 0.375545, -2.18141e-09, -0.375545, 0.926804, -1.11921e-08, -2.18141e-09, 1.11921e-08, 1, 5.09964, 15.2091, -114.92)
+use_collision = true
+size = Vector3(11.9283, 1, 7.32748)
+material = SubResource("StandardMaterial3D_e7r4u")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Buildings/ParkingGarage/MidFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.5, 13, -108.5)
+use_collision = true
+size = Vector3(70, 1, 52)
+material = SubResource("StandardMaterial3D_e7r4u")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="Buildings/ParkingGarage/MidFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.5, 13, -43.5)
+use_collision = true
+size = Vector3(10, 1, 78)
+material = SubResource("StandardMaterial3D_e7r4u")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="Buildings/ParkingGarage/MidFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52, 13, -13.5)
+use_collision = true
+size = Vector3(17, 1, 18)
+material = SubResource("StandardMaterial3D_e7r4u")
+
+[node name="FirstFloor" type="Node3D" parent="Buildings/ParkingGarage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.778306, 0.075, -0.478745)
+visible = false
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Buildings/ParkingGarage/FirstFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57, 4, 51.5)
+use_collision = true
+size = Vector3(27, 1, 44)
+material = SubResource("StandardMaterial3D_t7oo2")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Buildings/ParkingGarage/FirstFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.5, 4, 49)
+use_collision = true
+size = Vector3(162, 1, 49)
+material = SubResource("StandardMaterial3D_o143m")
+
+[node name="CSGBox3D23" type="CSGBox3D" parent="Buildings/ParkingGarage/FirstFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -111.871, 4.01617, 13.9791)
+use_collision = true
+size = Vector3(14.7417, 1, 21)
+
+[node name="ExtraStairs" type="Node3D" parent="Buildings/ParkingGarage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075, 0)
+visible = false
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="Buildings/ParkingGarage/ExtraStairs"]
+transform = Transform3D(1, 0, 0, 0, 0.987688, -0.156434, 0, 0.156434, 0.987688, -114, 18.0162, -96.0209)
+use_collision = true
+size = Vector3(9, 1, 37)
+material = SubResource("StandardMaterial3D_hhheb")
+
+[node name="CSGBox3D19" type="CSGBox3D" parent="Buildings/ParkingGarage/ExtraStairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114, 15.0162, -73.5209)
+use_collision = true
+size = Vector3(9, 1, 8)
+material = SubResource("StandardMaterial3D_hhheb")
+
+[node name="CSGBox3D20" type="CSGBox3D" parent="Buildings/ParkingGarage/ExtraStairs"]
+transform = Transform3D(1, 0, 0, 0, 0.978148, -0.207912, 0, 0.207912, 0.978148, -114, 11.0162, -51.0209)
+use_collision = true
+size = Vector3(9, 1, 37)
+material = SubResource("StandardMaterial3D_hhheb")
+
+[node name="CSGBox3D21" type="CSGBox3D" parent="Buildings/ParkingGarage/ExtraStairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114, 7.01617, -28.5209)
+use_collision = true
+size = Vector3(9, 1, 8)
+material = SubResource("StandardMaterial3D_hhheb")
+
+[node name="CSGBox3D22" type="CSGBox3D" parent="Buildings/ParkingGarage/ExtraStairs"]
+transform = Transform3D(1, 0, 0, 0, 0.994522, -0.104528, 0, 0.104528, 0.994522, -114, 5.48655, -10.4963)
+use_collision = true
+size = Vector3(9, 1, 28)
+material = SubResource("StandardMaterial3D_hhheb")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Buildings/ParkingGarage/ExtraStairs"]
+transform = Transform3D(1, -7.71341e-09, 1.01549e-09, 7.71341e-09, 0.965926, -0.258819, 1.01549e-09, 0.258819, 0.965926, 57, 8.31787, 12.8304)
+use_collision = true
+size = Vector3(27, 1, 36)
+material = SubResource("StandardMaterial3D_hhheb")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Buildings/ParkingGarage/ExtraStairs"]
+transform = Transform3D(1, -7.71341e-09, 1.01549e-09, 7.71341e-09, 0.965926, -0.258819, 1.01549e-09, 0.258819, 0.965926, 52, 19.9647, -47.6363)
+use_collision = true
+size = Vector3(17, 1, 54)
+material = SubResource("StandardMaterial3D_hhheb")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="Buildings/ParkingGarage/ExtraStairs"]
+transform = Transform3D(1, -7.71341e-09, 1.01549e-09, 7.71341e-09, 0.965926, -0.258819, 1.01549e-09, 0.258819, 0.965926, 52, 3.24712, -37.4941)
+use_collision = true
+size = Vector3(17, 1, 75)
+material = SubResource("StandardMaterial3D_hhheb")
+
+[node name="Under" type="Node3D" parent="Buildings/ParkingGarage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075, 0)
+visible = false
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Buildings/ParkingGarage/Under"]
+transform = Transform3D(1, 7.71341e-09, 1.01549e-09, -7.71341e-09, 0.965926, 0.258819, 1.01549e-09, -0.258819, 0.965926, -30.5, -0.776457, 7.10223)
+use_collision = true
+size = Vector3(148, 1, 37)
+material = SubResource("StandardMaterial3D_3nkb1")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Buildings/ParkingGarage/Under"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29, -2, -53)
+use_collision = true
+size = Vector3(179, 1, 163)
+material = SubResource("StandardMaterial3D_3nkb1")
+
+[node name="Environment" type="Node3D" parent="Buildings/ParkingGarage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075, 0)
+visible = false
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Buildings/ParkingGarage/Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.9999, 21.4821, -94)
+radius = 19.0
+height = 61.875
+material = SubResource("StandardMaterial3D_aejcr")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="Buildings/ParkingGarage/Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 150.5, -80.5)
+size = Vector3(111, 220, 109)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Buildings/ParkingGarage/Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.5, 51.5, -53.5)
+size = Vector3(190, 8, 164)
+
+[node name="MainWalls" type="Node3D" parent="Buildings/ParkingGarage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075, 0)
+visible = false
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Buildings/ParkingGarage/MainWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71, 16, -69.5)
+use_collision = true
+size = Vector3(1, 7, 130)
+material = SubResource("StandardMaterial3D_60qlx")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Buildings/ParkingGarage/MainWalls"]
+transform = Transform3D(1, -7.71341e-09, 1.01549e-09, 7.71341e-09, 0.965926, -0.258819, 1.01549e-09, 0.258819, 0.965926, 71, 6.95638, 31.0334)
+use_collision = true
+size = Vector3(1, 6, 74)
+material = SubResource("StandardMaterial3D_60qlx")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Buildings/ParkingGarage/MainWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61, 5.5, -70)
+use_collision = true
+size = Vector3(1, 16, 129)
+material = SubResource("StandardMaterial3D_60qlx")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Buildings/ParkingGarage/MainWalls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -23, 22.5, -135)
+use_collision = true
+size = Vector3(1, 50, 189)
+material = SubResource("StandardMaterial3D_60qlx")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Buildings/ParkingGarage/MainWalls"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -118, 22.5, -53.5)
+use_collision = true
+size = Vector3(1, 50, 164)
+material = SubResource("StandardMaterial3D_60qlx")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Buildings/ParkingGarage/MainWalls"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -107, 22.5, -43.5)
+use_collision = true
+size = Vector3(5, 50, 144)
+material = SubResource("StandardMaterial3D_60qlx")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Buildings/ParkingGarage/MainWalls"]
+transform = Transform3D(-8.9407e-08, 0, 1, 0, 1, 0, -1, 0, -8.9407e-08, 54.5, 5, -5)
+use_collision = true
+size = Vector3(1, 15, 22)
+material = SubResource("StandardMaterial3D_60qlx")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Buildings/ParkingGarage/MainWalls"]
+transform = Transform3D(-1, 0, -1.33118e-07, 0, 1, 0, 1.33118e-07, 0, -1, 43.5, 7, 12.5)
+use_collision = true
+size = Vector3(1, 19, 35)
+material = SubResource("StandardMaterial3D_60qlx")
+
+[node name="Guard" type="Node3D" parent="Buildings/ParkingGarage/MainWalls"]
+transform = Transform3D(-8.9407e-08, 0, 1, 0, 1, 0, -1, 0, -8.9407e-08, 54.5, 5.5, -5)
+
+[node name="MidGuard" type="Node3D" parent="Buildings/ParkingGarage/MainWalls/Guard"]
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Buildings/ParkingGarage/MainWalls/Guard/MidGuard"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -38.5, 9, -11.0001)
+use_collision = true
+size = Vector3(1, 4, 7)
+material = SubResource("StandardMaterial3D_hhheb")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Buildings/ParkingGarage/MainWalls/Guard/MidGuard"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.5, 9, -85.5001)
+use_collision = true
+size = Vector3(1, 4, 148)
+material = SubResource("StandardMaterial3D_hhheb")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Buildings/ParkingGarage/MainWalls/Guard/MidGuard"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -34.5, 9, -159)
+use_collision = true
+size = Vector3(1, 4, 13)
+material = SubResource("StandardMaterial3D_hhheb")
+
+[node name="TopGuard" type="Node3D" parent="Buildings/ParkingGarage/MainWalls/Guard"]
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Buildings/ParkingGarage/MainWalls/Guard/TopGuard"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.00004, 23, -11.0001)
+use_collision = true
+size = Vector3(1, 4, 118)
+material = SubResource("StandardMaterial3D_hhheb")
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="Buildings/ParkingGarage/MainWalls/Guard/TopGuard"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 97.0001, 31.5, 5.99994)
+use_collision = true
+size = Vector3(1, 21, 66)
+material = SubResource("StandardMaterial3D_hhheb")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="Buildings/ParkingGarage/MainWalls/Guard/TopGuard"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.5, 23, -85.5001)
+use_collision = true
+size = Vector3(1, 4, 148)
+material = SubResource("StandardMaterial3D_hhheb")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="Buildings/ParkingGarage/MainWalls/Guard/TopGuard"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -41.4999, 23, -159.5)
+use_collision = true
+size = Vector3(1, 4, 16)
+material = SubResource("StandardMaterial3D_hhheb")
+
+[node name="parkinggarage" parent="Buildings/ParkingGarage" instance=ExtResource("61_tdl4v")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="conveniencestore" parent="Buildings/ParkingGarage" instance=ExtResource("62_oj2kp")]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, 38.9988, 14.6458, -107.825)
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="Buildings/ParkingGarage/conveniencestore"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/ParkingGarage/conveniencestore/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.9279, 4.44431, -7.12215)
+shape = SubResource("BoxShape3D_yot6u")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Buildings/ParkingGarage/conveniencestore/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.7446, 4.44431, 20.5641)
+shape = SubResource("BoxShape3D_e1wpp")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Buildings/ParkingGarage/conveniencestore/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.7446, 4.44431, -32.0933)
+shape = SubResource("BoxShape3D_e7r4u")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Buildings/ParkingGarage/conveniencestore/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.7446, 4.44431, -4.75162)
+shape = SubResource("BoxShape3D_t7oo2")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Buildings/ParkingGarage/conveniencestore/StaticBody3D2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.6867, 4.44431, -37.4615)
+shape = SubResource("BoxShape3D_o143m")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="Buildings/ParkingGarage/conveniencestore/StaticBody3D2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.68672, 4.44431, 22.9221)
+shape = SubResource("BoxShape3D_hhheb")
+
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="Buildings/ParkingGarage/conveniencestore/StaticBody3D2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.56245, 2, 21.9221)
+shape = SubResource("BoxShape3D_3nkb1")
+
+[node name="CollisionShape3D13" type="CollisionShape3D" parent="Buildings/ParkingGarage/conveniencestore/StaticBody3D2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.9382, 2, -35.8613)
+shape = SubResource("BoxShape3D_aejcr")
+
+[node name="CollisionShape3D14" type="CollisionShape3D" parent="Buildings/ParkingGarage/conveniencestore/StaticBody3D2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.43818, -0.988182, -6.57786)
+shape = SubResource("BoxShape3D_60qlx")
+
+[node name="CollisionShape3D11" type="CollisionShape3D" parent="Buildings/ParkingGarage/conveniencestore/StaticBody3D2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.79285, 1.30225, 6.49191)
+shape = SubResource("BoxShape3D_gqi3p")
+
+[node name="CollisionShape3D12" type="CollisionShape3D" parent="Buildings/ParkingGarage/conveniencestore/StaticBody3D2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.8102, 1.30225, -14.6652)
+shape = SubResource("BoxShape3D_gqi3p")
+
+[node name="CollisionShape3D15" type="CollisionShape3D" parent="Buildings/ParkingGarage/conveniencestore/StaticBody3D2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 13.8536, 1.83868, -6.82574)
+shape = SubResource("BoxShape3D_uqhyq")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="Buildings/ParkingGarage/conveniencestore/StaticBody3D2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.31328, 1, -37.4615)
+shape = SubResource("BoxShape3D_d3oxg")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="Buildings/ParkingGarage/conveniencestore/StaticBody3D2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3133, 6, -37.4615)
+shape = SubResource("BoxShape3D_8jofy")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Buildings/ParkingGarage/conveniencestore/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.09761, 8.38861, -7.36371)
+shape = SubResource("BoxShape3D_up6oq")
+
+[node name="laundromat" type="Node3D" parent="Buildings/ParkingGarage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.5014, 17.7813, 0)
+
+[node name="laundromat2" parent="Buildings/ParkingGarage/laundromat" instance=ExtResource("63_nm6wb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54, -4.22838, -18)
+
+[node name="BlueLaundryMachines" type="Node3D" parent="Buildings/ParkingGarage/laundromat"]
+
+[node name="laundrymachineblue2" parent="Buildings/ParkingGarage/laundromat/BlueLaundryMachines" instance=ExtResource("64_opmfb")]
+transform = Transform3D(1, 0, -7.35137e-08, 0, 1, 0, 7.35137e-08, 0, 1, -61.1249, -3.94615, 8.92327)
+
+[node name="laundrymachineblue3" parent="Buildings/ParkingGarage/laundromat/BlueLaundryMachines" instance=ExtResource("64_opmfb")]
+transform = Transform3D(1, 0, -7.35137e-08, 0, 1, 0, 7.35137e-08, 0, 1, -61.1249, -3.94615, 3.67022)
+
+[node name="laundrymachineblue4" parent="Buildings/ParkingGarage/laundromat/BlueLaundryMachines" instance=ExtResource("64_opmfb")]
+transform = Transform3D(1, 0, -7.35137e-08, 0, 1, 0, 7.35137e-08, 0, 1, -61.1249, -3.94615, -1.62241)
+
+[node name="laundrymachineblue5" parent="Buildings/ParkingGarage/laundromat/BlueLaundryMachines" instance=ExtResource("64_opmfb")]
+transform = Transform3D(1, 0, -7.35137e-08, 0, 1, 0, 7.35137e-08, 0, 1, -61.1249, -3.94615, -6.87546)
+
+[node name="laundrymachineblue6" parent="Buildings/ParkingGarage/laundromat/BlueLaundryMachines" instance=ExtResource("64_opmfb")]
+transform = Transform3D(1, 0, -7.35137e-08, 0, 1, 0, 7.35137e-08, 0, 1, -61.1249, -3.94615, -12.1677)
+
+[node name="laundrymachineblue7" parent="Buildings/ParkingGarage/laundromat/BlueLaundryMachines" instance=ExtResource("64_opmfb")]
+transform = Transform3D(1, 0, -7.35137e-08, 0, 1, 0, 7.35137e-08, 0, 1, -61.1249, -3.94615, -17.4207)
+
+[node name="laundrymachineblue8" parent="Buildings/ParkingGarage/laundromat/BlueLaundryMachines" instance=ExtResource("64_opmfb")]
+transform = Transform3D(1, 0, -7.35137e-08, 0, 1, 0, 7.35137e-08, 0, 1, -61.1249, -3.94615, -22.6414)
+
+[node name="laundrymachineblue9" parent="Buildings/ParkingGarage/laundromat/BlueLaundryMachines" instance=ExtResource("64_opmfb")]
+transform = Transform3D(1, 0, -7.35137e-08, 0, 1, 0, 7.35137e-08, 0, 1, -61.1249, -3.94615, -27.8944)
+
+[node name="laundrymachineblue10" parent="Buildings/ParkingGarage/laundromat/BlueLaundryMachines" instance=ExtResource("64_opmfb")]
+transform = Transform3D(1, 0, -7.35137e-08, 0, 1, 0, 7.35137e-08, 0, 1, -61.1249, -3.94615, -33.0747)
+
+[node name="BeigeLaundryMachines" type="Node3D" parent="Buildings/ParkingGarage/laundromat"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -49.7203, -3.93742, 3.59558)
+
+[node name="laundrymachine2" parent="Buildings/ParkingGarage/laundromat/BeigeLaundryMachines" instance=ExtResource("65_wuxcx")]
+transform = Transform3D(-1.053e-07, 0, -1, 0, 1, 0, 1, 0, -1.053e-07, 6.52636, 0, 1.58017)
+
+[node name="laundrymachine4" parent="Buildings/ParkingGarage/laundromat/BeigeLaundryMachines" instance=ExtResource("65_wuxcx")]
+transform = Transform3D(-1.053e-07, 0, -1, 0, 1, 0, 1, 0, -1.053e-07, -0.0207367, 0, 1.58017)
+
+[node name="laundrymachine3" parent="Buildings/ParkingGarage/laundromat/BeigeLaundryMachines" instance=ExtResource("65_wuxcx")]
+transform = Transform3D(-1.053e-07, 0, -1, 0, 1, 0, 1, 0, -1.053e-07, 3.23241, 0, 1.58017)
+
+[node name="laundrymachine5" parent="Buildings/ParkingGarage/laundromat/BeigeLaundryMachines" instance=ExtResource("65_wuxcx")]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, 0, 0, 0)
+
+[node name="laundrymachine8" parent="Buildings/ParkingGarage/laundromat/BeigeLaundryMachines" instance=ExtResource("65_wuxcx")]
+transform = Transform3D(-1.053e-07, 0, -1, 0, 1, 0, 1, 0, -1.053e-07, -19.0207, 0, 1.58017)
+
+[node name="laundrymachine9" parent="Buildings/ParkingGarage/laundromat/BeigeLaundryMachines" instance=ExtResource("65_wuxcx")]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -19, 0, 0)
+
+[node name="laundrymachine10" parent="Buildings/ParkingGarage/laundromat/BeigeLaundryMachines" instance=ExtResource("65_wuxcx")]
+transform = Transform3D(-1.053e-07, 0, -1, 0, 1, 0, 1, 0, -1.053e-07, -22.1673, 0, 1.58017)
+
+[node name="laundrymachine11" parent="Buildings/ParkingGarage/laundromat/BeigeLaundryMachines" instance=ExtResource("65_wuxcx")]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -22.1466, 0, 0)
+
+[node name="laundrymachine6" parent="Buildings/ParkingGarage/laundromat/BeigeLaundryMachines" instance=ExtResource("65_wuxcx")]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, 6.5471, 0, 0)
+
+[node name="laundrymachine7" parent="Buildings/ParkingGarage/laundromat/BeigeLaundryMachines" instance=ExtResource("65_wuxcx")]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, 3.29395, 0, 0)
+
+[node name="bin1" parent="Buildings/ParkingGarage/laundromat/BeigeLaundryMachines" instance=ExtResource("66_6o1h8")]
+transform = Transform3D(-1, 0, -1.39091e-08, 0, 1, 0, 1.39091e-08, 0, -1, -24.4553, 1.29331, 0.83609)
+
+[node name="bin4" parent="Buildings/ParkingGarage/laundromat/BeigeLaundryMachines" instance=ExtResource("66_6o1h8")]
+transform = Transform3D(-1, 0, -1.39091e-08, 0, 1, 0, 1.39091e-08, 0, -1, -2.03518, 1.29331, 0.83609)
+
+[node name="bin3" parent="Buildings/ParkingGarage/laundromat/BeigeLaundryMachines" instance=ExtResource("66_6o1h8")]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -43.6727, 1.29331, -2.61279)
+
+[node name="bin2" parent="Buildings/ParkingGarage/laundromat/BeigeLaundryMachines" instance=ExtResource("66_6o1h8")]
+transform = Transform3D(0.990967, 0, 0.134107, 0, 1, 0, -0.134107, 0, 0.990967, -16.8582, 0.995146, 0.614326)
+
+[node name="vents" type="Node3D" parent="Buildings/ParkingGarage/laundromat"]
+
+[node name="vent" parent="Buildings/ParkingGarage/laundromat/vents" instance=ExtResource("67_vkbfx")]
+transform = Transform3D(-1.17225e-07, 0, -1, 0, 1, 0, 1, 0, -1.17225e-07, -61.1424, 3.27281, 10.6088)
+
+[node name="vent2" parent="Buildings/ParkingGarage/laundromat/vents" instance=ExtResource("67_vkbfx")]
+transform = Transform3D(-1.17225e-07, 0, -1, 0, 1, 0, 1, 0, -1.17225e-07, -61.1424, 3.27281, 5.67619)
+
+[node name="vent3" parent="Buildings/ParkingGarage/laundromat/vents" instance=ExtResource("67_vkbfx")]
+transform = Transform3D(-1.17225e-07, 0, -1, 0, 1, 0, 1, 0, -1.17225e-07, -61.1424, 3.27281, 0.713112)
+
+[node name="vent4" parent="Buildings/ParkingGarage/laundromat/vents" instance=ExtResource("67_vkbfx")]
+transform = Transform3D(-1.17225e-07, 0, -1, 0, 1, 0, 1, 0, -1.17225e-07, -61.1424, 3.27281, -4.2195)
+
+[node name="vent5" parent="Buildings/ParkingGarage/laundromat/vents" instance=ExtResource("67_vkbfx")]
+transform = Transform3D(-1.17225e-07, 0, -1, 0, 1, 0, 1, 0, -1.17225e-07, -61.1424, 3.27281, -9.14854)
+
+[node name="vent6" parent="Buildings/ParkingGarage/laundromat/vents" instance=ExtResource("67_vkbfx")]
+transform = Transform3D(-1.17225e-07, 0, -1, 0, 1, 0, 1, 0, -1.17225e-07, -61.1424, 3.27281, -14.0812)
+
+[node name="vent7" parent="Buildings/ParkingGarage/laundromat/vents" instance=ExtResource("67_vkbfx")]
+transform = Transform3D(-1.17225e-07, 0, -1, 0, 1, 0, 1, 0, -1.17225e-07, -61.1424, 3.27281, -19.0442)
+
+[node name="vent8" parent="Buildings/ParkingGarage/laundromat/vents" instance=ExtResource("67_vkbfx")]
+transform = Transform3D(-1.17225e-07, 0, -1, 0, 1, 0, 1, 0, -1.17225e-07, -61.1424, 3.27281, -23.9768)
+
+[node name="vent9" parent="Buildings/ParkingGarage/laundromat/vents" instance=ExtResource("67_vkbfx")]
+transform = Transform3D(-1.17225e-07, 0, -1, 0, 1, 0, 1, 0, -1.17225e-07, -61.1424, 3.27281, -28.8755)
+
+[node name="vent10" parent="Buildings/ParkingGarage/laundromat/vents" instance=ExtResource("67_vkbfx")]
+transform = Transform3D(-1.17225e-07, 0, -1, 0, 1, 0, 1, 0, -1.17225e-07, -61.1424, 3.27281, -33.8081)
+
+[node name="lights" type="Node3D" parent="Buildings/ParkingGarage/laundromat"]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -53.8152, 3.65062, -7.80373)
+
+[node name="ceilingled2" parent="Buildings/ParkingGarage/laundromat/lights" instance=ExtResource("68_olt46")]
+
+[node name="ceilingled3" parent="Buildings/ParkingGarage/laundromat/lights" instance=ExtResource("68_olt46")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 0)
+
+[node name="ceilingled4" parent="Buildings/ParkingGarage/laundromat/lights" instance=ExtResource("68_olt46")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 0)
+
+[node name="ceilingled5" parent="Buildings/ParkingGarage/laundromat/lights" instance=ExtResource("68_olt46")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
+
+[node name="Collider" type="Node3D" parent="Buildings/ParkingGarage/laundromat"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.5264, -3.86636, -6.04788)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Buildings/ParkingGarage/laundromat/Collider"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/ParkingGarage/laundromat/Collider/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.63269, -0.282959, -8.22056)
+shape = SubResource("BoxShape3D_8nrvh")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Buildings/ParkingGarage/laundromat/Collider/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.63269, 8.20588, -8.22056)
+shape = SubResource("BoxShape3D_8nrvh")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Buildings/ParkingGarage/laundromat/Collider/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.54721, 4.17462, 18.2597)
+shape = SubResource("BoxShape3D_u1opp")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Buildings/ParkingGarage/laundromat/Collider/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.34125, 4.17462, -34.8395)
+shape = SubResource("BoxShape3D_85yty")
+
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="Buildings/ParkingGarage/laundromat/Collider/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.67041, 6.83861, -34.8395)
+shape = SubResource("BoxShape3D_jwuug")
+
+[node name="CollisionShape3D11" type="CollisionShape3D" parent="Buildings/ParkingGarage/laundromat/Collider/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.4584, 5.14856, -8.08645)
+shape = SubResource("BoxShape3D_unhrq")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="Buildings/ParkingGarage/laundromat/Collider/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.43567, 4.17462, -34.8395)
+shape = SubResource("BoxShape3D_3xcd8")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Buildings/ParkingGarage/laundromat/Collider/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.98453, 4.17462, -8.22796)
+shape = SubResource("BoxShape3D_pvkv1")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Buildings/ParkingGarage/laundromat/Collider/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0117, 1.68036, -10.9644)
+shape = SubResource("BoxShape3D_8dn3i")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="Buildings/ParkingGarage/laundromat/Collider/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0117, 1.68036, 13.2088)
+shape = SubResource("BoxShape3D_6t37o")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="Buildings/ParkingGarage/laundromat/Collider/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9883, 1.68036, -8.29115)
+shape = SubResource("BoxShape3D_biipp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Buildings/ParkingGarage/laundromat"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.4602, -0.078228, 6.31922)
+mesh = SubResource("BoxMesh_jwuug")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Buildings/ParkingGarage/laundromat"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.4602, -0.078228, -26.4805)
+mesh = SubResource("BoxMesh_3xcd8")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Buildings/ParkingGarage/laundromat"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.3311, 2.75914, -5.87492)
+mesh = SubResource("BoxMesh_unhrq")
+
+[node name="movableprops" type="Node3D" parent="Buildings/ParkingGarage"]
+
+[node name="bench" parent="Buildings/ParkingGarage/movableprops" instance=ExtResource("69_am7xc")]
+transform = Transform3D(0.999931, 0, -0.0117982, 0, 1, 0, 0.0117982, 0, 0.999931, -90.0479, 14.1503, -27.3245)
+
+[node name="hardprops" type="Node3D" parent="Buildings/ParkingGarage"]
+
+[node name="vendingmachine" parent="Buildings/ParkingGarage/hardprops" instance=ExtResource("70_wffs7")]
+transform = Transform3D(5.76205e-08, 0, -1, 0, 1, 0, 1, 0, 5.76205e-08, 9.49002, 13.575, -84.1464)
+
+[node name="sidewalks" type="Node3D" parent="Buildings/ParkingGarage/hardprops"]
+
+[node name="ParkingLeft" type="Node3D" parent="Buildings/ParkingGarage/hardprops/sidewalks"]
+
+[node name="yellowsidewalklong17" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
+transform = Transform3D(0.75, 0, -5.51353e-08, 0, 0.75, 0, 5.51353e-08, 0, 0.75, -84.0518, -1.11085, -9.11237)
+
+[node name="yellowsidewalklong18" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
+transform = Transform3D(-0.75, 0, -2.23518e-08, 0, 0.75, 0, 2.23518e-08, 0, -0.75, -84.0518, -1.11085, -5.80357)
+
+[node name="yellowsidewalklong19" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
+transform = Transform3D(0.75, 0, -5.51353e-08, 0, 0.75, 0, 5.51353e-08, 0, 0.75, -80.8184, -1.11085, -9.11237)
+
+[node name="yellowsidewalklong20" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
+transform = Transform3D(-0.75, 0, -2.23518e-08, 0, 0.75, 0, 2.23518e-08, 0, -0.75, -80.8184, -1.11085, -5.80357)
+
+[node name="yellowsidewalklong21" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
+transform = Transform3D(0.75, 0, -5.51353e-08, 0, 0.75, 0, 5.51353e-08, 0, 0.75, -77.5593, -1.11085, -9.11237)
+
+[node name="yellowsidewalklong22" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
+transform = Transform3D(-0.75, 0, -2.23518e-08, 0, 0.75, 0, 2.23518e-08, 0, -0.75, -77.5593, -1.11085, -5.80357)
+
+[node name="yellowsidewalklong23" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
+transform = Transform3D(0.75, 0, -5.51353e-08, 0, 0.75, 0, 5.51353e-08, 0, 0.75, -74.2757, -1.11085, -9.11237)
+
+[node name="yellowsidewalklong24" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
+transform = Transform3D(-0.75, 0, -2.23518e-08, 0, 0.75, 0, 2.23518e-08, 0, -0.75, -74.2757, -1.11085, -5.80357)
+
+[node name="yellowsidewalklong25" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
+transform = Transform3D(0.75, 0, -5.51353e-08, 0, 0.75, 0, 5.51353e-08, 0, 0.75, -70.9727, -1.11085, -9.11237)
+
+[node name="yellowsidewalklong26" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
+transform = Transform3D(-0.75, 0, -2.23518e-08, 0, 0.75, 0, 2.23518e-08, 0, -0.75, -70.9727, -1.11085, -5.80357)
+
+[node name="yellowsidewalklong27" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
+transform = Transform3D(0.75, 0, -5.51353e-08, 0, 0.75, 0, 5.51353e-08, 0, 0.75, -67.7393, -1.11085, -9.11237)
+
+[node name="yellowsidewalklong28" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
+transform = Transform3D(-0.75, 0, -2.23518e-08, 0, 0.75, 0, 2.23518e-08, 0, -0.75, -67.7393, -1.11085, -5.80357)
+
+[node name="yellowsidewalklong29" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
+transform = Transform3D(0.75, 0, -5.51353e-08, 0, 0.75, 0, 5.51353e-08, 0, 0.75, -64.4802, -1.11085, -9.11237)
+
+[node name="yellowsidewalklong30" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
+transform = Transform3D(-0.75, 0, -2.23518e-08, 0, 0.75, 0, 2.23518e-08, 0, -0.75, -64.4802, -1.11085, -5.80357)
+
+[node name="yellowsidewalklong31" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
+transform = Transform3D(0.75, 0, -5.51353e-08, 0, 0.75, 0, 5.51353e-08, 0, 0.75, -61.1965, -1.11085, -9.11237)
+
+[node name="yellowsidewalklong32" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
+transform = Transform3D(-0.75, 0, -2.23518e-08, 0, 0.75, 0, 2.23518e-08, 0, -0.75, -61.1965, -1.11085, -5.80357)
+
+[node name="yellowsidewalklong37" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
+transform = Transform3D(0.75, 0, -5.51353e-08, 0, 0.75, 0, 5.51353e-08, 0, 0.75, -103.691, -1.11085, -9.11237)
+
+[node name="yellowsidewalklong38" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
+transform = Transform3D(-0.75, 0, -2.23518e-08, 0, 0.75, 0, 2.23518e-08, 0, -0.75, -103.691, -1.11085, -5.80357)
+
+[node name="yellowsidewalklong39" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
+transform = Transform3D(0.75, 0, -5.51353e-08, 0, 0.75, 0, 5.51353e-08, 0, 0.75, -100.408, -1.11085, -9.11237)
+
+[node name="yellowsidewalklong40" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
+transform = Transform3D(-0.75, 0, -2.23518e-08, 0, 0.75, 0, 2.23518e-08, 0, -0.75, -100.408, -1.11085, -5.80357)
+
+[node name="yellowsidewalklong41" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
+transform = Transform3D(0.75, 0, -5.51353e-08, 0, 0.75, 0, 5.51353e-08, 0, 0.75, -97.1047, -1.11085, -9.11237)
+
+[node name="yellowsidewalklong42" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
+transform = Transform3D(-0.75, 0, -2.23518e-08, 0, 0.75, 0, 2.23518e-08, 0, -0.75, -97.1047, -1.11085, -5.80357)
+
+[node name="yellowsidewalklong43" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
+transform = Transform3D(0.75, 0, -5.51353e-08, 0, 0.75, 0, 5.51353e-08, 0, 0.75, -93.8713, -1.11085, -9.11237)
+
+[node name="yellowsidewalklong44" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
+transform = Transform3D(-0.75, 0, -2.23518e-08, 0, 0.75, 0, 2.23518e-08, 0, -0.75, -93.8713, -1.11085, -5.80357)
+
+[node name="yellowsidewalklong45" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
+transform = Transform3D(0.75, 0, -5.51353e-08, 0, 0.75, 0, 5.51353e-08, 0, 0.75, -90.6122, -1.11085, -9.11237)
+
+[node name="yellowsidewalklong46" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
+transform = Transform3D(-0.75, 0, -2.23518e-08, 0, 0.75, 0, 2.23518e-08, 0, -0.75, -90.6122, -1.11085, -5.80357)
+
+[node name="yellowsidewalklong47" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
+transform = Transform3D(0.75, 0, -5.51353e-08, 0, 0.75, 0, 5.51353e-08, 0, 0.75, -87.3286, -1.11085, -9.11237)
+
+[node name="yellowsidewalklong48" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("71_ul568")]
+transform = Transform3D(-0.75, 0, -2.23518e-08, 0, 0.75, 0, 2.23518e-08, 0, -0.75, -87.3286, -1.11085, -5.80357)
+
+[node name="yellowsidewalkcornerout" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("72_4qc3u")]
+transform = Transform3D(-3.27835e-08, 0, -0.75, 0, 0.75, 0, 0.75, 0, -3.27835e-08, -57.904, -1.11085, -5.82045)
+
+[node name="yellowsidewalkcornerout2" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingLeft" instance=ExtResource("72_4qc3u")]
+transform = Transform3D(0.75, 0, 3.55271e-15, 0, 0.75, 0, -3.55271e-15, 0, 0.75, -57.904, -1.11085, -9.11087)
+
+[node name="ParkingRight" type="Node3D" parent="Buildings/ParkingGarage/hardprops/sidewalks"]
+
+[node name="yellowsidewalklong" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(0.75, 0, -5.51353e-08, 0, 0.75, 0, 5.51353e-08, 0, 0.75, -25.7579, -1.40636, -9.11237)
+
+[node name="yellowsidewalklong2" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(-0.75, 0, -2.23518e-08, 0, 0.75, 0, 2.23518e-08, 0, -0.75, -25.7579, -1.40636, -5.80357)
+
+[node name="yellowsidewalklong17" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(0.75, 0, -5.51353e-08, 0, 0.75, 0, 5.51353e-08, 0, 0.75, -29.0719, -1.40636, -9.11237)
+
+[node name="yellowsidewalklong18" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(-0.75, 0, -2.23518e-08, 0, 0.75, 0, 2.23518e-08, 0, -0.75, -29.0719, -1.40636, -5.80357)
+
+[node name="yellowsidewalklong3" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(0.75, 0, -5.51353e-08, 0, 0.75, 0, 5.51353e-08, 0, 0.75, -22.5244, -1.40636, -9.11237)
+
+[node name="yellowsidewalklong4" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(-0.75, 0, -2.23518e-08, 0, 0.75, 0, 2.23518e-08, 0, -0.75, -22.5244, -1.40636, -5.80357)
+
+[node name="yellowsidewalklong5" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(0.75, 0, -5.51353e-08, 0, 0.75, 0, 5.51353e-08, 0, 0.75, -19.2653, -1.40636, -9.11237)
+
+[node name="yellowsidewalklong6" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(-0.75, 0, -2.23518e-08, 0, 0.75, 0, 2.23518e-08, 0, -0.75, -19.2653, -1.40636, -5.80357)
+
+[node name="yellowsidewalklong7" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(0.75, 0, -5.51353e-08, 0, 0.75, 0, 5.51353e-08, 0, 0.75, -15.9817, -1.40636, -9.11237)
+
+[node name="yellowsidewalklong8" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(-0.75, 0, -2.23518e-08, 0, 0.75, 0, 2.23518e-08, 0, -0.75, -15.9817, -1.40636, -5.80357)
+
+[node name="yellowsidewalklong9" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(0.75, 0, -5.51353e-08, 0, 0.75, 0, 5.51353e-08, 0, 0.75, -12.6788, -1.40636, -9.11237)
+
+[node name="yellowsidewalklong10" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(-0.75, 0, -2.23518e-08, 0, 0.75, 0, 2.23518e-08, 0, -0.75, -12.6788, -1.40636, -5.80357)
+
+[node name="yellowsidewalklong11" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(0.749961, 0.00764441, -5.51336e-08, -0.00764441, 0.749961, 3.34148e-10, 5.51341e-08, 2.27821e-10, 0.75, -9.4451, -1.3664, -9.11237)
+
+[node name="yellowsidewalklong12" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(-0.75, 0, -2.23518e-08, 0, 0.75, 0, 2.23518e-08, 0, -0.75, -9.4453, -1.40636, -5.80357)
+
+[node name="yellowsidewalklong13" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(0.749961, 0.00764441, -5.51336e-08, -0.00764441, 0.749961, 3.34148e-10, 5.51341e-08, 2.27821e-10, 0.75, -6.18616, -1.39962, -9.11237)
+
+[node name="yellowsidewalklong14" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(-0.749961, 0.00764441, -2.23494e-08, 0.00764441, 0.749961, 4.55642e-10, 2.23529e-08, 2.27821e-10, -0.75, -6.18616, -1.39962, -5.80357)
+
+[node name="yellowsidewalklong15" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(0.749961, 0.00764441, -5.51336e-08, -0.00764441, 0.749961, 3.34148e-10, 5.51341e-08, 2.27821e-10, 0.75, -2.90273, -1.43308, -9.11237)
+
+[node name="yellowsidewalklong16" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(-0.749961, 0.00764441, -2.23494e-08, 0.00764441, 0.749961, 4.55642e-10, 2.23529e-08, 2.27821e-10, -0.75, -2.90273, -1.43308, -5.80357)
+
+[node name="yellowsidewalklong19" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(0.75, 0, -5.51353e-08, 0, 0.75, 0, 5.51353e-08, 0, 0.75, 0.376083, -1.40636, -9.11237)
+
+[node name="yellowsidewalklong20" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(-0.75, 0, -2.23518e-08, 0, 0.75, 0, 2.23518e-08, 0, -0.75, 0.376085, -1.40636, -5.80357)
+
+[node name="yellowsidewalklong21" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(0.749961, 0.00764441, -5.51336e-08, -0.00764441, 0.749961, 3.34148e-10, 5.51341e-08, 2.27821e-10, 0.75, 3.60974, -1.3664, -9.11237)
+
+[node name="yellowsidewalklong22" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(-0.75, 0, -2.23518e-08, 0, 0.75, 0, 2.23518e-08, 0, -0.75, 3.60954, -1.40636, -5.80357)
+
+[node name="yellowsidewalklong23" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(0.749961, 0.00764441, -5.51336e-08, -0.00764441, 0.749961, 3.34148e-10, 5.51341e-08, 2.27821e-10, 0.75, 6.86868, -1.39962, -9.11237)
+
+[node name="yellowsidewalklong24" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(-0.749961, 0.00764441, -2.23494e-08, 0.00764441, 0.749961, 4.55642e-10, 2.23529e-08, 2.27821e-10, -0.75, 6.86868, -1.39962, -5.80357)
+
+[node name="yellowsidewalklong25" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(0.749961, 0.00764441, -5.51336e-08, -0.00764441, 0.749961, 3.34148e-10, 5.51341e-08, 2.27821e-10, 0.75, 10.1521, -1.43308, -9.11237)
+
+[node name="yellowsidewalklong26" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(-0.749961, 0.00764441, -2.23494e-08, 0.00764441, 0.749961, 4.55642e-10, 2.23529e-08, 2.27821e-10, -0.75, 10.1521, -1.43308, -5.80357)
+
+[node name="yellowsidewalklong27" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(-8.79188e-08, 0, -0.75, 0, 0.75, 0, 0.75, 0, -8.79188e-08, 16.7515, -1.40636, -48.3293)
+
+[node name="yellowsidewalklong29" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(1.04318e-08, 0, 0.75, 0, 0.75, 0, -0.75, 0, 1.04318e-08, 13.4427, -1.40636, -48.3293)
+
+[node name="yellowsidewalklong30" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(-8.79188e-08, 0, -0.75, 0, 0.75, 0, 0.75, 0, -8.79188e-08, 16.7515, -1.40636, -51.6434)
+
+[node name="yellowsidewalklong31" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(1.04318e-08, 0, 0.75, 0, 0.75, 0, -0.75, 0, 1.04318e-08, 13.4427, -1.40636, -51.6434)
+
+[node name="yellowsidewalklong54" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(-8.79188e-08, 0, -0.75, 0, 0.75, 0, 0.75, 0, -8.79188e-08, 16.7515, -1.40636, -54.9199)
+
+[node name="yellowsidewalklong55" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(1.04318e-08, 0, 0.75, 0, 0.75, 0, -0.75, 0, 1.04318e-08, 13.4427, -1.40636, -54.9199)
+
+[node name="yellowsidewalklong56" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(-8.79188e-08, 0, -0.75, 0, 0.75, 0, 0.75, 0, -8.79188e-08, 16.7515, -1.40636, -58.2463)
+
+[node name="yellowsidewalklong57" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(1.04318e-08, 0, 0.75, 0, 0.75, 0, -0.75, 0, 1.04318e-08, 13.4427, -1.40636, -58.2463)
+
+[node name="yellowsidewalklong32" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(-8.79188e-08, 0, -0.75, 0, 0.75, 0, 0.75, 0, -8.79188e-08, 16.7515, -1.40636, -45.0959)
+
+[node name="yellowsidewalklong33" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(1.04318e-08, 0, 0.75, 0, 0.75, 0, -0.75, 0, 1.04318e-08, 13.4427, -1.40636, -45.0959)
+
+[node name="yellowsidewalklong34" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(-8.79188e-08, 0, -0.75, 0, 0.75, 0, 0.75, 0, -8.79188e-08, 16.7515, -1.40636, -41.8368)
+
+[node name="yellowsidewalklong35" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(1.04318e-08, 0, 0.75, 0, 0.75, 0, -0.75, 0, 1.04318e-08, 13.4427, -1.40636, -41.8368)
+
+[node name="yellowsidewalklong36" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(-8.79188e-08, 0, -0.75, 0, 0.75, 0, 0.75, 0, -8.79188e-08, 16.7515, -1.40636, -38.5532)
+
+[node name="yellowsidewalklong37" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(1.04318e-08, 0, 0.75, 0, 0.75, 0, -0.75, 0, 1.04318e-08, 13.4427, -1.40636, -38.5532)
+
+[node name="yellowsidewalklong38" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(-8.79188e-08, 0, -0.75, 0, 0.75, 0, 0.75, 0, -8.79188e-08, 16.7515, -1.40636, -35.2502)
+
+[node name="yellowsidewalklong39" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(1.04318e-08, 0, 0.75, 0, 0.75, 0, -0.75, 0, 1.04318e-08, 13.4427, -1.40636, -35.2502)
+
+[node name="yellowsidewalklong40" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(-8.79159e-08, -5.61969e-10, -0.75, -0.00764441, 0.749961, 3.34148e-10, 0.749961, 0.00764441, -8.79171e-08, 16.7515, -1.3664, -32.0166)
+
+[node name="yellowsidewalklong41" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(1.04318e-08, 0, 0.75, 0, 0.75, 0, -0.75, 0, 1.04318e-08, 13.4427, -1.40636, -32.0168)
+
+[node name="yellowsidewalklong42" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(-8.79159e-08, -5.61969e-10, -0.75, -0.00764441, 0.749961, 3.34148e-10, 0.749961, 0.00764441, -8.79171e-08, 16.7515, -1.39962, -28.7576)
+
+[node name="yellowsidewalklong43" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(1.04432e-08, 8.34943e-10, 0.75, 0.00764441, 0.749961, 4.55642e-10, -0.749961, 0.00764441, 1.04341e-08, 13.4427, -1.39962, -28.7576)
+
+[node name="yellowsidewalklong44" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(-8.79159e-08, -5.61969e-10, -0.75, -0.00764441, 0.749961, 3.34148e-10, 0.749961, 0.00764441, -8.79171e-08, 16.7515, -1.43308, -25.4742)
+
+[node name="yellowsidewalklong45" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(1.04432e-08, 8.34943e-10, 0.75, 0.00764441, 0.749961, 4.55642e-10, -0.749961, 0.00764441, 1.04341e-08, 13.4427, -1.43308, -25.4742)
+
+[node name="yellowsidewalklong46" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(-8.79188e-08, 0, -0.75, 0, 0.75, 0, 0.75, 0, -8.79188e-08, 16.7515, -1.40636, -22.1954)
+
+[node name="yellowsidewalklong47" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(1.04318e-08, 0, 0.75, 0, 0.75, 0, -0.75, 0, 1.04318e-08, 13.4427, -1.40636, -22.1954)
+
+[node name="yellowsidewalklong48" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(-8.79159e-08, -5.61969e-10, -0.75, -0.00764441, 0.749961, 3.34148e-10, 0.749961, 0.00764441, -8.79171e-08, 16.7515, -1.3664, -18.9617)
+
+[node name="yellowsidewalklong49" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(1.04318e-08, 0, 0.75, 0, 0.75, 0, -0.75, 0, 1.04318e-08, 13.4427, -1.40636, -18.9619)
+
+[node name="yellowsidewalklong50" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(-8.79159e-08, -5.61969e-10, -0.75, -0.00764441, 0.749961, 3.34148e-10, 0.749961, 0.00764441, -8.79171e-08, 16.7515, -1.39962, -15.7028)
+
+[node name="yellowsidewalklong51" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(1.04432e-08, 8.34943e-10, 0.75, 0.00764441, 0.749961, 4.55642e-10, -0.749961, 0.00764441, 1.04341e-08, 13.4427, -1.39962, -15.7028)
+
+[node name="yellowsidewalklong52" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(-8.79159e-08, -5.61969e-10, -0.75, -0.00764441, 0.749961, 3.34148e-10, 0.749961, 0.00764441, -8.79171e-08, 16.7515, -1.43308, -12.4193)
+
+[node name="yellowsidewalklong58" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(-8.79159e-08, -5.61969e-10, -0.75, -0.00764441, 0.749961, 3.34148e-10, 0.749961, 0.00764441, -8.79171e-08, 16.7515, -1.43308, -9.08843)
+
+[node name="yellowsidewalklong53" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(1.04432e-08, 8.34943e-10, 0.75, 0.00764441, 0.749961, 4.55642e-10, -0.749961, 0.00764441, 1.04341e-08, 13.4427, -1.43308, -12.4193)
+
+[node name="yellowsidewalklong28" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("71_ul568")]
+transform = Transform3D(-0.749961, 0.00764441, -2.23494e-08, 0.00764441, 0.749961, 4.55642e-10, 2.23529e-08, 2.27821e-10, -0.75, 13.4611, -1.46356, -5.80357)
+
+[node name="yellowsidewalkcornerout" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("72_4qc3u")]
+transform = Transform3D(-2.23518e-08, 0, 0.75, 0, 0.75, 0, -0.75, 0, -2.23518e-08, -32.3957, -1.40636, -9.11087)
+
+[node name="yellowsidewalkcornerout2" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("72_4qc3u")]
+transform = Transform3D(-0.75, 0, -5.21541e-08, 0, 0.75, 0, 5.21541e-08, 0, -0.75, -32.3957, -1.40636, -5.82045)
+
+[node name="yellowsidewalkcornerout4" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("72_4qc3u")]
+transform = Transform3D(0.75, 0, -1.04318e-08, 0, 0.75, 0, 1.04318e-08, 0, 0.75, 16.733, -1.40636, -61.5377)
+
+[node name="yellowsidewalkcornerout5" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("72_4qc3u")]
+transform = Transform3D(-1.93705e-08, 0, 0.75, 0, 0.75, 0, -0.75, 0, -1.93705e-08, 13.4425, -1.40636, -61.5377)
+
+[node name="yellowsidewalkcornerout3" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("72_4qc3u")]
+transform = Transform3D(-1.22191e-07, 0, -0.75, 0, 0.75, 0, 0.75, 0, -1.22191e-07, 16.8035, -1.44538, -5.80706)
+
+[node name="CONCPILLAR" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("73_7tcmr")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 15.1788, -1.03135, -33.941)
+
+[node name="CONCPILLAR3" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("73_7tcmr")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 15.1788, -1.03135, -59.9409)
+
+[node name="CONCPILLAR2" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("73_7tcmr")]
+transform = Transform3D(-0.5, 0, 4.37114e-08, 0, 0.5, 0, -4.37114e-08, 0, -0.5, 15.1788, -1.03135, -7.41303)
+
+[node name="CONCPILLAR4" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("73_7tcmr")]
+transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, -13.8212, -1.03135, -7.41303)
+
+[node name="CONCPILLAR5" parent="Buildings/ParkingGarage/hardprops/sidewalks/ParkingRight" instance=ExtResource("73_7tcmr")]
+transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, -60.1445, -1.03135, -7.41303)
+
+[node name="Planter" type="Node3D" parent="Buildings/ParkingGarage/hardprops"]
+transform = Transform3D(1, 0, -7.35137e-08, 0, 1, 0, 7.35137e-08, 0, 1, 12.5898, 13.5112, -13.0086)
+
+[node name="concplanter1" parent="Buildings/ParkingGarage/hardprops/Planter" instance=ExtResource("74_3ktak")]
+
+[node name="concplanter2" parent="Buildings/ParkingGarage/hardprops/Planter" instance=ExtResource("74_3ktak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+
+[node name="concplanter3" parent="Buildings/ParkingGarage/hardprops/Planter" instance=ExtResource("74_3ktak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
+
+[node name="concplanter4" parent="Buildings/ParkingGarage/hardprops/Planter" instance=ExtResource("74_3ktak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18)
+
+[node name="concplanter5" parent="Buildings/ParkingGarage/hardprops/Planter" instance=ExtResource("74_3ktak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.66893e-06, 0, 28.6271)
+
+[node name="concplanter6" parent="Buildings/ParkingGarage/hardprops/Planter" instance=ExtResource("74_3ktak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19209e-06, 0, 22.6271)
+
+[node name="concplanter7" parent="Buildings/ParkingGarage/hardprops/Planter" instance=ExtResource("74_3ktak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19209e-06, 0, 16.6271)
+
+[node name="concplanter8" parent="Buildings/ParkingGarage/hardprops/Planter" instance=ExtResource("74_3ktak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19209e-06, 0, 10.6271)
+
+[node name="concplanter9" parent="Buildings/ParkingGarage/hardprops/Planter" instance=ExtResource("74_3ktak")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.93369, -14.8654, 133.184)
+
+[node name="parkingsupports" type="Node3D" parent="Buildings/ParkingGarage/hardprops"]
+
+[node name="concsupporth" parent="Buildings/ParkingGarage/hardprops/parkingsupports" instance=ExtResource("75_pst0h")]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, 40.8393, 10.9214, -59.9657)
+
+[node name="concsupporth2" parent="Buildings/ParkingGarage/hardprops/parkingsupports" instance=ExtResource("75_pst0h")]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, 32.8393, 10.9214, -59.9657)
+
+[node name="concsupporth3" parent="Buildings/ParkingGarage/hardprops/parkingsupports" instance=ExtResource("75_pst0h")]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, 24.8393, 10.9214, -59.9657)
+
+[node name="concsupporth4" parent="Buildings/ParkingGarage/hardprops/parkingsupports" instance=ExtResource("75_pst0h")]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, 16.8393, 10.9214, -59.9657)
+
+[node name="concsupporth5" parent="Buildings/ParkingGarage/hardprops/parkingsupports" instance=ExtResource("75_pst0h")]
+transform = Transform3D(1.15134e-07, 0, 1, 0, 1, 0, -1.525, 0, 7.54979e-08, 9.83926, 10.9214, -59.9657)
+
+[node name="concsupporth6" parent="Buildings/ParkingGarage/hardprops/parkingsupports" instance=ExtResource("75_pst0h")]
+transform = Transform3D(1.15134e-07, 0, 1, 0, 1, 0, -1.525, 0, 7.54979e-08, 1.83926, 10.9214, -59.9657)
+
+[node name="concsupporth7" parent="Buildings/ParkingGarage/hardprops/parkingsupports" instance=ExtResource("75_pst0h")]
+transform = Transform3D(1.15134e-07, 0, 1, 0, 1, 0, -1.525, 0, 7.54979e-08, -6.16074, 10.9214, -59.9657)
+
+[node name="concsupporth22" parent="Buildings/ParkingGarage/hardprops/parkingsupports" instance=ExtResource("75_pst0h")]
+transform = Transform3D(1.15134e-07, 0, 1, 0, 1, 0, -1.525, 0, 7.54979e-08, -14.1607, 10.9214, -59.9657)
+
+[node name="concsupporth20" parent="Buildings/ParkingGarage/hardprops/parkingsupports" instance=ExtResource("75_pst0h")]
+transform = Transform3D(-1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, -1, -16.9494, 10.9214, -73.6482)
+
+[node name="concsupporth21" parent="Buildings/ParkingGarage/hardprops/parkingsupports" instance=ExtResource("75_pst0h")]
+transform = Transform3D(-1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, -1, -16.9494, 10.9214, -65.6482)
+
+[node name="concsupporth8" parent="Buildings/ParkingGarage/hardprops/parkingsupports" instance=ExtResource("75_pst0h")]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -19.9837, 10.9214, -56.9801)
+
+[node name="concsupporth9" parent="Buildings/ParkingGarage/hardprops/parkingsupports" instance=ExtResource("75_pst0h")]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -27.9837, 10.9214, -56.9801)
+
+[node name="concsupporth10" parent="Buildings/ParkingGarage/hardprops/parkingsupports" instance=ExtResource("75_pst0h")]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -35.9837, 10.9214, -56.9801)
+
+[node name="concsupporth11" parent="Buildings/ParkingGarage/hardprops/parkingsupports" instance=ExtResource("75_pst0h")]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -43.9837, 10.9214, -56.9801)
+
+[node name="concsupporth12" parent="Buildings/ParkingGarage/hardprops/parkingsupports" instance=ExtResource("75_pst0h")]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -51.9837, 10.9214, -56.9801)
+
+[node name="concsupporth13" parent="Buildings/ParkingGarage/hardprops/parkingsupports" instance=ExtResource("75_pst0h")]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -58.9837, 10.9214, -56.9801)
+
+[node name="concsupporth14" parent="Buildings/ParkingGarage/hardprops/parkingsupports" instance=ExtResource("75_pst0h")]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -66.9836, 10.9214, -56.9801)
+
+[node name="concsupporth15" parent="Buildings/ParkingGarage/hardprops/parkingsupports" instance=ExtResource("75_pst0h")]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -74.9836, 10.9214, -56.9801)
+
+[node name="concsupporth16" parent="Buildings/ParkingGarage/hardprops/parkingsupports" instance=ExtResource("75_pst0h")]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -82.9836, 10.9214, -56.9801)
+
+[node name="concsupporth17" parent="Buildings/ParkingGarage/hardprops/parkingsupports" instance=ExtResource("75_pst0h")]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -91.0358, 11.0303, -56.9543)
+
+[node name="concsupporth18" parent="Buildings/ParkingGarage/hardprops/parkingsupports" instance=ExtResource("75_pst0h")]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -99.0358, 11.0303, -56.9543)
+
+[node name="concsupporth19" parent="Buildings/ParkingGarage/hardprops/parkingsupports" instance=ExtResource("75_pst0h")]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -107.036, 11.0303, -56.9543)
+
+[node name="PICKUPZONE6" parent="Buildings/ParkingGarage" instance=ExtResource("48_inte5")]
+transform = Transform3D(5.27501e-08, 0, 1.77, 0, 1.77, 0, -1.77, 0, 5.27501e-08, -33.9202, 8.84563, 52.8607)
+amount = 3
+
+[node name="ConcreteRoadblock" parent="Buildings/ParkingGarage" instance=ExtResource("60_onpej")]
+transform = Transform3D(-0.212553, 0, -0.97715, 0, 1, 0, 0.97715, 0, -0.212553, -5.1317, 4.77298, 56.8841)
+
+[node name="ConcreteRoadblock2" parent="Buildings/ParkingGarage" instance=ExtResource("60_onpej")]
+transform = Transform3D(0.213354, 0, -0.976975, 0, 1, 0, 0.976975, 0, 0.213354, -15.7727, 4.77298, 58.465)
+
+[node name="ConcreteRoadblock3" parent="Buildings/ParkingGarage" instance=ExtResource("60_onpej")]
+transform = Transform3D(0.213354, 0, -0.976975, 0, 1, 0, 0.976975, 0, 0.213354, -25.4526, 4.77298, 57.1563)
+
+[node name="ConcreteRoadblock4" parent="Buildings/ParkingGarage" instance=ExtResource("60_onpej")]
+transform = Transform3D(0.888465, 0, 0.458944, 0, 1, 0, -0.458944, 0, 0.888465, -42.1686, 4.77298, 55.7288)
+
+[node name="Node3D" type="Node3D" parent="Buildings/ParkingGarage"]
+transform = Transform3D(-0.309216, 0, 0.950992, 0, 1, 0, -0.950992, 0, -0.309216, -31.238, -2.35417, 94.534)
+
+[node name="garagedoor" parent="Buildings/ParkingGarage/Node3D" instance=ExtResource("77_v54vm")]
+transform = Transform3D(-3.71547e-08, 0, -0.85, 0, 0.85, 0, 0.85, 0, -3.71547e-08, -102.497, -0.0171421, 37.449)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Buildings/ParkingGarage/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -107.998, 3.16654, 37.4287)
+use_collision = true
+size = Vector3(4.26282, 5.49719, 0.203125)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Buildings/ParkingGarage/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -97.1442, 3.25584, 37.4373)
+use_collision = true
+size = Vector3(4.32422, 5.67578, 0.189453)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Buildings/ParkingGarage/Node3D"]
+transform = Transform3D(-1.13133e-08, 2.98023e-08, 1, 1, 8.9407e-08, 1.13133e-08, -8.9407e-08, 1, -2.98023e-08, -102.523, 6.4502, 37.407)
+use_collision = true
+size = Vector3(2, 0.231202, 15.1381)
+
+[node name="Warehouse" type="Node3D" parent="Buildings"]
+
+[node name="warehouse" parent="Buildings/Warehouse" instance=ExtResource("78_kxstq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3763, 1.49999, -107.007)

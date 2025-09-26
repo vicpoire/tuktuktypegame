@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0qcymgs1kxn2"]
+
+[ext_resource type="PackedScene" uid="uid://v13cj2xfgofo" path="res://3d/buildings/modular/apt/modular_apt_balc.glb" id="1_nue5t"]
+
+[node name="modular_apt_balc" type="Node3D"]
+
+[node name="modular_apt_balc" parent="." instance=ExtResource("1_nue5t")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)

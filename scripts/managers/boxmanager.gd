@@ -32,19 +32,12 @@ class PendingAnim:
 
 func _ready():
 	add_to_group("box_manager")
-	# Setup UI if manager is assigned
 	if ui_manager:
 		ui_manager.setup_ui_viewports()
 	disable_all_boxes()
 	set_process(true)
 
 func _process(delta):
-	# Debug controls
-	if Input.is_action_just_pressed("debug1"):
-		add_box()
-	elif Input.is_action_just_pressed("debug2"):
-		remove_box()
-
 	for i in range(pending_animations.size() - 1, -1, -1):
 		var pending = pending_animations[i]
 		pending.delay_remaining -= delta
