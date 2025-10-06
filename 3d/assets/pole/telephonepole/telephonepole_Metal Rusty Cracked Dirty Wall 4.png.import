@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://b1o4re0vveopp"
+path.s3tc="res://.godot/imported/telephonepole_Metal Rusty Cracked Dirty Wall 4.png-d0bf4f86f5cb176059acb146558aef34.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "3992115a2829af0c6aa84c3eca41540a"
+}
+
+[deps]
+
+source_file="res://3d/assets/pole/telephonepole/telephonepole_Metal Rusty Cracked Dirty Wall 4.png"
+dest_files=["res://.godot/imported/telephonepole_Metal Rusty Cracked Dirty Wall 4.png-d0bf4f86f5cb176059acb146558aef34.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

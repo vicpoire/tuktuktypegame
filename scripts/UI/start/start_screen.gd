@@ -5,6 +5,7 @@ extends Control
 @export var car: Node
 @export var time_mode: Node
 @export var start_cinematic: Node
+@export var drunken_filter: Node
 
 @export var time_label: Label
 @export var anim_player: AnimationPlayer
@@ -68,14 +69,17 @@ func game_cam_animation():
 
 func update_cinematic() -> void:
 	match time_left:
-		6.0:
+		7.0:
+			anim_player_cam.play("camanimation1")
 			game_cam.current = false
 			cinematic_cam.current = true
-			anim_player_cam.play("camanimation1")
+			
+		6.0:
+			drunken_filter.fade_in()
 			await get_tree().create_timer(0.25).timeout
 
-			time_label.text = "ready?"
 			anim_player.play("countdown_label_animation")
+			time_label.text = "ready?"
 
 		5.0:
 			anim_player.play("fade_out")
@@ -107,3 +111,4 @@ func update_cinematic() -> void:
 			anim_player.play("fade_out")
 			toggle_main_ui(true)
 			cinematic_cam.current = false
+			drunken_filter.fade_out()

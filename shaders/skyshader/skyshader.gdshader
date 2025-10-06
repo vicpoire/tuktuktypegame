@@ -1,23 +1,23 @@
 shader_type sky;
 
-uniform vec3 skyColor       : source_color;
-uniform vec3 horizonColor   : source_color;
-uniform vec3 cloudColor     : source_color = vec3(1.0);
+uniform vec3 skyColor: source_color;
+uniform vec3 horizonColor: source_color;
+uniform vec3 cloudColor: source_color = vec3(1.0);
 
-uniform float horizon_height : hint_range(-1.0, 1.0) = 0.0;
+uniform float horizon_height: hint_range(-1.0, 1.0) = 0.0;
 
-uniform float cloud_threshold : hint_range(0.0, 1.0) = 0.6;
-uniform float cloud_softness  : hint_range(0.0, 0.2) = 0.05;
-uniform float cloud_opacity   : hint_range(0.0, 1.0) = 1.0;
+uniform float cloud_threshold: hint_range(0.0, 1.0) = 0.6;
+uniform float cloud_softness: hint_range(0.0, 0.2) = 0.05;
+uniform float cloud_opacity: hint_range(0.0, 1.0) = 1.0;
 
-uniform float cloud_scale_x   = 2.0;
-uniform float cloud_scale_y   = 2.0;
-uniform float cloud_speed     = 0.02;
-uniform float time_offset     = 0.0;
+uniform float cloud_scale_x = 2.0;
+uniform float cloud_scale_y = 2.0;
+uniform float cloud_speed = 0.02;
+uniform float time_offset = 0.0;
 
 uniform vec2 viewport_size;
 uniform float dither_strength : hint_range(0.0,1.0) = 1.0;
-uniform vec2 dither_offset    = vec2(0.0);
+uniform vec2 dither_offset = vec2(0.0);
 
 
 float hash(vec3 p) {

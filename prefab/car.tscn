@@ -322,7 +322,7 @@ is_motor = true
 grip_curve = SubResource("Curve_xfrxd")
 
 [node name="Tire" type="MeshInstance3D" parent="WHEELS/WHEELFRONT"]
-transform = Transform3D(-6.55671e-08, 1.5, 0, -1.5, -6.55671e-08, 0, 0, 0, 1.5, 0, -0.499469, 0.0467732)
+transform = Transform3D(-6.55671e-08, 1.5, 0, -1.5, -6.55671e-08, 0, 0, 0, 1.5, -5.68434e-14, -0.586208, 0.0467732)
 layers = 17
 mesh = SubResource("ArrayMesh_vtxnp")
 skeleton = NodePath("")
@@ -337,7 +337,7 @@ is_motor = true
 grip_curve = SubResource("Curve_xfrxd")
 
 [node name="Tire" type="MeshInstance3D" parent="WHEELS/WHEELRL"]
-transform = Transform3D(-6.55671e-08, 1.5, 0, -1.5, -6.55671e-08, 0, 0, 0, 1.5, 0, -0.499, 0.047)
+transform = Transform3D(-6.55671e-08, 1.5, 0, -1.5, -6.55671e-08, 0, 0, 0, 1.5, 0, -0.585739, 0.047)
 layers = 17
 mesh = SubResource("ArrayMesh_vtxnp")
 skeleton = NodePath("")
@@ -352,7 +352,7 @@ is_motor = true
 grip_curve = SubResource("Curve_xfrxd")
 
 [node name="Tire" type="MeshInstance3D" parent="WHEELS/WHEELRR"]
-transform = Transform3D(-6.55671e-08, 1.5, 0, -1.5, -6.55671e-08, 0, 0, 0, 1.5, 0, -0.499, 0.047)
+transform = Transform3D(-6.55671e-08, 1.5, 0, -1.5, -6.55671e-08, 0, 0, 0, 1.5, 0, -0.585739, 0.047)
 layers = 17
 mesh = SubResource("ArrayMesh_vtxnp")
 skeleton = NodePath("")
@@ -362,8 +362,8 @@ script = ExtResource("14_br1ke")
 lights_to_toggle = [NodePath("SpotLight3D"), NodePath("SpotLight3D2"), NodePath("OmniLight3D"), NodePath("OmniLight3D2")]
 
 [node name="SpotLight3D" type="SpotLight3D" parent="LIGHTS"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0.365, -2.80387)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0.365, -1.11038)
+layers = 3
 light_color = Color(1, 1, 0.913725, 1)
 light_energy = 16.0
 light_volumetric_fog_energy = 8.0
@@ -373,12 +373,13 @@ shadow_enabled = true
 shadow_reverse_cull_face = true
 shadow_blur = 10.0
 distance_fade_enabled = true
-spot_range = 11.6162
-spot_angle = 21.0247
+spot_range = 10.0
+spot_attenuation = 1.25
+spot_angle_attenuation = 1.5
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="LIGHTS"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0.365, -2.804)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0.365, -1.11051)
+layers = 3
 light_color = Color(1, 1, 0.913725, 1)
 light_energy = 16.0
 light_volumetric_fog_energy = 8.0
@@ -388,8 +389,9 @@ shadow_enabled = true
 shadow_reverse_cull_face = true
 shadow_blur = 10.0
 distance_fade_enabled = true
-spot_range = 11.6162
-spot_angle = 21.0247
+spot_range = 10.0
+spot_attenuation = 1.25
+spot_angle_attenuation = 1.5
 
 [node name="OmniLight3D" type="OmniLight3D" parent="LIGHTS"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0.375678, -2.74971)

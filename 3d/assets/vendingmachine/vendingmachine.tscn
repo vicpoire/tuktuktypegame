@@ -8,8 +8,10 @@ size = Vector3(1.86725, 4.12891, 2.56958)
 [node name="vendingmachine" type="Node3D"]
 
 [node name="vendingmachines" parent="." instance=ExtResource("1_76hgc")]
+transform = Transform3D(1.05, 0, 0, 0, 1.05, 0, 0, 0, 1.05, 0, 0, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1.05, 0, 0, 0, 1.05, 0, 0, 0, 1.05, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00790405, 2.14258, -0.0113645)

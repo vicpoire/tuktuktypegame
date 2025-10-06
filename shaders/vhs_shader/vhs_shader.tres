@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://f6lfrp08pbup"]
+
+[ext_resource type="Shader" uid="uid://djsa337ym6p7g" path="res://shaders/vhs_shader/vhs_shader.gdshader" id="1_bsg3r"]
+
+[resource]
+shader = ExtResource("1_bsg3r")
+shader_parameter/wiggle = 0.0
+shader_parameter/wiggle_speed = 0.0
+shader_parameter/smear = 0.2
+shader_parameter/blur_samples = 3

@@ -1,0 +1,93 @@
+[gd_scene load_steps=6 format=3 uid="uid://mf614upi6h5b"]
+
+[ext_resource type="PackedScene" uid="uid://b2pivhe1r8gag" path="res://3d/assets/billboard/billboard.glb" id="1_puv3h"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_puv3h"]
+size = Vector3(0.49, 14.4277, 27)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ax8y8"]
+size = Vector3(1.734, 31, 1.92)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_73hbo"]
+size = Vector3(6, 0.371, 28)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8ia1e"]
+size = Vector3(1, 0.371, 28)
+
+[node name="billboard" type="Node3D"]
+
+[node name="billboard" parent="." instance=ExtResource("1_puv3h")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="billboard"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="billboard/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.265633, 2.28613, 0)
+shape = SubResource("BoxShape3D_puv3h")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="billboard/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.356496, -21, 0)
+shape = SubResource("BoxShape3D_ax8y8")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="billboard/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.33202, -4.79087, 0.153271)
+shape = SubResource("BoxShape3D_73hbo")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="billboard/StaticBody3D"]
+transform = Transform3D(0.908158, 0.418628, 0, -0.418628, 0.908158, 0, 0, 0, 1, -5.09427, -4.65401, 0.153271)
+shape = SubResource("BoxShape3D_8ia1e")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(0.990061, 6.14766e-09, -0.140642, 0.140642, -4.32769e-08, 0.990061, 0, -1, -4.37114e-08, -2.21092, 8, 3.63833)
+light_energy = 8.0
+light_indirect_energy = 4.0
+light_volumetric_fog_energy = 8.0
+spot_range = 16.0
+spot_attenuation = 0.75
+spot_angle = 20.27
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 10, 3.64846)
+light_energy = 16.0
+light_indirect_energy = 4.0
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(0.990061, 6.14766e-09, -0.140642, 0.140642, -4.32769e-08, 0.990061, 0, -1, -4.37114e-08, -2.21092, 8, 10.8573)
+light_energy = 8.0
+light_indirect_energy = 4.0
+light_volumetric_fog_energy = 8.0
+spot_range = 16.0
+spot_attenuation = 0.75
+spot_angle = 20.27
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 10, 10.8675)
+light_energy = 16.0
+light_indirect_energy = 4.0
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="."]
+transform = Transform3D(0.990061, 6.14766e-09, -0.140642, 0.140642, -4.32769e-08, 0.990061, 0, -1, -4.37114e-08, -2.21092, 8, -10.6234)
+light_energy = 8.0
+light_indirect_energy = 4.0
+light_volumetric_fog_energy = 8.0
+spot_range = 16.0
+spot_attenuation = 0.75
+spot_angle = 20.27
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 10, -10.6133)
+light_energy = 16.0
+light_indirect_energy = 4.0
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="."]
+transform = Transform3D(0.990061, 6.14766e-09, -0.140642, 0.140642, -4.32769e-08, 0.990061, 0, -1, -4.37114e-08, -2.21092, 8, -3.40442)
+light_energy = 8.0
+light_indirect_energy = 4.0
+light_volumetric_fog_energy = 8.0
+spot_range = 16.0
+spot_attenuation = 0.75
+spot_angle = 20.27
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 10, -3.39429)
+light_energy = 16.0
+light_indirect_energy = 4.0

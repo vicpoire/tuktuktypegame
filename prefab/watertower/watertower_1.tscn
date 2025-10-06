@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://4npct2seb2p4"]
+
+[ext_resource type="PackedScene" uid="uid://coy7b3xeo5nur" path="res://3d/assets/watertower/watertower.glb" id="1_gm256"]
+
+[node name="watertower1" type="Node3D"]
+
+[node name="watertower" parent="." instance=ExtResource("1_gm256")]

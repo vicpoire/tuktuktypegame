@@ -8,9 +8,11 @@ size = Vector3(1.645, 1.248, 3.59)
 [node name="concplanter1" type="Node3D"]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1.35, 0, 0, 0, 1.35, 0, 0, 0, 1.35, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.597485, 0)
 shape = SubResource("BoxShape3D_0eum3")
 
 [node name="concplanter1" parent="." instance=ExtResource("1_oalwe")]
+transform = Transform3D(1.35, 0, 0, 0, 1.35, 0, 0, 0, 1.35, 0, 0, 0)

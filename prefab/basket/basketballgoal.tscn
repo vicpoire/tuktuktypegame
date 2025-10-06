@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddkujbcsqjfip"]
+
+[ext_resource type="PackedScene" uid="uid://d36x7h4jjjjvl" path="res://3d/assets/basketball/basketballpole.glb" id="1_lhlld"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jaus2"]
+size = Vector3(0.25, 12.878, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jt4ru"]
+size = Vector3(2.299, 1.35299, 2.23)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7ywmm"]
+size = Vector3(0.299, 3.833, 5.625)
+
+[node name="basketballgoal" type="Node3D"]
+
+[node name="basketballpole" parent="." instance=ExtResource("1_lhlld")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.41878, 0)
+shape = SubResource("BoxShape3D_jaus2")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.74707, 10.965, 0)
+shape = SubResource("BoxShape3D_jt4ru")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.96471, 12.965, 0)
+shape = SubResource("BoxShape3D_7ywmm")

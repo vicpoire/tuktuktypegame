@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://wsq002h7dlt8"]
+
+[ext_resource type="PackedScene" uid="uid://dydqrxt0b4l45" path="res://3d/buildings/level1/flooraptblock/flooraptblock.glb" id="1_sdrvx"]
+
+[node name="level1mainMesh" type="Node3D"]
+
+[node name="flooraptblock" parent="." instance=ExtResource("1_sdrvx")]

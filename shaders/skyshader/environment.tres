@@ -1,6 +1,14 @@
-[gd_resource type="Environment" load_steps=3 format=3 uid="uid://b4aa8imqate7i"]
+[gd_resource type="Environment" load_steps=5 format=3 uid="uid://b4aa8imqate7i"]
 
 [ext_resource type="Material" uid="uid://ooihdqe6uxgk" path="res://shaders/skyshader/skyshader.tres" id="1_wq1b5"]
+
+[sub_resource type="Gradient" id="Gradient_wq1b5"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.0621762, 0.126943, 0.189119, 0.253886, 0.312644, 0.375862, 0.441379, 0.503448, 0.577011, 0.643678, 0.705747, 0.764368, 0.826437, 0.886207, 0.940414, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.0562916, 0.0562916, 0.0562916, 1, 0.154876, 0.154876, 0.154876, 1, 0.230315, 0.230315, 0.230315, 1, 0.314316, 0.314316, 0.314316, 1, 0.389287, 0.389287, 0.389286, 1, 0.427493, 0.427493, 0.427493, 1, 0.466181, 0.466181, 0.466181, 1, 0.513233, 0.513233, 0.513233, 1, 0.577008, 0.577008, 0.577008, 1, 0.625597, 0.625597, 0.625597, 1, 0.683077, 0.683077, 0.683077, 1, 0.817521, 0.817521, 0.817521, 1, 0.847474, 0.847475, 0.847474, 1, 0.91664, 0.91664, 0.91664, 1, 1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_46oqa"]
+gradient = SubResource("Gradient_wq1b5")
 
 [sub_resource type="Sky" id="Sky_i5tu4"]
 sky_material = ExtResource("1_wq1b5")
@@ -11,14 +19,16 @@ background_color = Color(0.676798, 0.527817, 0.710493, 1)
 sky = SubResource("Sky_i5tu4")
 sky_rotation = Vector3(0, -3.97237, 0)
 ambient_light_source = 3
-tonemap_mode = 4
-tonemap_exposure = 1.25
+tonemap_mode = 3
+tonemap_exposure = 0.75
+tonemap_white = 1.5
 ssr_max_steps = 1
 ssr_fade_in = 0.621159
 ssao_enabled = true
 ssao_power = 2.35375
 ssao_detail = 0.0
 ssao_sharpness = 1.0
+ssil_sharpness = 0.0
 sdfgi_use_occlusion = true
 sdfgi_bounce_feedback = 1.21
 sdfgi_cascades = 2
@@ -28,9 +38,8 @@ sdfgi_max_distance = 1948.16
 fog_light_energy = 1.5
 fog_density = 0.0
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.02
+volumetric_fog_density = 0.015
 volumetric_fog_anisotropy = 0.0
-volumetric_fog_sky_affect = 0.635
-volumetric_fog_temporal_reprojection_amount = 0.5
+volumetric_fog_detail_spread = 6.0
 adjustment_enabled = true
-adjustment_brightness = 0.9
+adjustment_color_correction = SubResource("GradientTexture1D_46oqa")
