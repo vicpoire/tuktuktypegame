@@ -6,9 +6,7 @@ extends Area3D
 @export var excluded_objects: Array[String] = ["Floor", "Ground", "Terrain"]
 @export var detect_area3d: bool = false
 @export var detection_mode: String = "on_exit"  # "on_exit" or "on_enter"
-@export var exit_delay: float = 0.3  
 @export var same_object_cooldown: float = 2.0
-
 @export var detect_rigidbodies: bool = true
 @export var allowed_rigidbody_names: Array[String] = []
 @export var exclude_player_vehicle: bool = true
@@ -31,24 +29,10 @@ func _ready():
 	cleanup_timer.timeout.connect(_cleanup_old_misses)
 	cleanup_timer.autostart = true
 	add_child(cleanup_timer)
+	
+	if not near_miss_manager:
+		near_miss_manager = get_tree().get_first_node_in_group("near_miss_manager")
 
-func test_near_miss():
-	var fake_object = Node3D.new()
-	fake_object.name = "TestObject"
-	_handle_near_miss(fake_object)
-	fake_object.queue_free()
-
-func test_point_manager_direct():
-	var point_mgr = get_tree().get_first_node_in_group("point_manager")
-	if point_mgr:
-		if point_mgr.has_method("add_points"):
-			point_mgr.add_points(50, "test")
-
-func test_near_miss_manager_direct():
-	if near_miss_manager:
-		if near_miss_manager.has_method("register_near_miss"):
-			var fake_data = {"speed": 10.0, "position": Vector3.ZERO, "object": self}
-			near_miss_manager.register_near_miss(fake_data)
 
 func _should_detect_object(body: Node3D) -> bool:
 	if body is RigidBody3D:
@@ -58,8 +42,6 @@ func _should_detect_object(body: Node3D) -> bool:
 		if exclude_player_vehicle and _is_player_vehicle(body):
 			return false
 		
-		
-		# Check if it's in allowed names
 		if allowed_rigidbody_names.size() > 0:
 			var name_allowed = false
 			for allowed_name in allowed_rigidbody_names:
@@ -83,11 +65,15 @@ func _on_body_entered(body: Node3D):
 		return
 	
 	var object_id = body.get_instance_id()
+	var current_speed = _get_current_speed()
+	
 	objects_inside[object_id] = {
 		"object": body,
-		"entry_speed": _get_current_speed(),
-		"entry_time": Time.get_time_dict_from_system()
+		"entry_speed": current_speed,
+		"entry_time": Time.get_ticks_msec() / 1000.0
 	}
+	
+
 	
 	if detection_mode == "on_enter":
 		_handle_near_miss(body)
@@ -97,6 +83,7 @@ func _on_body_exited(body: Node3D):
 		return
 	
 	var object_id = body.get_instance_id()
+	
 	if objects_inside.has(object_id) and detection_mode == "on_exit":
 		_handle_near_miss(body)
 	
@@ -107,11 +94,14 @@ func _on_area_entered(area: Area3D):
 		return
 	
 	var object_id = area.get_instance_id()
+	var current_speed = _get_current_speed()
+	
 	objects_inside[object_id] = {
 		"object": area,
-		"entry_speed": _get_current_speed(),
-		"entry_time": Time.get_time_dict_from_system()
+		"entry_speed": current_speed,
+		"entry_time": Time.get_ticks_msec() / 1000.0
 	}
+	
 	
 	if detection_mode == "on_enter":
 		_handle_near_miss(area)
@@ -121,6 +111,8 @@ func _on_area_exited(area: Area3D):
 		return
 	
 	var object_id = area.get_instance_id()
+	
+	
 	if objects_inside.has(object_id) and detection_mode == "on_exit":
 		_handle_near_miss(area)
 	
@@ -128,10 +120,7 @@ func _on_area_exited(area: Area3D):
 
 func _handle_near_miss(object: Node3D):
 	var current_speed = _get_current_speed()
-	if current_speed == 0:
-		return
-		
-	print("found object, current speed: ", current_speed)
+	
 	
 	if current_speed < min_speed_threshold:
 		return
@@ -140,10 +129,13 @@ func _handle_near_miss(object: Node3D):
 	
 	if recently_missed_objects.has(object_id):
 		var last_miss_time = recently_missed_objects[object_id]
-		var current_time = Time.get_time_dict_from_system()
-		var time_diff = _calculate_time_difference(current_time, last_miss_time)
+		var current_time = Time.get_ticks_msec() / 1000.0
+		var time_diff = current_time - last_miss_time
 		
-	recently_missed_objects[object_id] = Time.get_time_dict_from_system()
+		if time_diff < same_object_cooldown:
+			return
+	
+	recently_missed_objects[object_id] = Time.get_ticks_msec() / 1000.0
 	
 	if near_miss_manager and near_miss_manager.has_method("register_near_miss"):
 		var miss_data = {
@@ -153,6 +145,7 @@ func _handle_near_miss(object: Node3D):
 			"car_velocity": _get_car_velocity()
 		}
 		near_miss_manager.register_near_miss(miss_data)
+		
 
 func _get_current_speed() -> float:
 	var car = _find_car()
@@ -181,23 +174,18 @@ func _find_car() -> RigidBody3D:
 	return null
 
 func _cleanup_old_misses():
-	var current_time = Time.get_time_dict_from_system()
+	var current_time = Time.get_ticks_msec() / 1000.0
 	var keys_to_remove = []
 	
 	for object_id in recently_missed_objects.keys():
 		var miss_time = recently_missed_objects[object_id]
-		var time_diff = _calculate_time_difference(current_time, miss_time)
+		var time_diff = current_time - miss_time
 		
 		if time_diff > (same_object_cooldown * 2):
 			keys_to_remove.append(object_id)
 	
 	for key in keys_to_remove:
 		recently_missed_objects.erase(key)
-
-func _calculate_time_difference(current: Dictionary, previous: Dictionary) -> float:
-	var current_total = current.hour * 3600 + current.minute * 60 + current.second
-	var previous_total = previous.hour * 3600 + previous.minute * 60 + previous.second
-	return current_total - previous_total
 
 func can_object_trigger_near_miss(object: Node3D) -> bool:
 	var object_id = object.get_instance_id()
@@ -206,8 +194,8 @@ func can_object_trigger_near_miss(object: Node3D) -> bool:
 		return true
 	
 	var last_miss_time = recently_missed_objects[object_id]
-	var current_time = Time.get_time_dict_from_system()
-	var time_diff = _calculate_time_difference(current_time, last_miss_time)
+	var current_time = Time.get_ticks_msec() / 1000.0
+	var time_diff = current_time - last_miss_time
 	
 	return time_diff >= same_object_cooldown
 
@@ -218,8 +206,8 @@ func get_object_cooldown_remaining(object: Node3D) -> float:
 		return 0.0
 	
 	var last_miss_time = recently_missed_objects[object_id]
-	var current_time = Time.get_time_dict_from_system()
-	var time_diff = _calculate_time_difference(current_time, last_miss_time)
+	var current_time = Time.get_ticks_msec() / 1000.0
+	var time_diff = current_time - last_miss_time
 	
 	return max(0.0, same_object_cooldown - time_diff)
 

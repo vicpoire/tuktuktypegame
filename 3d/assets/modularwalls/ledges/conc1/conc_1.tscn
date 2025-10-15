@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://csj0i1yosr4d4"]
+
+[ext_resource type="PackedScene" uid="uid://vqlsj3vo8gjf" path="res://3d/assets/modularwalls/ledges/conc1/ledge.glb" id="1_wxn7i"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uv2jd"]
+size = Vector3(5.04388, 2.11902, 0.499512)
+
+[node name="conc1" type="Node3D"]
+
+[node name="ledge2" parent="." instance=ExtResource("1_wxn7i")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00839233, 1.10596, -0.0251465)
+shape = SubResource("BoxShape3D_uv2jd")

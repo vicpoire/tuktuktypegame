@@ -6,6 +6,7 @@ extends Control
 @export var time_mode: Node
 @export var start_cinematic: Node
 @export var drunken_filter: Node
+@export var white_fade_rect: Node
 
 @export var time_label: Label
 @export var anim_player: AnimationPlayer
@@ -25,11 +26,22 @@ var cinematicpos_update: bool
 func _ready():
 	time_left = time_mode.time_before_starting
 	original_accel = car.acceleration
+
+	if car:
+		await car.ready
+		game_cam = car.get_node("CAM/GameCam")
+
+		anim_player_game_cam = car.get_node("CAM/AnimationPlayer")
+
 	start_animation()
 	
 	if !time_mode.play_intro:
-		game_cam.current
-		anim_player_game_cam.play("up_game_cam")
+		if game_cam:
+			game_cam.current = true
+		if anim_player_game_cam:
+			anim_player_game_cam.play("up_game_cam")
+
+
 	
 func _process(delta):
 	if cinematicpos_update:
@@ -70,6 +82,9 @@ func game_cam_animation():
 func update_cinematic() -> void:
 	match time_left:
 		7.0:
+			$ColorRect.visible = true
+			white_fade_rect.visible = true
+			
 			anim_player_cam.play("camanimation1")
 			game_cam.current = false
 			cinematic_cam.current = true

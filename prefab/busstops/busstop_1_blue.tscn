@@ -28,7 +28,7 @@ material = SubResource("StandardMaterial3D_f28fq")
 size = Vector3(0.06, 1.85, 2.745)
 
 [node name="busstop1" type="Node3D"]
-transform = Transform3D(1.08, 0, 0, 0, 1.08, 0, 0, 0, 1.08, 0, 0, 0)
+transform = Transform3D(0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 0, 0, 0)
 
 [node name="busstopblue" parent="." instance=ExtResource("1_u66qy")]
 

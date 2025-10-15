@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://cshcuhxmno2a7"]
+[gd_scene load_steps=33 format=4 uid="uid://cshcuhxmno2a7"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://hgfwxjyu0ddn" path="res://shapes/capsulephysmat.tres" id="1_x7f1w"]
 [ext_resource type="Script" uid="uid://c7xgqy1tiplgf" path="res://scripts/RaycastCar.gd" id="2_2te80"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://3vd3vjqrn1gt" path="res://particles/skidmark.tscn" id="7_br1ke"]
 [ext_resource type="Texture2D" uid="uid://d3pg55lvjgrp" path="res://particles/fog.png" id="9_kfihb"]
 [ext_resource type="Texture2D" uid="uid://cuwfikqv4h8uk" path="res://car/new/chassis.png" id="12_5nmht"]
+[ext_resource type="AudioStream" uid="uid://24d5pntl80gi" path="res://audio/car/engine_idle_loop.ogg" id="13_5nmht"]
 [ext_resource type="Script" uid="uid://82igdbfokds1" path="res://scripts/lights.gd" id="14_br1ke"]
 
 [sub_resource type="Curve" id="Curve_utrr5"]
@@ -210,8 +211,8 @@ accel_curve = SubResource("Curve_utrr5")
 tire_turn_speed = 1.2
 tire_turn_max_degree = 8
 lights = NodePath("LIGHTS")
-drift_angle_multiplier = 2.0
-drift_side_grip = 0.8
+drift_angle_multiplier = 1.4
+drift_side_grip = 0.6
 side_grip = 1.5
 min_grip_angle = 360.0
 ledge_check_distance = 0.0
@@ -402,3 +403,16 @@ omni_range = 0.25
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0.375678, -2.74971)
 visible = false
 omni_range = 0.25
+
+[node name="CarAudio" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, 0)
+
+[node name="IdlePlayer" type="AudioStreamPlayer3D" parent="CarAudio"]
+stream = ExtResource("13_5nmht")
+max_distance = 50.0
+bus = &"SFX"
+emission_angle_degrees = 90.0
+
+[node name="DrivePlayer" type="AudioStreamPlayer3D" parent="CarAudio"]
+
+[node name="RevPlayer" type="AudioStreamPlayer3D" parent="CarAudio"]

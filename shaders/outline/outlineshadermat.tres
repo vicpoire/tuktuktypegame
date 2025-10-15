@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cudlrmvog247s"]
+
+[ext_resource type="Shader" uid="uid://d31eb8bxjshou" path="res://shaders/outline/outlineshader.gdshader" id="1_gr4t6"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_gr4t6")
+shader_parameter/shadows_enabled = true
+shader_parameter/highlights_enabled = true
+shader_parameter/shadow_strength = 0.4
+shader_parameter/highlight_strength = 0.1
+shader_parameter/highlight_color = Color(1, 1, 1, 1)
+shader_parameter/shadow_color = Color(0, 0, 0, 1)
+shader_parameter/is_perspective_camera = true

@@ -1,5 +1,6 @@
 extends Node
 
+@export var car: Node
 @export var start_time: float = 30.0
 @export var time_frozen: bool
 
@@ -7,6 +8,9 @@ extends Node
 @export var time_label: Label
 @export var points_label: Label
 @export var countdown_timer: Timer
+@export var per_delivery_countdown_timer: Timer
+@export var per_delivery_time_label: Label
+
 @export var near_miss_label_scene: PackedScene 
 @export var combo_label_scene: PackedScene 
 @export var near_miss_parent: Node 
@@ -20,6 +24,8 @@ extends Node
 @export var point_parent: Node 
 @export var box_capacity: int = 3
 @export var dropoff_points_per_box: int = 5 
+@export var delivery_time_limit: float = 30.0 # base seconds per full capacity
+@export var timer_animation_player: AnimationPlayer
 
 @export_group("begining and end")
 @export var start_screen: Node
@@ -27,16 +33,22 @@ extends Node
 
 @export var time_before_starting: float
 @export var play_intro: bool
+
 var time_remaining: float
 var total_points: int = 0
 var game_active: bool = false
 var near_miss_points: int = 0
 var combo_manager: ComboManager
+var box_manager: Node
 
 var total_boxes_delivered := 0
 var current_box_amount := 0
+
 func _ready():
-	
+	if not car:
+		car = get_node("../Car")
+
+	box_manager = car.get_node("Trunk/TrunkManager/BOXES")
 	time_remaining = start_time
 	
 	start_game()
@@ -45,8 +57,8 @@ func _ready():
 	update_points_label()
 	update_deliveries_label()
 	update_current_boxes_label()
-	
-	
+	#update_per_delivery_time_label(0)
+
 	add_to_group("point_manager")
 	add_to_group("delivery_manager")
 	
@@ -54,7 +66,49 @@ func _ready():
 	if combo_manager:
 		combo_manager.combo_achieved.connect(_on_combo_achieved)
 		combo_manager.combo_broken.connect(_on_combo_broken)
+		combo_manager.point_scored.connect(_on_combo_point_scored)
 	
+	if per_delivery_countdown_timer:
+		per_delivery_countdown_timer.one_shot = true
+		per_delivery_countdown_timer.timeout.connect(_on_per_delivery_timer_timeout)
+
+func _on_combo_point_scored(point_type: String, amount: int):
+	if not game_active:
+		return
+	
+	total_points += amount
+	update_points_label()
+	
+	if point_type == "coming through":
+		near_miss_points += amount
+		
+		var point_scene = near_miss_label_scene if near_miss_label_scene else point_label_scene
+		var parent_node = near_miss_parent if near_miss_parent else point_parent
+		
+		if point_scene and parent_node:
+			var point_label = point_scene.instantiate()
+			var point_text = "coming through! +%d" % amount
+			
+			if "set_log_text" in point_label:
+				point_label.set_log_text(point_text)
+			elif point_label is Label:
+				point_label.text = point_text
+			parent_node.add_child(point_label)
+
+# let combo manager handle everything
+func add_points(points: int, source_type: String = ""):
+	if not game_active:
+		return
+	
+	if source_type == "near_miss":
+		return
+	
+	var final_points = points
+	if combo_manager and source_type != "combo":
+		pass
+	
+	total_points += final_points
+	update_points_label()
 
 func _process(delta):
 	if Input.is_action_pressed("toggle_time"):
@@ -62,13 +116,18 @@ func _process(delta):
 	if Input.is_action_pressed("end_timer"):
 		time_remaining = -1
 	
-	if game_active && !time_frozen:
+	if game_active and !time_frozen:
 		time_remaining -= delta
 		if time_remaining <= 0:
 			time_remaining = 0
 			end_game()
 		update_time_label()
-
+		
+		# ✅ Update per-delivery timer label if active
+		if per_delivery_countdown_timer and per_delivery_countdown_timer.time_left > 0:
+			update_per_delivery_time_label(per_delivery_countdown_timer.time_left)
+		else:
+			update_per_delivery_time_label(0)
 
 func _on_timer_timeout():
 	if game_active:
@@ -77,7 +136,6 @@ func _on_timer_timeout():
 			time_remaining = 0
 			end_game()
 		update_time_label()
-
 
 func register_delivery(action_type: int, amount: int):
 	if not game_active:
@@ -93,15 +151,52 @@ func register_delivery(action_type: int, amount: int):
 		log_text = "picked up %d box%s" % [actual_amount, "" if actual_amount == 1 else "es"]
 		
 		time_remaining += pickup_time_bonus * actual_amount
+
+		# add proportional time (no reset, deltime limit / box picked up)
+		if per_delivery_countdown_timer:
+			var per_box_time = delivery_time_limit / float(box_capacity)
+			var added_time = per_box_time * actual_amount
+			var new_time_left = per_delivery_countdown_timer.time_left + added_time
+			
+			var was_inactive := per_delivery_countdown_timer.time_left <= 0 or not per_delivery_countdown_timer.is_stopped()
+			
+			per_delivery_countdown_timer.stop()
+			per_delivery_countdown_timer.wait_time = new_time_left
+			update_per_delivery_time_label(new_time_left)
+			per_delivery_countdown_timer.start()
+			per_delivery_countdown_timer.paused = true
+			
+			if was_inactive:
+				timer_animation_player.play("open_timer")
+			else:
+				timer_animation_player.play("time_added")
+			
+			await get_tree().create_timer(0.75).timeout
+			per_delivery_countdown_timer.paused = false
+
+
+			
 		if combo_manager:
 			var _final_points = combo_manager.on_delivery_pickup(0) 
-			
+	
 	elif action_type == 1: # dropoff
 		if current_box_amount <= 0:
 			return # if truck empty
 		var actual_amount = min(amount, current_box_amount)
 		current_box_amount -= actual_amount
 		total_boxes_delivered += actual_amount
+		
+		if timer_animation_player:
+			timer_animation_player.play("close_timer")
+		
+		if box_manager:
+			var count = box_manager.get_current_box_count()
+			for i in range(actual_amount): # remove only the delivered boxes
+				box_manager.remove_box()
+		
+		if per_delivery_countdown_timer:
+			per_delivery_countdown_timer.stop()
+			update_per_delivery_time_label(0)
 		
 		var base_points = dropoff_points_per_box * actual_amount
 		var final_points = base_points
@@ -110,75 +205,19 @@ func register_delivery(action_type: int, amount: int):
 		
 		total_points += final_points
 		update_points_label()
-		show_point_gain(final_points, actual_amount)
 		update_deliveries_label()
 	
 	update_current_boxes_label()
 	
-	if log_text != "" and log_label_scene and log_parent:
-		var new_label = log_label_scene.instantiate()
-		if "set_log_text" in new_label:
-			new_label.set_log_text(log_text)
-		elif new_label is Label:
-			new_label.text = log_text
-		log_parent.add_child(new_label)
 
-func add_points(points: int, source_type: String = ""):
-	if not game_active:
-		return
+func _on_per_delivery_timer_timeout():
+	print("delivery timer expired")
+	timer_animation_player.play("close_timer")
 	
-	var final_points = points
-	
-	if source_type == "near_miss":
-		if combo_manager:
-			final_points = combo_manager.on_near_miss(points)
-		
-		near_miss_points += final_points
-		
-		var point_scene = near_miss_label_scene if near_miss_label_scene else point_label_scene
-		var parent_node = near_miss_parent if near_miss_parent else point_parent
-		
-		if point_scene and parent_node:
-			var point_label = point_scene.instantiate()
-			var point_text = "coming through! +%d" % final_points
-			
-			if "set_log_text" in point_label:
-				point_label.set_log_text(point_text)
-			elif point_label is Label:
-				point_label.text = point_text
-			parent_node.add_child(point_label)
-	
-	elif source_type == "combo":
-		final_points = points
-	
-	else:
-		if combo_manager:
-			final_points = points 
-	
-	total_points += final_points
-	update_points_label()
+	var count = box_manager.get_current_box_count()
+	for i in range(count):
+		box_manager.remove_box()
 
-func test_add_points():
-	add_points(50, "near_miss")
-
-func show_point_gain(points: int, boxes_delivered: int = 0):
-	if point_label_scene and point_parent:
-		var point_label = point_label_scene.instantiate()
-		
-		if boxes_delivered == 0:
-			boxes_delivered = points / dropoff_points_per_box
-		
-		var point_text: String
-		if boxes_delivered == 1:
-			point_text = "delivery! +%d points" % points
-		else:
-			point_text = "delivery! +%d points" % points
-		
-		if "set_log_text" in point_label:
-			point_label.set_log_text(point_text)
-		elif point_label is Label:
-			point_label.text = point_text
-		point_parent.add_child(point_label)
 
 func show_combo_notification(combo_count: int):
 	if not game_active:
@@ -191,24 +230,6 @@ func show_combo_notification(combo_count: int):
 		var combo_label = combo_scene.instantiate()
 		var combo_text = "COMBO x%d!" % combo_count
 		
-		if "set_log_text" in combo_label:
-			combo_label.set_log_text(combo_text)
-		elif combo_label is Label:
-			combo_label.text = combo_text
-		parent_node.add_child(combo_label)
-
-func find_label_in_children(node: Node) -> Label:
-	if node is Label:
-		return node
-	
-	for child in node.get_children():
-		if child is Label:
-			return child
-		var found = find_label_in_children(child)
-		if found:
-			return found
-	
-	return null
 
 func update_deliveries_label():
 	if deliveries_count_label:
@@ -218,12 +239,20 @@ func update_current_boxes_label():
 	if current_boxes_label:
 		current_boxes_label.text = "%d - %d" % [current_box_amount, box_capacity]
 
+# for global timer label
 func update_time_label():
 	if time_label:
 		var minutes = int(time_remaining / 60)
 		var seconds = int(time_remaining) % 60
 		var milliseconds = int((time_remaining - int(time_remaining)) * 1000)
 		time_label.text = "%02d:%02d,%03d" % [minutes, seconds, milliseconds]
+
+# for per-delivery timer label
+func update_per_delivery_time_label(time_left: float):
+	if per_delivery_time_label:
+		var seconds = int(time_left)
+		var milliseconds = int((time_left - seconds) * 100)
+		per_delivery_time_label.text = "%02d,%02d" % [seconds, milliseconds]
 
 func update_points_label():
 	if points_label:
@@ -238,6 +267,8 @@ func end_game():
 	game_active = false
 	if countdown_timer:
 		countdown_timer.stop()
+	if per_delivery_countdown_timer:
+		per_delivery_countdown_timer.stop()
 	
 	if combo_manager:
 		combo_manager.force_break_combo()

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmfbc60wlco10"]
+
+[ext_resource type="PackedScene" uid="uid://crccaxhgr6tih" path="res://3d/assets/modularwalls/ledgecovers/ledgecovers1/ledgecover.glb" id="1_84muj"]
+
+[node name="ledgecover1" type="Node3D"]
+
+[node name="ledgecover" parent="." instance=ExtResource("1_84muj")]

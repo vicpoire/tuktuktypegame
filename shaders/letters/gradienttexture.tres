@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://2t8ckinnoosa"]
+
+[ext_resource type="Shader" uid="uid://48qwgw2d3q5d" path="res://shaders/letters/letters.gdshader" id="1_nk06h"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_nk06h")
+shader_parameter/color_a = Color(0.519182, 0.417123, 1, 1)
+shader_parameter/color_b = Color(0.878431, 0, 0.823529, 1)

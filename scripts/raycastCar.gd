@@ -182,35 +182,27 @@ func _handle_jump_mechanic(delta: float) -> void:
 		else:
 			_reset_suspension_gradual(delta)
 	
-	# Update previous states for next frame
 	_previous_forward_pressed = forward_pressed
 	_previous_backward_pressed = backward_pressed
 
 func _start_compression() -> void:
-	# Compress front suspension
 	for wheel in steering_wheels:
 		var default_rest = wheel_default_rest_dists.get(wheel, wheel.rest_dist)
 		var compressed_rest = default_rest - jump_compression
 		wheel_target_rest_dists[wheel] = compressed_rest
 		wheel.rest_dist = compressed_rest
-		
-	# Reduce front grip for preparation
 	for wheel in steering_wheels:
 		wheel_grip_overrides[wheel] = jump_grip_loss
 
 func _execute_jump() -> void:
-	# Extend front suspension dramatically (visual effect only)
 	for wheel in steering_wheels:
 		var default_rest = wheel_default_rest_dists.get(wheel, wheel.rest_dist)
 		var extended_rest = default_rest + jump_extension
 		wheel_target_rest_dists[wheel] = extended_rest
 		wheel.rest_dist = extended_rest
-	
-	# Apply upward force to the bottom/center of the car for actual jump
 	var upward_force = Vector3.UP * jump_force
-	var force_position = Vector3.DOWN * 0.5  # Apply force below center of mass
+	var force_position = Vector3.DOWN * 0.5
 	
-	# Apply the jump force to the car's center/bottom
 	apply_force(upward_force, force_position)
 	
 	# Create a tween to restore suspension after a moment
@@ -221,7 +213,6 @@ func _execute_jump() -> void:
 	_jump_tween.tween_callback(_restore_suspension_after_jump)
 
 func _restore_suspension_after_jump() -> void:
-	# Smoothly restore front suspension
 	if _jump_tween:
 		_jump_tween.kill()
 	_jump_tween = create_tween()
@@ -238,7 +229,6 @@ func _restore_suspension_after_jump() -> void:
 			0.3
 		)
 	
-	# Restore grip after duration
 	await get_tree().create_timer(jump_grip_duration).timeout
 	for wheel in steering_wheels:
 		wheel_grip_overrides[wheel] = 1.0
@@ -299,7 +289,7 @@ func _physics_process(delta: float) -> void:
 	_handle_suspension_tilt(delta)
 	_handle_jump_mechanic(delta)
 	get_current_speed()
-	
+
 	var grounded := false
 	for i in range(wheels.size()):
 		var wheel = wheels[i]
@@ -365,28 +355,26 @@ func _update_sharp_turn_state(delta: float) -> void:
 			sharp_turn_amount = 0.0
 
 func _handle_steering(delta: float) -> void:
-	var turn_input := Input.get_axis("right", "left") * tire_turn_speed
+	var turn_axis: float = Input.get_axis("right", "left")
+	var turn_intensity: float = abs(turn_axis)
+	var turn_input: float = turn_axis * tire_turn_speed
+	
 	if is_sharp_turning:
 		turn_input *= lerp(1.0, drift_turn_boost, sharp_turn_amount)
 		var sharp_turn_max_angle = tire_turn_max_degree * drift_angle_multiplier
 		for wheel in steering_wheels:
 			if turn_input != 0:
-				var new_rotation = clampf(
-					wheel.rotation.y + turn_input * delta,
-					deg_to_rad(-sharp_turn_max_angle),
-					deg_to_rad(sharp_turn_max_angle)
-				)
+			# target angle stick intensity
+				var target_angle = deg_to_rad(sharp_turn_max_angle * sign(turn_axis) * turn_intensity)
+				var new_rotation = move_toward(wheel.rotation.y, target_angle, abs(turn_input) * delta)
 				wheel.rotation.y = new_rotation
 			else:
 				wheel.rotation.y = move_toward(wheel.rotation.y, 0, tire_turn_speed * 0.8 * delta)
 	else:
 		for wheel in steering_wheels:
 			if turn_input != 0:
-				var new_rotation = clampf(
-					wheel.rotation.y + turn_input * delta,
-					deg_to_rad(-tire_turn_max_degree),
-					deg_to_rad(tire_turn_max_degree)
-				)
+				var target_angle = deg_to_rad(tire_turn_max_degree * sign(turn_axis) * turn_intensity)
+				var new_rotation = move_toward(wheel.rotation.y, target_angle, abs(turn_input) * delta)
 				wheel.rotation.y = new_rotation
 			else:
 				wheel.rotation.y = move_toward(wheel.rotation.y, 0, tire_turn_speed * delta)

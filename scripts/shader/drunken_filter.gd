@@ -8,6 +8,7 @@ extends CanvasLayer
 var is_faded_in: bool = false
 
 func _ready() -> void:
+	blur_rect.visible = true
 	if blur_rect:
 		blur_rect.alpha = 0.0
 	if vhs_rect:

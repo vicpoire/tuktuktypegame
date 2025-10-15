@@ -6,32 +6,32 @@ extends Node
 @export var ui_despawn_curve: Curve 
 @export var ui_spawn_time: float = 0.5
 @export var ui_despawn_time: float = 0.3 
-
+@export var delivery_manager: Node
 var ui_animating_rects: Array[bool] = []
 var ui_active_tweens: Array[Tween] = [] 
 
 var box_manager: Node3D
+var box_amount: int
 
 func _ready():
-	setup_ui_viewports()
-
-func _process(_delta):
-	if box_count_label and box_manager:
-		box_count_label.text = str(box_manager.get_current_box_count())
-
-func setup_ui_viewports():
-	if ui_viewport_rects.is_empty():
-		return
-	
 	ui_animating_rects.resize(ui_viewport_rects.size())
 	ui_active_tweens.resize(ui_viewport_rects.size())
-	
+
 	for i in range(ui_viewport_rects.size()):
-		if ui_viewport_rects[i]:
-			ui_viewport_rects[i].scale = Vector2.ZERO
-			ui_viewport_rects[i].visible = false
-			ui_animating_rects[i] = false
-			ui_active_tweens[i] = null
+		ui_animating_rects[i] = false
+		ui_active_tweens[i] = null
+
+	update_ui_viewports(box_amount)
+
+
+func _process(_delta):
+	box_amount = delivery_manager.current_box_amount
+	if box_count_label and box_manager:
+		box_count_label.text = str(box_manager.get_current_box_count())
+	update_ui_viewports(box_amount)
+	
+
+
 
 func update_ui_viewports(current_box_amount: int):
 	if ui_viewport_rects.is_empty():

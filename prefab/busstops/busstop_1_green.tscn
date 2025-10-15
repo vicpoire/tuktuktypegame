@@ -1,7 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://4e3wumjqh1x2"]
+[gd_scene load_steps=10 format=3 uid="uid://4e3wumjqh1x2"]
 
 [ext_resource type="PackedScene" uid="uid://nesxsfscra57" path="res://3d/assets/busstop/1/busstopgreen.glb" id="1_f28fq"]
-[ext_resource type="PackedScene" uid="uid://ux1nc5owlrab" path="res://3d/assets/vendingmachine/vendingmachine.tscn" id="2_irtde"]
 [ext_resource type="PackedScene" uid="uid://dllngt23ibum2" path="res://prefab/lights/ceilingled_1.tscn" id="3_mtjj5"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_vx1as"]
@@ -29,7 +28,7 @@ material = SubResource("StandardMaterial3D_f28fq")
 size = Vector3(0.06, 1.85, 2.745)
 
 [node name="busstop1" type="Node3D"]
-transform = Transform3D(0.64, 0, 0, 0, 0.64, 0, 0, 0, 0.64, 0, 0, 0)
+transform = Transform3D(0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 0, 0, 0)
 
 [node name="busstopgreen" parent="." instance=ExtResource("1_f28fq")]
 
@@ -70,9 +69,6 @@ mesh = SubResource("BoxMesh_of77q")
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0184762, 3.13281, -3.60914)
 mesh = SubResource("BoxMesh_of77q")
-
-[node name="vendingmachine" parent="." instance=ExtResource("2_irtde")]
-transform = Transform3D(5.76205e-08, 0, -1, 0, 1, 0, 1, 0, 5.76205e-08, 9.49002, 13.575, -84.1464)
 
 [node name="ceilingled1" parent="." instance=ExtResource("3_mtjj5")]
 transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, 0.219442, 4.68689, 9.5921e-09)

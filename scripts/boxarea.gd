@@ -91,7 +91,6 @@ func handle_delivery_action():
 			delivery_manager.register_delivery(action_type, boxes_affected)
 		start_cooldown()
 
-# Added these two functions
 func show_ui_prompt():
 	if ui_manager and box_manager:
 		var prompt_text = ""
