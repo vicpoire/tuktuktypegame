@@ -7,9 +7,11 @@ extends Node
 @export var pickup_time_bonus: float = 5.0 
 @export var time_label: Label
 @export var points_label: Label
+@export var per_delivery_time_label: Label
+@export var stacked_points_label: Label
+
 @export var countdown_timer: Timer
 @export var per_delivery_countdown_timer: Timer
-@export var per_delivery_time_label: Label
 
 @export var near_miss_label_scene: PackedScene 
 @export var combo_label_scene: PackedScene 
@@ -24,7 +26,7 @@ extends Node
 @export var point_parent: Node 
 @export var box_capacity: int = 3
 @export var dropoff_points_per_box: int = 5 
-@export var delivery_time_limit: float = 30.0 # base seconds per full capacity
+@export var delivery_time_limit: float = 45.0
 @export var timer_animation_player: AnimationPlayer
 
 @export_group("begining and end")
@@ -43,6 +45,7 @@ var box_manager: Node
 
 var total_boxes_delivered := 0
 var current_box_amount := 0
+var stacked_delivery_points := 0  # points earned while holding boxes
 
 func _ready():
 	if not car:
@@ -76,7 +79,15 @@ func _on_combo_point_scored(point_type: String, amount: int):
 	if not game_active:
 		return
 	
-	total_points += amount
+	# if holding boxes stack the points otherwise add directly
+	if current_box_amount > 0:
+		stacked_delivery_points += amount
+		update_stacked_points_label()
+		trigger_stacked_points_animation(2)
+		
+	else:
+		total_points += amount
+	
 	update_points_label()
 	
 	if point_type == "coming through":
@@ -95,7 +106,7 @@ func _on_combo_point_scored(point_type: String, amount: int):
 				point_label.text = point_text
 			parent_node.add_child(point_label)
 
-# let combo manager handle everything
+# let combo manager handle
 func add_points(points: int, source_type: String = ""):
 	if not game_active:
 		return
@@ -107,7 +118,13 @@ func add_points(points: int, source_type: String = ""):
 	if combo_manager and source_type != "combo":
 		pass
 	
-	total_points += final_points
+	# if holding boxes stack points otherwise add directly
+	if current_box_amount > 0:
+		stacked_delivery_points += final_points
+		update_stacked_points_label()
+	else:
+		total_points += final_points
+	
 	update_points_label()
 
 func _process(delta):
@@ -123,7 +140,6 @@ func _process(delta):
 			end_game()
 		update_time_label()
 		
-		# ✅ Update per-delivery timer label if active
 		if per_delivery_countdown_timer and per_delivery_countdown_timer.time_left > 0:
 			update_per_delivery_time_label(per_delivery_countdown_timer.time_left)
 		else:
@@ -137,6 +153,18 @@ func _on_timer_timeout():
 			end_game()
 		update_time_label()
 
+func apply_delivery_multiplier(base_points: int) -> int:
+	var multiplied_points = base_points
+	
+	# Apply combo multiplier if active
+	if combo_manager and combo_manager.is_combo_active():
+		multiplied_points = int(multiplied_points * combo_manager.get_combo_multiplier())
+	
+	# Apply any other multipliers here
+	# multiplied_points = int(multiplied_points * some_other_multiplier)
+	
+	return multiplied_points
+
 func register_delivery(action_type: int, amount: int):
 	if not game_active:
 		return
@@ -144,8 +172,13 @@ func register_delivery(action_type: int, amount: int):
 	var log_text := ""
 	
 	if action_type == 0: # pickup
+		
+		if current_box_amount == 0:  # just started carrying boxes
+			trigger_stacked_points_animation(1)
+			
 		if current_box_amount >= box_capacity:
 			return # if truck full
+			
 		var actual_amount = min(amount, box_capacity - current_box_amount)
 		current_box_amount += actual_amount
 		log_text = "picked up %d box%s" % [actual_amount, "" if actual_amount == 1 else "es"]
@@ -174,8 +207,6 @@ func register_delivery(action_type: int, amount: int):
 			await get_tree().create_timer(0.75).timeout
 			per_delivery_countdown_timer.paused = false
 
-
-			
 		if combo_manager:
 			var _final_points = combo_manager.on_delivery_pickup(0) 
 	
@@ -198,17 +229,20 @@ func register_delivery(action_type: int, amount: int):
 			per_delivery_countdown_timer.stop()
 			update_per_delivery_time_label(0)
 		
+		# Combine base delivery points with stacked points
 		var base_points = dropoff_points_per_box * actual_amount
-		var final_points = base_points
-		if combo_manager:
-			final_points = combo_manager.on_delivery_dropoff(base_points)
+		var combined_points = base_points + stacked_delivery_points
+		var final_points = apply_delivery_multiplier(combined_points)
 		
 		total_points += final_points
+		stacked_delivery_points = 0
+
+		trigger_stacked_points_animation(3)
+		update_stacked_points_label()
 		update_points_label()
 		update_deliveries_label()
 	
 	update_current_boxes_label()
-	
 
 func _on_per_delivery_timer_timeout():
 	print("delivery timer expired")
@@ -217,7 +251,15 @@ func _on_per_delivery_timer_timeout():
 	var count = box_manager.get_current_box_count()
 	for i in range(count):
 		box_manager.remove_box()
-
+	
+	# lose stacked points if delivery times out
+	current_box_amount = 0
+	stacked_delivery_points = 0
+	update_stacked_points_label()
+	trigger_stacked_points_animation(4)
+	
+	if current_box_amount > 0:
+		update_stacked_points_label()
 
 func show_combo_notification(combo_count: int):
 	if not game_active:
@@ -229,7 +271,6 @@ func show_combo_notification(combo_count: int):
 	if combo_scene and parent_node:
 		var combo_label = combo_scene.instantiate()
 		var combo_text = "COMBO x%d!" % combo_count
-		
 
 func update_deliveries_label():
 	if deliveries_count_label:
@@ -247,6 +288,32 @@ func update_time_label():
 		var milliseconds = int((time_remaining - int(time_remaining)) * 1000)
 		time_label.text = "%02d:%02d,%03d" % [minutes, seconds, milliseconds]
 
+func update_stacked_points_label():
+	if stacked_points_label:
+		stacked_points_label.visible = current_box_amount > 0
+		stacked_points_label.text = "delivery points: %d" % stacked_delivery_points
+
+
+func trigger_stacked_points_animation(anim_type: int):
+	match anim_type:
+		1:
+			# started a new delivery
+			# TODO: maybe fade in or slide-in animation
+			pass
+		2:
+			# gained stacked points while carrying boxes
+			# TODO: pulse or bounce effect
+			pass
+		3:
+			# delivered boxes 
+			# TODO: fade-out or burst animation
+			pass
+		4:
+			# delivery timed out stacked points lost
+			# TODO: flash red or shake effect
+			pass
+
+	
 # for per-delivery timer label
 func update_per_delivery_time_label(time_left: float):
 	if per_delivery_time_label:

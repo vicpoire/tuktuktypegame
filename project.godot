@@ -14,7 +14,7 @@ config/name="vitvitdriver3d"
 run/main_scene="uid://c84ix0n11nmpc"
 config/features=PackedStringArray("4.4", "Forward Plus")
 boot_splash/show_image=false
-config/icon="res://icon.svg"
+config/icon="uid://cf7pemtfcl7nu"
 
 [display]
 
@@ -26,7 +26,7 @@ window/nvidia_disable_threaded_optimization=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/csgtomesh/plugin.cfg", "res://addons/godot-polyliner/plugin.cfg", "res://addons/gravityfields/plugin.cfg", "res://addons/road-generator/plugin.cfg")
+enabled=PackedStringArray("res://addons/csgtomesh/plugin.cfg", "res://addons/gravityfields/plugin.cfg", "res://addons/road-generator/plugin.cfg")
 
 [input]
 

@@ -1930,7 +1930,7 @@ _surfaces = [{
 }]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8xcg6"]
-size = Vector3(3, 3, 3)
+size = Vector3(4.5, 3, 3)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_pu0t7"]
 _surfaces = [{
@@ -2042,7 +2042,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.233333),
 "transitions": PackedFloat32Array(1.27456, 1.27456),
 "update": 0,
-"values": [Vector3(1, 1, 1), Vector3(0, 0, 0)]
+"values": [Vector3(1, 1, 1), Vector3(0.001, 0.001, 0.001)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -2064,9 +2064,9 @@ tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.266667),
-"transitions": PackedFloat32Array(1, 0.65),
+"transitions": PackedFloat32Array(1.2, 1.2),
 "update": 0,
-"values": [Vector3(1, 1, 1), Vector3(0, 0, 0)]
+"values": [Vector3(1, 1, 1), Vector3(0.01, 0.01, 0.01)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -2258,25 +2258,24 @@ shadow_mesh = SubResource("ArrayMesh_ht3gc")
 
 [node name="Scene" type="Node3D"]
 
-[node name="DeliveryManager" type="Node3D" parent="." node_paths=PackedStringArray("time_label", "points_label", "countdown_timer", "per_delivery_countdown_timer", "per_delivery_time_label", "deliveries_count_label", "timer_animation_player", "start_screen", "end_screen")]
+[node name="DeliveryManager" type="Node3D" parent="." node_paths=PackedStringArray("time_label", "points_label", "per_delivery_time_label", "stacked_points_label", "countdown_timer", "per_delivery_countdown_timer", "deliveries_count_label", "timer_animation_player", "start_screen", "end_screen")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0689621, 0.19075, 0.100113)
 script = ExtResource("1_rrh80")
 start_time = 90.0
-pickup_time_bonus = 2.0
+pickup_time_bonus = 0.0
 time_label = NodePath("../UI/MainGameUI/TIMER/timer_global")
-points_label = NodePath("../UI/MainGameUI/DEBUG/DEBUG/MarginContainer5/points")
+points_label = NodePath("../UI/MainGameUI/DEBUG/DEBUG/MarginContainer5/totalpoints")
+per_delivery_time_label = NodePath("../UI/MainGameUI/TIMER/timer_per_del")
+stacked_points_label = NodePath("../UI/MainGameUI/COMBO/ComboVisuals/Control/deliverypoints")
 countdown_timer = NodePath("Timer")
 per_delivery_countdown_timer = NodePath("Timer2")
-per_delivery_time_label = NodePath("../UI/MainGameUI/TIMER/timer_per_del")
 deliveries_count_label = NodePath("../UI/MainGameUI/DEBUG/DEBUG/MarginContainer3/deliverycount")
 log_label_scene = ExtResource("2_kxstq")
 point_label_scene = ExtResource("3_nhtav")
 dropoff_points_per_box = 25
-delivery_time_limit = 45.0
 timer_animation_player = NodePath("../UI/MainGameUI/TIMER/AnimationPlayer")
 start_screen = NodePath("../UI/StartScreenAnimation")
 end_screen = NodePath("../UI/EndScreen")
-time_before_starting = 7.0
 
 [node name="Timer" type="Timer" parent="DeliveryManager"]
 autostart = true
@@ -2362,7 +2361,7 @@ fade_duration = 0.25
 wait_duration = 0.25
 car_anim_player = NodePath("CarAnimation")
 debrief_anim_player = NodePath("DebriefPanel")
-texts_to_fade = [NodePath("../MainGameUI/TIMER/timer_global"), NodePath("../MainGameUI/DEBUG/DEBUG/MarginContainer/speedtext"), NodePath("../MainGameUI/DEBUG/DEBUG/MarginContainer3/deliverycount"), NodePath("../MainGameUI/DEBUG/DEBUG/MarginContainer5/points"), NodePath("../MainGameUI/COMBO/ComboVisuals/Control/Label"), NodePath("../MainGameUI/COMBO/ComboVisuals/Control/Label2")]
+texts_to_fade = [NodePath("../MainGameUI/TIMER/timer_global"), NodePath("../MainGameUI/DEBUG/DEBUG/MarginContainer/speedtext"), NodePath("../MainGameUI/DEBUG/DEBUG/MarginContainer3/deliverycount"), NodePath("../MainGameUI/DEBUG/DEBUG/MarginContainer5/totalpoints"), NodePath("../MainGameUI/COMBO/ComboVisuals/Control/Label"), NodePath("../MainGameUI/COMBO/ComboVisuals/Control/Label2")]
 panels_to_fade = [NodePath("../MainGameUI/COMBO/ComboVisuals/Panel"), NodePath("../MainGameUI/DEBUG")]
 progress_bar = NodePath("../MainGameUI/COMBO/ComboVisuals/Control/ProgressBar")
 fade_out_duration = 0.2
@@ -2758,9 +2757,9 @@ label_settings = SubResource("LabelSettings_rbbvt")
 layout_mode = 2
 theme_override_constants/margin_left = 25
 
-[node name="points" type="Label" parent="UI/MainGameUI/DEBUG/DEBUG/MarginContainer5"]
+[node name="totalpoints" type="Label" parent="UI/MainGameUI/DEBUG/DEBUG/MarginContainer5"]
 layout_mode = 2
-text = "points"
+text = "totalpoints"
 label_settings = SubResource("LabelSettings_rcfhs")
 
 [node name="TIMER" type="Control" parent="UI/MainGameUI"]
@@ -2849,6 +2848,7 @@ combo_break_rotation_curve = SubResource("Curve_sphec")
 layout_mode = 2
 anchors_preset = 0
 offset_right = 143.0
+grow_horizontal = 0
 
 [node name="combo" type="VBoxContainer" parent="UI/MainGameUI/COMBO/ComboVisuals"]
 layout_mode = 1
@@ -2867,6 +2867,8 @@ anchor_bottom = 1.0
 offset_left = 0.00700045
 offset_top = -78.0
 offset_right = -0.00601196
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_bxi23")
 
 [node name="Control" type="Control" parent="UI/MainGameUI/COMBO/ComboVisuals"]
@@ -2879,6 +2881,7 @@ offset_left = 479.05
 offset_top = -31.0
 offset_right = -17.018
 offset_bottom = -31.0
+grow_horizontal = 0
 
 [node name="ProgressBar" type="ProgressBar" parent="UI/MainGameUI/COMBO/ComboVisuals/Control"]
 clip_contents = true
@@ -2907,6 +2910,15 @@ theme_override_font_sizes/font_size = 22
 text = "COMBO"
 label_settings = SubResource("LabelSettings_y7jhe")
 uppercase = true
+
+[node name="deliverypoints" type="Label" parent="UI/MainGameUI/COMBO/ComboVisuals/Control"]
+layout_mode = 0
+offset_top = 40.0
+offset_right = 70.0
+offset_bottom = 64.0
+text = "
+"
+label_settings = SubResource("LabelSettings_rcfhs")
 
 [node name="Label2" type="Label" parent="UI/MainGameUI/COMBO/ComboVisuals/Control"]
 layout_mode = 0
